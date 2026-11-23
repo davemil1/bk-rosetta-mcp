@@ -1,0 +1,50 @@
+// Load one FJC IDB bankruptcy text file (tab-delimited, header row of SAS short names)
+// into PGlite table fjc_bk, keeping the columns listed in spokes/fjc/bindings.json.
+// Usage: node tools/load-fjc.js <file.tsv> [--fy 2025] [--filed-only]
+//   --fy N        keep rows whose FILEFY == N
+//   --filed-only  keep rows with SNAPFILE == 1 (new filings in that snapshot)
+import { PGlite } from "@electric-sql/pglite";
+import { createReadStream, readFileSync } from "node:fs";
+import { createInterface } from "node:readline";
+
+const args = process.argv.slice(2);
+const file = args.find((a) => !a.startsWith("--"));
+if (!file) { console.error("usage: node tools/load-fjc.js <tab-delimited fjc file> [--fy 2025] [--filed-only]"); process.exit(1); }
+const fy = args.includes("--fy") ? args[args.indexOf("--fy") + 1] : null;
+const filedOnly = args.includes("--filed-only");
+
+const bindings = JSON.parse(readFileSync("spokes/fjc/bindings.json", "utf8"));
+const keep = Object.keys(bindings.variables);
+const numeric = new Set(["SNAPFILE","SNAPPEND","SNAPCLOS","TOTASSTS","REALPROP","PERSPROP","TOTLBLTS","SECURED","UNSECPR","UNSECNPR","DSCHRGD","NDSCHRGD","TOTDBT","CNTMNTHI","AVGMNTHI","AVGMNTHE"]);
+const db = new PGlite(process.env.FJC_DB ?? "data/fjc.pglite");
+// Run from the repo root (npm run load:fjc). Column names are stored lowercase so unquoted SQL works.
+
+await db.exec(`DROP TABLE IF EXISTS fjc_bk; CREATE TABLE fjc_bk (${keep.map((c) => `${c.toLowerCase()} ${numeric.has(c) ? "NUMERIC" : "TEXT"}`).join(", ")});`);
+const rl = createInterface({ input: createReadStream(file), crlfDelay: Infinity });
+let header = null, idx = [], iFY = -1, iSF = -1, n = 0, batch = [];
+const flush = async () => {
+  if (!batch.length) return;
+  const vals = batch.map((r, i) => `(${r.map((_, j) => `$${i * keep.length + j + 1}`).join(",")})`).join(",");
+  await db.query(`INSERT INTO fjc_bk VALUES ${vals}`, batch.flat()); batch = [];
+};
+for await (const line of rl) {
+  const cells = line.split("\t");
+  if (!header) {
+    header = cells.map((h) => h.trim().toUpperCase());
+    idx = keep.map((k) => header.indexOf(k));
+    iFY = header.indexOf("FILEFY"); iSF = header.indexOf("SNAPFILE");
+    const missing = keep.filter((k, i) => idx[i] < 0); if (missing.length) console.warn("columns not in file:", missing.join(","));
+    continue;
+  }
+  if (fy && cells[iFY]?.trim() !== fy) continue;
+  if (filedOnly && cells[iSF]?.trim() !== "1") continue;
+  batch.push(idx.map((i, j) => { const v = i < 0 ? "" : (cells[i] ?? "").trim(); return v === "" ? null : numeric.has(keep[j]) && isNaN(Number(v)) ? null : v; }));
+  n++; if (batch.length >= 500) await flush();
+}
+await flush();
+const districts = JSON.parse(readFileSync("spokes/fjc/districts.json", "utf8")).districts;
+await db.exec("DROP TABLE IF EXISTS fjc_district; CREATE TABLE fjc_district (code TEXT PRIMARY KEY, name TEXT);");
+for (const [code, name] of Object.entries(districts)) await db.query("INSERT INTO fjc_district VALUES ($1, $2)", [code, name]);
+await db.exec(`CREATE INDEX IF NOT EXISTS fjc_bk_chp ON fjc_bk (orgflchp); CREATE INDEX IF NOT EXISTS fjc_bk_key ON fjc_bk (casekey);`);
+console.log(`loaded ${n} rows into fjc_bk (${keep.length} columns)`);
+await db.close();

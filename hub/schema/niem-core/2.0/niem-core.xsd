@@ -1,0 +1,2690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:niem-xsd="http://niem.gov/niem/proxy/xsd/2.0" xmlns:usps="http://niem.gov/niem/usps_states/2.0" xmlns:i="http://niem.gov/niem/appinfo/2.0" targetNamespace="http://niem.gov/niem/niem-core/2.0">
+	<xsd:annotation>
+		<xsd:documentation>NIEM Core includes both Universal (U) and Common (C) components. The identities for U and C components in Core are maintained with metadata.</xsd:documentation>
+		<xsd:appinfo>
+			<i:ConformantIndicator>true</i:ConformantIndicator>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:import namespace="http://niem.gov/niem/structures/2.0" schemaLocation="../../structures/2.0/structures.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/appinfo/2.0" schemaLocation="../../appinfo/2.0/appinfo.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/proxy/xsd/2.0" schemaLocation="../../proxy/xsd/2.0/niem-xsd.xsd"/>
+	<xsd:import namespace="http://cmecf.td.oca.ao.dcn/niem/cmecf/codes/1.0" schemaLocation="../../county_codes/1.0/USCountyCodes.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/usps_states/2.0" schemaLocation="../../usps_states/2.0/usps_states.xsd"/>
+	<xsd:element name="ActivityCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A kind of activity.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityDate" type="nc:DateType" substitutionGroup="nc:ActivityDateRepresentation">
+		<xsd:annotation>
+			<xsd:documentation>A date of an activity.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ActivityDateRepresentation"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityDateRange" type="nc:DateRangeType" substitutionGroup="nc:ActivityDateRepresentation">
+		<xsd:annotation>
+			<xsd:documentation>A period of time over which an activity occurs.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ActivityDateRepresentation"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityDateRepresentation" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A date an activity occurs.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of an activity.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityDisposition" type="nc:DispositionType">
+		<xsd:annotation>
+			<xsd:documentation>A result or outcome of an activity.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification that references an activity.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityName" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of an activity.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityReasonText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A reason for an activity.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A single or set of related actions, events, or process steps.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityRelationText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A relationship between activities.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityStatus" type="nc:StatusType">
+		<xsd:annotation>
+			<xsd:documentation>A status of an activity.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AddressDeliveryPoint" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A single place or unit at which mail is delivered.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AddressDeliveryPointText" type="nc:TextType" substitutionGroup="nc:AddressDeliveryPoint">
+		<xsd:annotation>
+			<xsd:documentation>A single place or unit at which mail is delivered.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AddressDeliveryPoint"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AddressFullText" type="nc:TextType" substitutionGroup="nc:AddressRepresentation">
+		<xsd:annotation>
+			<xsd:documentation>A complete address.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AddressRepresentation"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AddressRecipientName" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of a person, organization, or other recipient to whom physical mail may be sent.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AddressRepresentation" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A representation of an address.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AddressSecondaryUnitText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A particular unit within a larger unit or grouping at a location.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AdministrativeID" type="niem-xsd:string" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>An identifier generated locally within a processing system used to identify sub-records within an entity of interest record.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ApplicationName" type="nc:ApplicationNameType">
+		<xsd:annotation>
+			<xsd:documentation>A computer application used to create and/or display an electronic file.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AssociationBeginDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date an association begins.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AssociationEndDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date an association ends.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryAvailableIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a binary is available; false if it is not.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryAvailableLocationText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A physical or digital location of a binary object.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryCaptureDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date on which a binary object is captured or created.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryCapturer" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity which captured or created a binary object.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A kind of object that has been encoded.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of a binary object.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryFormatID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An identifier for a file format or content type of a binary object.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryFormatStandardName" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of a standard or protocol used to classify binary content.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An identifier that references a binary object.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryLocationURI" type="niem-xsd:anyURI">
+		<xsd:annotation>
+			<xsd:documentation>An URL or file reference of a binary object.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinaryObject" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A binary encoding of data.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BinarySizeValue" type="nc:NonNegativeDecimalType">
+		<xsd:annotation>
+			<xsd:documentation>A size of a binary object in kilobytes.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Case" type="nc:CaseType">
+		<xsd:annotation>
+			<xsd:documentation>An aggregation of information about a set of related activities and events.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A kind of case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseDisposition" type="nc:CaseDispositionType" substitutionGroup="nc:ActivityDisposition">
+		<xsd:annotation>
+			<xsd:documentation>An outcome or processing of a case.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ActivityDisposition"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseDispositionDecision" type="nc:CaseDispositionDecisionType">
+		<xsd:annotation>
+			<xsd:documentation>A case disposition occurring as a result of some decision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseDispositionDecisionCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A case disposition occurring as a result of some decision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseDispositionDecisionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>The literal language of a decision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseDispositionFinalDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date that all charges in a case were disposed.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseDocketID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A public identifier used to reference a case docket, typically the office, year, case type, and number, like 3:12-cv-08893.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseGeneralCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A broadly defined kind of case, such as civil, criminal, bankruptcy, or appellate.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference pointer to a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseResolutionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A result of a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseSubCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A specific kind of case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseSubSubCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>An even more specific kind of case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseTitleText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>An official name of a case, usually using the names of the parties.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseTrackingID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An internal unique identifier used to track a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseYearDate" type="niem-xsd:gYear">
+		<xsd:annotation>
+			<xsd:documentation>A year a case is opened.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaveatText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A warning or caution.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CommentText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A remark, explanation, or observation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ConditionDisciplinaryAction" type="nc:DisciplinaryActionType">
+		<xsd:annotation>
+			<xsd:documentation>A corrective action that is specified as part of a condition.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ConditionGroupID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An identifier of a group of conditions to which this condition belongs.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ConditionMandatoryIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a condition is strictly required; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ConditionSetDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a condition was set.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ConditionViolatedIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a condition has been violated; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ConditionViolationDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a condition was violated.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ConditionViolationText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A violation of a condition.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactCellNumber" type="nc:TelephoneNumberType" substitutionGroup="nc:ContactTelephoneNumber">
+		<xsd:annotation>
+			<xsd:documentation>A telephone number for a cell phone device by which a person or organization may be contacted.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ContactTelephoneNumber"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactEmailID" type="niem-xsd:string" substitutionGroup="nc:ContactMeans">
+		<xsd:annotation>
+			<xsd:documentation>An electronic mailing address by which a person or organization may be contacted.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ContactMeans"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactEntity" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity that may be contacted by using the given contact information.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactFaxNumber" type="nc:TelephoneNumberType" substitutionGroup="nc:ContactMeans">
+		<xsd:annotation>
+			<xsd:documentation>A telephone number for a facsimile device by which a person or organization may be contacted.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ContactTelephoneNumber"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactInformation" type="nc:ContactInformationType">
+		<xsd:annotation>
+			<xsd:documentation>Contact information data set.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactInformationReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>Details about how to contact a person or an organization.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="ContactInformationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactMailingAddress" type="nc:AddressType" substitutionGroup="nc:ContactMeans">
+		<xsd:annotation>
+			<xsd:documentation>A postal address by which a person or organization may be contacted.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ContactMeans"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactMeans" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A means of contacting someone.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactTelephoneNumber" type="nc:TelephoneNumberType" substitutionGroup="nc:ContactMeans">
+		<xsd:annotation>
+			<xsd:documentation>A telephone number for a telecommunication device by which a person or organization may be contacted.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ContactMeans"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContactWebsiteURI" type="niem-xsd:anyURI" substitutionGroup="nc:ContactMeans">
+		<xsd:annotation>
+			<xsd:documentation>A website address by which a person or organization may be contacted.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ContactMeans"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference pointer to a court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Date" type="niem-xsd:date" substitutionGroup="nc:DateRepresentation">
+		<xsd:annotation>
+			<xsd:documentation>A full date.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="DateRepresentation"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DateRepresentation" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A representation of a date.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DateTime" type="niem-xsd:dateTime" substitutionGroup="nc:DateRepresentation">
+		<xsd:annotation>
+			<xsd:documentation>A full date and time.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="DateRepresentation"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DescriptionText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>A description of the information.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DisciplinaryActionFee" type="nc:ObligationType">
+		<xsd:annotation>
+			<xsd:documentation>A monetary fine assigned to a person as a disciplinary action.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DispositionCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A kind of disposition.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DispositionDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a disposition occurred.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DispositionDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of a disposition.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DispositionEntity" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An agency responsible for making a disposition decision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DispositionInstrument" type="nc:DocumentType">
+		<xsd:annotation>
+			<xsd:documentation>An official document filed to formally document the disposition of a specific charge.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DispositionReasonText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A reason for a disposition.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DispositionReportedAuthorityText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of an authority to which a disposition was reported.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DispositionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A result or outcome of a disposition.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentBinary" type="nc:BinaryType">
+		<xsd:annotation>
+			<xsd:documentation>A binary encoding of the content of a document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentCategoryID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An identifier of a kind of information in a document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentCreationDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a document was created.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentCreator" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity primarily responsible for making the content of the resource.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of the content of a document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentEffectiveDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date the information in a document takes effect.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentFileControlID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An identifier assigned to a document to locate it within a file control system.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentFiledDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a document was filed.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentFileName" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A file name of an electronic document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentFormatText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A file format, content type, or physical format of a document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification that references a document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentLastModifiedDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a document was last changed.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentLocation" type="nc:LocationType">
+		<xsd:annotation>
+			<xsd:documentation>A location of a physical document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentLocationURI" type="niem-xsd:anyURI">
+		<xsd:annotation>
+			<xsd:documentation>A location of an electronic representation of a document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference pointer to a document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentSequenceID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An identifier that determines the document order in a set of related documents.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentSummaryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A short description of the subject, content, and key points of a document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EffectiveDate" type="nc:DateType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>A date that information take effect.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Email" type="nc:EmailType">
+		<xsd:annotation>
+			<xsd:documentation>An electronic form of communication that can be exchanged asynchronously.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailAttachment" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A file which is sent along with an email message.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailAttachmentBinary" type="nc:BinaryType" substitutionGroup="nc:EmailAttachment">
+		<xsd:annotation>
+			<xsd:documentation>A binary file which is attached to an email message.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="EmailAttachment"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailAttachmentDocument" type="nc:DocumentType" substitutionGroup="nc:EmailAttachment">
+		<xsd:annotation>
+			<xsd:documentation>A document which is attached to an email message.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="EmailAttachment"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailAttachmentImage" type="nc:ImageType" substitutionGroup="nc:EmailAttachment">
+		<xsd:annotation>
+			<xsd:documentation>An image file which is attached to an email message.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="EmailAttachment"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An identifier that references an email message.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailMessageText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A body or main content of an email message.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailReceivedDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date on which an email message is received.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailRecipient" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A recipient of an email message.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailRecipientAddressID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An email address of a recipient of an email message.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailRecipientEntity" type="nc:EntityType" substitutionGroup="nc:EmailRecipient">
+		<xsd:annotation>
+			<xsd:documentation>An entity which receives an email message.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="EmailRecipient"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailRecipientName" type="nc:TextType" substitutionGroup="nc:EmailRecipient">
+		<xsd:annotation>
+			<xsd:documentation>A name of an entity which receives an email message.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="EmailRecipient"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailSender" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A sender of an email message.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailSenderAddressID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An email address of a sender of an email message.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailSenderEntity" type="nc:EntityType" substitutionGroup="nc:EmailSender">
+		<xsd:annotation>
+			<xsd:documentation>An entity which sends an email message.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="EmailSender"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailSenderName" type="nc:TextType" substitutionGroup="nc:EmailSender">
+		<xsd:annotation>
+			<xsd:documentation>A name of an entity which sends an email message.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="EmailSender"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailSentDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date on which an email message is sent.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmailSubjectText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A summary of the contents on an email message.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Employee" type="nc:PersonType">
+		<xsd:annotation>
+			<xsd:documentation>A person who works for a business or a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmployeeOccupation" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A job of an employee.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmployeeOccupationText" type="nc:TextType" substitutionGroup="nc:EmployeeOccupation">
+		<xsd:annotation>
+			<xsd:documentation>A job of an employee.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="EmployeeOccupation"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmployeeReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A person who works for a business or a person.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="PersonType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Employer" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>A business or person which employs a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmploymentLocation" type="nc:LocationType">
+		<xsd:annotation>
+			<xsd:documentation>A location where a person works.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EmploymentStatus" type="nc:StatusType">
+		<xsd:annotation>
+			<xsd:documentation>A status of employment for a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EndDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>An end date.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EntityOrganization" type="nc:OrganizationType" substitutionGroup="nc:EntityRepresentation">
+		<xsd:annotation>
+			<xsd:documentation>An organization capable of bearing legal rights and responsibilities.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="EntityRepresentation"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EntityPerson" type="nc:PersonType" substitutionGroup="nc:EntityRepresentation">
+		<xsd:annotation>
+			<xsd:documentation>A person capable of bearing legal rights and responsibilities.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="EntityRepresentation"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="EntityRepresentation" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A person, organization, or thing capable of bearing legal rights and responsibilities.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Facility" type="nc:FacilityType">
+		<xsd:annotation>
+			<xsd:documentation>A building, place, or structure that provides a particular service.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FacilityCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A kind of facility.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FacilityCommercialIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a facility is for commercial purpose; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FacilityContactInformation" type="nc:ContactInformationType">
+		<xsd:annotation>
+			<xsd:documentation>A method of contact for a facility.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FacilityContainsItem" type="nc:ItemType">
+		<xsd:annotation>
+			<xsd:documentation>An item contained by a facility.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FacilityIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification assigned to a facility.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FacilityLocation" type="nc:LocationType">
+		<xsd:annotation>
+			<xsd:documentation>A location of a facility.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FacilityName" type="nc:ProperNameTextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of a facility.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FacilityPersonAssociation" type="nc:FacilityPersonAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>An association between a facility and a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FacilityReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A building, place, or structure that provides a particular service.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="FacilityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FamilyKinshipCategory" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A kind of relationship between family members.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FamilyKinshipText" type="nc:TextType" substitutionGroup="nc:FamilyKinshipCategory">
+		<xsd:annotation>
+			<xsd:documentation>A kind of relationship between family members.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="FamilyKinshipCategory"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Fee" type="nc:ObligationType">
+		<xsd:annotation>
+			<xsd:documentation>An amount of money charged.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FullTelephoneNumber" type="nc:FullTelephoneNumberType" substitutionGroup="nc:TelephoneNumberRepresentation">
+		<xsd:annotation>
+			<xsd:documentation>An address.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="TelephoneNumberRepresentation"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IdentificationCategoryDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of a kind of identification.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IdentificationEffectiveDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date an identification takes effect.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IdentificationID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A value that identifies something.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IdentificationJurisdiction" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>An area, region, or unit in which a unique identification is issued.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IdentificationJurisdictionText" type="nc:TextType" substitutionGroup="nc:IdentificationJurisdiction">
+		<xsd:annotation>
+			<xsd:documentation>An area, region, or unit in which a unique identification is issued.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="IdentificationJurisdiction"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IdentificationSourceText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A person, organization, or locale which issues an identification.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IdentificationStatus" type="nc:StatusType">
+		<xsd:annotation>
+			<xsd:documentation>A status of an identification.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ImageHeightValue" type="niem-xsd:integer">
+		<xsd:annotation>
+			<xsd:documentation>A height of an image in pixels.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ImageLocation" type="nc:LocationType">
+		<xsd:annotation>
+			<xsd:documentation>A physical location where an image is stored.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ImageOperator" type="nc:PersonType">
+		<xsd:annotation>
+			<xsd:documentation>A person who took an image.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ImageWidthValue" type="niem-xsd:integer">
+		<xsd:annotation>
+			<xsd:documentation>A width of an image in pixels.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ImmediateFamilyAssociation" type="nc:ImmediateFamilyAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>An instance of the association between father or mothers and dependants.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="PersonType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Incident" type="nc:IncidentType">
+		<xsd:annotation>
+			<xsd:documentation>An occurrence or an event that may require a response.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IncidentDayPeriodText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A general time of day during which an incident occurred.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IncidentEvent" type="nc:ActivityType">
+		<xsd:annotation>
+			<xsd:documentation>An action or occurrence associated with an incident.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IncidentJurisdictionalOrganization" type="nc:OrganizationType">
+		<xsd:annotation>
+			<xsd:documentation>An organization or agency who has jurisdiction over an incident.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IncidentLocation" type="nc:LocationType">
+		<xsd:annotation>
+			<xsd:documentation>A location where an incident occurred.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IncidentObservationText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A remark about something noticed with regards to an incident.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IncidentReportedNarrative" type="nc:DocumentType">
+		<xsd:annotation>
+			<xsd:documentation>A document containing an account of the events that transpired in an incident.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of an item.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemFirstSoldYearDate" type="niem-xsd:gYear">
+		<xsd:annotation>
+			<xsd:documentation>A calendar year in which an item was first sold.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemLocationAssociation" type="nc:ItemLocationAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>An association between a property and a location.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemName" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of an item.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemOtherIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification assigned to an item.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemOwner" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity which owns a property item.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemReceiptIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification issued to an item when taken into possession for official purposes.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>An article or thing.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="ItemType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemUsageText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A manner or way in which an item is used.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemValue" type="nc:ItemValueType">
+		<xsd:annotation>
+			<xsd:documentation>An evaluation of the monetary worth of an item.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ItemValueAmount" type="nc:AmountType">
+		<xsd:annotation>
+			<xsd:documentation>A monetary value of an item.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JurisdictionIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification of a jurisdiction.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JurisdictionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>An area in which an organization or person has some kind of authoritative capacity or responsibility over.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Language" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A system of words or symbols used for communication.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LanguageName" type="nc:TextType" substitutionGroup="nc:Language">
+		<xsd:annotation>
+			<xsd:documentation>A system of words or symbols used for communication.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="Language"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Location" type="nc:LocationType">
+		<xsd:annotation>
+			<xsd:documentation>Details about a physical location.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationAddress" type="nc:AddressType">
+		<xsd:annotation>
+			<xsd:documentation>A geophysical location described by postal information.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationCityName" type="nc:ProperNameTextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of a city or town.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationContactInformation" type="nc:ContactInformationType">
+		<xsd:annotation>
+			<xsd:documentation>Contact information for a location.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationCountry" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A country, territory, dependency, or other such geopolitical subdivision of a location.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationCountryName" type="nc:ProperNameTextType" substitutionGroup="nc:LocationCountry">
+		<xsd:annotation>
+			<xsd:documentation>A country, territory, dependency, or other such geopolitical subdivision of a location.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="LocationCountry"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationCounty" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A county, parish, vicinage, or other such geopolitical subdivision of a state.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationCountyName" type="nc:ProperNameTextType" substitutionGroup="nc:LocationCounty">
+		<xsd:annotation>
+			<xsd:documentation>A county, parish, vicinage, or other such geopolitical subdivision of a state.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="LocationCounty"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of a location.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationName" type="nc:ProperNameTextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of a location.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationPostalCode" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An identifier of a post office-assigned zone for an address.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationPostalExtensionCode" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An identifier of a smaller area within a post office-assigned zone for an address.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>Details about a physical location.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="LocationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationState" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A state, commonwealth, province, or other such geopolitical subdivision of a country.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationStateName" type="nc:ProperNameTextType" substitutionGroup="nc:LocationState">
+		<xsd:annotation>
+			<xsd:documentation>A state, commonwealth, province, or other such geopolitical subdivision of a country.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="LocationState"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationStateUSPostalServiceCode" type="usps:USStateCodeType" substitutionGroup="nc:LocationState">
+		<xsd:annotation>
+			<xsd:documentation>A state, commonwealth, province, or other such geopolitical subdivision of a country.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="LocationState"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LocationStreet" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A road, thoroughfare or highway.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarginDuration" type="niem-xsd:duration">
+		<xsd:annotation>
+			<xsd:documentation>A subjective assessment of the uncertainty of an estimated point by bounding an elements value with an estimated margin of error.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MenuSubProgramText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>Menu sub program text</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NoBusinessNameIndicator" type="niem-xsd:boolean" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation> Debtor has not used any business names or EINS.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A kind of obligation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationDue" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>An amount of money or quantity of time still required to be spent in order to fulfill an obligation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationDueAmount" type="nc:AmountType" substitutionGroup="nc:ObligationDue">
+		<xsd:annotation>
+			<xsd:documentation>An amount of a payment obligation that has not been made.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ObligationDue"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationDueDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date by which an obligation must be fulfilled.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationEntity" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity that must fulfill an obligation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationPaid" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>An amount of money or quantity of time that has been spent towards fulfilling an obligation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationPaidAmount" type="nc:AmountType" substitutionGroup="nc:ObligationPaid">
+		<xsd:annotation>
+			<xsd:documentation>An amount of a payment obligation that has been made.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ObligationPaid"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationPaidDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date an obligation was fulfilled.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationPaidDuration" type="niem-xsd:duration" substitutionGroup="nc:ObligationPaid">
+		<xsd:annotation>
+			<xsd:documentation>An amount of money or quantity of time that has been spent towards fulfilling an obligation.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ObligationPaid"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationProgressDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of the progress that has been made in fulfilling an obligation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationRecipient" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity to whom an obligation must be fulfilled.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationRequirementDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of what is necessary in order to fulfill an obligation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationStartDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date on which an obligation begins.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationTotal" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>An amount of money or quantity of time that that must be spent in order to fulfill an obligation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ObligationTotalAmount" type="nc:AmountType" substitutionGroup="nc:ObligationTotal">
+		<xsd:annotation>
+			<xsd:documentation>A total amount of money to be charged or paid to meet a financial obligation.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ObligationTotal"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationCategory" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A kind or functional type of organization.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationCategoryText" type="nc:TextType" substitutionGroup="nc:OrganizationCategory">
+		<xsd:annotation>
+			<xsd:documentation>A kind or functional type of organization.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="OrganizationCategory"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationDayContactInformation" type="nc:ContactInformationType">
+		<xsd:annotation>
+			<xsd:documentation>A means of contacting an organization during daytime hours.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationEstablishedDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date an organization was started.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification that references an organization.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationLocation" type="nc:LocationType">
+		<xsd:annotation>
+			<xsd:documentation>A location of an organization.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationName" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of an organization.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationPrimaryContactInformation" type="nc:ContactInformationType">
+		<xsd:annotation>
+			<xsd:documentation>A preferred means of contacting an organization.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A unit which conducts some sort of business or operations.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="OrganizationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationTaxIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>A tax identification assigned to an organization.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationTaxIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation> Indicator set to true if the Debtor’s federal Employer Identification Number (EIN) is unknown.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationTerminationDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date an organization went out of business.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OrganizationUnitName" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of a high-level division of an organization.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Percentage" type="nc:PercentageType">
+		<xsd:annotation>
+			<xsd:documentation>A ratio, proper fraction, or percentage, with permissible decimal values ranging from 0 to 1 inclusive.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonAliasIdentityAssociation" type="nc:IdentityAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>An association between a person and an alias identity used by that person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonAlternateName" type="nc:PersonNameType">
+		<xsd:annotation>
+			<xsd:documentation>An alternate name used by a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonBirthDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a person was born.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonChildReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A son or daughter of a person.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="PersonType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonDeathDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a person died or was declared legally dead.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonDigitizedSignatureImage" type="nc:ImageType">
+		<xsd:annotation>
+			<xsd:documentation>An image of a handwritten signature of a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonEmploymentAssociation" type="nc:PersonEmploymentAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>An employment of a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonFullName" type="nc:PersonNameTextType">
+		<xsd:annotation>
+			<xsd:documentation>A complete name of a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonGivenName" type="nc:PersonNameTextType">
+		<xsd:annotation>
+			<xsd:documentation>A first name of a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonLicenseIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification that references a license certification or registration of a person for some purpose.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonLocationAssociation" type="nc:PersonLocationAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>An association between a person and a location.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonMaidenName" type="nc:PersonNameTextType">
+		<xsd:annotation>
+			<xsd:documentation>An original surname of a person before changed by marriage.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonMaritalStatusText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A status of marriage for a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonMiddleName" type="nc:PersonNameTextType">
+		<xsd:annotation>
+			<xsd:documentation>A middle name of a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonName" type="nc:PersonNameType">
+		<xsd:annotation>
+			<xsd:documentation>A combination of names and/or titles by which a person is known.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonNamePrefixText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A title or honorific used by a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonNameSuffixText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A term appended after the family name that qualifies the name.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonOrganizationAssociation" type="nc:PersonOrganizationAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>An association between a person and an organization.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonOtherIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>Information about an identifier with a kind that is not explicitly defined in the standard that refers to a person within a certain domain.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonParentReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A father or mother of a person.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="PersonType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A human being.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="PersonType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonSecondaryLanguage" type="nc:PersonLanguageType">
+		<xsd:annotation>
+			<xsd:documentation>A capacity of a person for a language with which that person is not completely fluent.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonSex" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A gender or sex of a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonSexText" type="nc:TextType" substitutionGroup="nc:PersonSex">
+		<xsd:annotation>
+			<xsd:documentation>A gender or sex of a person.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="PersonSex"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonSpeaksLanguageIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a person is able to speak a language; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonSSNIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>A unique reference to a living person; assigned by the United States Social Security Administration.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonSSNIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation> Indicator set to true if the Debtor’s Social Security Number(SSN) or federal Individual Taxpayer Identification Number (ITIN) is unknown.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonSurName" type="nc:PersonNameTextType">
+		<xsd:annotation>
+			<xsd:documentation>A last name or family name of a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonTaxIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification used to refer to a specific person within the tax system of a country.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonTaxIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a person if person is assigned a ein assigned by the United States Social Security Administration.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RelatedActivityReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>An activity having some relationship or association to another activity.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReleasePerson" type="nc:PersonType">
+		<xsd:annotation>
+			<xsd:documentation>A person who is released from confinement or an obligation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RoleOf" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A property of a role object. This specifies the base object, of which the role object is a function.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RoleOfOrganizationReference" type="s:ReferenceType" substitutionGroup="nc:RoleOf">
+		<xsd:annotation>
+			<xsd:documentation>An organization of whom the role object is a function.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="OrganizationType"/>
+				<i:Base i:name="RoleOf"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RoleOfPersonReference" type="s:ReferenceType" substitutionGroup="nc:RoleOf">
+		<xsd:annotation>
+			<xsd:documentation>A person of whom the role object is a function.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="PersonType"/>
+				<i:Base i:name="RoleOf"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ScheduleActivityText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>An activity planned to occur on a certain date and time.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ScheduleDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date for which an activity is scheduled.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ScheduleDay" type="nc:ScheduleDayType">
+		<xsd:annotation>
+			<xsd:documentation>A plan or agenda for the activities of a day.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ScheduleDayEndTime" type="niem-xsd:time">
+		<xsd:annotation>
+			<xsd:documentation>A time at which an activity is scheduled to end.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ScheduleDayStartTime" type="niem-xsd:time">
+		<xsd:annotation>
+			<xsd:documentation>A time at which an activity is scheduled to begin.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SchedulePerson" type="nc:PersonType">
+		<xsd:annotation>
+			<xsd:documentation>A person for whom an activity is scheduled.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SecurityLevelText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A level of security of information.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StartDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date on which something begins.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Status" type="nc:StatusType">
+		<xsd:annotation>
+			<xsd:documentation>A state of something or someone.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StatusDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a status was set, effected, or reported.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StatusDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of a status or condition of something or someone.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StatusIssuerIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification of a person or organization which assigns a status.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StatusIssuerText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A name, identifier, or other reference of a person or organization which assigns a status.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StatusText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A status or condition of something or someone.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StreetFullText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A complete reference for a street.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StructuredAddress" type="nc:StructuredAddressType" substitutionGroup="nc:AddressRepresentation">
+		<xsd:annotation>
+			<xsd:documentation>An address.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AddressRepresentation"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Supervision" type="nc:SupervisionType">
+		<xsd:annotation>
+			<xsd:documentation>A process of overseeing, supervising, or keeping track in some capacity of a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SupervisionCurrentIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a subject is currently under supervision; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SupervisionCustodyStatus" type="nc:StatusType">
+		<xsd:annotation>
+			<xsd:documentation>A status of the custody of a person under supervision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SupervisionFacility" type="nc:FacilityType">
+		<xsd:annotation>
+			<xsd:documentation>A facility at which a subject is being supervised.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SupervisionMandatoryIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a supervision of a person is required; false if a supervision is optional.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SupervisionPerson" type="nc:PersonType">
+		<xsd:annotation>
+			<xsd:documentation>A person who is being supervised.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SupervisionPersonStatus" type="nc:StatusType">
+		<xsd:annotation>
+			<xsd:documentation>A status of a person under supervision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SupervisionRelease" type="nc:ReleaseType">
+		<xsd:annotation>
+			<xsd:documentation>A complete and unrestricted release of a subject from a supervision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SupervisionSupervisor" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity which supervises a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneAreaCodeID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A dialing code for a state or province for phone numbers in the USA, Canada, Mexico, and the Caribbean.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneCountryCodeID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>An international dialing code for a country.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneExchangeID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A portion of a telephone number that usually represents a central telephone switch.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneLineID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A portion of a telephone number that identifies the individual circuit within an exchange.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneNumber" type="nc:TelephoneNumberType">
+		<xsd:annotation>
+			<xsd:documentation>A telephone number for a telecommunication device.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneNumberFullID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A complete telephone number.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneNumberFullIDReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A complete telephone number.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:namespace="http://niem.gov/niem/proxy/xsd/2.0" i:name="string"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneNumberID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A telephone number.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneNumberReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A telephone number for a telecommunication device.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="TelephoneNumberType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneNumberRepresentation" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A telephone number.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TelephoneSuffixID" type="niem-xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Additional numbers to be entered after a call connects to be directed to the appropriate place.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ActivityPersonAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an association between an activity and a person.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AssociationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:AssociationType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ActivityReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonReference" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ActivityType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a single or set of related actions, events, or process steps.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ActivityIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ActivityCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ActivityDateRepresentation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ActivityDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ActivityName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ActivityStatus" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ActivityReasonText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ActivityDisposition" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AddressType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a geophysical location described by postal information.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:AddressRepresentation" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AmountType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an amount of money.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/proxy/xsd/2.0" i:name="decimal"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="niem-xsd:decimal">
+				<xsd:attribute ref="nc:currencyText" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ApplicationNameType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a computer application used to create and/or display an electronic file.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+				<xsd:attribute ref="nc:applicationVersionText" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a connection, relationship, or involvement somehow linking people and/or things together.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Association"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:AssociationBeginDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:AssociationEndDate" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BinaryType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a digital representation of an object encoded in a binary format.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:BinaryID" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinaryAvailableLocationText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinaryAvailableIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinaryObject" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinaryCaptureDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinaryCapturer" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinaryDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinaryFormatID" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinaryFormatStandardName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinaryLocationURI" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinarySizeValue" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:BinaryCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CaseDispositionDecisionType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for the disposition of a case occurring as a result of some decision.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CaseDispositionType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an outcome or processing of a case.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="DispositionType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:DispositionType">
+				<xsd:sequence>
+					<xsd:element ref="nc:CaseDispositionFinalDate" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:CaseDispositionDecisionCategoryText" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:CaseDispositionDecisionText" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CaseType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an aggregation of information about a set of related activities and events.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="nc:CaseTrackingID" minOccurs="0"/>
+					<xsd:element ref="nc:CaseTitleText" minOccurs="0"/>
+					<xsd:element ref="nc:CaseDocketID" minOccurs="0"/>
+					<xsd:element ref="nc:CaseGeneralCategoryText" minOccurs="0"/>
+					<xsd:element ref="nc:CaseCategoryText" minOccurs="0"/>
+					<xsd:element ref="nc:CaseSubCategoryText" minOccurs="0"/>
+					<xsd:element ref="nc:CaseYearDate" minOccurs="0"/>
+					<xsd:element ref="nc:CaseResolutionText" minOccurs="0"/>
+					<xsd:element ref="nc:LocationCountyName" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ConditionType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a requirement or stipulation.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ConditionGroupID" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ConditionSetDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ConditionDisciplinaryAction" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ConditionMandatoryIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ConditionViolatedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ConditionViolationText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ConditionViolationDate" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ContactInformationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for how to contact a person or an organization.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ContactMeans" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ContactEntity" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DateRangeType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a period of time.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:StartDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EndDate" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DateType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a calendar date.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:DateRepresentation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:MarginDuration" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DisciplinaryActionType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an activity assigned to a person for the purpose of self-improvement, punishment, or restitution.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="nc:DisciplinaryActionFee" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DispositionType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a result or outcome that is the product of handling, processing, or finalizing something.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:DispositionEntity" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:DispositionDate" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:DispositionDescriptionText" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:DispositionReasonText" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:DispositionReportedAuthorityText" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:DispositionText" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:DispositionCategoryText" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:DispositionInstrument" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a paper or electronic document.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:CaveatText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentCategoryID" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentFileControlID" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentFiledDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentFileName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentFormatText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentLastModifiedDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentLocation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentLocationURI" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentSequenceID" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentCreator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentBinary" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentCreationDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentSummaryText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="EmailType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an electronic form of communication that can be exchanged asynchronously.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:EmailID" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmailRecipient" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmailRecipientAddressID" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmailReceivedDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmailSender" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmailSenderAddressID" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmailSentDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmailSubjectText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmailMessageText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmailAttachment" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="EntityType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a person, organization, or thing capable of bearing legal rights and responsibilities.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:EntityRepresentation" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="FacilityPersonAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an association between a facility and a person.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AssociationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:AssociationType">
+				<xsd:sequence>
+					<xsd:element ref="nc:FacilityReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonReference" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="FacilityType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a building, place, or structure that provides a particular service.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:FacilityIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:FacilityName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:FacilityCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:FacilityCommercialIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:FacilityLocation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:FacilityContactInformation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:FacilityContainsItem" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="FullTelephoneNumberType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a full telephone number.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:TelephoneNumberFullID" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:TelephoneSuffixID" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a representation of an identity.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:IdentificationID" minOccurs="0"/>
+					<xsd:element ref="nc:IdentificationCategoryDescriptionText" minOccurs="0"/>
+					<xsd:element ref="nc:IdentificationEffectiveDate" minOccurs="0"/>
+					<xsd:element ref="nc:IdentificationJurisdiction" minOccurs="0"/>
+					<xsd:element ref="nc:IdentificationSourceText" minOccurs="0"/>
+					<xsd:element ref="nc:IdentificationStatus" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="IdentityAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an association between a person and an identity.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AssociationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:AssociationType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ImageType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a picture or visual representation of something.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="BinaryType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:BinaryType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ImageHeightValue" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ImageLocation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ImageOperator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ImageWidthValue" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ImmediateFamilyAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an association of people who form a basic family unit of parents and children.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AssociationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:AssociationType">
+				<xsd:sequence>
+					<xsd:element ref="nc:PersonParentReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonChildReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:FamilyKinshipCategory" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="IncidentType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an occurrence or an event that may require a response.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="nc:IncidentLocation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:IncidentEvent" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:IncidentJurisdictionalOrganization" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:IncidentObservationText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:IncidentReportedNarrative" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:IncidentDayPeriodText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ItemLocationAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an association between a property and a location.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AssociationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:AssociationType">
+				<xsd:sequence>
+					<xsd:element ref="nc:LocationReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ItemReference" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ItemTitleType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a deed or other official document showing the legal ownership of a property item.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ItemType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an article or thing.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ItemName" minOccurs="0"/>
+					<xsd:element ref="nc:ItemDescriptionText" minOccurs="0"/>
+					<xsd:element ref="nc:ItemOtherIdentification" minOccurs="0"/>
+					<xsd:element ref="nc:ItemOwner" minOccurs="0"/>
+					<xsd:element ref="nc:ItemUsageText" minOccurs="0"/>
+					<xsd:element ref="nc:ItemValue" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ItemValueType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an evaluation of the monetary worth of an item.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ItemValueAmount" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="JurisdictionType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a geopolitical area in which an organization, person, or object has a specific range of authority.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:LocationCityName" minOccurs="0"/>
+					<xsd:element ref="nc:LocationCountry" minOccurs="0"/>
+					<xsd:element ref="nc:LocationCounty" minOccurs="0"/>
+					<xsd:element ref="nc:LocationState" minOccurs="0"/>
+					<xsd:element ref="nc:JurisdictionIdentification" minOccurs="0"/>
+					<xsd:element ref="nc:JurisdictionText" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LocationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a geophysical location.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:LocationAddress" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationContactInformation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationName" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MetadataType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for information that further qualifies primary data; data about data.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="MetadataType"/>
+				<i:AppliesTo i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+				<i:AppliesTo i:namespace="http://niem.gov/niem/structures/2.0" i:name="Association"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:MetadataType">
+				<xsd:sequence>
+					<xsd:element ref="nc:AdministrativeID" minOccurs="1" maxOccurs="1"/>
+					<xsd:element ref="nc:EffectiveDate" minOccurs="1" maxOccurs="1"/>
+					<xsd:element ref="nc:DescriptionText" minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="NonNegativeDecimalType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a decimal value with a minimum value of 0.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="nc:NonNegativeDecimalSimpleType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ObligationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for something that is owed to someone.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ObligationTotalAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ObligationDue" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ObligationPaid" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ObligationDueDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ObligationPaidDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ObligationProgressDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ObligationRequirementDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- TODO: fill in rest of ObligationType -->
+					<xsd:element ref="nc:ObligationCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ObligationEntity" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ObligationRecipient" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OrganizationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a body of people organized for a particular purpose.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:OrganizationCategory" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:OrganizationDayContactInformation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:OrganizationEstablishedDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:OrganizationIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:OrganizationLocation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:OrganizationName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:OrganizationTaxIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:OrganizationTaxIndicator" minOccurs="0"/>
+					<xsd:element ref="nc:OrganizationTerminationDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:OrganizationUnitName" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PercentageType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a ratio, proper fraction, or percentage, with permissible decimal values ranging from 0 to 1 inclusive.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="nc:PercentageSimpleType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="PersonEmploymentAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an association between a person and an employment.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AssociationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:AssociationType">
+				<xsd:sequence>
+					<xsd:element ref="nc:EmployeeReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:Employer" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmployeeOccupation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmploymentLocation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:EmploymentStatus" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PersonLanguageType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a language capability of a person.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:Language" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonSpeaksLanguageIndicator" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PersonLocationAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an association between a person and a location.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AssociationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:AssociationType">
+				<xsd:sequence>
+					<xsd:element ref="nc:PersonReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationReference" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PersonNameTextType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a name by which a person is known, referred, or addressed.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ProperNameTextType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ProperNameTextType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PersonNameType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a combination of names and/or titles by which a person is known.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:PersonNamePrefixText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonGivenName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonMiddleName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonSurName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonNameSuffixText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonMaidenName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonFullName" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+				<xsd:attribute ref="nc:personNameCommentText" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PersonOrganizationAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an association between a person and an organization.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:AssociationType">
+				<xsd:sequence>
+					<xsd:element ref="nc:PersonReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:OrganizationReference" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PersonType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a human being.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:PersonFullName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonAlternateName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonDigitizedSignatureImage" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonMaritalStatusText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonSSNIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonSSNIndicator" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:PersonTaxIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonTaxIndicator" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="nc:PersonBirthDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:PersonOtherIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:NoBusinessNameIndicator" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProperNameTextType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a word or phrase by which a person or thing is known, referred, or addressed.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="TextType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:TextType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RelatedActivityAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an association between related activities.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="AssociationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:AssociationType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ActivityReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ActivityRelationText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ReleaseType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a freeing or discharge of someone or something from an activity, supervision, or obligation.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ReleasePerson" minOccurs="0" maxOccurs="unbounded"/>
+					<!--TODO: fill in ReleaseType <xsd:element ref="nc:ReleaseFromLocation" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="nc:ReleaseIssuer" minOccurs="0"
+            maxOccurs="unbounded"/> <xsd:element ref="nc:ReleaseProperty" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="nc:ReleaseRecipient" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="nc:ReleaseToLocation" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="nc:ReleaseSupervisor" minOccurs="0" maxOccurs="unbounded"/> -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ScheduleDayType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a plan or agenda for the activities of a day.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ScheduleActivityText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ScheduleDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ScheduleDayEndTime" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:ScheduleDayStartTime" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:SchedulePerson" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="StatusType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a state of something or someone.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:StatusText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:StatusDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:StatusDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:StatusIssuerIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:StatusIssuerText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="StreetType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a road, thoroughfare, or highway.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:StreetFullText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="StructuredAddressType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an address.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:AddressRecipientName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationStreet" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:AddressSecondaryUnitText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:AddressDeliveryPoint" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationCityName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationCounty" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationState" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationCountry" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationPostalCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:LocationPostalExtensionCode" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SupervisionType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an act of officially overseeing, supervising, or keeping track in some capacity of a person.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:SupervisionCurrentIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:SupervisionCustodyStatus" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:SupervisionFacility" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:SupervisionMandatoryIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:SupervisionRelease" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:SupervisionPerson" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:SupervisionPersonStatus" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:SupervisionSupervisor" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="TelephoneNumberType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a telephone number for a telecommunication device.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:FullTelephoneNumber"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="TextType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a character string.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/proxy/xsd/2.0" i:name="string"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="niem-xsd:string"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:simpleType name="NonNegativeDecimalSimpleType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a decimal value with a minimum value of 0.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:minInclusive>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PercentageSimpleType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a ratio, proper fraction, or percentage, with permissible decimal values ranging from 0 to 1 inclusive.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:attribute name="applicationVersionText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A version of a computer application.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	<xsd:attribute name="currencyText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A unit of money or exchange.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	<xsd:attribute name="personNameCommentText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A comment about a kind of name for a person.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	<xsd:element name="EmployeeIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identification </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bkcmecf:IndividualBankruptcyPetition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bkcmecf="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/cmecf/1.0" xmlns:j="http://niem.gov/niem/domains/jxdm/4.0" xmlns:usps="http://niem.gov/niem/usps_states/2.0" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:bank="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/codes/1.0" xmlns:cmecfcodes="http://cmecf.td.oca.ao.dcn/niem/cmecf/codes/1.0" xsi:schemaLocation="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/cmecf/1.0 ../exchange_files/schema/constraint/niem/extension/BankruptcyPetition.xsd">
+	<!--This list of document metadata properties immediately below is OPTIONAL, were requested by some vendors to help them troubleshoot problems and gather statistics
+	Indented properties have their own tag, the rest can be put into the grab-bag nc:DocumentSummaryText, "A short description of the subject, content, and key points of a document."
+	1. File Generated DateTime: 2/01/2016 7:21:36 PM
+	2. Computer name: EXAMPLE-PC
+	3. Computer user: Test 1 
+	4. Operating system: Windows NT 6.1 Win 7 SP1 
+	5. Browser: IE 9.10.9200.16635 
+	6. Software Registration: 30077 LawFirmofXevinYZidd 2025556070
+	7. Case file: Debtor, Name Of 
+	8. Case folder: C:\ECF\Debtor File Name\ 
+	9. Software folder: C:\VendorProductFolder 
+	10. Software version: 22.130708 e02/17/2016	= nc:applicationVersionText-->
+	<!--7. Case file:-->
+	<nc:DocumentFileName>Debtor, Name Of</nc:DocumentFileName>
+	<!--5. Browser name (and version number)-->
+	<nc:DocumentFormatText> IE 9.10.9200.16635</nc:DocumentFormatText>
+	<!-- 1. File Generated DateTime: 2/01/2016 7:21:36 PM-->
+	<nc:DocumentCreationDate>
+		<nc:DateTime>2016-02-17T07:21:36</nc:DateTime>
+	</nc:DocumentCreationDate>
+	<!--a Text grab bag of whatever other metadata vendors desire to put into the filings for their own troubleshooting-->
+	<nc:DocumentSummaryText>
+2. Computer name: SMITHLAK-PC
+3. Computer user: Kishore Smith 
+4. Operating system: Windows NT 6.1 Win 7 SP1
+6. Software Registration: 30077 LawFirmofXevinYZidd 2025556070
+8. Case folder: C:\ECF\Debtor File Name\ 
+9. Software folder: C:\VendorProductFolder
+
+	</nc:DocumentSummaryText>
+	<!--THIS INFORMATION BELOW IS REQUIRED, WILL BE USED BY THE COURTS TO HELP TRACK POTENTIAL PROBLEMS DURING IMPLEMENTATION OF THIS XML EXCHANGE-->
+	<!--10. Software version:-->
+	<nc:ApplicationName nc:applicationVersionText="22.130708 e02/01/2016">Example Attorney Filing Tool</nc:ApplicationName>
+	<bkcmecf:FormB105>
+		<!-- Court Name -->
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!-- Case Number -->
+		<nc:CaseDocketID/>
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<!-- Chapter -->
+		<bkcmecf:BankruptcyChapter>7</bkcmecf:BankruptcyChapter>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>Invl</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms6</nc:PersonSurName>
+				</nc:PersonName>
+				<bkcmecf:Alias>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>AI</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms6</nc:PersonSurName>
+					<nc:PersonNameSuffixText/>
+					<bkcmecf:AliasTypeCode>aka</bkcmecf:AliasTypeCode>
+				</bkcmecf:Alias>
+				<nc:PersonSSNIdentification>
+					<nc:IdentificationID>123-45-7852</nc:IdentificationID>
+				</nc:PersonSSNIdentification>
+				<nc:PersonSSNIndicator>true</nc:PersonSSNIndicator>
+			</nc:EntityPerson>
+			<nc:EntityOrganization>
+				<nc:OrganizationDayContactInformation>
+					<nc:ContactTelephoneNumber>
+						<nc:FullTelephoneNumber>
+							<nc:TelephoneNumberFullID>520-334-9593</nc:TelephoneNumberFullID>
+						</nc:FullTelephoneNumber>
+					</nc:ContactTelephoneNumber>
+					<nc:ContactEmailID>invldebtor1@ao.uscourts.gov</nc:ContactEmailID>
+				</nc:OrganizationDayContactInformation>
+				<!-- Residential Address -->
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>1501 Main Road</nc:LocationStreet>
+							<nc:LocationCityName>Washington</nc:LocationCityName>
+							<cmecfcodes:USCountyCode>21001</cmecfcodes:USCountyCode>
+							<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationPostalCode>20054</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<!-- Mailing Address -->
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>3401 Main Road</nc:LocationStreet>
+							<nc:LocationCityName>Washington</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationPostalCode>20054</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<nc:OrganizationTaxIdentification>
+					<nc:IdentificationID>12-1478945</nc:IdentificationID>
+				</nc:OrganizationTaxIdentification>
+				<nc:OrganizationTaxIndicator>true</nc:OrganizationTaxIndicator>
+			</nc:EntityOrganization>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:DebtorTypeCode>i</bkcmecf:DebtorTypeCode>
+		<bkcmecf:FilingFeeStatusCode>p</bkcmecf:FilingFeeStatusCode>
+		<bkcmecf:OperateBusinessIndicator>true</bkcmecf:OperateBusinessIndicator>
+		<bkcmecf:NatureOfBusinessCode>h</bkcmecf:NatureOfBusinessCode>
+		<bkcmecf:NatureOfDebtsCode>b</bkcmecf:NatureOfDebtsCode>
+		<bkcmecf:PendingBankruptcyCaseIndicator>true</bkcmecf:PendingBankruptcyCaseIndicator>
+		<bkcmecf:PendingBankruptcyCase>
+			<nc:CaseDocketID>12-0001</nc:CaseDocketID>
+			<j:CaseAugmentation>
+				<j:CaseCourt>
+					<nc:OrganizationIdentification>
+						<nc:IdentificationID>1111</nc:IdentificationID>
+					</nc:OrganizationIdentification>
+					<j:CourtName>BANKRUPTCY COURT AO/DC  CM/ECF</j:CourtName>
+				</j:CaseCourt>
+				<j:CaseInitiatingParty>
+					<nc:EntityPerson>
+						<nc:PersonName>
+							<nc:PersonFullName>Debtor of Associated Pending Case</nc:PersonFullName>
+						</nc:PersonName>
+						<nc:PersonOtherIdentification>
+							<nc:IdentificationID>My Cousin</nc:IdentificationID>
+						</nc:PersonOtherIdentification>
+					</nc:EntityPerson>
+				</j:CaseInitiatingParty>
+				<!--			Pending_Related_Case_Party_Judge_Name-->
+				<j:CaseJudge>
+					<j:JudicialOfficialFirm>
+						<nc:OrganizationDayContactInformation>
+							<nc:ContactEntity>
+								<nc:EntityPerson>
+									<nc:PersonName>
+										<nc:PersonFullName>Judge Judy</nc:PersonFullName>
+									</nc:PersonName>
+								</nc:EntityPerson>
+							</nc:ContactEntity>
+						</nc:OrganizationDayContactInformation>
+					</j:JudicialOfficialFirm>
+				</j:CaseJudge>
+				<!--			Pending_Related_Case_Filed_Date			-->
+				<nc:DocumentFiledDate>
+					<nc:Date>2009-08-13</nc:Date>
+				</nc:DocumentFiledDate>
+			</j:CaseAugmentation>
+		</bkcmecf:PendingBankruptcyCase>
+		<bkcmecf:FilingVenue>
+			<bkcmecf:EstablishedByDomicileIndicator>true</bkcmecf:EstablishedByDomicileIndicator>
+			<bkcmecf:EstablishedByAffiliateIndicator>true</bkcmecf:EstablishedByAffiliateIndicator>
+			<bkcmecf:EstablishedByOtherIndicator>false</bkcmecf:EstablishedByOtherIndicator>
+			<bkcmecf:EstablishedByOtherDescription>Description</bkcmecf:EstablishedByOtherDescription>
+		</bkcmecf:FilingVenue>
+		<bkcmecf:NotPayingDebtsIndicator>true</bkcmecf:NotPayingDebtsIndicator>
+		<bkcmecf:CustodianAppointedIndicator>true</bkcmecf:CustodianAppointedIndicator>
+		<bkcmecf:ClaimsTransferIndicator>true</bkcmecf:ClaimsTransferIndicator>
+		<bkcmecf:PetitionerClaimsTotalAmount>7000</bkcmecf:PetitionerClaimsTotalAmount>
+		<bkcmecf:RequestForRelief>
+			<bkcmecf:Claim>
+				<bkcmecf:ClaimNatureDescription>Some kind of totally unassailable secured claim</bkcmecf:ClaimNatureDescription>
+				<bkcmecf:ClaimAmount>1500</bkcmecf:ClaimAmount>
+			</bkcmecf:Claim>
+			<bkcmecf:InvoluntaryBankruptcyPetitioner>
+				<nc:EntityPerson>
+					<nc:PersonName>
+						<nc:PersonGivenName>John</nc:PersonGivenName>
+						<nc:PersonMiddleName>Invl</nc:PersonMiddleName>
+						<nc:PersonSurName>Newforms6</nc:PersonSurName>
+					</nc:PersonName>
+				</nc:EntityPerson>
+				<nc:EntityOrganization>
+					<nc:OrganizationDayContactInformation>
+						<nc:ContactTelephoneNumber>
+							<nc:FullTelephoneNumber>
+								<nc:TelephoneNumberFullID>520-334-9596</nc:TelephoneNumberFullID>
+							</nc:FullTelephoneNumber>
+						</nc:ContactTelephoneNumber>
+						<nc:ContactEmailID>invlpetitioner1@ao.uscourts.gov</nc:ContactEmailID>
+					</nc:OrganizationDayContactInformation>
+					<nc:OrganizationLocation>
+						<nc:LocationAddress>
+							<nc:StructuredAddress>
+								<nc:LocationStreet>7 Columbus Circle NE</nc:LocationStreet>
+								<nc:LocationCityName>Washington</nc:LocationCityName>
+								<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+								<nc:LocationCountryName>USA</nc:LocationCountryName>
+								<nc:LocationPostalCode>20054</nc:LocationPostalCode>
+							</nc:StructuredAddress>
+						</nc:LocationAddress>
+					</nc:OrganizationLocation>
+				</nc:EntityOrganization>
+			</bkcmecf:InvoluntaryBankruptcyPetitioner>
+			<bkcmecf:InvoluntaryBankruptcyPetitionerSignatureDate>
+				<nc:Date>2016-02-23</nc:Date>
+			</bkcmecf:InvoluntaryBankruptcyPetitionerSignatureDate>
+			<bkcmecf:PetitionerCorporationAuthorizedIndividual>
+				<nc:EntityPerson>
+					<nc:PersonName>
+						<nc:PersonGivenName>Barry</nc:PersonGivenName>
+						<nc:PersonMiddleName>the</nc:PersonMiddleName>
+						<nc:PersonSurName>Preparer</nc:PersonSurName>
+					</nc:PersonName>
+				</nc:EntityPerson>
+				<nc:EntityOrganization>
+					<nc:OrganizationLocation>
+						<nc:LocationAddress>
+							<nc:StructuredAddress>
+								<nc:LocationStreet>7 Columbus Circle NE</nc:LocationStreet>
+								<nc:AddressSecondaryUnitText/>
+								<nc:LocationCityName>Washington</nc:LocationCityName>
+								<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+								<nc:LocationCountryName>USA</nc:LocationCountryName>
+								<nc:LocationPostalCode>20054</nc:LocationPostalCode>
+							</nc:StructuredAddress>
+						</nc:LocationAddress>
+					</nc:OrganizationLocation>
+				</nc:EntityOrganization>
+			</bkcmecf:PetitionerCorporationAuthorizedIndividual>
+			<j:Attorney>
+				<j:JudicialOfficialBarMembership>
+					<j:JudicialOfficialBarIdentification>
+						<nc:IdentificationID>53212345</nc:IdentificationID>
+						<nc:IdentificationJurisdictionText>DC</nc:IdentificationJurisdictionText>
+					</j:JudicialOfficialBarIdentification>
+				</j:JudicialOfficialBarMembership>
+				<j:JudicialOfficialFirm>
+					<nc:OrganizationDayContactInformation>
+						<nc:ContactEmailID>attorney@email.com</nc:ContactEmailID>
+						<nc:ContactTelephoneNumber>
+							<nc:FullTelephoneNumber>
+								<nc:TelephoneNumberFullID>703-867-5309</nc:TelephoneNumberFullID>
+							</nc:FullTelephoneNumber>
+						</nc:ContactTelephoneNumber>
+						<nc:ContactEntity>
+							<nc:EntityPerson>
+								<nc:PersonName>
+									<nc:PersonGivenName>John</nc:PersonGivenName>
+									<nc:PersonMiddleName>D</nc:PersonMiddleName>
+									<nc:PersonSurName>Attorney</nc:PersonSurName>
+									<nc:PersonNameSuffixText>Sr.</nc:PersonNameSuffixText>
+								</nc:PersonName>
+							</nc:EntityPerson>
+						</nc:ContactEntity>
+					</nc:OrganizationDayContactInformation>
+					<nc:OrganizationLocation>
+						<nc:LocationAddress>
+							<nc:StructuredAddress>
+								<nc:LocationStreet>6 Columbus Circle</nc:LocationStreet>
+								<nc:AddressSecondaryUnitText>Rm 4-522</nc:AddressSecondaryUnitText>
+								<nc:LocationCityName>Washington</nc:LocationCityName>
+								<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+								<nc:LocationCountryName>USA</nc:LocationCountryName>
+								<nc:LocationPostalCode>23185</nc:LocationPostalCode>
+							</nc:StructuredAddress>
+						</nc:LocationAddress>
+					</nc:OrganizationLocation>
+					<nc:OrganizationName>The Firm</nc:OrganizationName>
+				</j:JudicialOfficialFirm>
+			</j:Attorney>
+			<bkcmecf:InvoluntaryBankruptcyPetitionerAttorneySignatureDate>
+				<nc:Date>2016-02-23</nc:Date>
+			</bkcmecf:InvoluntaryBankruptcyPetitionerAttorneySignatureDate>
+		</bkcmecf:RequestForRelief>
+	</bkcmecf:FormB105>
+</bkcmecf:IndividualBankruptcyPetition>

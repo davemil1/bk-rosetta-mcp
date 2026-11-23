@@ -1,0 +1,1924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bkcmecf:IndividualBankruptcyPetition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bkcmecf="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/cmecf/1.0" xmlns:j="http://niem.gov/niem/domains/jxdm/4.0" xmlns:usps="http://niem.gov/niem/usps_states/2.0" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:bank="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/codes/1.0" xmlns:cmecfcodes="http://cmecf.td.oca.ao.dcn/niem/cmecf/codes/1.0" xsi:schemaLocation="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/cmecf/1.0 ../exchange_files/schema/constraint/niem/extension/BankruptcyPetition.xsd">
+	<nc:DocumentFileName>Debtor, Name Of</nc:DocumentFileName>
+	<nc:DocumentFormatText> IE 9.10.9200.16635</nc:DocumentFormatText>
+	<!-- 1. File Generated DateTime: 3/14/2018 7:21:36 AM-->
+	<nc:DocumentCreationDate>
+		<nc:DateTime>2018-02-01T07:21:36</nc:DateTime>
+	</nc:DocumentCreationDate>
+	<!--a Text grab bag of whatever other metadata vendors desire to put into the filings for their own troubleshooting-->
+	<nc:DocumentSummaryText>
+2. Computer name: DOEJMLAK-PC
+3. Computer user: John M. Doe 
+4. Operating system: Windows NT 6.1 Win 7 SP1
+6. Software Registration: 30077 LawFirmofXevinYZidd 2025556070
+8. Case folder: C:\ECF\Debtor File Name\ 
+9. Software folder: C:\VendorProductFolder
+	</nc:DocumentSummaryText>
+	<!--THIS INFORMATION BELOW IS REQUIRED, WILL BE USED BY THE COURTS TO HELP TRACK POTENTIAL PROBLEMS DURING IMPLEMENTATION OF THIS XML EXCHANGE-->
+	<!--10. Software version:-->
+	<nc:ApplicationName nc:applicationVersionText="22.130708 e03/14/2018">Example Attorney Filing Tool</nc:ApplicationName>
+	<bkcmecf:FormB101>
+		<!-- Court Name -->
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!-- Case Number -->
+		<nc:CaseDocketID/>
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<!-- Chapter -->
+		<bkcmecf:BankruptcyChapter>11</bkcmecf:BankruptcyChapter>
+		<!-- Debtor1 Identification -->
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+				<nc:PersonSSNIdentification>
+					<nc:IdentificationID>123-45-7891</nc:IdentificationID>
+				</nc:PersonSSNIdentification>
+			</nc:EntityPerson>
+			<nc:EntityOrganization>
+				<nc:OrganizationTaxIdentification>
+					<nc:IdentificationID>12-1478945</nc:IdentificationID>
+				</nc:OrganizationTaxIdentification>
+			</nc:EntityOrganization>
+			<nc:EntityOrganization>
+				<nc:OrganizationDayContactInformation>
+					<nc:ContactCellNumber>
+						<nc:FullTelephoneNumber>
+							<nc:TelephoneNumberFullID>202-111-5555</nc:TelephoneNumberFullID>
+						</nc:FullTelephoneNumber>
+					</nc:ContactCellNumber>
+					<nc:ContactTelephoneNumber>
+						<nc:FullTelephoneNumber>
+							<nc:TelephoneNumberFullID>202-111-4444</nc:TelephoneNumberFullID>
+						</nc:FullTelephoneNumber>
+					</nc:ContactTelephoneNumber>
+					<nc:ContactEmailID>debtor1@test1.com</nc:ContactEmailID>
+				</nc:OrganizationDayContactInformation>
+				<!-- Residential Address -->
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>100 Main Road</nc:LocationStreet>
+							<nc:LocationCityName>Washington</nc:LocationCityName>
+							<cmecfcodes:USCountyCode>01001</cmecfcodes:USCountyCode>
+							<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationPostalCode>20054</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+			</nc:EntityOrganization>
+		</bkcmecf:BankruptcyDebtor1>
+		<!-- Debtor1 Identification -->
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+				<bkcmecf:Alias>
+					<nc:PersonGivenName>MaryAlias</nc:PersonGivenName>
+					<nc:PersonMiddleName>GAlias</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+					<bkcmecf:AliasTypeCode>aka</bkcmecf:AliasTypeCode>
+				</bkcmecf:Alias>
+				<nc:PersonSSNIdentification>
+					<nc:IdentificationID>223-66-1234</nc:IdentificationID>
+				</nc:PersonSSNIdentification>
+				<nc:PersonSSNIdentification>
+					<nc:IdentificationID>222-22-3333</nc:IdentificationID>
+				</nc:PersonSSNIdentification>
+				<nc:NoBusinessNameIndicator>false</nc:NoBusinessNameIndicator>
+			</nc:EntityPerson>
+			<nc:EntityOrganization>
+				<nc:OrganizationDayContactInformation>
+					<nc:ContactCellNumber>
+						<nc:FullTelephoneNumber>
+							<nc:TelephoneNumberFullID>202-111-3333</nc:TelephoneNumberFullID>
+						</nc:FullTelephoneNumber>
+					</nc:ContactCellNumber>
+					<nc:ContactTelephoneNumber>
+						<nc:FullTelephoneNumber>
+							<nc:TelephoneNumberFullID>202-111-2222</nc:TelephoneNumberFullID>
+						</nc:FullTelephoneNumber>
+					</nc:ContactTelephoneNumber>
+					<nc:ContactEmailID>debtor2@test1.com</nc:ContactEmailID>
+				</nc:OrganizationDayContactInformation>
+				<!-- Residential Address -->
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>666 Park Avenue</nc:LocationStreet>
+							<nc:LocationCityName>New York</nc:LocationCityName>
+							<cmecfcodes:USCountyCode>11001</cmecfcodes:USCountyCode>
+							<nc:LocationStateUSPostalServiceCode>NY</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationPostalCode>28101</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<!-- Mailing Address -->
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>243 Oak Street</nc:LocationStreet>
+							<nc:LocationCityName>Vienna</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>VA</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>USA</nc:LocationCountryName>
+							<nc:LocationPostalCode>22101</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+			</nc:EntityOrganization>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:DebtorTypeCode>i</bkcmecf:DebtorTypeCode>
+		<bkcmecf:Debtor1FilingVenue>
+			<bkcmecf:EstablishedByDomicileIndicator>true</bkcmecf:EstablishedByDomicileIndicator>
+			<bkcmecf:EstablishedByOtherIndicator>false</bkcmecf:EstablishedByOtherIndicator>
+			<bkcmecf:EstablishedByOtherDescription>Description</bkcmecf:EstablishedByOtherDescription>
+		</bkcmecf:Debtor1FilingVenue>
+		<bkcmecf:Debtor2FilingVenue>
+			<bkcmecf:EstablishedByDomicileIndicator>true</bkcmecf:EstablishedByDomicileIndicator>
+			<bkcmecf:EstablishedByOtherIndicator>false</bkcmecf:EstablishedByOtherIndicator>
+			<bkcmecf:EstablishedByOtherDescription>Description</bkcmecf:EstablishedByOtherDescription>
+		</bkcmecf:Debtor2FilingVenue>
+		<bkcmecf:FilingFeeStatusCode>i</bkcmecf:FilingFeeStatusCode>
+		<bkcmecf:PriorBankruptcyCaseIndicator>false</bkcmecf:PriorBankruptcyCaseIndicator>
+		<bkcmecf:PendingBankruptcyCaseIndicator>false</bkcmecf:PendingBankruptcyCaseIndicator>
+		<bkcmecf:DebtorRentsResidenceIndicator>false</bkcmecf:DebtorRentsResidenceIndicator>
+		<bkcmecf:NatureOfBusinessCode>c</bkcmecf:NatureOfBusinessCode>
+		<bkcmecf:Chapter11FilingIndicator>true</bkcmecf:Chapter11FilingIndicator>
+		<bkcmecf:SmallBusinessIndicator>false</bkcmecf:SmallBusinessIndicator>
+		<bkcmecf:Subchapter>V</bkcmecf:Subchapter>
+		<bkcmecf:HazardousPropertyIndicator>false</bkcmecf:HazardousPropertyIndicator>
+		<bkcmecf:Debtor1CreditCounseling>
+			<bkcmecf:CreditCounselingCode>1</bkcmecf:CreditCounselingCode>
+		</bkcmecf:Debtor1CreditCounseling>
+		<bkcmecf:Debtor2CreditCounseling>
+			<bkcmecf:CreditCounselingCode>1</bkcmecf:CreditCounselingCode>
+		</bkcmecf:Debtor2CreditCounseling>
+		<bkcmecf:NatureOfDebtsCode>b</bkcmecf:NatureOfDebtsCode>
+		<bkcmecf:Chapter7FilingIndicator>false</bkcmecf:Chapter7FilingIndicator>
+		<bkcmecf:FundsAvailableIndicator>false</bkcmecf:FundsAvailableIndicator>
+		<bkcmecf:EstimatedCreditorsCode>C</bkcmecf:EstimatedCreditorsCode>
+		<bkcmecf:EstimatedAssetsCode>G</bkcmecf:EstimatedAssetsCode>
+		<bkcmecf:EstimatedLiabilitiesCode>K</bkcmecf:EstimatedLiabilitiesCode>
+		<bkcmecf:Debtor1SignatureDate>
+			<nc:Date>2017-02-17</nc:Date>
+		</bkcmecf:Debtor1SignatureDate>
+		<bkcmecf:Debtor2SignatureDate>
+			<nc:Date>2017-02-17</nc:Date>
+		</bkcmecf:Debtor2SignatureDate>
+		<bkcmecf:AttorneySignatureDate>
+			<nc:Date>2017-02-17</nc:Date>
+		</bkcmecf:AttorneySignatureDate>
+		<j:Attorney>
+			<j:JudicialOfficialBarMembership>
+				<j:JudicialOfficialBarIdentification>
+					<nc:IdentificationID>53212345</nc:IdentificationID>
+					<nc:IdentificationJurisdictionText>DC</nc:IdentificationJurisdictionText>
+				</j:JudicialOfficialBarIdentification>
+			</j:JudicialOfficialBarMembership>
+			<j:JudicialOfficialFirm>
+				<nc:OrganizationDayContactInformation>
+					<nc:ContactEmailID>attorney@email.com</nc:ContactEmailID>
+					<nc:ContactTelephoneNumber>
+						<nc:FullTelephoneNumber>
+							<nc:TelephoneNumberFullID>703-867-5309</nc:TelephoneNumberFullID>
+						</nc:FullTelephoneNumber>
+					</nc:ContactTelephoneNumber>
+					<nc:ContactEntity>
+						<nc:EntityPerson>
+							<nc:PersonName>
+								<nc:PersonGivenName>Kishore</nc:PersonGivenName>
+								<nc:PersonMiddleName>D</nc:PersonMiddleName>
+								<nc:PersonSurName>Attorney</nc:PersonSurName>
+							</nc:PersonName>
+						</nc:EntityPerson>
+					</nc:ContactEntity>
+				</nc:OrganizationDayContactInformation>
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>6 Columbus Circle</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Rm 4-522</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Washington</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>USA</nc:LocationCountryName>
+							<nc:LocationPostalCode>23185</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<nc:OrganizationName>The Firm</nc:OrganizationName>
+			</j:JudicialOfficialFirm>
+		</j:Attorney>
+	</bkcmecf:FormB101>
+	<bkcmecf:FormB101A>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!-- Case Number -->
+		<nc:CaseDocketID/>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:Landlord>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Landlod1</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Last</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+			<nc:EntityOrganization>
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>101 Columbus Circle, NE</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Room 5-302</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Washington</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationPostalCode>20544</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+			</nc:EntityOrganization>
+		</bkcmecf:Landlord>
+		<bkcmecf:RightToStayIndicator>true</bkcmecf:RightToStayIndicator>
+		<bkcmecf:DepositForRentIndicator>false</bkcmecf:DepositForRentIndicator>
+		<bkcmecf:Debtor1SignatureDate>
+			<nc:Date>2017-01-10</nc:Date>
+		</bkcmecf:Debtor1SignatureDate>
+		<bkcmecf:Debtor2SignatureDate>
+			<nc:Date>2017-01-10</nc:Date>
+		</bkcmecf:Debtor2SignatureDate>
+	</bkcmecf:FormB101A>
+	<bkcmecf:FormB106Dec>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!-- Case Number -->
+		<nc:CaseDocketID/>
+		<!-- Debtor -->
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Edward</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Alibaba</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:PayPetitionPreparerIndicator>false</bkcmecf:PayPetitionPreparerIndicator>
+		<bkcmecf:Debtor1SignatureDate>
+			<nc:Date>2018-03-14</nc:Date>
+		</bkcmecf:Debtor1SignatureDate>
+		<bkcmecf:Debtor2SignatureDate>
+			<nc:Date>2018-03-14</nc:Date>
+		</bkcmecf:Debtor2SignatureDate>
+	</bkcmecf:FormB106Dec>
+	<bkcmecf:FormB106Sum>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!--Case Number (if known): should be populated in an amended filing, with the fully qualified case number-->
+		<nc:CaseDocketID/>
+		<!--check (true) if this is an amended filing-->
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<!--schedules -->
+		<bkcmecf:TotalRealPropertyValueAmount>101</bkcmecf:TotalRealPropertyValueAmount>
+		<bkcmecf:TotalPersonalPropertyValueAmount>102</bkcmecf:TotalPersonalPropertyValueAmount>
+		<bkcmecf:TotalPropertyValueAmount>103</bkcmecf:TotalPropertyValueAmount>
+		<bkcmecf:TotalSecuredClaimAmount>201</bkcmecf:TotalSecuredClaimAmount>
+		<bkcmecf:TotalPriorityUnsecuredClaimAmount>301</bkcmecf:TotalPriorityUnsecuredClaimAmount>
+		<bkcmecf:TotalNonPriorityUnsecuredClaimAmount>302</bkcmecf:TotalNonPriorityUnsecuredClaimAmount>
+		<bkcmecf:TotalLiabilitiesAmount>303</bkcmecf:TotalLiabilitiesAmount>
+		<bkcmecf:HouseholdMonthlyIncomeAmount>400</bkcmecf:HouseholdMonthlyIncomeAmount>
+		<bkcmecf:HouseholdMonthlyExpenseAmount>500</bkcmecf:HouseholdMonthlyExpenseAmount>
+		<bkcmecf:BankruptcyChapterIndicator>true</bkcmecf:BankruptcyChapterIndicator>
+		<bkcmecf:PrimarilyConsumerDebtsIndicator>true</bkcmecf:PrimarilyConsumerDebtsIndicator>
+		<bkcmecf:TotalCurrentMonthlyIncomeAmount>800</bkcmecf:TotalCurrentMonthlyIncomeAmount>
+		<bkcmecf:TotalDomesticSupportObligationAmount>901</bkcmecf:TotalDomesticSupportObligationAmount>
+		<bkcmecf:TotalTaxesDebtAmount>902</bkcmecf:TotalTaxesDebtAmount>
+		<bkcmecf:TotalDeathClaimAmount>903</bkcmecf:TotalDeathClaimAmount>
+		<bkcmecf:TotalStudentLoanAmount>904</bkcmecf:TotalStudentLoanAmount>
+		<bkcmecf:TotalObligationAgreementAmount>905</bkcmecf:TotalObligationAgreementAmount>
+		<bkcmecf:TotalPensionDebtAmount>906</bkcmecf:TotalPensionDebtAmount>
+		<bkcmecf:TotalUnsecuredClaimAmount>907</bkcmecf:TotalUnsecuredClaimAmount>
+	</bkcmecf:FormB106Sum>
+	<bkcmecf:FormB106AB>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!--Case Number (if known): should be populated in an amended filing, with the fully qualified case number-->
+		<nc:CaseDocketID/>
+		<!--check (true) if this is an amended filing-->
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:RealEstateProperty>
+			<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+			<bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemLineNumber>1.1</bkcmecf:PropertyItemLineNumber>
+				<nc:Location>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet> 999 N. Florida Avenue</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 507</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Tampa</nc:LocationCityName>
+							<nc:LocationCountyName>Washington</nc:LocationCountyName>
+							<nc:LocationStateUSPostalServiceCode>FL</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>United States</nc:LocationCountryName>
+							<nc:LocationPostalCode>22101</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:Location>
+				<bkcmecf:PropertyCategoryCode>S</bkcmecf:PropertyCategoryCode>
+				<bkcmecf:PropertyCategoryCode>D</bkcmecf:PropertyCategoryCode>
+				<bkcmecf:OwnershipInterestCode>a</bkcmecf:OwnershipInterestCode>
+				<bkcmecf:PropertyOtherInformation>Local property - plot 1101</bkcmecf:PropertyOtherInformation>
+				<bkcmecf:PropertyCurrentValueAmount>100000</bkcmecf:PropertyCurrentValueAmount>
+				<bkcmecf:PropertyOwnedCurrentValueAmount>25000</bkcmecf:PropertyOwnedCurrentValueAmount>
+				<bkcmecf:OwnershipInterestDescription>Ownership interest in single family home</bkcmecf:OwnershipInterestDescription>
+				<bkcmecf:CommunityPropertyIndicator>false</bkcmecf:CommunityPropertyIndicator>
+			</bkcmecf:PropertyItemDetails>
+			<bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemLineNumber>1.2</bkcmecf:PropertyItemLineNumber>
+				<nc:Location>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet> 801 N. Florida Avenue</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 507</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Tampa</nc:LocationCityName>
+							<nc:LocationCountyName>Washington</nc:LocationCountyName>
+							<nc:LocationStateUSPostalServiceCode>FL</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>United States</nc:LocationCountryName>
+							<nc:LocationPostalCode>22101</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:Location>
+				<bkcmecf:PropertyCategoryCode>S</bkcmecf:PropertyCategoryCode>
+				<bkcmecf:OwnershipInterestCode>b</bkcmecf:OwnershipInterestCode>
+				<bkcmecf:PropertyOtherInformation>Local property - plot 1101</bkcmecf:PropertyOtherInformation>
+				<bkcmecf:PropertyCurrentValueAmount>100000</bkcmecf:PropertyCurrentValueAmount>
+				<bkcmecf:PropertyOwnedCurrentValueAmount>25000</bkcmecf:PropertyOwnedCurrentValueAmount>
+				<bkcmecf:CommunityPropertyIndicator>false</bkcmecf:CommunityPropertyIndicator>
+			</bkcmecf:PropertyItemDetails>
+		</bkcmecf:RealEstateProperty>
+		<bkcmecf:TotalRealPropertyValueAmount>400000</bkcmecf:TotalRealPropertyValueAmount>
+		<bkcmecf:VehiclesProperty>
+			<bkcmecf:PropertyGroundMotorVehicles>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>3.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:VehicleMake>Audi</bkcmecf:VehicleMake>
+					<bkcmecf:VehicleModel>A3</bkcmecf:VehicleModel>
+					<nc:ItemFirstSoldYearDate>2015</nc:ItemFirstSoldYearDate>
+					<bkcmecf:VehicleApproximateMileageQuantity>2500</bkcmecf:VehicleApproximateMileageQuantity>
+					<bkcmecf:OwnershipInterestCode>a</bkcmecf:OwnershipInterestCode>
+					<bkcmecf:PropertyOtherInformation>Vehicle Motor property - 1</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyCurrentValueAmount>100000</bkcmecf:PropertyCurrentValueAmount>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>310</bkcmecf:PropertyOwnedCurrentValueAmount>
+					<bkcmecf:CommunityPropertyIndicator>false</bkcmecf:CommunityPropertyIndicator>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>3.2</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:VehicleMake>Audi</bkcmecf:VehicleMake>
+					<bkcmecf:VehicleModel>A5</bkcmecf:VehicleModel>
+					<nc:ItemFirstSoldYearDate>2005</nc:ItemFirstSoldYearDate>
+					<bkcmecf:VehicleApproximateMileageQuantity>12500</bkcmecf:VehicleApproximateMileageQuantity>
+					<bkcmecf:OwnershipInterestCode>a</bkcmecf:OwnershipInterestCode>
+					<bkcmecf:PropertyOtherInformation>Vehicle Motor property - 2</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyCurrentValueAmount>50000</bkcmecf:PropertyCurrentValueAmount>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>320</bkcmecf:PropertyOwnedCurrentValueAmount>
+					<bkcmecf:CommunityPropertyIndicator>false</bkcmecf:CommunityPropertyIndicator>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyGroundMotorVehicles>
+			<bkcmecf:PropertyWaterAirRecreationalVehicles>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>4.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:VehicleMake>Audi</bkcmecf:VehicleMake>
+					<bkcmecf:VehicleModel>Audi Q3</bkcmecf:VehicleModel>
+					<nc:ItemFirstSoldYearDate>2015</nc:ItemFirstSoldYearDate>
+					<bkcmecf:OwnershipInterestCode>a</bkcmecf:OwnershipInterestCode>
+					<bkcmecf:PropertyOtherInformation>Vehicle Boat property - 1</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyCurrentValueAmount>100000</bkcmecf:PropertyCurrentValueAmount>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>410</bkcmecf:PropertyOwnedCurrentValueAmount>
+					<bkcmecf:CommunityPropertyIndicator>false</bkcmecf:CommunityPropertyIndicator>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>4.2</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:VehicleMake>Audi</bkcmecf:VehicleMake>
+					<bkcmecf:VehicleModel>Audi Q3</bkcmecf:VehicleModel>
+					<nc:ItemFirstSoldYearDate>2015</nc:ItemFirstSoldYearDate>
+					<bkcmecf:OwnershipInterestCode>a</bkcmecf:OwnershipInterestCode>
+					<bkcmecf:PropertyOtherInformation>Vehicle Boat property - 1</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyCurrentValueAmount>100000</bkcmecf:PropertyCurrentValueAmount>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>410</bkcmecf:PropertyOwnedCurrentValueAmount>
+					<bkcmecf:CommunityPropertyIndicator>false</bkcmecf:CommunityPropertyIndicator>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyWaterAirRecreationalVehicles>
+			<bkcmecf:TotalCurrentValueVehiclesOwnedAmount>5000</bkcmecf:TotalCurrentValueVehiclesOwnedAmount>
+		</bkcmecf:VehiclesProperty>
+		<bkcmecf:HouseholdProperty>
+			<bkcmecf:PropertyHouseholdGoodsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>6.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Furniture - sofa, appliances</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>600</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyHouseholdGoodsItem>
+			<bkcmecf:PropertyElectronicsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>7.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>50 LED TV, Digital Camera</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>700</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyElectronicsItem>
+			<bkcmecf:PropertyCollectiblesItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>8.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Stamps, Coins, Baseball cards</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>800</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyCollectiblesItem>
+			<bkcmecf:PropertySportsHobbiesItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>9.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Superbowl ring</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>900</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertySportsHobbiesItem>
+			<bkcmecf:PropertyFirearmsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>10.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Rifles</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1000</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyFirearmsItem>
+			<bkcmecf:PropertyClothingItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>11.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Signed jersey</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1100</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyClothingItem>
+			<bkcmecf:PropertyJewelryItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>12.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Jewelry Silver, Gold</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1200</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyJewelryItem>
+			<bkcmecf:PropertyNonfarmAnimalsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>13.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Pets - Dogs, Horses</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1300</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyNonfarmAnimalsItem>
+			<bkcmecf:PropertyOtherItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>14.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Personal items not listed above.</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1400</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyOtherItem>
+			<bkcmecf:TotalCurrentValueHouseholdItemsOwnedAmount>1500</bkcmecf:TotalCurrentValueHouseholdItemsOwnedAmount>
+		</bkcmecf:HouseholdProperty>
+		<bkcmecf:FinancialProperty>
+			<bkcmecf:PropertyCashOnHandItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>16</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1600</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyCashOnHandItem>
+			<bkcmecf:PropertyBankAccountItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>17.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>Checking</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>Bank of America</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1701</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>17.2</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>Checking</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>Bank of America</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1702</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>17.3</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>Savings</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>Bank of America</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1703</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>17.4</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>Certificate</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>Bank of America</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1704</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>17.5</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>Other</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>Bank of America</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1705</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>17.6</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>Other</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>BOA</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1706</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyBankAccountItem>
+			<bkcmecf:PropertySecuritiesItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>18.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>NYSE Stocks</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1800</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>18.2</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Fidelity Mutual Funds</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1801</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertySecuritiesItem>
+			<bkcmecf:PropertyBusinessPartnershipInterestsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>19.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>BusinessPartnershipInterestsItem</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:OwnershipPercentage>0.25</bkcmecf:OwnershipPercentage>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>1900</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyBusinessPartnershipInterestsItem>
+			<bkcmecf:PropertyBondsSecuritiesItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>20.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Fidelity Mutual Bonds</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>2000</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyBondsSecuritiesItem>
+			<bkcmecf:PropertyRetirementPensionItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>21.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>401K</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>401K Account</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>2101</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>21.2</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>IRA</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>IRA Account</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>2102</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyRetirementPensionItem>
+			<bkcmecf:PropertySecurityDepositItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>22.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>Electric</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>Electric company deposit</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>2201</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>22.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>Prepaid</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>Prepaid rent</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>2202</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertySecurityDepositItem>
+			<bkcmecf:PropertyAnnuitiesItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>23</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Annuities</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>2300</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyAnnuitiesItem>
+			<bkcmecf:PropertyEducationIRAItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>24</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Education</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>2400</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyEducationIRAItem>
+			<bkcmecf:PropertyTrustEquitableInterestItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>25</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Trusts</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>2500</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyTrustEquitableInterestItem>
+			<bkcmecf:PropertyPatentsCopyrightsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>26</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Patents</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>2600</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyPatentsCopyrightsItem>
+			<bkcmecf:PropertyLicensesFranchisesItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>27</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Licenses</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>2700</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyLicensesFranchisesItem>
+			<bkcmecf:PropertyTaxRefundsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>28</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>Federal</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>Tax refunds owed</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwedCurrentValueAmount>2801</bkcmecf:PropertyOwedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:FinancialAssetType>State</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOwedCurrentValueAmount>2802</bkcmecf:PropertyOwedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:FinancialAssetType>Local</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOwedCurrentValueAmount>2803</bkcmecf:PropertyOwedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyTaxRefundsItem>
+			<bkcmecf:PropertyFamilySupportItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>29</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:FinancialAssetType>Alimony</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOtherInformation>Family support</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwedCurrentValueAmount>2901</bkcmecf:PropertyOwedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:FinancialAssetType>Maintenance</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOwedCurrentValueAmount>2902</bkcmecf:PropertyOwedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:FinancialAssetType>Support</bkcmecf:FinancialAssetType>
+					<bkcmecf:PropertyOwedCurrentValueAmount>2903</bkcmecf:PropertyOwedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyFamilySupportItem>
+			<bkcmecf:PropertyOtherLoansOwedItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>30</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Other amounts owed</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>3000</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyOtherLoansOwedItem>
+			<bkcmecf:PropertyInsurancePoliciesItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>31.1</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Insurance policies</bkcmecf:PropertyOtherInformation>
+					<nc:ItemDescriptionText>Debtor1</nc:ItemDescriptionText>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>3101</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>31.2</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Health savings account (HSA)</bkcmecf:PropertyOtherInformation>
+					<nc:ItemDescriptionText>Debtor2</nc:ItemDescriptionText>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>3102</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyInsurancePoliciesItem>
+			<bkcmecf:PropertyLifeInsuranceDeathBenefitsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>32</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Life insurance claims</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>3200</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyLifeInsuranceDeathBenefitsItem>
+			<bkcmecf:PropertyThirdPartyClaimsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>33</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Third party claims</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>3400</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyThirdPartyClaimsItem>
+			<bkcmecf:PropertyOtherContingentClaimsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>34</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>contingent and unliquidated claims</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>3400</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyOtherContingentClaimsItem>
+			<bkcmecf:PropertyOtherFinancialAssetsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>35</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Financial assets</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>3500</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyOtherFinancialAssetsItem>
+			<bkcmecf:TotalFinancialPropertyValueAmount>360000</bkcmecf:TotalFinancialPropertyValueAmount>
+		</bkcmecf:FinancialProperty>
+		<bkcmecf:BusinessProperty>
+			<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+			<bkcmecf:PropertyAccountsReceivableItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>38</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Accounts receivable</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>3800</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyAccountsReceivableItem>
+			<bkcmecf:PropertyOfficeEquipmentItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>39</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Office equipment, furnishings</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>3900</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyOfficeEquipmentItem>
+			<bkcmecf:PropertyMachineryFixturesEquipmentSuppliesItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>40</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Machinery, fixtures, equipment</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>4000</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyMachineryFixturesEquipmentSuppliesItem>
+			<bkcmecf:PropertyInventoryItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>41</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Inventory item</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>4100</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyInventoryItem>
+			<bkcmecf:PropertyPartnershipJointVenturesInterestsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>42</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Interests in partnerships or joint ventures</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:OwnershipPercentage>0.25</bkcmecf:OwnershipPercentage>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>4200</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyPartnershipJointVenturesInterestsItem>
+			<bkcmecf:PropertyCustomerListsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>43</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:IdentifiableInformationIndicator>true</bkcmecf:IdentifiableInformationIndicator>
+					<bkcmecf:PropertyOtherInformation>Customer lists, mailing lists</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>4300</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyCustomerListsItem>
+			<bkcmecf:PropertyOtherBusinessAssetsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>44</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>50 LED TV</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>4410</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyOtherInformation>Digital Camera</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>4420</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyOtherBusinessAssetsItem>
+			<bkcmecf:TotalBusinessPropertyValueAmount>450000</bkcmecf:TotalBusinessPropertyValueAmount>
+		</bkcmecf:BusinessProperty>
+		<bkcmecf:FarmingProperty>
+			<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+			<bkcmecf:PropertyFarmAnimalsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>47</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Farm animals - livestock, hens, fish</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>4700</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyFarmAnimalsItem>
+			<bkcmecf:PropertyCropsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>48</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Crops - wheat, rice, soy</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>4800</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyCropsItem>
+			<bkcmecf:PropertyFarmingEquipmentItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>49</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Farming equipment - tractors, ipad</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>4900</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyFarmingEquipmentItem>
+			<bkcmecf:PropertyFarmingSuppliesChemicalsFeedItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>50</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Farming supplies - chemicals</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>5000</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyFarmingSuppliesChemicalsFeedItem>
+			<bkcmecf:PropertyOtherFarmingAssetsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>51</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Any farm- and commercial fishing-related property</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>5100</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyOtherFarmingAssetsItem>
+			<bkcmecf:TotalFarmingPropertyValueAmount>5200</bkcmecf:TotalFarmingPropertyValueAmount>
+		</bkcmecf:FarmingProperty>
+		<bkcmecf:OtherPersonalProperty>
+			<bkcmecf:PropertyOtherPersonalAssetsItem>
+				<bkcmecf:ItemExistsIndicator>true</bkcmecf:ItemExistsIndicator>
+				<bkcmecf:PropertyItemDetails>
+					<bkcmecf:PropertyItemLineNumber>53</bkcmecf:PropertyItemLineNumber>
+					<bkcmecf:PropertyOtherInformation>Redskins season tickets</bkcmecf:PropertyOtherInformation>
+					<bkcmecf:PropertyOwnedCurrentValueAmount>5300</bkcmecf:PropertyOwnedCurrentValueAmount>
+				</bkcmecf:PropertyItemDetails>
+			</bkcmecf:PropertyOtherPersonalAssetsItem>
+			<bkcmecf:TotalOtherPersonalPropertyValueAmount>5400</bkcmecf:TotalOtherPersonalPropertyValueAmount>
+		</bkcmecf:OtherPersonalProperty>
+		<bkcmecf:TotalPersonalPropertyValueAmount>62000</bkcmecf:TotalPersonalPropertyValueAmount>
+		<bkcmecf:TotalPropertyValueAmount>630000</bkcmecf:TotalPropertyValueAmount>
+	</bkcmecf:FormB106AB>
+	<bkcmecf:FormB106C>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!-- Case Number -->
+		<nc:CaseDocketID/>
+		<!--check (true) if this is an amended filing-->
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:Debtor1ExemptProperty>
+			<bkcmecf:PropertyExemptClaimSet>b</bkcmecf:PropertyExemptClaimSet>
+			<bkcmecf:ExemptProperty>
+				<nc:ItemDescriptionText>Debtor's primary residence</nc:ItemDescriptionText>
+				<bkcmecf:ScheduleABLineItem>1.1</bkcmecf:ScheduleABLineItem>
+				<bkcmecf:PropertyOwnedCurrentValueAmount>1000.00</bkcmecf:PropertyOwnedCurrentValueAmount>
+				<bkcmecf:ExemptClaimPortionCode>p</bkcmecf:ExemptClaimPortionCode>
+				<bkcmecf:ExemptClaimPortionAmount>100.00</bkcmecf:ExemptClaimPortionAmount>
+				<bkcmecf:ExemptClaimLaws>
+					<j:Statute>
+						<j:StatuteCategoryText>The common law</j:StatuteCategoryText>
+					</j:Statute>
+				</bkcmecf:ExemptClaimLaws>
+			</bkcmecf:ExemptProperty>
+			<bkcmecf:ExemptProperty>
+				<nc:ItemDescriptionText>Debtor's primary vehicle</nc:ItemDescriptionText>
+				<bkcmecf:ScheduleABLineItem>1.2</bkcmecf:ScheduleABLineItem>
+				<bkcmecf:PropertyOwnedCurrentValueAmount>2000.00</bkcmecf:PropertyOwnedCurrentValueAmount>
+				<bkcmecf:ExemptClaimPortionCode>f</bkcmecf:ExemptClaimPortionCode>
+				<bkcmecf:ExemptClaimPortionAmount>200.00</bkcmecf:ExemptClaimPortionAmount>
+				<bkcmecf:ExemptClaimLaws>
+					<j:Statute>
+						<j:StatuteCategoryText>The common second law</j:StatuteCategoryText>
+					</j:Statute>
+				</bkcmecf:ExemptClaimLaws>
+			</bkcmecf:ExemptProperty>
+			<bkcmecf:ExemptProperty>
+				<nc:ItemDescriptionText>Debtor's primary vehicle</nc:ItemDescriptionText>
+				<bkcmecf:ScheduleABLineItem>1.3</bkcmecf:ScheduleABLineItem>
+				<bkcmecf:PropertyOwnedCurrentValueAmount>3000.00</bkcmecf:PropertyOwnedCurrentValueAmount>
+				<bkcmecf:ExemptClaimPortionCode>f</bkcmecf:ExemptClaimPortionCode>
+				<bkcmecf:ExemptClaimPortionAmount>300.00</bkcmecf:ExemptClaimPortionAmount>
+				<bkcmecf:ExemptClaimLaws>
+					<j:Statute>
+						<j:StatuteCategoryText>The common second law</j:StatuteCategoryText>
+					</j:Statute>
+				</bkcmecf:ExemptClaimLaws>
+			</bkcmecf:ExemptProperty>
+			<bkcmecf:HomesteadExemptionIndicator>true</bkcmecf:HomesteadExemptionIndicator>
+			<bkcmecf:PropertyCoveredByExemptionIndicator>true</bkcmecf:PropertyCoveredByExemptionIndicator>
+		</bkcmecf:Debtor1ExemptProperty>
+		<bkcmecf:Debtor2ExemptProperty>
+			<bkcmecf:PropertyExemptClaimSet>b</bkcmecf:PropertyExemptClaimSet>
+			<bkcmecf:ExemptProperty>
+				<nc:ItemDescriptionText>Debtor's  residence</nc:ItemDescriptionText>
+				<bkcmecf:ScheduleABLineItem>1.1</bkcmecf:ScheduleABLineItem>
+				<bkcmecf:PropertyOwnedCurrentValueAmount>2100.00</bkcmecf:PropertyOwnedCurrentValueAmount>
+				<bkcmecf:ExemptClaimPortionCode>p</bkcmecf:ExemptClaimPortionCode>
+				<bkcmecf:ExemptClaimPortionAmount>2100.00</bkcmecf:ExemptClaimPortionAmount>
+				<bkcmecf:ExemptClaimLaws>
+					<j:Statute>
+						<j:StatuteCategoryText>The second law</j:StatuteCategoryText>
+					</j:Statute>
+				</bkcmecf:ExemptClaimLaws>
+			</bkcmecf:ExemptProperty>
+			<bkcmecf:HomesteadExemptionIndicator>true</bkcmecf:HomesteadExemptionIndicator>
+			<bkcmecf:PropertyCoveredByExemptionIndicator>true</bkcmecf:PropertyCoveredByExemptionIndicator>
+		</bkcmecf:Debtor2ExemptProperty>
+		<bkcmecf:TotalClaimedExemptionsValueAmount>2777.77</bkcmecf:TotalClaimedExemptionsValueAmount>
+	</bkcmecf:FormB106C>
+	<bkcmecf:FormB106D>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<nc:CaseDocketID/>
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:SecuredClaimsIndicator>true</bkcmecf:SecuredClaimsIndicator>
+		<bkcmecf:SecuredClaims>
+			<bkcmecf:SecuredClaimsLineNumber>2.1</bkcmecf:SecuredClaimsLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:Creditor>
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>801 N. Florida Avenue</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 507</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Tampa</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>FL</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>United States</nc:LocationCountryName>
+							<nc:LocationPostalCode>33602</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<nc:OrganizationName>First Loan - SchD</nc:OrganizationName>
+				<bkcmecf:AccountNumber>11111110</bkcmecf:AccountNumber>
+			</bkcmecf:Creditor>
+			<bkcmecf:OwnershipInterestCode>a</bkcmecf:OwnershipInterestCode>
+			<bkcmecf:CommunityDebtIndicator>false</bkcmecf:CommunityDebtIndicator>
+			<bkcmecf:ClaimIncurredDate>
+				<bkcmecf:DateText>July 2011</bkcmecf:DateText>
+			</bkcmecf:ClaimIncurredDate>
+			<bkcmecf:ItemDescription>Describe the property</bkcmecf:ItemDescription>
+			<bkcmecf:ClaimContingentIndicator>false</bkcmecf:ClaimContingentIndicator>
+			<bkcmecf:ClaimUnliquidatedIndicator>false</bkcmecf:ClaimUnliquidatedIndicator>
+			<bkcmecf:ClaimDisputedIndicator>false</bkcmecf:ClaimDisputedIndicator>
+			<bkcmecf:NatureOfLienAgreementIndicator>true</bkcmecf:NatureOfLienAgreementIndicator>
+			<bkcmecf:NatureOfLienStatutoryIndicator>false</bkcmecf:NatureOfLienStatutoryIndicator>
+			<bkcmecf:NatureOfLienJudgmentIndicator>false</bkcmecf:NatureOfLienJudgmentIndicator>
+			<bkcmecf:NatureOfLienOtherIndicator>true</bkcmecf:NatureOfLienOtherIndicator>
+			<bkcmecf:NatureOfLienOtherDescription>Description of lien</bkcmecf:NatureOfLienOtherDescription>
+			<bkcmecf:SecuredClaimAmount>1000.00</bkcmecf:SecuredClaimAmount>
+			<bkcmecf:ClaimCollateralValueAmount>2000.00</bkcmecf:ClaimCollateralValueAmount>
+			<bkcmecf:ClaimUnsecuredPortionAmount>500.00</bkcmecf:ClaimUnsecuredPortionAmount>
+		</bkcmecf:SecuredClaims>
+		<bkcmecf:SecuredClaimsPageSubTotalAmount>3600.00</bkcmecf:SecuredClaimsPageSubTotalAmount>
+		<bkcmecf:TotalSecuredClaimAmount>3606.00</bkcmecf:TotalSecuredClaimAmount>
+		<bkcmecf:OthersNotified>
+			<bkcmecf:OthersNotifiedLineNumber>3.1</bkcmecf:OthersNotifiedLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:Creditor>
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>801 N. Florida Avenue</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 507</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Tampa</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>FL</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>United States</nc:LocationCountryName>
+							<nc:LocationPostalCode>33602</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<nc:OrganizationName>First Loan creditor - SchD</nc:OrganizationName>
+				<bkcmecf:AccountNumber>11111111</bkcmecf:AccountNumber>
+			</bkcmecf:Creditor>
+			<bkcmecf:SecuredClaimsLineNumber>2.1</bkcmecf:SecuredClaimsLineNumber>
+		</bkcmecf:OthersNotified>
+	</bkcmecf:FormB106D>
+	<bkcmecf:FormB106EF>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<nc:CaseDocketID/>
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:PriorityUnsecuredClaimsIndicator>true</bkcmecf:PriorityUnsecuredClaimsIndicator>
+		<bkcmecf:PriorityUnsecuredClaims>
+			<bkcmecf:UnsecuredClaimsLineNumber>2.1</bkcmecf:UnsecuredClaimsLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:Creditor>
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet> 333 N. Florida Avenue</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 333</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Tampa</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>FL</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>United States</nc:LocationCountryName>
+							<nc:LocationPostalCode>33602</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<nc:OrganizationName>Third Loan</nc:OrganizationName>
+				<bkcmecf:AccountNumber>31111111</bkcmecf:AccountNumber>
+			</bkcmecf:Creditor>
+			<bkcmecf:OwnershipInterestCode>a</bkcmecf:OwnershipInterestCode>
+			<bkcmecf:CommunityDebtIndicator>false</bkcmecf:CommunityDebtIndicator>
+			<bkcmecf:ClaimSubjectToOffsetIndicator>false</bkcmecf:ClaimSubjectToOffsetIndicator>
+			<bkcmecf:ClaimIncurredDate>
+				<bkcmecf:DateText>July 2011</bkcmecf:DateText>
+			</bkcmecf:ClaimIncurredDate>
+			<bkcmecf:ClaimContingentIndicator>false</bkcmecf:ClaimContingentIndicator>
+			<bkcmecf:ClaimUnliquidatedIndicator>false</bkcmecf:ClaimUnliquidatedIndicator>
+			<bkcmecf:ClaimDisputedIndicator>false</bkcmecf:ClaimDisputedIndicator>
+			<bkcmecf:PriorityUnsecuredClaimCode>C</bkcmecf:PriorityUnsecuredClaimCode>
+			<bkcmecf:OtherClaimDescription>Description of lien</bkcmecf:OtherClaimDescription>
+			<bkcmecf:UnsecuredClaimAmount>1000.00</bkcmecf:UnsecuredClaimAmount>
+			<bkcmecf:PriorityClaimAmount>1001.00</bkcmecf:PriorityClaimAmount>
+			<bkcmecf:NonPriorityClaimAmount>1002.00</bkcmecf:NonPriorityClaimAmount>
+		</bkcmecf:PriorityUnsecuredClaims>
+		<bkcmecf:PriorityUnsecuredClaims>
+			<bkcmecf:UnsecuredClaimsLineNumber>2.2</bkcmecf:UnsecuredClaimsLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:Creditor>
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet> 444 N. Florida Avenue</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 333</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Tampa</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>FL</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>United States</nc:LocationCountryName>
+							<nc:LocationPostalCode>33602</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<nc:OrganizationName>Fourth Loan</nc:OrganizationName>
+				<bkcmecf:AccountNumber>41111111</bkcmecf:AccountNumber>
+			</bkcmecf:Creditor>
+			<bkcmecf:OwnershipInterestCode>a</bkcmecf:OwnershipInterestCode>
+			<bkcmecf:CommunityDebtIndicator>false</bkcmecf:CommunityDebtIndicator>
+			<bkcmecf:ClaimSubjectToOffsetIndicator>false</bkcmecf:ClaimSubjectToOffsetIndicator>
+			<bkcmecf:ClaimIncurredDate>
+				<bkcmecf:DateText>July 2011</bkcmecf:DateText>
+			</bkcmecf:ClaimIncurredDate>
+			<bkcmecf:ClaimContingentIndicator>false</bkcmecf:ClaimContingentIndicator>
+			<bkcmecf:ClaimUnliquidatedIndicator>false</bkcmecf:ClaimUnliquidatedIndicator>
+			<bkcmecf:ClaimDisputedIndicator>false</bkcmecf:ClaimDisputedIndicator>
+			<bkcmecf:PriorityUnsecuredClaimCode>C</bkcmecf:PriorityUnsecuredClaimCode>
+			<bkcmecf:OtherClaimDescription>Description of lien</bkcmecf:OtherClaimDescription>
+			<bkcmecf:UnsecuredClaimAmount>1001.00</bkcmecf:UnsecuredClaimAmount>
+			<bkcmecf:PriorityClaimAmount>1002.00</bkcmecf:PriorityClaimAmount>
+			<bkcmecf:NonPriorityClaimAmount>1003.00</bkcmecf:NonPriorityClaimAmount>
+		</bkcmecf:PriorityUnsecuredClaims>
+		<bkcmecf:NonPriorityUnsecuredClaimsIndicator>true</bkcmecf:NonPriorityUnsecuredClaimsIndicator>
+		<bkcmecf:NonPriorityUnsecuredClaims>
+			<bkcmecf:UnsecuredClaimsLineNumber>3.1</bkcmecf:UnsecuredClaimsLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:Creditor>
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet> 444 N. Florida Avenue</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 444</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Tampa</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>FL</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>United States</nc:LocationCountryName>
+							<nc:LocationPostalCode>44402</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<nc:OrganizationName>Fourth Loan</nc:OrganizationName>
+				<bkcmecf:AccountNumber>4444</bkcmecf:AccountNumber>
+			</bkcmecf:Creditor>
+			<bkcmecf:OwnershipInterestCode>a</bkcmecf:OwnershipInterestCode>
+			<bkcmecf:CommunityDebtIndicator>false</bkcmecf:CommunityDebtIndicator>
+			<bkcmecf:ClaimSubjectToOffsetIndicator>false</bkcmecf:ClaimSubjectToOffsetIndicator>
+			<bkcmecf:ClaimIncurredDate>
+				<bkcmecf:DateText>July 2011</bkcmecf:DateText>
+			</bkcmecf:ClaimIncurredDate>
+			<bkcmecf:ClaimContingentIndicator>false</bkcmecf:ClaimContingentIndicator>
+			<bkcmecf:ClaimUnliquidatedIndicator>false</bkcmecf:ClaimUnliquidatedIndicator>
+			<bkcmecf:NonPriorityUnsecuredClaimCode>S</bkcmecf:NonPriorityUnsecuredClaimCode>
+			<bkcmecf:OtherClaimDescription>Description of lien</bkcmecf:OtherClaimDescription>
+			<bkcmecf:UnsecuredClaimAmount>1000.00</bkcmecf:UnsecuredClaimAmount>
+		</bkcmecf:NonPriorityUnsecuredClaims>
+		<bkcmecf:OthersNotified>
+			<bkcmecf:OthersNotifiedLineNumber>4.1</bkcmecf:OthersNotifiedLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:Creditor>
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet> 555 O. Florida Avenue</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 555</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Tampa</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>FL</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>United States</nc:LocationCountryName>
+							<nc:LocationPostalCode>55502</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<nc:OrganizationName>Fifth Loan creditor</nc:OrganizationName>
+				<bkcmecf:AccountNumber>5555</bkcmecf:AccountNumber>
+			</bkcmecf:Creditor>
+			<bkcmecf:UnsecuredClaimsLineNumber>3.1</bkcmecf:UnsecuredClaimsLineNumber>
+			<bkcmecf:PriorityNonPriorityClaimsIndicator>false</bkcmecf:PriorityNonPriorityClaimsIndicator>
+		</bkcmecf:OthersNotified>
+		<bkcmecf:TotalDomesticSupportObligationAmount>2001</bkcmecf:TotalDomesticSupportObligationAmount>
+		<bkcmecf:TotalTaxesDebtAmount>2002</bkcmecf:TotalTaxesDebtAmount>
+		<bkcmecf:TotalDeathClaimAmount>2003</bkcmecf:TotalDeathClaimAmount>
+		<bkcmecf:TotalOtherPriorityClaimAmount>2004</bkcmecf:TotalOtherPriorityClaimAmount>
+		<bkcmecf:TotalPriorityUnsecuredClaimAmount>2551.51</bkcmecf:TotalPriorityUnsecuredClaimAmount>
+		<bkcmecf:TotalStudentLoanAmount>2006</bkcmecf:TotalStudentLoanAmount>
+		<bkcmecf:TotalObligationAgreementAmount>2007</bkcmecf:TotalObligationAgreementAmount>
+		<bkcmecf:TotalPensionDebtAmount>2008</bkcmecf:TotalPensionDebtAmount>
+		<bkcmecf:TotalOtherNonPriorityClaimAmount>2009</bkcmecf:TotalOtherNonPriorityClaimAmount>
+		<bkcmecf:TotalNonPriorityUnsecuredClaimAmount>2010.00</bkcmecf:TotalNonPriorityUnsecuredClaimAmount>
+	</bkcmecf:FormB106EF>
+	<bkcmecf:FormB106G>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!--Case Number (if known): should be populated in an amended filing, with the fully qualified case number-->
+		<nc:CaseDocketID/>
+		<!--check (true) if this is an amended filing-->
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<!--Debtor identification information-->
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:ContractsLeasesIndicator>true</bkcmecf:ContractsLeasesIndicator>
+		<bkcmecf:ContractLeaseEntity>
+			<bkcmecf:ContractLeaseLineNumber>2.1</bkcmecf:ContractLeaseLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:ContractParty>
+				<nc:EntityPerson>
+					<nc:PersonName>
+						<nc:PersonGivenName>Creditor1 First</nc:PersonGivenName>
+						<nc:PersonMiddleName/>
+						<nc:PersonSurName>Creditor1 Last</nc:PersonSurName>
+					</nc:PersonName>
+				</nc:EntityPerson>
+				<nc:EntityOrganization>
+					<nc:OrganizationLocation>
+						<nc:LocationAddress>
+							<nc:StructuredAddress>
+								<nc:LocationStreet>801 N. Florida Avenue</nc:LocationStreet>
+								<nc:AddressSecondaryUnitText>Suite 507</nc:AddressSecondaryUnitText>
+								<nc:LocationCityName>Tampa</nc:LocationCityName>
+								<nc:LocationStateUSPostalServiceCode>FL</nc:LocationStateUSPostalServiceCode>
+								<nc:LocationCountryName>United States</nc:LocationCountryName>
+								<nc:LocationPostalCode>33602</nc:LocationPostalCode>
+							</nc:StructuredAddress>
+						</nc:LocationAddress>
+					</nc:OrganizationLocation>
+				</nc:EntityOrganization>
+			</bkcmecf:ContractParty>
+			<bkcmecf:ContractDescription>An agreement to work part time 20hrs a week for 3 months.</bkcmecf:ContractDescription>
+		</bkcmecf:ContractLeaseEntity>
+		<bkcmecf:ContractLeaseEntity>
+			<bkcmecf:ContractLeaseLineNumber>2.2</bkcmecf:ContractLeaseLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:ContractParty>
+				<nc:EntityPerson>
+					<nc:PersonName>
+						<nc:PersonGivenName>Creditor2 First</nc:PersonGivenName>
+						<nc:PersonMiddleName/>
+						<nc:PersonSurName>Creditor2 Last</nc:PersonSurName>
+					</nc:PersonName>
+				</nc:EntityPerson>
+				<nc:EntityOrganization>
+					<nc:OrganizationLocation>
+						<nc:LocationAddress>
+							<nc:StructuredAddress>
+								<nc:LocationStreet> 345 Lombard St.</nc:LocationStreet>
+								<nc:AddressSecondaryUnitText>Suite 666</nc:AddressSecondaryUnitText>
+								<nc:LocationCityName>Tucson</nc:LocationCityName>
+								<nc:LocationStateUSPostalServiceCode>AZ</nc:LocationStateUSPostalServiceCode>
+								<nc:LocationPostalCode>89002</nc:LocationPostalCode>
+							</nc:StructuredAddress>
+						</nc:LocationAddress>
+					</nc:OrganizationLocation>
+				</nc:EntityOrganization>
+			</bkcmecf:ContractParty>
+			<bkcmecf:ContractDescription>An agreement to rent a candy factory from the debtor for $250/week.</bkcmecf:ContractDescription>
+		</bkcmecf:ContractLeaseEntity>
+		<bkcmecf:ContractLeaseEntity>
+			<bkcmecf:ContractLeaseLineNumber>2.3</bkcmecf:ContractLeaseLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:ContractParty>
+				<nc:EntityPerson>
+					<nc:PersonName>
+						<nc:PersonGivenName>Creditor3 First</nc:PersonGivenName>
+						<nc:PersonMiddleName/>
+						<nc:PersonSurName>Creditor3 Last</nc:PersonSurName>
+					</nc:PersonName>
+				</nc:EntityPerson>
+				<nc:EntityOrganization>
+					<nc:OrganizationLocation>
+						<nc:LocationAddress>
+							<nc:StructuredAddress>
+								<nc:LocationStreet> 346 Lombard St.</nc:LocationStreet>
+								<nc:AddressSecondaryUnitText>Suite 667</nc:AddressSecondaryUnitText>
+								<nc:LocationCityName>Tucson</nc:LocationCityName>
+								<nc:LocationStateUSPostalServiceCode>AZ</nc:LocationStateUSPostalServiceCode>
+								<nc:LocationPostalCode>89003</nc:LocationPostalCode>
+							</nc:StructuredAddress>
+						</nc:LocationAddress>
+					</nc:OrganizationLocation>
+				</nc:EntityOrganization>
+			</bkcmecf:ContractParty>
+			<bkcmecf:ContractDescription>An agreement to rent a factory from the debtor for $350/week.</bkcmecf:ContractDescription>
+		</bkcmecf:ContractLeaseEntity>
+	</bkcmecf:FormB106G>
+	<bkcmecf:FormB106H>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!--Case Number (if known): should be populated in an amended filing, with the fully qualified case number-->
+		<nc:CaseDocketID/>
+		<!--check (true) if this is an amended filing-->
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<!--Debtor identification information-->
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:CoDebtorIndicator>true</bkcmecf:CoDebtorIndicator>
+		<bkcmecf:CommunityPropertyStateIndicator>true</bkcmecf:CommunityPropertyStateIndicator>
+		<bkcmecf:Debtor2SeparateHouseholdIndicator>true</bkcmecf:Debtor2SeparateHouseholdIndicator>
+		<bkcmecf:CommunityPropertyState>AZ</bkcmecf:CommunityPropertyState>
+		<bkcmecf:DebtorSpouse>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>H</nc:PersonMiddleName>
+					<nc:PersonSurName>Williams</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+			<nc:EntityOrganization>
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet> 5 Flintsone St.</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 605</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Tucson</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>AZ</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>USA</nc:LocationCountryName>
+							<nc:LocationPostalCode>11111</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+			</nc:EntityOrganization>
+		</bkcmecf:DebtorSpouse>
+		<bkcmecf:CoDebtorEntity>
+			<bkcmecf:CoDebtorLineNumber>3.1</bkcmecf:CoDebtorLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:CoDebtor>
+				<nc:EntityPerson>
+					<nc:PersonName>
+						<nc:PersonGivenName/>
+						<nc:PersonMiddleName/>
+						<nc:PersonSurName>Credit Agency1</nc:PersonSurName>
+					</nc:PersonName>
+				</nc:EntityPerson>
+				<nc:EntityOrganization>
+					<nc:OrganizationLocation>
+						<nc:LocationAddress>
+							<nc:StructuredAddress>
+								<nc:LocationStreet> 1 Flintsone St.</nc:LocationStreet>
+								<nc:AddressSecondaryUnitText>Suite 105</nc:AddressSecondaryUnitText>
+								<nc:LocationCityName>Tucson</nc:LocationCityName>
+								<nc:LocationStateUSPostalServiceCode>AZ</nc:LocationStateUSPostalServiceCode>
+								<nc:LocationCountryName>USA</nc:LocationCountryName>
+								<nc:LocationPostalCode>11111</nc:LocationPostalCode>
+							</nc:StructuredAddress>
+						</nc:LocationAddress>
+					</nc:OrganizationLocation>
+				</nc:EntityOrganization>
+			</bkcmecf:CoDebtor>
+			<bkcmecf:ScheduleDIndicator>true</bkcmecf:ScheduleDIndicator>
+			<bkcmecf:ScheduleDLineItem>2.1</bkcmecf:ScheduleDLineItem>
+			<bkcmecf:ScheduleEFIndicator>true</bkcmecf:ScheduleEFIndicator>
+			<bkcmecf:ScheduleEFLineItem>2.1</bkcmecf:ScheduleEFLineItem>
+			<bkcmecf:ScheduleGIndicator>true</bkcmecf:ScheduleGIndicator>
+			<bkcmecf:ScheduleGLineItem>2.1</bkcmecf:ScheduleGLineItem>
+		</bkcmecf:CoDebtorEntity>
+		<bkcmecf:CoDebtorEntity>
+			<bkcmecf:CoDebtorLineNumber>3.2</bkcmecf:CoDebtorLineNumber>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:CoDebtor>
+				<nc:EntityPerson>
+					<nc:PersonName>
+						<nc:PersonGivenName/>
+						<nc:PersonMiddleName/>
+						<nc:PersonSurName>Credit Agency2</nc:PersonSurName>
+					</nc:PersonName>
+				</nc:EntityPerson>
+				<nc:EntityOrganization>
+					<nc:OrganizationLocation>
+						<nc:LocationAddress>
+							<nc:StructuredAddress>
+								<nc:LocationStreet> 2 Flintsone St.</nc:LocationStreet>
+								<nc:AddressSecondaryUnitText>Suite 205</nc:AddressSecondaryUnitText>
+								<nc:LocationCityName>Tucson</nc:LocationCityName>
+								<nc:LocationStateUSPostalServiceCode>AZ</nc:LocationStateUSPostalServiceCode>
+								<nc:LocationCountryName>USA</nc:LocationCountryName>
+								<nc:LocationPostalCode>22222</nc:LocationPostalCode>
+							</nc:StructuredAddress>
+						</nc:LocationAddress>
+					</nc:OrganizationLocation>
+				</nc:EntityOrganization>
+			</bkcmecf:CoDebtor>
+			<bkcmecf:ScheduleDIndicator>true</bkcmecf:ScheduleDIndicator>
+			<bkcmecf:ScheduleDLineItem>2.2</bkcmecf:ScheduleDLineItem>
+			<bkcmecf:ScheduleEFIndicator>true</bkcmecf:ScheduleEFIndicator>
+			<bkcmecf:ScheduleEFLineItem>2.2</bkcmecf:ScheduleEFLineItem>
+			<bkcmecf:ScheduleGIndicator>true</bkcmecf:ScheduleGIndicator>
+			<bkcmecf:ScheduleGLineItem>2.2</bkcmecf:ScheduleGLineItem>
+		</bkcmecf:CoDebtorEntity>
+	</bkcmecf:FormB106H>
+	<bkcmecf:FormB106I>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!--Case Number (if known): should be populated in an amended filing, with the fully qualified case number-->
+		<nc:CaseDocketID/>
+		<!--check (true) if this is an amended filing-->
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:SupplementFormFilingIndicator>false</bkcmecf:SupplementFormFilingIndicator>
+		<bkcmecf:SupplementFormEffectiveDate/>
+		<!--	1. Describe Employment -->
+		<bkcmecf:Debtor1Employment>
+			<bkcmecf:EmploymentStatusIndicator>true</bkcmecf:EmploymentStatusIndicator>
+			<bkcmecf:EmploymentDetails>
+				<nc:EmployeeOccupationText>Master Chef</nc:EmployeeOccupationText>
+				<nc:Employer>
+					<nc:EntityOrganization>
+						<nc:OrganizationName>DC Kitchen</nc:OrganizationName>
+					</nc:EntityOrganization>
+				</nc:Employer>
+				<nc:EmploymentLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>111 Newyork Avenue</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 100</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Arlington</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>VA</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>USA</nc:LocationCountryName>
+							<nc:LocationPostalCode>22101</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:EmploymentLocation>
+				<bkcmecf:EmploymentDuration>3.5 years</bkcmecf:EmploymentDuration>
+			</bkcmecf:EmploymentDetails>
+			<!--2nd employment block for Debtor1-->
+			<!--			<bkcmecf:EmploymentDetails>
+				<nc:EmployeeOccupationText>Systems Analyst</nc:EmployeeOccupationText>
+				<nc:Employer>
+					<nc:EntityOrganization>
+						<nc:OrganizationName>AOUSC-OCATD</nc:OrganizationName>
+					</nc:EntityOrganization>
+				</nc:Employer>
+				<nc:EmploymentLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>One Columbus Circle</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Rm 3-526</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Washington</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationPostalCode>22101</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:EmploymentLocation>
+				<bkcmecf:EmploymentDuration>10 years</bkcmecf:EmploymentDuration>
+			</bkcmecf:EmploymentDetails>-->
+		</bkcmecf:Debtor1Employment>
+		<bkcmecf:Debtor2Employment>
+			<bkcmecf:EmploymentStatusIndicator>true</bkcmecf:EmploymentStatusIndicator>
+			<bkcmecf:EmploymentDetails>
+				<nc:EmployeeOccupationText>Baker</nc:EmployeeOccupationText>
+				<nc:Employer>
+					<nc:EntityOrganization>
+						<nc:OrganizationName>Cookies and Cream Shop</nc:OrganizationName>
+					</nc:EntityOrganization>
+				</nc:Employer>
+				<nc:EmploymentLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>222 N. Harsh Reality Way</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 200</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Arlington</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>VA</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationPostalCode>22101</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:EmploymentLocation>
+				<bkcmecf:EmploymentDuration>2 years</bkcmecf:EmploymentDuration>
+			</bkcmecf:EmploymentDetails>
+		</bkcmecf:Debtor2Employment>
+		<bkcmecf:Debtor1MonthlyIncome>
+			<bkcmecf:GrossWagesAmount>2500.00</bkcmecf:GrossWagesAmount>
+			<bkcmecf:OvertimeAmount>0.00</bkcmecf:OvertimeAmount>
+			<bkcmecf:GrossIncomeAmount>2500.00</bkcmecf:GrossIncomeAmount>
+			<bkcmecf:PayrollDeduction>
+				<bkcmecf:TaxMedicareSocialSecurityDeductionAmount>600</bkcmecf:TaxMedicareSocialSecurityDeductionAmount>
+				<bkcmecf:MandatoryRetirementPlanDeductionAmount>0.00</bkcmecf:MandatoryRetirementPlanDeductionAmount>
+				<bkcmecf:VoluntaryRetirementPlanDeductionAmount>200.00</bkcmecf:VoluntaryRetirementPlanDeductionAmount>
+				<bkcmecf:RetirementPlanLoanRepaymentDeductionAmount>0.00</bkcmecf:RetirementPlanLoanRepaymentDeductionAmount>
+				<bkcmecf:InsuranceDeductionAmount>200.00</bkcmecf:InsuranceDeductionAmount>
+				<bkcmecf:DomesticSupportDeductionAmount>0.00</bkcmecf:DomesticSupportDeductionAmount>
+				<bkcmecf:UnionDuesDeductionAmount>0.00</bkcmecf:UnionDuesDeductionAmount>
+				<bkcmecf:OtherDeductionAmount>0.00</bkcmecf:OtherDeductionAmount>
+				<bkcmecf:OtherDeductionDescription>5h specify Debtor1</bkcmecf:OtherDeductionDescription>
+				<bkcmecf:TotalPayrollDeductionsAmount>0.00</bkcmecf:TotalPayrollDeductionsAmount>
+			</bkcmecf:PayrollDeduction>
+			<bkcmecf:PayrollNetIncomeAmount>1500.00</bkcmecf:PayrollNetIncomeAmount>
+			<bkcmecf:BusinessFarmingIncomeAmount>0.00</bkcmecf:BusinessFarmingIncomeAmount>
+			<bkcmecf:InvestmentIncomeAmount>200.00</bkcmecf:InvestmentIncomeAmount>
+			<bkcmecf:DomesticSupportPaymentsAmount>0.00</bkcmecf:DomesticSupportPaymentsAmount>
+			<bkcmecf:UnemploymentCompensationAmount>0.00</bkcmecf:UnemploymentCompensationAmount>
+			<bkcmecf:UnemploymentCompensationSSAAmount>0.00</bkcmecf:UnemploymentCompensationSSAAmount>
+			<bkcmecf:GovernmentSupportPaymentsIncomeAmount>0.00</bkcmecf:GovernmentSupportPaymentsIncomeAmount>
+			<bkcmecf:GovernmentSupportPaymentsIncomeAmount>0.00</bkcmecf:GovernmentSupportPaymentsIncomeAmount>
+			<bkcmecf:GovernmentSupportPaymentsDescription>8f. Specify</bkcmecf:GovernmentSupportPaymentsDescription>
+			<bkcmecf:GovernmentSupportPaymentsDescription>8f. Specify2</bkcmecf:GovernmentSupportPaymentsDescription>
+			<bkcmecf:PensionRetirementIncomeAmount>81.7</bkcmecf:PensionRetirementIncomeAmount>
+			<bkcmecf:OtherIncomeDescription>8h Debtor1 is a good player and gets bonus each month.</bkcmecf:OtherIncomeDescription>
+			<bkcmecf:OtherIncomeDescription>8h Debtor1 is an artist and sells his crafts at art fairs.</bkcmecf:OtherIncomeDescription>
+			<bkcmecf:OtherIncomeAmount>90.00</bkcmecf:OtherIncomeAmount>
+			<bkcmecf:OtherIncomeAmount>91.00</bkcmecf:OtherIncomeAmount>
+			<bkcmecf:TotalIndependentIncomeAmount>0.00</bkcmecf:TotalIndependentIncomeAmount>
+		</bkcmecf:Debtor1MonthlyIncome>
+		<bkcmecf:Debtor2MonthlyIncome>
+			<bkcmecf:GrossWagesAmount>2.1</bkcmecf:GrossWagesAmount>
+			<bkcmecf:OvertimeAmount>3.1</bkcmecf:OvertimeAmount>
+			<bkcmecf:GrossIncomeAmount>4.1</bkcmecf:GrossIncomeAmount>
+			<bkcmecf:PayrollDeduction>
+				<bkcmecf:TaxMedicareSocialSecurityDeductionAmount>51.1</bkcmecf:TaxMedicareSocialSecurityDeductionAmount>
+				<bkcmecf:MandatoryRetirementPlanDeductionAmount>51.2</bkcmecf:MandatoryRetirementPlanDeductionAmount>
+				<bkcmecf:VoluntaryRetirementPlanDeductionAmount>51.3</bkcmecf:VoluntaryRetirementPlanDeductionAmount>
+				<bkcmecf:RetirementPlanLoanRepaymentDeductionAmount>51.4</bkcmecf:RetirementPlanLoanRepaymentDeductionAmount>
+				<bkcmecf:InsuranceDeductionAmount>51.55</bkcmecf:InsuranceDeductionAmount>
+				<bkcmecf:DomesticSupportDeductionAmount>51.6</bkcmecf:DomesticSupportDeductionAmount>
+				<bkcmecf:UnionDuesDeductionAmount>51.7</bkcmecf:UnionDuesDeductionAmount>
+				<bkcmecf:OtherDeductionAmount>51.8</bkcmecf:OtherDeductionAmount>
+				<bkcmecf:OtherDeductionDescription>5h specify Debtor1</bkcmecf:OtherDeductionDescription>
+				<bkcmecf:TotalPayrollDeductionsAmount>6.1</bkcmecf:TotalPayrollDeductionsAmount>
+			</bkcmecf:PayrollDeduction>
+			<bkcmecf:PayrollNetIncomeAmount>7.1</bkcmecf:PayrollNetIncomeAmount>
+			<bkcmecf:BusinessFarmingIncomeAmount>81.1</bkcmecf:BusinessFarmingIncomeAmount>
+			<bkcmecf:InvestmentIncomeAmount>81.2</bkcmecf:InvestmentIncomeAmount>
+			<bkcmecf:DomesticSupportPaymentsAmount>81.30</bkcmecf:DomesticSupportPaymentsAmount>
+			<bkcmecf:UnemploymentCompensationAmount>81.40</bkcmecf:UnemploymentCompensationAmount>
+			<bkcmecf:UnemploymentCompensationSSAAmount>81.50</bkcmecf:UnemploymentCompensationSSAAmount>
+			<bkcmecf:GovernmentSupportPaymentsIncomeAmount>81.6</bkcmecf:GovernmentSupportPaymentsIncomeAmount>
+			<bkcmecf:GovernmentSupportPaymentsIncomeAmount>81.61</bkcmecf:GovernmentSupportPaymentsIncomeAmount>
+			<bkcmecf:GovernmentSupportPaymentsDescription>8f. Specify</bkcmecf:GovernmentSupportPaymentsDescription>
+			<bkcmecf:GovernmentSupportPaymentsDescription>8f. Specify2</bkcmecf:GovernmentSupportPaymentsDescription>
+			<bkcmecf:PensionRetirementIncomeAmount>81.7</bkcmecf:PensionRetirementIncomeAmount>
+			<bkcmecf:OtherIncomeDescription>8h Debtor1 is a good player and gets bonus each month.</bkcmecf:OtherIncomeDescription>
+			<bkcmecf:OtherIncomeAmount>81.80</bkcmecf:OtherIncomeAmount>
+			<bkcmecf:OtherIncomeAmount>81.81</bkcmecf:OtherIncomeAmount>
+			<bkcmecf:TotalIndependentIncomeAmount>9.1</bkcmecf:TotalIndependentIncomeAmount>
+		</bkcmecf:Debtor2MonthlyIncome>
+		<bkcmecf:Debtor1MonthlyIncomeAmount>1700.00</bkcmecf:Debtor1MonthlyIncomeAmount>
+		<bkcmecf:Debtor2MonthlyIncomeAmount>1100.00</bkcmecf:Debtor2MonthlyIncomeAmount>
+		<bkcmecf:HouseholdPrecontributionIncome>10.3</bkcmecf:HouseholdPrecontributionIncome>
+		<bkcmecf:OtherContributionsReceivedDescription>11 Specify</bkcmecf:OtherContributionsReceivedDescription>
+		<bkcmecf:OtherContributionsReceivedAmount>11</bkcmecf:OtherContributionsReceivedAmount>
+		<bkcmecf:HouseholdMonthlyIncomeAmount>2800.00</bkcmecf:HouseholdMonthlyIncomeAmount>
+		<bkcmecf:ChangeInIncomeAnticipatedIndicator>true</bkcmecf:ChangeInIncomeAnticipatedIndicator>
+		<bkcmecf:ChangeInIncomeAnticipatedDescription>13 Explain reason</bkcmecf:ChangeInIncomeAnticipatedDescription>
+	</bkcmecf:FormB106I>
+	<bkcmecf:FormB106J>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<nc:CaseDocketID/>
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:SupplementFormFilingIndicator>false</bkcmecf:SupplementFormFilingIndicator>
+		<bkcmecf:SupplementFormEffectiveDate/>
+		<bkcmecf:Debtor2Indicator>true</bkcmecf:Debtor2Indicator>
+		<bkcmecf:Debtor2SeparateHouseholdIndicator>false</bkcmecf:Debtor2SeparateHouseholdIndicator>
+		<bkcmecf:DependentsIndicator>true</bkcmecf:DependentsIndicator>
+		<bkcmecf:Dependent>
+			<nc:FamilyKinshipText>Debtor's Adopted son</nc:FamilyKinshipText>
+			<bkcmecf:PersonAgeInYearsQuantity>9</bkcmecf:PersonAgeInYearsQuantity>
+			<bkcmecf:DependentLiveWithDebtorIndicator>true</bkcmecf:DependentLiveWithDebtorIndicator>
+		</bkcmecf:Dependent>
+		<bkcmecf:Dependent>
+			<nc:FamilyKinshipText>Aged Mother of Debtor</nc:FamilyKinshipText>
+			<bkcmecf:PersonAgeInYearsQuantity>89</bkcmecf:PersonAgeInYearsQuantity>
+			<bkcmecf:DependentLiveWithDebtorIndicator>true</bkcmecf:DependentLiveWithDebtorIndicator>
+		</bkcmecf:Dependent>
+		<bkcmecf:HouseholdExpenses>
+			<bkcmecf:ExpensesIncludedForNonHouseholdIndicator>false</bkcmecf:ExpensesIncludedForNonHouseholdIndicator>
+			<bkcmecf:MortgageRentExpenseAmount>1234567890123.00</bkcmecf:MortgageRentExpenseAmount>
+			<bkcmecf:RealEstateTaxesExpenseAmount>4.01</bkcmecf:RealEstateTaxesExpenseAmount>
+			<bkcmecf:HomeownersRentersInsuranceExpenseAmount>4.02</bkcmecf:HomeownersRentersInsuranceExpenseAmount>
+			<bkcmecf:HomeMaintenanceExpenseAmount>4.03</bkcmecf:HomeMaintenanceExpenseAmount>
+			<bkcmecf:HomeownersAssociationExpenseAmount>4.04</bkcmecf:HomeownersAssociationExpenseAmount>
+			<bkcmecf:HomeEquityMortgagePaymentsExpenseAmount>5.00</bkcmecf:HomeEquityMortgagePaymentsExpenseAmount>
+			<bkcmecf:UtilitiesElectricFuelExpenseAmount>6.01</bkcmecf:UtilitiesElectricFuelExpenseAmount>
+			<bkcmecf:UtilitiesWaterSewerExpenseAmount>6.02</bkcmecf:UtilitiesWaterSewerExpenseAmount>
+			<bkcmecf:UtilitiesTelephoneExpenseAmount>6.03</bkcmecf:UtilitiesTelephoneExpenseAmount>
+			<bkcmecf:UtilitiesOtherExpenseAmount>6.04</bkcmecf:UtilitiesOtherExpenseAmount>
+			<bkcmecf:UtilitiesOtherExpenseDescription>6 d) Other utilities expense description</bkcmecf:UtilitiesOtherExpenseDescription>
+			<bkcmecf:FoodHousekeepingExpenseAmount>7.00</bkcmecf:FoodHousekeepingExpenseAmount>
+			<bkcmecf:ChildcareEducationExpenseAmount>8.00</bkcmecf:ChildcareEducationExpenseAmount>
+			<bkcmecf:ClothingServicesExpenseAmount>9.00</bkcmecf:ClothingServicesExpenseAmount>
+			<bkcmecf:PersonalServicesExpenseAmount>10.00</bkcmecf:PersonalServicesExpenseAmount>
+			<bkcmecf:MedicalDentalExpenseAmount>11.00</bkcmecf:MedicalDentalExpenseAmount>
+			<bkcmecf:TransportationNonInstallmentPaymentsExpenseAmount>12.00</bkcmecf:TransportationNonInstallmentPaymentsExpenseAmount>
+			<bkcmecf:RecreationEntertainmentExpenseAmount>13.00</bkcmecf:RecreationEntertainmentExpenseAmount>
+			<bkcmecf:CharitableContributionsExpenseAmount>14.00</bkcmecf:CharitableContributionsExpenseAmount>
+			<bkcmecf:LifeInsuranceExpenseAmount>15.01</bkcmecf:LifeInsuranceExpenseAmount>
+			<bkcmecf:HealthInsuranceExpenseAmount>15.02</bkcmecf:HealthInsuranceExpenseAmount>
+			<bkcmecf:AutoInsuranceExpenseAmount>15.04</bkcmecf:AutoInsuranceExpenseAmount>
+			<bkcmecf:OtherInsuranceExpenseAmount>15.04</bkcmecf:OtherInsuranceExpenseAmount>
+			<bkcmecf:OtherInsuranceExpenseDescription>15 d) other Insurance specify</bkcmecf:OtherInsuranceExpenseDescription>
+			<bkcmecf:TaxesNotWithheldExpenseAmount>16.00</bkcmecf:TaxesNotWithheldExpenseAmount>
+			<bkcmecf:TaxesNotWithheldExpenseDescription>16 taxes specify</bkcmecf:TaxesNotWithheldExpenseDescription>
+			<bkcmecf:AutoInstallmentPaymentsExpenseAmount>17.10</bkcmecf:AutoInstallmentPaymentsExpenseAmount>
+			<bkcmecf:AutoInstallmentPaymentsExpenseAmount>17.20</bkcmecf:AutoInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseAmount>17.31</bkcmecf:OtherInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseAmount>17.32</bkcmecf:OtherInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseDescription>17 c1 description</bkcmecf:OtherInstallmentPaymentsExpenseDescription>
+			<bkcmecf:OtherInstallmentPaymentsExpenseDescription>17 c2 description</bkcmecf:OtherInstallmentPaymentsExpenseDescription>
+			<bkcmecf:AlimonyMaintenanceSupportPaymentsExpenseAmount>18.00</bkcmecf:AlimonyMaintenanceSupportPaymentsExpenseAmount>
+			<bkcmecf:NonDomiciledDependentsSupportExpenseAmount>19.00</bkcmecf:NonDomiciledDependentsSupportExpenseAmount>
+			<bkcmecf:NonDomiciledDependentsSupportExpenseDescription>Debtor helps support his ex-wife's household.</bkcmecf:NonDomiciledDependentsSupportExpenseDescription>
+			<bkcmecf:OtherRealPropertyMortgageExpenseAmount>20.01</bkcmecf:OtherRealPropertyMortgageExpenseAmount>
+			<bkcmecf:OtherRealPropertyRealEstateTaxesExpenseAmount>20.02</bkcmecf:OtherRealPropertyRealEstateTaxesExpenseAmount>
+			<bkcmecf:OtherRealPropertyHomeownersRentersInsuranceExpenseAmount>20.03</bkcmecf:OtherRealPropertyHomeownersRentersInsuranceExpenseAmount>
+			<bkcmecf:OtherRealPropertyMaintenanceExpenseAmount>20.04</bkcmecf:OtherRealPropertyMaintenanceExpenseAmount>
+			<bkcmecf:OtherRealPropertyHomeownersAssociationExpenseAmount>20.05</bkcmecf:OtherRealPropertyHomeownersAssociationExpenseAmount>
+			<bkcmecf:OtherExpenseAmount>21.00</bkcmecf:OtherExpenseAmount>
+			<bkcmecf:OtherExpenseDescription>21 Other Description</bkcmecf:OtherExpenseDescription>
+			<bkcmecf:TotalMonthlyExpenseAmount>2200.00</bkcmecf:TotalMonthlyExpenseAmount>
+		</bkcmecf:HouseholdExpenses>
+		<bkcmecf:Debtor2MonthlyExpenseAmount>2200.00</bkcmecf:Debtor2MonthlyExpenseAmount>
+		<bkcmecf:HouseholdMonthlyExpenseAmount>4400.00</bkcmecf:HouseholdMonthlyExpenseAmount>
+		<bkcmecf:HouseholdMonthlyIncomeAmount>23.01</bkcmecf:HouseholdMonthlyIncomeAmount>
+		<bkcmecf:HouseholdMonthlyNetIncomeAmount>23.03</bkcmecf:HouseholdMonthlyNetIncomeAmount>
+		<bkcmecf:ChangeInExpensesAnticipatedIndicator>true</bkcmecf:ChangeInExpensesAnticipatedIndicator>
+		<bkcmecf:ChangeInExpensesAnticipatedDescription>24 Description - increase or decrease</bkcmecf:ChangeInExpensesAnticipatedDescription>
+	</bkcmecf:FormB106J>
+	<bkcmecf:FormB106J2>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<nc:CaseDocketID/>
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:Debtor2SeparateHouseholdIndicator>false</bkcmecf:Debtor2SeparateHouseholdIndicator>
+		<bkcmecf:DependentsIndicator>true</bkcmecf:DependentsIndicator>
+		<bkcmecf:Dependent>
+			<nc:FamilyKinshipText>Debtor's Adopted son</nc:FamilyKinshipText>
+			<bkcmecf:PersonAgeInYearsQuantity>9</bkcmecf:PersonAgeInYearsQuantity>
+			<bkcmecf:DependentLiveWithDebtorIndicator>true</bkcmecf:DependentLiveWithDebtorIndicator>
+		</bkcmecf:Dependent>
+		<bkcmecf:Dependent>
+			<nc:FamilyKinshipText>Aged Mother of Debtor</nc:FamilyKinshipText>
+			<bkcmecf:PersonAgeInYearsQuantity>89</bkcmecf:PersonAgeInYearsQuantity>
+			<bkcmecf:DependentLiveWithDebtorIndicator>true</bkcmecf:DependentLiveWithDebtorIndicator>
+		</bkcmecf:Dependent>
+		<bkcmecf:HouseholdExpenses>
+			<bkcmecf:ExpensesIncludedForNonHouseholdIndicator>false</bkcmecf:ExpensesIncludedForNonHouseholdIndicator>
+			<bkcmecf:MortgageRentExpenseAmount>4.00</bkcmecf:MortgageRentExpenseAmount>
+			<bkcmecf:RealEstateTaxesExpenseAmount>4.01</bkcmecf:RealEstateTaxesExpenseAmount>
+			<bkcmecf:HomeownersRentersInsuranceExpenseAmount>4.02</bkcmecf:HomeownersRentersInsuranceExpenseAmount>
+			<bkcmecf:HomeMaintenanceExpenseAmount>4.03</bkcmecf:HomeMaintenanceExpenseAmount>
+			<bkcmecf:HomeownersAssociationExpenseAmount>4.04</bkcmecf:HomeownersAssociationExpenseAmount>
+			<bkcmecf:HomeEquityMortgagePaymentsExpenseAmount>5.00</bkcmecf:HomeEquityMortgagePaymentsExpenseAmount>
+			<bkcmecf:UtilitiesElectricFuelExpenseAmount>6.01</bkcmecf:UtilitiesElectricFuelExpenseAmount>
+			<bkcmecf:UtilitiesWaterSewerExpenseAmount>6.02</bkcmecf:UtilitiesWaterSewerExpenseAmount>
+			<bkcmecf:UtilitiesTelephoneExpenseAmount>6.03</bkcmecf:UtilitiesTelephoneExpenseAmount>
+			<bkcmecf:UtilitiesOtherExpenseAmount>6.04</bkcmecf:UtilitiesOtherExpenseAmount>
+			<bkcmecf:UtilitiesOtherExpenseDescription>6 d) Other utilities expense description</bkcmecf:UtilitiesOtherExpenseDescription>
+			<bkcmecf:FoodHousekeepingExpenseAmount>7.00</bkcmecf:FoodHousekeepingExpenseAmount>
+			<bkcmecf:ChildcareEducationExpenseAmount>8.00</bkcmecf:ChildcareEducationExpenseAmount>
+			<bkcmecf:ClothingServicesExpenseAmount>9.00</bkcmecf:ClothingServicesExpenseAmount>
+			<bkcmecf:PersonalServicesExpenseAmount>10.00</bkcmecf:PersonalServicesExpenseAmount>
+			<bkcmecf:MedicalDentalExpenseAmount>11.00</bkcmecf:MedicalDentalExpenseAmount>
+			<bkcmecf:TransportationNonInstallmentPaymentsExpenseAmount>12.00</bkcmecf:TransportationNonInstallmentPaymentsExpenseAmount>
+			<bkcmecf:RecreationEntertainmentExpenseAmount>13.00</bkcmecf:RecreationEntertainmentExpenseAmount>
+			<bkcmecf:CharitableContributionsExpenseAmount>14.00</bkcmecf:CharitableContributionsExpenseAmount>
+			<bkcmecf:LifeInsuranceExpenseAmount>15.01</bkcmecf:LifeInsuranceExpenseAmount>
+			<bkcmecf:HealthInsuranceExpenseAmount>15.02</bkcmecf:HealthInsuranceExpenseAmount>
+			<bkcmecf:AutoInsuranceExpenseAmount>15.04</bkcmecf:AutoInsuranceExpenseAmount>
+			<bkcmecf:OtherInsuranceExpenseAmount>15.04</bkcmecf:OtherInsuranceExpenseAmount>
+			<bkcmecf:OtherInsuranceExpenseDescription>15 d) other Insurance specify</bkcmecf:OtherInsuranceExpenseDescription>
+			<bkcmecf:TaxesNotWithheldExpenseAmount>16.00</bkcmecf:TaxesNotWithheldExpenseAmount>
+			<bkcmecf:TaxesNotWithheldExpenseDescription>16 taxes specify</bkcmecf:TaxesNotWithheldExpenseDescription>
+			<bkcmecf:AutoInstallmentPaymentsExpenseAmount>17.10</bkcmecf:AutoInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseAmount>17.31</bkcmecf:OtherInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseDescription>17 c1 description</bkcmecf:OtherInstallmentPaymentsExpenseDescription>
+			<bkcmecf:AlimonyMaintenanceSupportPaymentsExpenseAmount>18.00</bkcmecf:AlimonyMaintenanceSupportPaymentsExpenseAmount>
+			<bkcmecf:NonDomiciledDependentsSupportExpenseAmount>19.00</bkcmecf:NonDomiciledDependentsSupportExpenseAmount>
+			<bkcmecf:NonDomiciledDependentsSupportExpenseDescription>Debtor helps support his ex-wife's household.</bkcmecf:NonDomiciledDependentsSupportExpenseDescription>
+			<bkcmecf:OtherRealPropertyMortgageExpenseAmount>20.01</bkcmecf:OtherRealPropertyMortgageExpenseAmount>
+			<bkcmecf:OtherRealPropertyRealEstateTaxesExpenseAmount>20.02</bkcmecf:OtherRealPropertyRealEstateTaxesExpenseAmount>
+			<bkcmecf:OtherRealPropertyHomeownersRentersInsuranceExpenseAmount>20.03</bkcmecf:OtherRealPropertyHomeownersRentersInsuranceExpenseAmount>
+			<bkcmecf:OtherRealPropertyMaintenanceExpenseAmount>20.04</bkcmecf:OtherRealPropertyMaintenanceExpenseAmount>
+			<bkcmecf:OtherRealPropertyHomeownersAssociationExpenseAmount>20.05</bkcmecf:OtherRealPropertyHomeownersAssociationExpenseAmount>
+			<bkcmecf:OtherExpenseAmount>21.00</bkcmecf:OtherExpenseAmount>
+			<bkcmecf:OtherExpenseDescription>21 Other Description</bkcmecf:OtherExpenseDescription>
+		</bkcmecf:HouseholdExpenses>
+		<bkcmecf:Debtor2MonthlyExpenseAmount>22</bkcmecf:Debtor2MonthlyExpenseAmount>
+		<bkcmecf:ChangeInExpensesAnticipatedIndicator>true</bkcmecf:ChangeInExpensesAnticipatedIndicator>
+		<bkcmecf:ChangeInExpensesAnticipatedDescription>24 Description - increase or decrease</bkcmecf:ChangeInExpensesAnticipatedDescription>
+	</bkcmecf:FormB106J2>
+	<bkcmecf:FormB122B>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<nc:CaseDocketID/>
+		<bkcmecf:FormAmendedIndicator>false</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:MaritalStatusCode>b</bkcmecf:MaritalStatusCode>
+		<bkcmecf:Debtor1MonthlyIncome>
+			<bkcmecf:GrossWagesAmount>200</bkcmecf:GrossWagesAmount>
+			<bkcmecf:AlimonyMaintenanceAmount>300</bkcmecf:AlimonyMaintenanceAmount>
+			<bkcmecf:BusinessFarmingIncomeAmount>511</bkcmecf:BusinessFarmingIncomeAmount>
+			<bkcmecf:BusinessFarmingExpenseAmount>521</bkcmecf:BusinessFarmingExpenseAmount>
+			<bkcmecf:BusinessFarmingNetIncomeAmount>531</bkcmecf:BusinessFarmingNetIncomeAmount>
+			<bkcmecf:RealEstateIncomeAmount>611</bkcmecf:RealEstateIncomeAmount>
+			<bkcmecf:RealEstateExpenseAmount>621</bkcmecf:RealEstateExpenseAmount>
+			<bkcmecf:RealEstateNetIncomeAmount>631</bkcmecf:RealEstateNetIncomeAmount>
+			<bkcmecf:InvestmentIncomeAmount>700</bkcmecf:InvestmentIncomeAmount>
+			<bkcmecf:DomesticSupportPaymentsAmount>400</bkcmecf:DomesticSupportPaymentsAmount>
+			<bkcmecf:UnemploymentCompensationAmount>810</bkcmecf:UnemploymentCompensationAmount>
+			<bkcmecf:UnemploymentCompensationSSAAmount>811</bkcmecf:UnemploymentCompensationSSAAmount>
+			<bkcmecf:PensionRetirementIncomeAmount>900</bkcmecf:PensionRetirementIncomeAmount>
+			<bkcmecf:OtherIncomeDescription>Other income 1</bkcmecf:OtherIncomeDescription>
+			<bkcmecf:OtherIncomeAmount>1000</bkcmecf:OtherIncomeAmount>
+			<bkcmecf:OtherIncomeTotalAmount>1001</bkcmecf:OtherIncomeTotalAmount>
+		</bkcmecf:Debtor1MonthlyIncome>
+		<bkcmecf:Debtor2MonthlyIncome>
+			<bkcmecf:GrossWagesAmount>220</bkcmecf:GrossWagesAmount>
+			<bkcmecf:AlimonyMaintenanceAmount>320</bkcmecf:AlimonyMaintenanceAmount>
+			<bkcmecf:BusinessFarmingIncomeAmount>512</bkcmecf:BusinessFarmingIncomeAmount>
+			<bkcmecf:BusinessFarmingExpenseAmount>522</bkcmecf:BusinessFarmingExpenseAmount>
+			<bkcmecf:BusinessFarmingNetIncomeAmount>532</bkcmecf:BusinessFarmingNetIncomeAmount>
+			<bkcmecf:RealEstateIncomeAmount>612</bkcmecf:RealEstateIncomeAmount>
+			<bkcmecf:RealEstateExpenseAmount>622</bkcmecf:RealEstateExpenseAmount>
+			<bkcmecf:RealEstateNetIncomeAmount>632</bkcmecf:RealEstateNetIncomeAmount>
+			<bkcmecf:InvestmentIncomeAmount>720</bkcmecf:InvestmentIncomeAmount>
+			<bkcmecf:DomesticSupportPaymentsAmount>420</bkcmecf:DomesticSupportPaymentsAmount>
+			<bkcmecf:UnemploymentCompensationAmount>820</bkcmecf:UnemploymentCompensationAmount>
+			<bkcmecf:UnemploymentCompensationSSAAmount>821</bkcmecf:UnemploymentCompensationSSAAmount>
+			<bkcmecf:PensionRetirementIncomeAmount>920</bkcmecf:PensionRetirementIncomeAmount>
+			<bkcmecf:OtherIncomeDescription>Other income 2</bkcmecf:OtherIncomeDescription>
+			<bkcmecf:OtherIncomeAmount>2000</bkcmecf:OtherIncomeAmount>
+			<bkcmecf:OtherIncomeTotalAmount>2001</bkcmecf:OtherIncomeTotalAmount>
+		</bkcmecf:Debtor2MonthlyIncome>
+		<bkcmecf:Debtor1CurrentMonthlyIncomeAmount>1100</bkcmecf:Debtor1CurrentMonthlyIncomeAmount>
+		<bkcmecf:Debtor2CurrentMonthlyIncomeAmount>2100</bkcmecf:Debtor2CurrentMonthlyIncomeAmount>
+		<bkcmecf:TotalCurrentMonthlyIncomeAmount>11500</bkcmecf:TotalCurrentMonthlyIncomeAmount>
+		<bkcmecf:Debtor1SignatureDate>
+			<nc:Date>2016-09-15</nc:Date>
+		</bkcmecf:Debtor1SignatureDate>
+		<bkcmecf:Debtor2SignatureDate>
+			<nc:Date>2016-09-15</nc:Date>
+		</bkcmecf:Debtor2SignatureDate>
+	</bkcmecf:FormB122B>
+	<bkcmecf:CreditorMatrix>
+		<!-- Creditor Who was not on the schedules but needs to be added to the bankruptcy case -->
+		<bkcmecf:CreditorDetails>
+			<bkcmecf:NewOrUpdatedIndicator>true</bkcmecf:NewOrUpdatedIndicator>
+			<bkcmecf:Creditor>
+				<nc:OrganizationLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>1 Columbus Circle, NE</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Room 3-546</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Washington</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>USA</nc:LocationCountryName>
+							<nc:LocationPostalCode>20544</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:OrganizationLocation>
+				<!-- Official name of the creditor -->
+				<nc:OrganizationName>1 Creditor, INC - CRM1</nc:OrganizationName>
+			</bkcmecf:Creditor>
+		</bkcmecf:CreditorDetails>
+		<!-- Repeat as desired -->
+	</bkcmecf:CreditorMatrix>
+</bkcmecf:IndividualBankruptcyPetition>

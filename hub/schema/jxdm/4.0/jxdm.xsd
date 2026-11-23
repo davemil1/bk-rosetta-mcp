@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:niem-xsd="http://niem.gov/niem/proxy/xsd/2.0" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:j="http://niem.gov/niem/domains/jxdm/4.0" xmlns:i2="http://niem.gov/niem/appinfo/2.1" xmlns:i="http://niem.gov/niem/appinfo/2.0" targetNamespace="http://niem.gov/niem/domains/jxdm/4.0" version="1">
+	<xsd:annotation>
+		<xsd:documentation>Justice</xsd:documentation>
+		<xsd:appinfo>
+			<i:ConformantIndicator>true</i:ConformantIndicator>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:import namespace="http://niem.gov/niem/structures/2.0" schemaLocation="../../structures/2.0/structures.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/appinfo/2.0" schemaLocation="../../appinfo/2.0/appinfo.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/niem-core/2.0" schemaLocation="../../niem-core/2.0/niem-core.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/proxy/xsd/2.0" schemaLocation="../../proxy/xsd/2.0/niem-xsd.xsd"/>
+	<!--adding Appellate structures for use by cross-branch CMECF core web services -->
+	<xsd:element name="ActivityCaseAssociation" type="j:ActivityCaseAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>An association between an activity and a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActivityCaseAssociationReference" type="s:ReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>An association between an activity and a case.</xsd:documentation>
+			<xsd:appinfo>
+				<i:ReferenceTarget i:name="ActivityCaseAssociationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCase" type="j:AppellateCaseType">
+		<xsd:annotation>
+			<xsd:documentation>Details about a single case heard by the Court of Appeals (Intermediate Court of Appeal) or Supreme Court (The Court of Last Resort). This case does not retry the original case but determines whether the original case was tried properly and the defendant received a fair trial.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseBrief" type="nc:DocumentType">
+		<xsd:annotation>
+			<xsd:documentation>A document written by prosecution or defense summarizing why a lower court acted correctly or incorrectly.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecision" type="j:AppellateCaseDecisionType">
+		<xsd:annotation>
+			<xsd:documentation>A statement by a judge or court of a decision reached in regard to an appeal.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A kind of appellate case decision made.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date that an issuing judge signs an Opinion or issues an Order.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of an appellate case decision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identifier of an appellate case decision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionIssuingJudge" type="j:JudicialOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>A judge that issues, orders, or authors an appellate case decision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionName" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of an opinion or order that is a result of an appellate case decision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionOpinionIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if an appellate case decision refers to an opinion issued; false if it refers to an order issued.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionPrecedenceIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if an appellate case decision opinion or order is worthy of setting an example or justification for a later decision; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionReliefEffectiveDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date relief is to be made to a person as stated in an appellate case decision.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionReliefIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if an appellate case decision states any relief assistance be provided to a defendant; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseDecisionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A decision of the appellate court about a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseNotice" type="j:AppellateCaseNoticeType">
+		<xsd:annotation>
+			<xsd:documentation>A request filed with an appellate court to start an appellate case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseNoticeDefendantEntity" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity that was originally tried in a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseNoticeDefendingAgency" type="nc:OrganizationType">
+		<xsd:annotation>
+			<xsd:documentation>A firm reported in an appellate case notice that originally defended a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseNoticeFilingCourt" type="j:CourtType">
+		<xsd:annotation>
+			<xsd:documentation>A court where a notice of appeal is filed in hopes of being reviewed by an appellate court</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseNoticeOriginalCourt" type="j:CourtType">
+		<xsd:annotation>
+			<xsd:documentation>A court where a case was originally tried.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseNoticeProsecutingAgency" type="nc:OrganizationType">
+		<xsd:annotation>
+			<xsd:documentation>A firm reported in an appellate case notice that originally tried a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseNoticeProsecutingAttorney" type="j:JudicialOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>An attorney reported in an appellate case notice that originally tried a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseNoticeReasonText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A statement explaining the reason for an appeal.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseOriginalCase" type="nc:CaseType">
+		<xsd:annotation>
+			<xsd:documentation>An original case that is being retried in an appellate court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseRelatedCase" type="nc:CaseType">
+		<xsd:annotation>
+			<xsd:documentation>A case related to a case being tried in an appellate court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AppellateCaseSanction" type="j:SanctionType">
+		<xsd:annotation>
+			<xsd:documentation>A sanction ordered for a subject by a judge or a supervising agency as a result of a disposition of a charge.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Attorney" type="j:JudicialOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>A person admitted to practice law in his or her respective state and authorized to perform both civil and criminal legal functions for clients.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Case" type="j:CaseType" substitutionGroup="nc:Case">
+		<xsd:annotation>
+			<xsd:documentation>Applied augmentation for type nc:CaseType</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="Case"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseAugmentation" type="j:CaseAugmentationType">
+		<xsd:annotation>
+			<xsd:documentation>Additional information about a case .</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseCourt" type="j:CourtType">
+		<xsd:annotation>
+			<xsd:documentation>A court of law in which the case is being tried.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseCourtEvent" type="j:CourtEventType">
+		<xsd:annotation>
+			<xsd:documentation>A court occurrence.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseDefendantParty" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity being charged or sued in a court of law.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseDefendantQuantityText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A number of defendants being tried at once for a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseDefenseAttorney" type="j:CaseOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>An attorney who defends a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseInitiatingAttorney" type="j:CaseOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>The attorney in a court case representing the party that filed a petition for a court order or writ requiring the respondent to take some action, halt an activity or obey a courts direction. Representative of the party seeking action from the court. In such matters the moving party (the one filing the petition) is often called the "petitioner." The attorney representing a person requesting for filing a Request or Petition for Protection filed by a petitioner.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseInitiatingParty" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity that brings charges or a suit against another in a court of law. Can be either a victim in a criminal case or a plaintiff in a civil case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseJudge" type="j:CaseOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>A judicial official assigned to a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseOfficialCaseIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>A unique identifier a justice official uses to identify a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseOfficialEndDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a justice official left a case or a date a case ended.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseOfficialRoleDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of the role a justice official played in a court case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseOfficialRoleText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A role a justice official played in a court case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseOfficialStartDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date a justice official became involved in a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseOfficialTerminationReasonText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A reason a justice official left a case before its conclusion.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseOtherEntity" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>A miscellaneous entity involved in a court case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseOtherOfficial" type="j:CaseOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>A miscellaneous person or organization involved in a court case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CaseProceedingCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A kind of case proceeding.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ChargeCategoryDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of a crime category.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ChargeDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A plain language description of a charge.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ChargeDisposition" type="j:ChargeDispositionType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>Details about the results or processing of a charge.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ChargeDispositionCondition" type="nc:ConditionType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>A requirement which, when met, represents compliance with a pre-disposition condition.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ChargeDispositionOtherText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>Additional information beyond, or separate from the ChargeDispositionDescriptionText about a charge. It may contain information about the processing of a charge rather than just the outcome.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ChargeDispositionSanction" type="j:SanctionType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>A penalty ordered for a subject by a judge or a supervising agency as a result of a disposition of a charge.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Citation" type="j:CitationType">
+		<xsd:annotation>
+			<xsd:documentation>Details about an official summons to appear in court or pay a fine given to a subject from a peace official due to a subjects violation or infraction of a law.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CitationAgency" type="nc:OrganizationType">
+		<xsd:annotation>
+			<xsd:documentation>An organization for whom the citation issuing official is employed.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CitationDismissalConditionIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a citation can be dismissed if certain conditions are met; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CitationDismissalConditionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A condition to be met that can make a citation eligible for dismissal.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CitationFineAmount" type="nc:AmountType">
+		<xsd:annotation>
+			<xsd:documentation>An amount of money to be paid by the subject receiving the citation if the subject chooses not to dispute the citation in court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CitationIssuedLocation" type="nc:LocationType">
+		<xsd:annotation>
+			<xsd:documentation>A place where a citation is given to a subject.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CitationSubject" type="j:SubjectType">
+		<xsd:annotation>
+			<xsd:documentation>A person who violates a law and receives a citation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CitationViolation" type="nc:IncidentType">
+		<xsd:annotation>
+			<xsd:documentation>An activity that is a violation of a law or ordinance that results in a subject being given a citation.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtActivityCondition" type="nc:ConditionType">
+		<xsd:annotation>
+			<xsd:documentation>A condition related or attached to a court activity.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtActivityCourtOrder" type="j:CourtOrderType">
+		<xsd:annotation>
+			<xsd:documentation>A direction of a judge not included in a judgment, which determines some point or directs some step in proceedings.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtActivityScheduleDay" type="nc:ScheduleDayType">
+		<xsd:annotation>
+			<xsd:documentation>A schedule on which a court activity is to occur.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtActivitySupervisingAgency" type="nc:OrganizationType">
+		<xsd:annotation>
+			<xsd:documentation>A supervising agency associated with a court activity result, especially for reporting purposes.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtAdministrativeUnitText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>An administrative sub-unit within a court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtAppearance" type="j:CourtAppearanceType">
+		<xsd:annotation>
+			<xsd:documentation>Details about an appearance required of a party in a court of law on a certain date.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtAppearanceCase" type="nc:CaseType">
+		<xsd:annotation>
+			<xsd:documentation>A case for which a party must appear in court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtAppearanceCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A kind of appearance a party is required to make in court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtAppearanceCourt" type="j:CourtType">
+		<xsd:annotation>
+			<xsd:documentation>A court in which a party is required to appear.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtAppearanceDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>A date on which a party must appear in court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtAppearanceEntity" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity required to appear in court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtAppearanceReasonText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A reason a party is required to appear in court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtEventAction" type="j:CourtActivityType">
+		<xsd:annotation>
+			<xsd:documentation>A court-related action associated with a court case event.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtEventAppearance" type="j:CourtAppearanceType">
+		<xsd:annotation>
+			<xsd:documentation>An appearance in court required of a party</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtEventCase" type="nc:CaseType">
+		<xsd:annotation>
+			<xsd:documentation>A case associated with a court event.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtEventCourt" type="j:CourtType">
+		<xsd:annotation>
+			<xsd:documentation>A court in which a court event occurs.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtEventJudge" type="j:JudicialOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>A judge associated with a court event.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtEventMotion" type="j:CourtActivityType">
+		<xsd:annotation>
+			<xsd:documentation>A request made to a court for a ruling or an order.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtEventSchedule" type="nc:ScheduleDayType">
+		<xsd:annotation>
+			<xsd:documentation>Details about the days for which a court event is scheduled.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtEventSequenceID" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>A unique identifier for a court case event record.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtName" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A name of a unit of a court.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtOrderRequestDate" type="nc:DateType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>A date a court order was requested.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CourtOrderStatus" type="nc:StatusType">
+		<xsd:annotation>
+			<xsd:documentation>A state of a court order.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DisciplinaryActionSanction" type="j:SanctionType">
+		<xsd:annotation>
+			<xsd:documentation>A sanction or penalty ordered for a subject by a judge or a supervising agency as a result of a disposition of a charge.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Judge" type="j:JudicialOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>An official who hears and decides a case or who rules over a case proceeding.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JudgePanel" type="j:JudgePanelType">
+		<xsd:annotation>
+			<xsd:documentation>Details about a group of federal or state appellate court judges needed to decide a case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JudgePanelIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>A unique identifier of a judge panel.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JudicialOfficialBarIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identifier assigned to a judicial official after meeting the requirement to practice law in a region.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JudicialOfficialBarMembership" type="j:JudicialOfficialBarMembershipType">
+		<xsd:annotation>
+			<xsd:documentation>Details about a legal capacity in which a judicial official is able to practice law.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JudicialOfficialBarStatus" type="nc:StatusType">
+		<xsd:annotation>
+			<xsd:documentation>A status of a judicial officials bar membership.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JudicialOfficialCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A kind of judicial official.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JudicialOfficialCourt" type="j:CourtType">
+		<xsd:annotation>
+			<xsd:documentation>A court unit to which a judicial official is assigned.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JudicialOfficialFirm" type="nc:OrganizationType">
+		<xsd:annotation>
+			<xsd:documentation>An agency at which a judicial official works.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JudicialOfficialPanelIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identifier or name of a panel or group to which a judicial official is assigned.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="JudicialOfficialRegistrationIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identifier assigned to a judicial official after registering within a state or region.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OffenseCategory" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A kind of offense.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OffenseCategoryText" type="nc:TextType" substitutionGroup="j:OffenseCategory" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>A kind of offense.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OffenseSeverityLevelText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>A description of the level of severity of an offense.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PersonNameInitialsText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A first letter of a persons given, possibly middle, and last names.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Plea" type="j:PleaType">
+		<xsd:annotation>
+			<xsd:documentation>Details about an answer which a defendant in an action at law makes to the State's charges.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PleaDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of a plea.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PleaGuiltyIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a person admits guilt in relation to a charge; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PleaNegotiatedIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a plea is negotiated with the prosecution; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PleaNoContestIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a person is willing to accept the consequences of a charge without admitting guilt or innocence; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PleaRecommendationText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A recommended plea agreement for violent, most serious, or armed offenses.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SanctionSentenceDefinitionIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if a sanction "defines" a sentence; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SanctionSetObligation" type="nc:ObligationType">
+		<xsd:annotation>
+			<xsd:documentation>An amount of money or time requirement of a sanction that has been set.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Sentence" type="j:SentenceType">
+		<xsd:annotation>
+			<xsd:documentation>Details about a punishment resulting from conviction of charges in a court case.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceCondition" type="nc:ConditionType">
+		<xsd:annotation>
+			<xsd:documentation>A description and duration of a sentence component.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceDeferredIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if the sentence has been deferred.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceDeferredTerm" type="j:TermType">
+		<xsd:annotation>
+			<xsd:documentation>Details about the deferred term.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceDescriptionText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A description of the sentence being imposed.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceExpirationDate" type="nc:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The date the sentence expires.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceGroupingText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>An order to how a sentence must be served.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceIssuerEntity" type="nc:EntityType">
+		<xsd:annotation>
+			<xsd:documentation>An entity which issued a sentence.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceRegisterSexOffenderIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if sex offender registration is required.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceSubject" type="j:SubjectType">
+		<xsd:annotation>
+			<xsd:documentation>A person who is being sentenced.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceSuspendedIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if the sentence has been suspended.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceSuspendedTerm" type="j:TermType">
+		<xsd:annotation>
+			<xsd:documentation>Details about the suspended term.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SentenceTerm" type="j:TermType">
+		<xsd:annotation>
+			<xsd:documentation>A duration of a sentence. Specified as either a specific term in days-months-years or as a minimum - maximum range.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Statute" type="j:StatuteType">
+		<xsd:annotation>
+			<xsd:documentation>A law, rule, or ordinance within a jurisdiction.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StatuteCategoryText" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>A text identifier of a Statute type.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StatuteCodeSectionIdentification" type="nc:IdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>An identifier of a section or category within a code book.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StatuteKeywordText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>A brief description of a Statute which makes use of catchwords.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StatuteLevelText" type="nc:TextType" nillable="true">
+		<xsd:annotation>
+			<xsd:documentation>A level of crime a statute applies to.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="StatuteOffenseCode" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A criminal offense within a code book.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Term" type="j:TermType">
+		<xsd:annotation>
+			<xsd:documentation>Details about a duration length specified as either a specific term in days-months-years or as a minimum - maximum range.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TermDuration" type="niem-xsd:duration">
+		<xsd:annotation>
+			<xsd:documentation>A specific range or duration of a term.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TermLifeIndicator" type="niem-xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>True if the term is not for a set duration length but for life; false otherwise.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TermMaximumDuration" type="niem-xsd:duration">
+		<xsd:annotation>
+			<xsd:documentation>A maximum range or duration for a term.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TermMinimumDuration" type="niem-xsd:duration">
+		<xsd:annotation>
+			<xsd:documentation>A minimum range or duration for a term.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ViolationNumber" type="nc:TextType">
+		<xsd:annotation>
+			<xsd:documentation>An identifier for a charging document.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ActivityCaseAssociationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an association between an activity and a case.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="AssociationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:AssociationType">
+				<xsd:sequence>
+					<xsd:element ref="nc:ActivityReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:CaseReference" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AppellateCaseDecisionType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a statement by a judge or court of a decision reached in regard to an appeal.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="j:AppellateCaseDecisionDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecisionDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecisionIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecisionIssuingJudge" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecisionName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecisionOpinionIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecisionPrecedenceIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecisionReliefEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecisionReliefIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecisionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecisionCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AppellateCaseNoticeType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a request filed with an appellate court to start an appellate case.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="DocumentType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:DocumentType">
+				<xsd:sequence>
+					<xsd:element ref="j:AppellateCaseNoticeDefendingAgency" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseNoticeFilingCourt" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseNoticeOriginalCourt" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseNoticeProsecutingAgency" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseNoticeDefendantEntity" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseNoticeProsecutingAttorney" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseNoticeReasonText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AppellateCaseType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a single case heard by a court to determine if the original case was tried properly and the defendant received a fair trial.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="CaseType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:CaseType">
+				<xsd:sequence>
+					<xsd:element ref="j:AppellateCaseBrief" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseDecision" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseNotice" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseOriginalCase" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:AppellateCaseRelatedCase" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CaseAugmentationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for additional information about a case.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="AugmentationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:AugmentationType">
+				<xsd:sequence>
+					<xsd:element ref="j:CaseCourt" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CaseCourtEvent" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CaseDefendantParty" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CaseDefenseAttorney" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CaseInitiatingParty" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CaseJudge" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="nc:DocumentFiledDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CaseInitiatingAttorney" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CaseOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an official's involvement in a case.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:name="JudicialOfficialType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="j:JudicialOfficialType">
+				<xsd:sequence>
+					<xsd:element ref="j:CaseOfficialCaseIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CaseOfficialEndDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CaseOfficialRoleDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CaseOfficialRoleText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CaseOfficialStartDate" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CaseType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an applied augmentation for type nc:CaseType</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="CaseType"/>
+				<i2:AugmentedTypeIndicator>true</i2:AugmentedTypeIndicator>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:CaseType">
+				<xsd:sequence>
+					<xsd:element ref="j:CaseAugmentation" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ChargeDispositionType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for the results or processing of a charge.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="DispositionType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:DispositionType">
+				<xsd:sequence>
+					<xsd:element ref="j:ChargeDispositionCondition" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:ChargeDispositionOtherText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:ChargeDispositionSanction" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CitationType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an official summons to appear in court or pay a fine.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="j:CitationAgency" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CitationDismissalConditionIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CitationDismissalConditionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CitationFineAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CitationIssuedLocation" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CitationSubject" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CitationViolation" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CourtActivityType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a court-related action associated with a court case event.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="j:CourtActivityCondition" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtActivityCourtOrder" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtActivityScheduleDay" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtActivitySupervisingAgency" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CourtAppearanceType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an appearance required of a party in a court of law on a certain date.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="j:CourtAppearanceCase" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtAppearanceCourt" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtAppearanceDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtAppearanceEntity" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtAppearanceReasonText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtAppearanceCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CourtEventType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a court occurrence.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="j:CourtEventAction" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtEventAppearance" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtEventCase" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtEventCourt" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtEventJudge" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtEventMotion" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtEventSchedule" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtEventSequenceID" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CourtOrderType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a direction of a judge not including a judgement, which determines some point or directs some steps in proceedings.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="j:CourtOrderRequestDate" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- TODO: fill in rest of CourtOrderType <xsd:element ref="j:CourtOrderCondition" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderDesignatedLocation"
+            minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderDesignatedOrganization" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderDesignatedProperty"
+            minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderDesignatedSubject" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderEnforcementAgency"
+            minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderIssuingCourt" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderIssuingDate" minOccurs="0"
+            maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderIssuingJudicialOfficial" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderJurisdiction" minOccurs="0"
+            maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderRecallDate" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderRecallReasonText" minOccurs="0"
+            maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderRequestDate" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderRequestReasonText" minOccurs="0"
+            maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderRequestEntity" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderServiceAttemptedDate" minOccurs="0"
+            maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderServiceCautionText" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderServiceDate" minOccurs="0"
+            maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderServiceDescriptionText" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderServiceReceivedDate"
+            minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderServiceRestrictionText" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderServiceOfficial"
+            minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderSignatureMethodText" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:CourtOrderSpecialInstructionText"
+            minOccurs="0" maxOccurs="unbounded"/> -->
+					<xsd:element ref="j:CourtOrderStatus" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CourtType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a court or a unit of a court responsible for trying justice proceedings.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="OrganizationType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:OrganizationType">
+				<xsd:sequence>
+					<xsd:element ref="j:CourtName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:CourtAdministrativeUnitText" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="JudgePanelType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a group of judges needed to decide a court case.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="j:Judge" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:JudgePanelIdentification" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="JudicialOfficialBarMembershipType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a legal capacity in which a judicial official is able to practice law.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="j:JudicialOfficialBarIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:JudicialOfficialBarStatus" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="JudicialOfficialType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a person involved in a judicial area of government.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:RoleOfPersonReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:JudicialOfficialBarMembership" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:JudicialOfficialCourt" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:JudicialOfficialFirm" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:JudicialOfficialPanelIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:JudicialOfficialRegistrationIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:JudicialOfficialCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PleaType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for an answer which a defendant in an action at law makes to charges.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="j:PleaDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:PleaGuiltyIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:PleaNegotiatedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:PleaNoContestIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:PleaRecommendationText" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- <xsd:element ref="j:PleaCategoryCode" minOccurs="0" maxOccurs="unbounded"/> -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SanctionType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a sanction or penalty ordered for a subject as a result of a disposition of a charge.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<!-- TODO: fill in sanction elements <xsd:element ref="j:SanctionAdultSentenceIndicator" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SanctionCreditedObligation"
+            minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SanctionDisciplinaryAction" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SanctionFrequencyText"
+            minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SanctionGroupingText" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SanctionIssuingAgency" minOccurs="0"
+            maxOccurs="unbounded"/> <xsd:element ref="j:SanctionJurisdictionalAgency" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SanctionProgress" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="j:SanctionRelatedChargeDispositionText" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SanctionRelatedSanctionIdentification" minOccurs="0"
+            maxOccurs="unbounded"/> <xsd:element ref="j:SanctionSetDate" minOccurs="0" maxOccurs="unbounded"/> -->
+					<xsd:element ref="j:SanctionSentenceDefinitionIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SanctionSetObligation" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SentenceType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a punishment resulting from conviction of charges in a court case.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="j:SentenceCondition" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceDeferredIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceDeferredTerm" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceExpirationDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceGroupingText" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceIssuerEntity" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceRegisterSexOffenderIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceSubject" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceSuspendedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceSuspendedTerm" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:SentenceTerm" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="StatuteType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a law, rule, or ordinance within a jurisdiction.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="j:StatuteCodeSectionIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:StatuteCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SubjectType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a person who is involved or suspected of being involved in an incident or criminal activity.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<!-- <xsd:element ref="nc:RoleOfPersonReference" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="nc:RoleOfOrganizationReference" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="j:DNACollectionStatus" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SubjectArmedIndicator" minOccurs="0" maxOccurs="unbounded"/> <xsd:element
+            ref="j:SubjectArmedWeapon" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SubjectCautionInformationCode" minOccurs="0" maxOccurs="unbounded"/> <xsd:element
+            ref="j:SubjectCriminalOrganizationInvolvementCode" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SubjectCriminalTraitDetails" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="j:SubjectDetainmentLocation" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SubjectDisciplinaryAction" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="j:SubjectExtraditionText" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SubjectIdentification" minOccurs="0" maxOccurs="unbounded"/> <xsd:element
+            ref="j:SubjectInvolvementCriminalOrganization" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SubjectInvolvementPerson" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="j:SubjectMultiSourceOffender" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SubjectOffenderNoticeText" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="j:SubjectStatus" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SubjectSupervision" minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SubjectTheftCategoryText"
+            minOccurs="0" maxOccurs="unbounded"/> <xsd:element ref="j:SubjectWarrantCategoryDescriptionText" minOccurs="0" maxOccurs="unbounded"/> -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="TermType">
+		<xsd:annotation>
+			<xsd:documentation>A data type for a duration length either in specific terms or as a range.</xsd:documentation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/niem-core/2.0" i:name="ActivityType"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="nc:ActivityType">
+				<xsd:sequence>
+					<xsd:element ref="j:TermDuration" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:TermLifeIndicator" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:TermMaximumDuration" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="j:TermMinimumDuration" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- <xsd:element name="AppellateCaseJudgePanel" type="j:JudgePanelType"> <xsd:annotation> <xsd:documentation>A panel of judges presiding over an appellate
+    case.</xsd:documentation> </xsd:annotation> </xsd:element> -->
+	<!--end Appellate section -->
+	<!--TODO: fix schema order of JudicialOfficialFirm first; RoleOfPersonReference should be first!!! -->
+</xsd:schema>

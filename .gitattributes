@@ -1,0 +1,4 @@
+* text=auto
+*.tsv -text
+*.xlsx binary
+*.pdf binary

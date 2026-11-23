@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bkcmecf:IndividualBankruptcyPetition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bkcmecf="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/cmecf/1.0" xmlns:j="http://niem.gov/niem/domains/jxdm/4.0" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:bank="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/codes/1.0" xmlns:cmecfcodes="http://cmecf.td.oca.ao.dcn/niem/cmecf/codes/1.0" xsi:schemaLocation="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/cmecf/1.0 ../exchange_files/schema/constraint/niem/extension/BankruptcyPetition.xsd">
+	<nc:DocumentFileName>Debtor, Name Of</nc:DocumentFileName>
+	<nc:DocumentFormatText> IE 9.10.9200.16635</nc:DocumentFormatText>
+	<!-- 1. File Generated DateTime: 3/14/2018 7:21:36 AM-->
+	<nc:DocumentCreationDate>
+		<nc:DateTime>2018-02-01T07:21:36</nc:DateTime>
+	</nc:DocumentCreationDate>
+	<!--a Text grab bag of whatever other metadata vendors desire to put into the filings for their own troubleshooting-->
+	<nc:DocumentSummaryText>
+2. Computer name: EXAMPLE-PC
+3. Computer user: Test 1 
+4. Operating system: Windows NT 6.1 Win 7 SP1
+6. Software Registration: 30077 LawFirmofXevinYZidd 2025556070
+8. Case folder: C:\ECF\Debtor File Name\ 
+9. Software folder: C:\VendorProductFolder
+	</nc:DocumentSummaryText>
+	<!--THIS INFORMATION BELOW IS REQUIRED, WILL BE USED BY THE COURTS TO HELP TRACK POTENTIAL PROBLEMS DURING IMPLEMENTATION OF THIS XML EXCHANGE-->
+	<!--10. Software version:-->
+	<nc:ApplicationName nc:applicationVersionText="22.130708 e03/14/2018">Example Attorney Filing Tool</nc:ApplicationName>
+	<bkcmecf:FormB106ISupp>
+		<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!--Case Number (if known): should be populated in an amended filing, with the fully qualified case number-->
+		<nc:CaseDocketID>18-BK-1234</nc:CaseDocketID>
+		<!--check (true) if this is an amended filing-->
+		<bkcmecf:FormAmendedIndicator>true</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:SupplementFormFilingIndicator>true</bkcmecf:SupplementFormFilingIndicator>
+		<bkcmecf:SupplementFormEffectiveDate>
+			<nc:Date>2018-05-01</nc:Date>
+		</bkcmecf:SupplementFormEffectiveDate>
+		<!--	1. Describe Employment -->
+		<bkcmecf:Debtor1Employment>
+			<bkcmecf:EmploymentStatusIndicator>true</bkcmecf:EmploymentStatusIndicator>
+			<bkcmecf:EmploymentDetails>
+				<nc:EmployeeOccupationText>Master Chef</nc:EmployeeOccupationText>
+				<nc:Employer>
+					<nc:EntityOrganization>
+						<nc:OrganizationName>DC Kitchen</nc:OrganizationName>
+					</nc:EntityOrganization>
+				</nc:Employer>
+				<nc:EmploymentLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>111 Newyork Avenue</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 100</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Arlington</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>VA</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationCountryName>USA</nc:LocationCountryName>
+							<nc:LocationPostalCode>22101</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:EmploymentLocation>
+				<bkcmecf:EmploymentDuration>3.5 years</bkcmecf:EmploymentDuration>
+			</bkcmecf:EmploymentDetails>
+			<!--2nd employment block for Debtor1-->
+			<bkcmecf:EmploymentDetails>
+				<nc:EmployeeOccupationText>Systems Analyst</nc:EmployeeOccupationText>
+				<nc:Employer>
+					<nc:EntityOrganization>
+						<nc:OrganizationName>AOUSC-OCATD</nc:OrganizationName>
+					</nc:EntityOrganization>
+				</nc:Employer>
+				<nc:EmploymentLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>One Columbus Circle</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Rm 3-526</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Washington</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>DC</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationPostalCode>22101</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:EmploymentLocation>
+				<bkcmecf:EmploymentDuration>10 years</bkcmecf:EmploymentDuration>
+			</bkcmecf:EmploymentDetails>
+		</bkcmecf:Debtor1Employment>
+		<bkcmecf:Debtor2Employment>
+			<bkcmecf:EmploymentStatusIndicator>true</bkcmecf:EmploymentStatusIndicator>
+			<bkcmecf:EmploymentDetails>
+				<nc:EmployeeOccupationText>Baker</nc:EmployeeOccupationText>
+				<nc:Employer>
+					<nc:EntityOrganization>
+						<nc:OrganizationName>Cookies and Cream Shop</nc:OrganizationName>
+					</nc:EntityOrganization>
+				</nc:Employer>
+				<nc:EmploymentLocation>
+					<nc:LocationAddress>
+						<nc:StructuredAddress>
+							<nc:LocationStreet>222 N. Harsh Reality Way</nc:LocationStreet>
+							<nc:AddressSecondaryUnitText>Suite 200</nc:AddressSecondaryUnitText>
+							<nc:LocationCityName>Arlington</nc:LocationCityName>
+							<nc:LocationStateUSPostalServiceCode>VA</nc:LocationStateUSPostalServiceCode>
+							<nc:LocationPostalCode>22101</nc:LocationPostalCode>
+						</nc:StructuredAddress>
+					</nc:LocationAddress>
+				</nc:EmploymentLocation>
+				<bkcmecf:EmploymentDuration>2 years</bkcmecf:EmploymentDuration>
+			</bkcmecf:EmploymentDetails>
+		</bkcmecf:Debtor2Employment>
+		<bkcmecf:Debtor1MonthlyIncome>
+			<bkcmecf:GrossWagesAmount>2500.00</bkcmecf:GrossWagesAmount>
+			<bkcmecf:OvertimeAmount>0.00</bkcmecf:OvertimeAmount>
+			<bkcmecf:GrossIncomeAmount>2500.00</bkcmecf:GrossIncomeAmount>
+			<bkcmecf:PayrollDeduction>
+				<bkcmecf:TaxMedicareSocialSecurityDeductionAmount>600</bkcmecf:TaxMedicareSocialSecurityDeductionAmount>
+				<bkcmecf:MandatoryRetirementPlanDeductionAmount>0.00</bkcmecf:MandatoryRetirementPlanDeductionAmount>
+				<bkcmecf:VoluntaryRetirementPlanDeductionAmount>200.00</bkcmecf:VoluntaryRetirementPlanDeductionAmount>
+				<bkcmecf:RetirementPlanLoanRepaymentDeductionAmount>0.00</bkcmecf:RetirementPlanLoanRepaymentDeductionAmount>
+				<bkcmecf:InsuranceDeductionAmount>200.00</bkcmecf:InsuranceDeductionAmount>
+				<bkcmecf:DomesticSupportDeductionAmount>0.00</bkcmecf:DomesticSupportDeductionAmount>
+				<bkcmecf:UnionDuesDeductionAmount>0.00</bkcmecf:UnionDuesDeductionAmount>
+				<bkcmecf:OtherDeductionAmount>0.00</bkcmecf:OtherDeductionAmount>
+				<bkcmecf:OtherDeductionDescription>5h specify Debtor1</bkcmecf:OtherDeductionDescription>
+				<bkcmecf:TotalPayrollDeductionsAmount>0.00</bkcmecf:TotalPayrollDeductionsAmount>
+			</bkcmecf:PayrollDeduction>
+			<bkcmecf:PayrollNetIncomeAmount>1500.00</bkcmecf:PayrollNetIncomeAmount>
+			<bkcmecf:BusinessFarmingIncomeAmount>0.00</bkcmecf:BusinessFarmingIncomeAmount>
+			<bkcmecf:InvestmentIncomeAmount>200.00</bkcmecf:InvestmentIncomeAmount>
+			<bkcmecf:DomesticSupportPaymentsAmount>0.00</bkcmecf:DomesticSupportPaymentsAmount>
+			<bkcmecf:UnemploymentCompensationAmount>0.00</bkcmecf:UnemploymentCompensationAmount>
+			<bkcmecf:UnemploymentCompensationSSAAmount>0.00</bkcmecf:UnemploymentCompensationSSAAmount>
+			<bkcmecf:GovernmentSupportPaymentsIncomeAmount>0.00</bkcmecf:GovernmentSupportPaymentsIncomeAmount>
+			<bkcmecf:GovernmentSupportPaymentsIncomeAmount>0.00</bkcmecf:GovernmentSupportPaymentsIncomeAmount>
+			<bkcmecf:GovernmentSupportPaymentsDescription>8f. Specify</bkcmecf:GovernmentSupportPaymentsDescription>
+			<bkcmecf:GovernmentSupportPaymentsDescription>8f. Specify2</bkcmecf:GovernmentSupportPaymentsDescription>
+			<bkcmecf:PensionRetirementIncomeAmount>81.7</bkcmecf:PensionRetirementIncomeAmount>
+			<bkcmecf:OtherIncomeDescription>8h Debtor1 is a good player and gets bonus each month.</bkcmecf:OtherIncomeDescription>
+			<bkcmecf:OtherIncomeDescription>8h Debtor1 is an artist and sells his crafts at art fairs.</bkcmecf:OtherIncomeDescription>
+			<bkcmecf:OtherIncomeAmount>90.00</bkcmecf:OtherIncomeAmount>
+			<bkcmecf:OtherIncomeAmount>91.00</bkcmecf:OtherIncomeAmount>
+			<bkcmecf:TotalIndependentIncomeAmount>0.00</bkcmecf:TotalIndependentIncomeAmount>
+		</bkcmecf:Debtor1MonthlyIncome>
+		<bkcmecf:Debtor2MonthlyIncome>
+			<bkcmecf:GrossWagesAmount>2.1</bkcmecf:GrossWagesAmount>
+			<bkcmecf:OvertimeAmount>3.1</bkcmecf:OvertimeAmount>
+			<bkcmecf:GrossIncomeAmount>4.1</bkcmecf:GrossIncomeAmount>
+			<bkcmecf:PayrollDeduction>
+				<bkcmecf:TaxMedicareSocialSecurityDeductionAmount>51.1</bkcmecf:TaxMedicareSocialSecurityDeductionAmount>
+				<bkcmecf:MandatoryRetirementPlanDeductionAmount>51.2</bkcmecf:MandatoryRetirementPlanDeductionAmount>
+				<bkcmecf:VoluntaryRetirementPlanDeductionAmount>51.3</bkcmecf:VoluntaryRetirementPlanDeductionAmount>
+				<bkcmecf:RetirementPlanLoanRepaymentDeductionAmount>51.4</bkcmecf:RetirementPlanLoanRepaymentDeductionAmount>
+				<bkcmecf:InsuranceDeductionAmount>51.55</bkcmecf:InsuranceDeductionAmount>
+				<bkcmecf:DomesticSupportDeductionAmount>51.6</bkcmecf:DomesticSupportDeductionAmount>
+				<bkcmecf:UnionDuesDeductionAmount>51.7</bkcmecf:UnionDuesDeductionAmount>
+				<bkcmecf:OtherDeductionAmount>51.8</bkcmecf:OtherDeductionAmount>
+				<bkcmecf:OtherDeductionDescription>5h specify Debtor1</bkcmecf:OtherDeductionDescription>
+				<bkcmecf:TotalPayrollDeductionsAmount>6.1</bkcmecf:TotalPayrollDeductionsAmount>
+			</bkcmecf:PayrollDeduction>
+			<bkcmecf:PayrollNetIncomeAmount>7.1</bkcmecf:PayrollNetIncomeAmount>
+			<bkcmecf:BusinessFarmingIncomeAmount>81.1</bkcmecf:BusinessFarmingIncomeAmount>
+			<bkcmecf:InvestmentIncomeAmount>81.2</bkcmecf:InvestmentIncomeAmount>
+			<bkcmecf:DomesticSupportPaymentsAmount>81.30</bkcmecf:DomesticSupportPaymentsAmount>
+			<bkcmecf:UnemploymentCompensationAmount>81.40</bkcmecf:UnemploymentCompensationAmount>
+			<bkcmecf:UnemploymentCompensationSSAAmount>81.50</bkcmecf:UnemploymentCompensationSSAAmount>
+			<bkcmecf:GovernmentSupportPaymentsIncomeAmount>81.6</bkcmecf:GovernmentSupportPaymentsIncomeAmount>
+			<bkcmecf:GovernmentSupportPaymentsIncomeAmount>81.61</bkcmecf:GovernmentSupportPaymentsIncomeAmount>
+			<bkcmecf:GovernmentSupportPaymentsDescription>8f. Specify</bkcmecf:GovernmentSupportPaymentsDescription>
+			<bkcmecf:GovernmentSupportPaymentsDescription>8f. Specify2</bkcmecf:GovernmentSupportPaymentsDescription>
+			<bkcmecf:PensionRetirementIncomeAmount>81.7</bkcmecf:PensionRetirementIncomeAmount>
+			<bkcmecf:OtherIncomeDescription>8h Debtor1 is a good player and gets bonus each month.</bkcmecf:OtherIncomeDescription>
+			<bkcmecf:OtherIncomeAmount>81.80</bkcmecf:OtherIncomeAmount>
+			<bkcmecf:OtherIncomeAmount>81.81</bkcmecf:OtherIncomeAmount>
+			<bkcmecf:TotalIndependentIncomeAmount>9.1</bkcmecf:TotalIndependentIncomeAmount>
+		</bkcmecf:Debtor2MonthlyIncome>
+		<bkcmecf:Debtor1MonthlyIncomeAmount>1700.00</bkcmecf:Debtor1MonthlyIncomeAmount>
+		<bkcmecf:Debtor2MonthlyIncomeAmount>1100.00</bkcmecf:Debtor2MonthlyIncomeAmount>
+		<bkcmecf:HouseholdPrecontributionIncome>10.3</bkcmecf:HouseholdPrecontributionIncome>
+		<bkcmecf:OtherContributionsReceivedDescription>11 Specify</bkcmecf:OtherContributionsReceivedDescription>
+		<bkcmecf:OtherContributionsReceivedAmount>11</bkcmecf:OtherContributionsReceivedAmount>
+		<bkcmecf:HouseholdMonthlyIncomeAmount>2800.00</bkcmecf:HouseholdMonthlyIncomeAmount>
+		<bkcmecf:ChangeInIncomeAnticipatedIndicator>true</bkcmecf:ChangeInIncomeAnticipatedIndicator>
+		<bkcmecf:ChangeInIncomeAnticipatedDescription>13 Explain reason</bkcmecf:ChangeInIncomeAnticipatedDescription>
+	</bkcmecf:FormB106ISupp>
+	<bkcmecf:FormB106JSupp>
+				<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!--Case Number (if known): should be populated in an amended filing, with the fully qualified case number-->
+		<nc:CaseDocketID>18-BK-1234</nc:CaseDocketID>
+		<!--check (true) if this is an amended filing-->
+		<bkcmecf:FormAmendedIndicator>true</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:SupplementFormFilingIndicator>true</bkcmecf:SupplementFormFilingIndicator>
+		<bkcmecf:SupplementFormEffectiveDate>
+			<nc:Date>2018-05-01</nc:Date>
+		</bkcmecf:SupplementFormEffectiveDate>
+		<bkcmecf:Debtor2Indicator>true</bkcmecf:Debtor2Indicator>
+		<bkcmecf:Debtor2SeparateHouseholdIndicator>true</bkcmecf:Debtor2SeparateHouseholdIndicator>
+		<bkcmecf:DependentsIndicator>true</bkcmecf:DependentsIndicator>
+		<bkcmecf:Dependent>
+			<nc:FamilyKinshipText>Debtor's Adopted son</nc:FamilyKinshipText>
+			<bkcmecf:PersonAgeInYearsQuantity>9</bkcmecf:PersonAgeInYearsQuantity>
+			<bkcmecf:DependentLiveWithDebtorIndicator>true</bkcmecf:DependentLiveWithDebtorIndicator>
+		</bkcmecf:Dependent>
+		<bkcmecf:Dependent>
+			<nc:FamilyKinshipText>Aged Mother of Debtor</nc:FamilyKinshipText>
+			<bkcmecf:PersonAgeInYearsQuantity>89</bkcmecf:PersonAgeInYearsQuantity>
+			<bkcmecf:DependentLiveWithDebtorIndicator>true</bkcmecf:DependentLiveWithDebtorIndicator>
+		</bkcmecf:Dependent>
+		<bkcmecf:HouseholdExpenses>
+			<bkcmecf:ExpensesIncludedForNonHouseholdIndicator>false</bkcmecf:ExpensesIncludedForNonHouseholdIndicator>
+			<bkcmecf:MortgageRentExpenseAmount>4.00</bkcmecf:MortgageRentExpenseAmount>
+			<bkcmecf:RealEstateTaxesExpenseAmount>4.01</bkcmecf:RealEstateTaxesExpenseAmount>
+			<bkcmecf:HomeownersRentersInsuranceExpenseAmount>4.02</bkcmecf:HomeownersRentersInsuranceExpenseAmount>
+			<bkcmecf:HomeMaintenanceExpenseAmount>4.03</bkcmecf:HomeMaintenanceExpenseAmount>
+			<bkcmecf:HomeownersAssociationExpenseAmount>4.04</bkcmecf:HomeownersAssociationExpenseAmount>
+			<bkcmecf:HomeEquityMortgagePaymentsExpenseAmount>5.00</bkcmecf:HomeEquityMortgagePaymentsExpenseAmount>
+			<bkcmecf:UtilitiesElectricFuelExpenseAmount>6.01</bkcmecf:UtilitiesElectricFuelExpenseAmount>
+			<bkcmecf:UtilitiesWaterSewerExpenseAmount>6.02</bkcmecf:UtilitiesWaterSewerExpenseAmount>
+			<bkcmecf:UtilitiesTelephoneExpenseAmount>6.03</bkcmecf:UtilitiesTelephoneExpenseAmount>
+			<bkcmecf:UtilitiesOtherExpenseAmount>6.04</bkcmecf:UtilitiesOtherExpenseAmount>
+			<bkcmecf:UtilitiesOtherExpenseDescription>6 d) Other utilities expense description</bkcmecf:UtilitiesOtherExpenseDescription>
+			<bkcmecf:FoodHousekeepingExpenseAmount>7.00</bkcmecf:FoodHousekeepingExpenseAmount>
+			<bkcmecf:ChildcareEducationExpenseAmount>8.00</bkcmecf:ChildcareEducationExpenseAmount>
+			<bkcmecf:ClothingServicesExpenseAmount>9.00</bkcmecf:ClothingServicesExpenseAmount>
+			<bkcmecf:PersonalServicesExpenseAmount>10.00</bkcmecf:PersonalServicesExpenseAmount>
+			<bkcmecf:MedicalDentalExpenseAmount>11.00</bkcmecf:MedicalDentalExpenseAmount>
+			<bkcmecf:TransportationNonInstallmentPaymentsExpenseAmount>12.00</bkcmecf:TransportationNonInstallmentPaymentsExpenseAmount>
+			<bkcmecf:RecreationEntertainmentExpenseAmount>13.00</bkcmecf:RecreationEntertainmentExpenseAmount>
+			<bkcmecf:CharitableContributionsExpenseAmount>14.00</bkcmecf:CharitableContributionsExpenseAmount>
+			<bkcmecf:LifeInsuranceExpenseAmount>15.01</bkcmecf:LifeInsuranceExpenseAmount>
+			<bkcmecf:HealthInsuranceExpenseAmount>15.02</bkcmecf:HealthInsuranceExpenseAmount>
+			<bkcmecf:AutoInsuranceExpenseAmount>15.04</bkcmecf:AutoInsuranceExpenseAmount>
+			<bkcmecf:OtherInsuranceExpenseAmount>15.04</bkcmecf:OtherInsuranceExpenseAmount>
+			<bkcmecf:OtherInsuranceExpenseDescription>15 d) other Insurance specify</bkcmecf:OtherInsuranceExpenseDescription>
+			<bkcmecf:TaxesNotWithheldExpenseAmount>16.00</bkcmecf:TaxesNotWithheldExpenseAmount>
+			<bkcmecf:TaxesNotWithheldExpenseDescription>16 taxes specify</bkcmecf:TaxesNotWithheldExpenseDescription>
+			<bkcmecf:AutoInstallmentPaymentsExpenseAmount>17.10</bkcmecf:AutoInstallmentPaymentsExpenseAmount>
+			<bkcmecf:AutoInstallmentPaymentsExpenseAmount>17.20</bkcmecf:AutoInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseAmount>17.31</bkcmecf:OtherInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseAmount>17.32</bkcmecf:OtherInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseDescription>17 c1 description</bkcmecf:OtherInstallmentPaymentsExpenseDescription>
+			<bkcmecf:OtherInstallmentPaymentsExpenseDescription>17 c2 description</bkcmecf:OtherInstallmentPaymentsExpenseDescription>
+			<bkcmecf:AlimonyMaintenanceSupportPaymentsExpenseAmount>18.00</bkcmecf:AlimonyMaintenanceSupportPaymentsExpenseAmount>
+			<bkcmecf:NonDomiciledDependentsSupportExpenseAmount>19.00</bkcmecf:NonDomiciledDependentsSupportExpenseAmount>
+			<bkcmecf:NonDomiciledDependentsSupportExpenseDescription>Debtor helps support his ex-wife's household.</bkcmecf:NonDomiciledDependentsSupportExpenseDescription>
+			<bkcmecf:OtherRealPropertyMortgageExpenseAmount>20.01</bkcmecf:OtherRealPropertyMortgageExpenseAmount>
+			<bkcmecf:OtherRealPropertyRealEstateTaxesExpenseAmount>20.02</bkcmecf:OtherRealPropertyRealEstateTaxesExpenseAmount>
+			<bkcmecf:OtherRealPropertyHomeownersRentersInsuranceExpenseAmount>20.03</bkcmecf:OtherRealPropertyHomeownersRentersInsuranceExpenseAmount>
+			<bkcmecf:OtherRealPropertyMaintenanceExpenseAmount>20.04</bkcmecf:OtherRealPropertyMaintenanceExpenseAmount>
+			<bkcmecf:OtherRealPropertyHomeownersAssociationExpenseAmount>20.05</bkcmecf:OtherRealPropertyHomeownersAssociationExpenseAmount>
+			<bkcmecf:OtherExpenseAmount>21.00</bkcmecf:OtherExpenseAmount>
+			<bkcmecf:OtherExpenseDescription>21 Other Description</bkcmecf:OtherExpenseDescription>
+			<bkcmecf:TotalMonthlyExpenseAmount>2200.00</bkcmecf:TotalMonthlyExpenseAmount>
+		</bkcmecf:HouseholdExpenses>
+		<bkcmecf:Debtor2MonthlyExpenseAmount>2200.00</bkcmecf:Debtor2MonthlyExpenseAmount>
+		<bkcmecf:HouseholdMonthlyExpenseAmount>4400.00</bkcmecf:HouseholdMonthlyExpenseAmount>
+		<bkcmecf:HouseholdMonthlyIncomeAmount>23.01</bkcmecf:HouseholdMonthlyIncomeAmount>
+		<bkcmecf:HouseholdMonthlyNetIncomeAmount>23.03</bkcmecf:HouseholdMonthlyNetIncomeAmount>
+		<bkcmecf:ChangeInExpensesAnticipatedIndicator>true</bkcmecf:ChangeInExpensesAnticipatedIndicator>
+		<bkcmecf:ChangeInExpensesAnticipatedDescription>24 Description - increase or decrease</bkcmecf:ChangeInExpensesAnticipatedDescription>
+	</bkcmecf:FormB106JSupp>
+	<bkcmecf:FormB106J2Supp>
+				<j:CaseCourt>
+			<j:CourtName>BANKRUPTCY COURT AO/DC CM/ECF</j:CourtName>
+		</j:CaseCourt>
+		<!--Case Number (if known): should be populated in an amended filing, with the fully qualified case number-->
+		<nc:CaseDocketID>18-BK-1234</nc:CaseDocketID>
+		<!--check (true) if this is an amended filing-->
+		<bkcmecf:FormAmendedIndicator>true</bkcmecf:FormAmendedIndicator>
+		<bkcmecf:BankruptcyDebtor1>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>John</nc:PersonGivenName>
+					<nc:PersonMiddleName>S</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor1>
+		<bkcmecf:BankruptcyDebtor2>
+			<nc:EntityPerson>
+				<nc:PersonName>
+					<nc:PersonGivenName>Mary</nc:PersonGivenName>
+					<nc:PersonMiddleName>P</nc:PersonMiddleName>
+					<nc:PersonSurName>Newforms</nc:PersonSurName>
+				</nc:PersonName>
+			</nc:EntityPerson>
+		</bkcmecf:BankruptcyDebtor2>
+		<bkcmecf:SupplementFormFilingIndicator>true</bkcmecf:SupplementFormFilingIndicator>
+		<bkcmecf:SupplementFormEffectiveDate>
+			<nc:Date>2018-05-01</nc:Date>
+		</bkcmecf:SupplementFormEffectiveDate>
+		<bkcmecf:Debtor2SeparateHouseholdIndicator>true</bkcmecf:Debtor2SeparateHouseholdIndicator>
+		<bkcmecf:DependentsIndicator>true</bkcmecf:DependentsIndicator>
+		<bkcmecf:Dependent>
+			<nc:FamilyKinshipText>Debtor's Adopted son</nc:FamilyKinshipText>
+			<bkcmecf:PersonAgeInYearsQuantity>9</bkcmecf:PersonAgeInYearsQuantity>
+			<bkcmecf:DependentLiveWithDebtorIndicator>true</bkcmecf:DependentLiveWithDebtorIndicator>
+		</bkcmecf:Dependent>
+		<bkcmecf:Dependent>
+			<nc:FamilyKinshipText>Aged Mother of Debtor</nc:FamilyKinshipText>
+			<bkcmecf:PersonAgeInYearsQuantity>89</bkcmecf:PersonAgeInYearsQuantity>
+			<bkcmecf:DependentLiveWithDebtorIndicator>true</bkcmecf:DependentLiveWithDebtorIndicator>
+		</bkcmecf:Dependent>
+		<bkcmecf:HouseholdExpenses>
+			<bkcmecf:ExpensesIncludedForNonHouseholdIndicator>false</bkcmecf:ExpensesIncludedForNonHouseholdIndicator>
+			<bkcmecf:MortgageRentExpenseAmount>4.00</bkcmecf:MortgageRentExpenseAmount>
+			<bkcmecf:RealEstateTaxesExpenseAmount>4.01</bkcmecf:RealEstateTaxesExpenseAmount>
+			<bkcmecf:HomeownersRentersInsuranceExpenseAmount>4.02</bkcmecf:HomeownersRentersInsuranceExpenseAmount>
+			<bkcmecf:HomeMaintenanceExpenseAmount>4.03</bkcmecf:HomeMaintenanceExpenseAmount>
+			<bkcmecf:HomeownersAssociationExpenseAmount>4.04</bkcmecf:HomeownersAssociationExpenseAmount>
+			<bkcmecf:HomeEquityMortgagePaymentsExpenseAmount>5.00</bkcmecf:HomeEquityMortgagePaymentsExpenseAmount>
+			<bkcmecf:UtilitiesElectricFuelExpenseAmount>6.01</bkcmecf:UtilitiesElectricFuelExpenseAmount>
+			<bkcmecf:UtilitiesWaterSewerExpenseAmount>6.02</bkcmecf:UtilitiesWaterSewerExpenseAmount>
+			<bkcmecf:UtilitiesTelephoneExpenseAmount>6.03</bkcmecf:UtilitiesTelephoneExpenseAmount>
+			<bkcmecf:UtilitiesOtherExpenseAmount>6.04</bkcmecf:UtilitiesOtherExpenseAmount>
+			<bkcmecf:UtilitiesOtherExpenseDescription>6 d) Other utilities expense description</bkcmecf:UtilitiesOtherExpenseDescription>
+			<bkcmecf:FoodHousekeepingExpenseAmount>7.00</bkcmecf:FoodHousekeepingExpenseAmount>
+			<bkcmecf:ChildcareEducationExpenseAmount>8.00</bkcmecf:ChildcareEducationExpenseAmount>
+			<bkcmecf:ClothingServicesExpenseAmount>9.00</bkcmecf:ClothingServicesExpenseAmount>
+			<bkcmecf:PersonalServicesExpenseAmount>10.00</bkcmecf:PersonalServicesExpenseAmount>
+			<bkcmecf:MedicalDentalExpenseAmount>11.00</bkcmecf:MedicalDentalExpenseAmount>
+			<bkcmecf:TransportationNonInstallmentPaymentsExpenseAmount>12.00</bkcmecf:TransportationNonInstallmentPaymentsExpenseAmount>
+			<bkcmecf:RecreationEntertainmentExpenseAmount>13.00</bkcmecf:RecreationEntertainmentExpenseAmount>
+			<bkcmecf:CharitableContributionsExpenseAmount>14.00</bkcmecf:CharitableContributionsExpenseAmount>
+			<bkcmecf:LifeInsuranceExpenseAmount>15.01</bkcmecf:LifeInsuranceExpenseAmount>
+			<bkcmecf:HealthInsuranceExpenseAmount>15.02</bkcmecf:HealthInsuranceExpenseAmount>
+			<bkcmecf:AutoInsuranceExpenseAmount>15.04</bkcmecf:AutoInsuranceExpenseAmount>
+			<bkcmecf:OtherInsuranceExpenseAmount>15.04</bkcmecf:OtherInsuranceExpenseAmount>
+			<bkcmecf:OtherInsuranceExpenseDescription>15 d) other Insurance specify</bkcmecf:OtherInsuranceExpenseDescription>
+			<bkcmecf:TaxesNotWithheldExpenseAmount>16.00</bkcmecf:TaxesNotWithheldExpenseAmount>
+			<bkcmecf:TaxesNotWithheldExpenseDescription>16 taxes specify</bkcmecf:TaxesNotWithheldExpenseDescription>
+			<bkcmecf:AutoInstallmentPaymentsExpenseAmount>17.10</bkcmecf:AutoInstallmentPaymentsExpenseAmount>
+			<bkcmecf:AutoInstallmentPaymentsExpenseAmount>17.20</bkcmecf:AutoInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseAmount>17.31</bkcmecf:OtherInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseAmount>17.32</bkcmecf:OtherInstallmentPaymentsExpenseAmount>
+			<bkcmecf:OtherInstallmentPaymentsExpenseDescription>17 c1 description</bkcmecf:OtherInstallmentPaymentsExpenseDescription>
+			<bkcmecf:OtherInstallmentPaymentsExpenseDescription>17 c2 description</bkcmecf:OtherInstallmentPaymentsExpenseDescription>
+			<bkcmecf:AlimonyMaintenanceSupportPaymentsExpenseAmount>18.00</bkcmecf:AlimonyMaintenanceSupportPaymentsExpenseAmount>
+			<bkcmecf:NonDomiciledDependentsSupportExpenseAmount>19.00</bkcmecf:NonDomiciledDependentsSupportExpenseAmount>
+			<bkcmecf:NonDomiciledDependentsSupportExpenseDescription>Debtor helps support his ex-wife's household.</bkcmecf:NonDomiciledDependentsSupportExpenseDescription>
+			<bkcmecf:OtherRealPropertyMortgageExpenseAmount>20.01</bkcmecf:OtherRealPropertyMortgageExpenseAmount>
+			<bkcmecf:OtherRealPropertyRealEstateTaxesExpenseAmount>20.02</bkcmecf:OtherRealPropertyRealEstateTaxesExpenseAmount>
+			<bkcmecf:OtherRealPropertyHomeownersRentersInsuranceExpenseAmount>20.03</bkcmecf:OtherRealPropertyHomeownersRentersInsuranceExpenseAmount>
+			<bkcmecf:OtherRealPropertyMaintenanceExpenseAmount>20.04</bkcmecf:OtherRealPropertyMaintenanceExpenseAmount>
+			<bkcmecf:OtherRealPropertyHomeownersAssociationExpenseAmount>20.05</bkcmecf:OtherRealPropertyHomeownersAssociationExpenseAmount>
+			<bkcmecf:OtherExpenseAmount>21.00</bkcmecf:OtherExpenseAmount>
+			<bkcmecf:OtherExpenseDescription>21 Other Description</bkcmecf:OtherExpenseDescription>
+			<bkcmecf:TotalMonthlyExpenseAmount>2200.00</bkcmecf:TotalMonthlyExpenseAmount>
+		</bkcmecf:HouseholdExpenses>
+		<bkcmecf:Debtor2MonthlyExpenseAmount>2200.00</bkcmecf:Debtor2MonthlyExpenseAmount>
+		<bkcmecf:HouseholdMonthlyExpenseAmount>4400.00</bkcmecf:HouseholdMonthlyExpenseAmount>
+		<bkcmecf:HouseholdMonthlyIncomeAmount>23.01</bkcmecf:HouseholdMonthlyIncomeAmount>
+		<bkcmecf:HouseholdMonthlyNetIncomeAmount>23.03</bkcmecf:HouseholdMonthlyNetIncomeAmount>
+		<bkcmecf:ChangeInExpensesAnticipatedIndicator>true</bkcmecf:ChangeInExpensesAnticipatedIndicator>
+		<bkcmecf:ChangeInExpensesAnticipatedDescription>24 Description - increase or decrease</bkcmecf:ChangeInExpensesAnticipatedDescription>
+	</bkcmecf:FormB106J2Supp>
+</bkcmecf:IndividualBankruptcyPetition>

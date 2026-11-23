@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "bk-rosetta": {
+      "command": "node",
+      "args": ["mcp/server.js"],
+      "env": { "FJC_DB": "data/fjc.pglite" }
+    }
+  }
+}

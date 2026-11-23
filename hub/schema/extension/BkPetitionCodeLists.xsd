@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bank="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/codes/1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:s="http://niem.gov/niem/structures/2.0" targetNamespace="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/codes/1.0">
+	<xsd:annotation>
+		<xsd:documentation>Abbreviations of categories of Bankruptcy Petitition information</xsd:documentation>
+		<xsd:appinfo>
+			<s:ConformantIndicator>true</s:ConformantIndicator>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:import namespace="http://niem.gov/niem/appinfo/2.0" schemaLocation="../appinfo/2.0/appinfo.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/structures/2.0" schemaLocation="../structures/2.0/structures.xsd"/>
+	<xsd:complexType name="BankruptcyCaseVoluntaryInvoluntaryCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Whether the debtor has initiated bankruptcy ("v") or a creditor has initiated bankruptcy ("i").</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:VoluntaryInvoluntarySimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="BankruptcyChapterType">
+		<xsd:annotation>
+			<xsd:documentation>The various chapters of US Code defining distinct legal forms of Bankruptcy.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:BankruptcyChapterSimpleType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="Chapter11PlanCodeType">
+		<xsd:annotation>
+			<xsd:documentation>In a chapter 11 case, regarding a pre-packaged plan, was a plan filed and or accepted.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:Chapter11PlanSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="Chapter15CaseCategoryCodeType">
+		<xsd:annotation>
+			<xsd:documentation>In a chapter 15 case, whether for recognition of a foreign main, nonmain or alternative proceeding.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:Chapter15CaseCategorySimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DebtorTypeCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Types of entities who can file for Bankruptcy on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:DebtorFormOrganizationSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="EstimatedAssetsCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Codes for ranges of total value of debtor assets on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:EstimatedAssetsSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="EstimatedCreditorsCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Codes for ranges of values of number of creditors on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:EstimatedCreditorsSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="EstimatedLiabilitiesCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Codes for ranges of total value of debtor liabilities on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:EstimatedLiabilitiesSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="FilingFeeStatusCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Categories of filing fee status on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:FilingFeeStatusSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="NatureOfBusinessCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Categories of businesses on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:NatureOfBusinessSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="NatureOfDebtsCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Indicator of what nature of debtors debts are on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:NatureOfDebtsSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="NatureOfSuitCodeType">
+		<xsd:annotation>
+			<xsd:documentation>An enumeration of possible natures of suit in a bankruptcy case.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:NatureOfSuitSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="NonPriorityUnsecuredClaimCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Type of NONPRIORITY unsecured claim.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:NonPriorityUnsecuredClaimSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="PriorityUnsecuredClaimCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Type of PRIORITY unsecured claim.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:PriorityUnsecuredClaimSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="PropertyIntentionCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Categories of intention of the property that secures a debt.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="bank:PropertyIntentionSimpleCodeType">
+				<xsd:attributeGroup ref="s:SimpleObjectAttributeGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="BankruptcyChapterSimpleType">
+		<xsd:annotation>
+			<xsd:documentation>The various chapters of US Code defining distinct legal forms of Bankruptcy.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:documentation>Chapter 7: Liquidation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="9">
+				<xsd:annotation>
+					<xsd:documentation>Chapter 9: Municipal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:documentation>Chapter 11: Reorganization</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:documentation>Chapter 12: Farmers and fishermen</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:documentation>Chapter 13: Rehabilitation with payment plan</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="15">
+				<xsd:annotation>
+					<xsd:documentation>Chapter 15: International</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="304">
+				<xsd:annotation>
+					<xsd:documentation>Chapter 304: Ancillary to foreign insolvency</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Chapter not set, as for a value of previous bankruptcy chapter where a case has not been converted.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Chapter11PlanSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>In a chapter 11 case, regarding a pre-packaged plan, whether:</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Y">
+				<xsd:annotation>
+					<xsd:documentation>A plan was filed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="P">
+				<xsd:annotation>
+					<xsd:documentation>A plan was accepted</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B">
+				<xsd:annotation>
+					<xsd:documentation>Both of the above</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Neither of the above</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Chapter15CaseCategorySimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>In a chapter 15 case, whether for recognition of a foreign main, nonmain or alternative proceeding .</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="m">
+				<xsd:annotation>
+					<xsd:documentation>Foreign main proceeding</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="n">
+				<xsd:annotation>
+					<xsd:documentation>Foreign nonmain proceeding</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="a">
+				<xsd:annotation>
+					<xsd:documentation>Foreign main proceeding, or in the alternative foreign nonmain proceeding</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Neither</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DebtorFormOrganizationSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Types of entities who can file for Bankruptcy on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="i">
+				<xsd:annotation>
+					<xsd:documentation>Individual</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="u">
+				<xsd:annotation>
+					<xsd:documentation>Corporation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="p">
+				<xsd:annotation>
+					<xsd:documentation>Partnership</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="n">
+				<xsd:annotation>
+					<xsd:documentation>Other</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Not known</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DebtorOwnSecurityDepositType">
+		<xsd:annotation>
+			<xsd:documentation>Security deposit account type.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Electric">
+				<xsd:annotation>
+					<xsd:documentation>Electric</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Gas">
+				<xsd:annotation>
+					<xsd:documentation>Gas</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Heating Oil">
+				<xsd:annotation>
+					<xsd:documentation>Heating Oil</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Security Deposit">
+				<xsd:annotation>
+					<xsd:documentation>Security deposit on rental unit</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Prepaid">
+				<xsd:annotation>
+					<xsd:documentation>Prepaid Rent</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Telephone">
+				<xsd:annotation>
+					<xsd:documentation>Telephone</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DebtorParentAffiliateSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Whether the corporation is a corporate affiliate ("ca") or a corporate parent ("cp").</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="ca">
+				<xsd:annotation>
+					<xsd:documentation>corporate affiliate</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="cp">
+				<xsd:annotation>
+					<xsd:documentation>corporate parent</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EstimatedAssetsSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Codes for ranges of total value of debtor assets on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>0 - $50,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B">
+				<xsd:annotation>
+					<xsd:documentation>$50,001 - $100,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>$100,000 - $500,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="D">
+				<xsd:annotation>
+					<xsd:documentation>$500,001 - $1,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="E">
+				<xsd:annotation>
+					<xsd:documentation>$1,000,001 - $10,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="F">
+				<xsd:annotation>
+					<xsd:documentation>$10,000,001 - $50,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="G">
+				<xsd:annotation>
+					<xsd:documentation>$50,000,001 - $100,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="H">
+				<xsd:annotation>
+					<xsd:documentation>$100,000,001 - $500,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="I">
+				<xsd:annotation>
+					<xsd:documentation>$500,000,001 - $1,000,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="K">
+				<xsd:annotation>
+					<xsd:documentation>$1,000,000,001 - $10,000,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="L">
+				<xsd:annotation>
+					<xsd:documentation>$10,000,000,001 - $50,000,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="M">
+				<xsd:annotation>
+					<xsd:documentation>$50,000,000,001 or more</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Not known</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EstimatedCreditorsSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Codes for ranges of values of number of creditors on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>1-50</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B">
+				<xsd:annotation>
+					<xsd:documentation>50-100</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>100-199</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="D">
+				<xsd:annotation>
+					<xsd:documentation>200-999</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="E">
+				<xsd:annotation>
+					<xsd:documentation>1000-5000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="F">
+				<xsd:annotation>
+					<xsd:documentation>5001-10000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="G">
+				<xsd:annotation>
+					<xsd:documentation>10001-25000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="H">
+				<xsd:annotation>
+					<xsd:documentation>25001-50000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="I">
+				<xsd:annotation>
+					<xsd:documentation>50001-100000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="J">
+				<xsd:annotation>
+					<xsd:documentation>More than 100000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Not known</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EstimatedLiabilitiesSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Codes for ranges of total value of debtor liabilities on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>0 - $50,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B">
+				<xsd:annotation>
+					<xsd:documentation>$50,001 - $100,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>$100,000 - $500,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="D">
+				<xsd:annotation>
+					<xsd:documentation>$500,001 - $1,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="E">
+				<xsd:annotation>
+					<xsd:documentation>$1,000,001 - $10,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="F">
+				<xsd:annotation>
+					<xsd:documentation>$10,000,001 - $50,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="G">
+				<xsd:annotation>
+					<xsd:documentation>$50,000,001 - $100,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="H">
+				<xsd:annotation>
+					<xsd:documentation>$100,000,001 - $500,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="I">
+				<xsd:annotation>
+					<xsd:documentation>$500,000,001 - $1,000,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="K">
+				<xsd:annotation>
+					<xsd:documentation>$1,000,000,001 - $10,000,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="L">
+				<xsd:annotation>
+					<xsd:documentation>$10,000,000,001 - $50,000,000,000</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="M">
+				<xsd:annotation>
+					<xsd:documentation>$50,000,000,001 or more</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Not known</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FilingFeeStatusSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Categories of filing fee status on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="i">
+				<xsd:annotation>
+					<xsd:documentation>Installment</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="p">
+				<xsd:annotation>
+					<xsd:documentation>Paid in full</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="u">
+				<xsd:annotation>
+					<xsd:documentation>Fee not paid</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="w">
+				<xsd:annotation>
+					<xsd:documentation>In forma pauperis (fee waived)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Not known</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NatureOfBusinessSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Categories of businesses on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="x">
+				<xsd:annotation>
+					<xsd:documentation>Railroad</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="h">
+				<xsd:annotation>
+					<xsd:documentation>Healthcare</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="r">
+				<xsd:annotation>
+					<xsd:documentation>Single Asset Real Estate</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="s">
+				<xsd:annotation>
+					<xsd:documentation>Stockbroker</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="c">
+				<xsd:annotation>
+					<xsd:documentation>Commodity Broker</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="b">
+				<xsd:annotation>
+					<xsd:documentation>Clearing Bank</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="o">
+				<xsd:annotation>
+					<xsd:documentation>Tax Exempt Entity</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="O">
+				<xsd:annotation>
+					<xsd:documentation>None of the above</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Not known</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NatureOfDebtsSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Codes for nature of debtors debts that are on the Bankruptcy Petition form.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="b">
+				<xsd:annotation>
+					<xsd:documentation>Business</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="c">
+				<xsd:annotation>
+					<xsd:documentation>Consumer</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="o">
+				<xsd:annotation>
+					<xsd:documentation>Other</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Not known</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NatureOfSuitSimpleCodeType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="SS">
+				<xsd:annotation>
+					<xsd:documentation>SIPA Case - 15 U.S.C. section 78aaa et.seq.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="02">
+				<xsd:annotation>
+					<xsd:documentation>Other (e.g. other actions that would have been brought in state court if unrelated to bankruptcy case)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:documentation>Recovery of money/property - section 542 turnover of property</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:documentation>Recovery of money/property - section 547 preference</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:documentation>Recovery of money/property - section 548 fraudulent transfer</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NonPriorityUnsecuredClaimSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Type of NONPRIORITY unsecured claim</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="S">
+				<xsd:annotation>
+					<xsd:documentation>Student loans</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="D">
+				<xsd:annotation>
+					<xsd:documentation>Obligations arising out of a separation agreement or divorce that you did not report as priority claims</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="P">
+				<xsd:annotation>
+					<xsd:documentation>Debts to pension or profit-sharing plans, and other similar debts</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="O">
+				<xsd:annotation>
+					<xsd:documentation>Other</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PriorityUnsecuredClaimSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Type of PRIORITY unsecured claim</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="D">
+				<xsd:annotation>
+					<xsd:documentation>Domestic support obligations</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="T">
+				<xsd:annotation>
+					<xsd:documentation>Taxes and certain other debts you owe the government</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>Claims for death or personal injury while you were intoxicated</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="O">
+				<xsd:annotation>
+					<xsd:documentation>Other</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PropertyIntentionSimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Categories of intention of the property that secures a debt.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="sp">
+				<xsd:annotation>
+					<xsd:documentation>Surrender the property</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rr">
+				<xsd:annotation>
+					<xsd:documentation>Retain the property and redeem it</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ra">
+				<xsd:annotation>
+					<xsd:documentation>Retain the property and enter into a Reaffirmation Agreement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rp">
+				<xsd:annotation>
+					<xsd:documentation>Retain the property and [explain]</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="VoluntaryInvoluntarySimpleCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Whether the debtor has initiated bankruptcy ("v") or a creditor has initiated bankruptcy ("i").</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="v">
+				<xsd:annotation>
+					<xsd:documentation>Business</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="i">
+				<xsd:annotation>
+					<xsd:documentation>Consumer</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="">
+				<xsd:annotation>
+					<xsd:documentation>Neither of the above</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

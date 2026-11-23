@@ -1,0 +1,305 @@
+{
+  "spoke": "fjc",
+  "source": "FJC Integrated Database, Bankruptcy Petition NewSTATS Snapshots (BPNS), FY2008-present",
+  "sourceUrl": "https://www.fjc.gov/research/idb/bankruptcy-cases-filed-terminated-and-pending-fy-2008-present",
+  "codebook": "https://www.fjc.gov/sites/default/files/idb/codebooks/Bankruptcy%20IDB%20Online%20Codebook%20rev%2002282023.pdf",
+  "fileFormat": "Tab-delimited text with a header row of 87 SAS short names. Text zips: textfiles/cpbank08to17.zip, textfiles/cpbank18on.zip (one row per case per fiscal-year snapshot). datasets/*.zip are SAS .sas7bdat per year.",
+  "valueNote": "Codebook lists y/n codes in lowercase; the FY2025 text file carries PRFILE as uppercase Y/N and D1FPRSE/JOINT as lowercase y/n. Compare case-insensitively (upper(col)).",
+  "note": "Variable names and definitions verified against the Feb 2023 codebook. Hub bindings are confirmed where the codebook cites the form or line; inferred where the match is by meaning.",
+  "variables": {
+    "SNAPSHOT": {
+      "hub": null,
+      "meaning": "Snapshot ending date (Sept 30 of snapshot year)",
+      "status": "confirmed"
+    },
+    "SNAPFILE": {
+      "hub": null,
+      "meaning": "1 if filed during the snapshot period",
+      "status": "confirmed"
+    },
+    "SNAPPEND": {
+      "hub": null,
+      "meaning": "1 if pending at end of snapshot period",
+      "status": "confirmed"
+    },
+    "SNAPCLOS": {
+      "hub": null,
+      "meaning": "1 if closed during the snapshot period",
+      "status": "confirmed"
+    },
+    "CASEKEY": {
+      "hub": "nc:CaseDocketID",
+      "form": "B101",
+      "meaning": "BK + circuit + district + office + docket + generation + sequence",
+      "status": "confirmed"
+    },
+    "CIRCUIT": {
+      "hub": "j:CaseCourt",
+      "form": "B101",
+      "meaning": "Federal judicial circuit code",
+      "status": "confirmed"
+    },
+    "DISTRICT": {
+      "hub": "j:CaseCourt",
+      "form": "B101",
+      "meaning": "Federal judicial district code",
+      "status": "confirmed",
+      "lookup": "table fjc_district (code, name) from codebook Appendix A; spokes/fjc/districts.json"
+    },
+    "OFFICE": {
+      "hub": "CourtDivisionalOfficeCode",
+      "form": "B101",
+      "meaning": "District office code",
+      "status": "confirmed"
+    },
+    "DOCKET": {
+      "hub": "nc:CaseDocketID",
+      "form": "B101",
+      "meaning": "Docket number",
+      "status": "confirmed"
+    },
+    "FILEDATE": {
+      "hub": null,
+      "meaning": "Filing date (docket-derived)",
+      "status": "confirmed"
+    },
+    "FILEFY": {
+      "hub": null,
+      "meaning": "Filing fiscal year",
+      "status": "confirmed"
+    },
+    "ORGFLCHP": {
+      "hub": "BankruptcyChapter",
+      "form": "B101",
+      "meaning": "Chapter on first record submitted (7, 9, 11, 12, 13, 15a/15m/15n/15x)",
+      "status": "confirmed"
+    },
+    "CRNTCHP": {
+      "hub": null,
+      "meaning": "Chapter on current record at end of snapshot; differs from ORGFLCHP after conversion",
+      "status": "confirmed"
+    },
+    "NTRDBT": {
+      "hub": "NatureOfDebtsCode",
+      "form": "B101",
+      "meaning": "b=Business c=Consumer o=Other; blank for Ch.15",
+      "status": "confirmed"
+    },
+    "JOINT": {
+      "hub": "BankruptcyDebtor2",
+      "form": "B101",
+      "meaning": "y/n joint petition by spouses",
+      "status": "confirmed"
+    },
+    "D1ZIP": {
+      "hub": "nc:LocationPostalCode",
+      "form": "B101",
+      "meaning": "Debtor 1 ZIP",
+      "status": "confirmed"
+    },
+    "D1CNTY": {
+      "hub": "USCountyCode",
+      "form": "B101",
+      "meaning": "Debtor 1 county, 5-digit FIPS; 88888 outside home state, 99999 outside U.S.",
+      "status": "confirmed"
+    },
+    "D1FPRSE": {
+      "hub": "j:Attorney",
+      "form": "B101",
+      "meaning": "y = debtor 1 pro se (no attorney) on most recent filing record; n = represented",
+      "status": "confirmed",
+      "mappingNote": "pro se = absence of j:Attorney on B101; see also PayPetitionPreparerIndicator"
+    },
+    "D2CNTY": {
+      "hub": "USCountyCode",
+      "form": "B101",
+      "meaning": "Debtor 2 county FIPS",
+      "status": "confirmed"
+    },
+    "D2FPRSE": {
+      "hub": "j:Attorney",
+      "form": "B101",
+      "meaning": "Debtor 2 pro se flag",
+      "status": "confirmed"
+    },
+    "FEESTS": {
+      "hub": "FilingFeeStatusCode",
+      "form": "B101",
+      "meaning": "c=installments completed i=paying installments p=paid in full u=not paid w=IFP waived n=missing",
+      "status": "confirmed"
+    },
+    "DBTRTYP": {
+      "hub": "DebtorTypeCode",
+      "form": "B101",
+      "meaning": "i=Individual p=Partnership u=Corporation/LLC/LLP n=Other (same codes as the hub)",
+      "status": "confirmed"
+    },
+    "NOB": {
+      "hub": "NatureOfBusinessCode",
+      "form": "B101",
+      "meaning": "Nature of business",
+      "status": "confirmed",
+      "codes": "s Stockbroker, c Commodity Broker, b Clearing Bank, x Railroad, r Single Asset Real Estate, h Health Care Business, n Non-profit Organization, o Other, blank = consumer debt",
+      "caution": "Code values diverge from the hub: in BkPetitionCodeLists.xsd o = Tax Exempt Entity and O = None of the above; in the IDB o = Other and n = Non-profit. Do not join case-insensitively. Before CM/ECF 4.1 (Jan 2011) a trailing t marked tax-exempt (e.g. ht).",
+      "codebook": "p.45"
+    },
+    "PRFILE": {
+      "hub": "PriorBankruptcyCaseIndicator",
+      "form": "B101",
+      "meaning": "y/n prior bankruptcy in previous 8 years, as reported on the petition",
+      "status": "confirmed"
+    },
+    "EASST": {
+      "hub": "EstimatedAssetsCode",
+      "form": "B101",
+      "meaning": "Estimated assets range code (A-N since 2006)",
+      "status": "confirmed"
+    },
+    "ELBLTS": {
+      "hub": "EstimatedLiabilitiesCode",
+      "form": "B101",
+      "meaning": "Estimated liabilities range code",
+      "status": "confirmed"
+    },
+    "ECRDTRS": {
+      "hub": "EstimatedCreditorsCode",
+      "form": "B101",
+      "meaning": "Estimated creditors range code A-J",
+      "status": "confirmed"
+    },
+    "SMLLBUS": {
+      "hub": "SmallBusinessIndicator",
+      "form": "B101",
+      "meaning": "Whether a Chapter 11 debtor is a small business debtor under 11 U.S.C. 101(51D), as indicated on the petition",
+      "status": "confirmed",
+      "codes": "y Yes, n No, blank missing; valid for Chapter 11 only",
+      "codebook": "p.56"
+    },
+    "TOTASSTS": {
+      "hub": "TotalPropertyValueAmount",
+      "form": "B106Sum",
+      "meaning": "Real + personal property from Summary of Schedules",
+      "status": "confirmed"
+    },
+    "REALPROP": {
+      "hub": "TotalRealPropertyValueAmount",
+      "form": "B106Sum",
+      "meaning": "Schedule A/B real property total",
+      "status": "confirmed"
+    },
+    "PERSPROP": {
+      "hub": "TotalPersonalPropertyValueAmount",
+      "form": "B106Sum",
+      "meaning": "Schedule A/B personal property total",
+      "status": "confirmed"
+    },
+    "TOTLBLTS": {
+      "hub": "TotalLiabilitiesAmount",
+      "form": "B106Sum",
+      "meaning": "Secured + priority + nonpriority, nulls as zero",
+      "status": "confirmed"
+    },
+    "SECURED": {
+      "hub": "TotalSecuredClaimAmount",
+      "form": "B106Sum",
+      "meaning": "Schedule D total",
+      "status": "confirmed"
+    },
+    "UNSECPR": {
+      "hub": "TotalPriorityUnsecuredClaimAmount",
+      "form": "B106Sum",
+      "meaning": "Schedule E/F priority total",
+      "status": "confirmed"
+    },
+    "UNSECNPR": {
+      "hub": "TotalNonPriorityUnsecuredClaimAmount",
+      "form": "B106Sum",
+      "meaning": "Schedule E/F nonpriority total",
+      "status": "confirmed"
+    },
+    "NDSCHRGD": {
+      "hub": [
+        "TotalDomesticSupportObligationAmount",
+        "TotalTaxesDebtAmount",
+        "TotalDeathClaimAmount",
+        "TotalStudentLoanAmount",
+        "TotalObligationAgreementAmount",
+        "TotalPensionDebtAmount"
+      ],
+      "form": "B106Sum",
+      "meaning": "Sum of the six 'certain liabilities' lines (28 U.S.C. 159(c))",
+      "status": "confirmed"
+    },
+    "DSCHRGD": {
+      "hub": null,
+      "form": "B106Sum",
+      "meaning": "Derived: (SECURED+UNSECPR+UNSECNPR) - NDSCHRGD, nulls propagate",
+      "status": "confirmed"
+    },
+    "TOTDBT": {
+      "hub": null,
+      "form": "B106Sum",
+      "meaning": "Derived: DSCHRGD + NDSCHRGD; may differ from TOTLBLTS on null handling",
+      "status": "confirmed"
+    },
+    "CNTMNTHI": {
+      "hub": "TotalCurrentMonthlyIncomeAmount",
+      "form": "B106Sum",
+      "meaning": "Means-test current monthly income (Form 122A-1 line 11 / 122B / 122C-1)",
+      "status": "confirmed"
+    },
+    "AVGMNTHI": {
+      "hub": "HouseholdMonthlyIncomeAmount",
+      "form": "B106Sum",
+      "meaning": "Schedule I line 12 combined monthly income",
+      "status": "confirmed"
+    },
+    "AVGMNTHE": {
+      "hub": "HouseholdMonthlyExpenseAmount",
+      "form": "B106Sum",
+      "meaning": "Schedule J line 22 monthly expenses",
+      "status": "confirmed"
+    },
+    "CLOSEDT": {
+      "hub": null,
+      "meaning": "Closing date",
+      "status": "confirmed"
+    },
+    "CLCHPT": {
+      "hub": null,
+      "meaning": "Chapter at closing",
+      "status": "confirmed"
+    },
+    "D1FDSP": {
+      "hub": null,
+      "meaning": "Debtor 1 final disposition: A standard discharge, B hardship discharge, D n/a, E denied, F waived, G revoked, H-K dismissed (fee, info, abuse, other), L/M transfers",
+      "status": "confirmed"
+    },
+    "D1CPRSE": {
+      "hub": null,
+      "meaning": "Debtor 1 pro se at closing",
+      "status": "confirmed"
+    }
+  },
+  "notCaptured": [
+    "Schedule C exemptions",
+    "Schedule A/B line items",
+    "individual creditors and claims (D, E/F)",
+    "Schedule G/H contracts and codebtors",
+    "Schedule I/J line detail",
+    "SOFA (B107) answers",
+    "means-test detail beyond CMI (B122A-2 deductions)",
+    "attorney and preparer compensation (B2030/B2800)",
+    "names, SSNs, addresses (only ZIP and county FIPS are published)"
+  ],
+  "caveats": [
+    "One record per case per fiscal-year snapshot; dedupe on CASEKEY keeping the latest SNAPSHOT before combining years.",
+    "Schedule totals are required only for individual debtors with primarily consumer debt and are debtor-reported, not validated.",
+    "Debtor-level fields (ZIP, county, pro se) were corrected in Nov 2021 for FY2008-Jun 2021; re-download anything older.",
+    "TOTLBLTS treats nulls as zero; TOTDBT treats them as missing, so the two differ.",
+    "NOB code values differ from the petition schema: hub o = Tax Exempt Entity and O = None of the above; IDB o = Other, n = Non-profit. Never compare NOB case-insensitively against the hub.",
+    "y/n flags are not consistently cased: in FY2025 PRFILE is Y/N while JOINT and D1FPRSE are y/n. Compare with lower().",
+    "The bundled data/sample file is the first 20,000 FY2025 new-filing rows of cpbank18on.txt, not a random sample. Numbers from it are illustrative; load a full year before citing anything.",
+    "DISTRICT is an FJC code (73 = California - Central, 3A = Florida - Middle); join table fjc_district for names (codebook Appendix A)."
+  ]
+}
