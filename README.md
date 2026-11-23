@@ -6,9 +6,19 @@ An MCP server that resolves any U.S. bankruptcy concept across three public sour
 
 | Spoke | Source | Example |
 | --- | --- | --- |
-| Official Form line | Official Bankruptcy Forms | B106Sum line 3, "Your total liabilities" |
-| Hub: NIEM element | Individual Bankruptcy Data Collection IEPD, the published `bkcmecf` petition schema | `bkcmecf:TotalLiabilitiesAmount`: "The sum of liabilities on the summary of schedules." |
-| Statistical variable | FJC Integrated Database, bankruptcy (FY2008–present) | `TOTLBLTS` (nulls as zero) / `TOTDBT` (nulls as missing) |
+| Official Form line | [Official Bankruptcy Forms](https://www.uscourts.gov/forms-rules/forms/bankruptcy-forms) (U.S. Courts) | B106Sum line 3, "Your total liabilities" |
+| Hub: NIEM element | [Individual Bankruptcy Data Collection IEPD](https://pacer.uscourts.gov/file-case/developer-resources), the published `bkcmecf` petition schema (PACER developer resources) | `bkcmecf:TotalLiabilitiesAmount`: "The sum of liabilities on the summary of schedules." |
+| Statistical variable | [FJC Integrated Database, bankruptcy](https://www.fjc.gov/research/idb/bankruptcy-cases-filed-terminated-and-pending-fy-2008-present) (FY2008–present) | `TOTLBLTS` (nulls as zero) / `TOTDBT` (nulls as missing) |
+
+### Where the data comes from
+
+All three sources are public. The repo bundles the IEPD (schema, business-rules workbook and sample petitions) and a 20,000-row sample of the FJC data. The Official Form PDFs themselves are not included; their fields reach the server through the IEPD workbook.
+
+| Source | Publisher | Get it | In this repo |
+| --- | --- | --- | --- |
+| **Official Bankruptcy Forms** | Administrative Office of the U.S. Courts | [uscourts.gov bankruptcy forms](https://www.uscourts.gov/forms-rules/forms/bankruptcy-forms) | Form fields come from the IEPD's business-rules workbook, which maps each form field to the schema (`spokes/forms/business-rules.json`) |
+| **NIEM petition schema (IEPD)** | Federal judiciary, NextGen CM/ECF | [PACER developer resources](https://pacer.uscourts.gov/file-case/developer-resources) → "IEPD for NextGen Bankruptcy Release 1.7" ([direct zip](https://pacer.uscourts.gov/sites/default/files/files/NGRel1.7_Individual_BK_Data_Collection_new.zip)) | `hub/schema/`, `hub/iepd/`, `hub/fixtures/` |
+| **FJC Integrated Database, bankruptcy** | Federal Judicial Center | [Dataset page](https://www.fjc.gov/research/idb/bankruptcy-cases-filed-terminated-and-pending-fy-2008-present), [codebook](https://www.fjc.gov/sites/default/files/idb/codebooks/Bankruptcy%20IDB%20Online%20Codebook%20rev%2002282023.pdf) | `data/sample/` (20,000 rows); full download: see [Getting the FJC data](#getting-the-fjc-data) |
 
 Ask in plain English. Claude resolves the term, quotes the official definition, names the form line, runs the query against real FJC data, and tells you what the data *can't* answer.
 
@@ -219,7 +229,10 @@ Everything here is public: no CM/ECF internals, no real debtor data. Write-side 
 
 ## Sources
 
-- IEPD and case upload spec: https://pacer.uscourts.gov/sites/default/files/files/Mar_2022_case_upload_spec.pdf
+- Official Bankruptcy Forms: https://www.uscourts.gov/forms-rules/forms/bankruptcy-forms
+- IEPD for NextGen Bankruptcy Release 1.7 (PACER developer resources): https://pacer.uscourts.gov/file-case/developer-resources, direct zip https://pacer.uscourts.gov/sites/default/files/files/NGRel1.7_Individual_BK_Data_Collection_new.zip
+- Bankruptcy case information file (case upload spec): https://pacer.uscourts.gov/sites/default/files/files/Mar_2022_case_upload_spec.pdf
+- NIEM: https://www.niem.gov
 - FJC IDB, bankruptcy (dataset page): https://www.fjc.gov/research/idb/bankruptcy-cases-filed-terminated-and-pending-fy-2008-present
 - FJC IDB, FY2018–present text file: https://www.fjc.gov/sites/default/files/idb/textfiles/cpbank18on.zip
 - FJC codebook (rev. 02/28/2023): https://www.fjc.gov/sites/default/files/idb/codebooks/Bankruptcy%20IDB%20Online%20Codebook%20rev%2002282023.pdf
