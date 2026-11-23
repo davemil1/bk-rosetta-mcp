@@ -6,3 +6,4 @@ data/raw/
 spokes/*/bindings.generated.json
 hub/rosetta.generated.json
 _private/
+.env

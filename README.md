@@ -25,6 +25,20 @@ npm test                                                     # 7 end-to-end test
 
 Open the folder in Claude Code: `.mcp.json` starts the server. Or add it to any MCP client as `node mcp/server.js`.
 
+### On Databricks
+
+The FJC data and the rosetta itself can live in Unity Catalog. Copy `.env.example` to `.env` and fill in your workspace host, SQL warehouse HTTP path, token, catalog and schema. Then:
+
+```
+npm run load:databricks -- data/raw/cpbank18on.txt --fy 2025 --filed-only
+```
+
+The loader streams the FJC file down to the bound columns, uploads it to a UC volume, and builds these Delta tables with `read_files`:
+- `fjc_bk` and `fjc_district`, the FJC data;
+- `hub_elements`, `form_lines` and `fjc_bindings`, the rosetta itself.
+
+Every `fjc_bk` column carries its codebook meaning, its petition element and any caution as a UC column comment, so the mapping is governed metadata and not just a file in this repo. With `BACKEND=databricks` set in `.env`, `query_fjc` runs on the SQL warehouse. The tool contract is unchanged, and PGlite stays the default so the repo runs anywhere. `--dry-run` writes the files and SQL without connecting.
+
 ## Try these
 
 1. *Which form line captures total liabilities, what does the court call it, and what share of chapter 7 filers reported under $50,000?*

@@ -8,9 +8,11 @@
     "build:rosetta": "node tools/build-rosetta.js",
     "load:fjc": "node tools/load-fjc.js",
     "mcp": "node mcp/server.js",
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "load:databricks": "node tools/load-databricks.js"
   },
   "dependencies": {
+    "@databricks/sql": "^2.4.0",
     "@electric-sql/pglite": "^0.2.0",
     "@modelcontextprotocol/sdk": "^1.0.0",
     "fast-xml-parser": "^4.4.0",
