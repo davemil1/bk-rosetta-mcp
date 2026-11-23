@@ -64,7 +64,8 @@ const tables = [
     allowed_values: r.values ?? null, business_rule: r.ruleText ?? null, rule_id: r.rule ?? null }))),
   jsonl("fjc_bindings", Object.entries(fjc.variables).flatMap(([v, b]) => [].concat(b.hub ?? [null]).map((h) => ({
     variable: v, hub_element: h ? h.replace(/^[a-z]+:/, "") : null, form: b.form ?? null, meaning: b.meaning ?? null,
-    codes: b.codes ?? null, caution: b.caution ?? null, status: b.status })))),
+    codes: b.codes ?? null, caution: b.caution ?? null, status: b.status,
+    not_on_petition: b.notOnPetition ?? null, related: b.related ?? [] })))),
   jsonl("fjc_district", Object.entries(JSON.parse(readFileSync(path("spokes/fjc/districts.json"), "utf8")).districts).map(([code, name]) => ({ code, name }))),
 ];
 
@@ -83,7 +84,7 @@ const sqlFor = (c) => [
   `COMMENT ON TABLE fjc_bindings IS 'FJC IDB variable -> petition schema element, checked against the FJC codebook (rev. 02/28/2023)'`,
   `COMMENT ON TABLE fjc_district IS 'FJC district codes (codebook Appendix A)'`,
   ...keep.map((k) => { const b = fjc.variables[k]; const h = [].concat(b.hub ?? []).join(" + ");
-    return `ALTER TABLE fjc_bk ALTER COLUMN ${k.toLowerCase()} COMMENT ${q(`${b.meaning ?? ""}${h ? ` | petition: ${h}` : ""}${b.form ? ` (${b.form})` : ""}${b.caution ? ` | CAUTION: ${b.caution}` : ""}`.slice(0, 1000))}`; }),
+    return `ALTER TABLE fjc_bk ALTER COLUMN ${k.toLowerCase()} COMMENT ${q(`${b.meaning ?? ""}${h ? ` | petition: ${h}` : ""}${b.form ? ` (${b.form})` : ""}${b.caution ? ` | CAUTION: ${b.caution}` : ""}${b.notOnPetition ? ` | not on the petition: ${b.notOnPetition}${b.related?.length ? ` Related: ${b.related.join(", ")}` : ""}` : ""}`.slice(0, 1000))}`; }),
 ];
 
 if (dryRun) {

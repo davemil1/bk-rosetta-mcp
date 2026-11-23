@@ -9,23 +9,50 @@
   "variables": {
     "SNAPSHOT": {
       "hub": null,
-      "meaning": "Snapshot ending date (Sept 30 of snapshot year)",
-      "status": "confirmed"
+      "meaning": "Snapshot ending date: Sept 30 for fiscal-year snapshots; the Sep 2026 release adds a rolling 06/30/2026 snapshot",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "FJC statistical bookkeeping, not a petition field.",
+      "aka": [
+        "snapshot",
+        "snapshot date"
+      ]
     },
     "SNAPFILE": {
       "hub": null,
       "meaning": "1 if filed during the snapshot period",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "FJC statistical bookkeeping, not a petition field.",
+      "aka": [
+        "new filing",
+        "new filings",
+        "filed in snapshot"
+      ]
     },
     "SNAPPEND": {
       "hub": null,
       "meaning": "1 if pending at end of snapshot period",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "FJC statistical bookkeeping, not a petition field.",
+      "aka": [
+        "pending cases",
+        "pending at end of snapshot",
+        "still pending"
+      ]
     },
     "SNAPCLOS": {
       "hub": null,
       "meaning": "1 if closed during the snapshot period",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "FJC statistical bookkeeping, not a petition field.",
+      "aka": [
+        "closed",
+        "closed cases",
+        "closed in snapshot"
+      ]
     },
     "CASEKEY": {
       "hub": "nc:CaseDocketID",
@@ -61,12 +88,31 @@
     "FILEDATE": {
       "hub": null,
       "meaning": "Filing date (docket-derived)",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [
+        "Debtor1SignatureDate"
+      ],
+      "notOnPetition": "Assigned by the court when the petition is docketed. The petition carries only the debtor's signature date.",
+      "aka": [
+        "filing date",
+        "date filed",
+        "petition date",
+        "file date"
+      ]
     },
     "FILEFY": {
       "hub": null,
       "meaning": "Filing fiscal year",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [
+        "Debtor1SignatureDate"
+      ],
+      "notOnPetition": "Derived by the FJC from FILEDATE (federal fiscal year, Oct-Sep).",
+      "aka": [
+        "fiscal year",
+        "filing fiscal year",
+        "filing year"
+      ]
     },
     "ORGFLCHP": {
       "hub": "BankruptcyChapter",
@@ -77,7 +123,18 @@
     "CRNTCHP": {
       "hub": null,
       "meaning": "Chapter on current record at end of snapshot; differs from ORGFLCHP after conversion",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [
+        "BankruptcyChapter"
+      ],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. The petition chapter is ORGFLCHP; CRNTCHP differs after a conversion.",
+      "aka": [
+        "current chapter",
+        "converted",
+        "conversion",
+        "chapter conversion",
+        "converted chapter"
+      ]
     },
     "NTRDBT": {
       "hub": "NatureOfDebtsCode",
@@ -234,13 +291,32 @@
       "hub": null,
       "form": "B106Sum",
       "meaning": "Derived: (SECURED+UNSECPR+UNSECNPR) - NDSCHRGD, nulls propagate",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [
+        "TotalLiabilitiesAmount",
+        "TotalSecuredClaimAmount",
+        "TotalPriorityUnsecuredClaimAmount",
+        "TotalNonPriorityUnsecuredClaimAmount"
+      ],
+      "notOnPetition": "Derived by the FJC from Summary of Schedules totals; no single petition field.",
+      "aka": [
+        "dischargeable debt",
+        "dischargeable debts",
+        "dischargeable"
+      ]
     },
     "TOTDBT": {
       "hub": null,
       "form": "B106Sum",
       "meaning": "Derived: DSCHRGD + NDSCHRGD; may differ from TOTLBLTS on null handling",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [
+        "TotalLiabilitiesAmount"
+      ],
+      "notOnPetition": "Derived by the FJC (DSCHRGD + NDSCHRGD). Unlike TOTLBLTS, blank schedules stay missing instead of becoming $0.",
+      "aka": [
+        "derived total debt"
+      ]
     },
     "CNTMNTHI": {
       "hub": "TotalCurrentMonthlyIncomeAmount",
@@ -263,22 +339,58 @@
     "CLOSEDT": {
       "hub": null,
       "meaning": "Closing date",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it.",
+      "aka": [
+        "closing date",
+        "date closed",
+        "close date",
+        "closed date"
+      ]
     },
     "CLCHPT": {
       "hub": null,
       "meaning": "Chapter at closing",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [
+        "BankruptcyChapter"
+      ],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it.",
+      "aka": [
+        "chapter at closing",
+        "closing chapter"
+      ]
     },
     "D1FDSP": {
       "hub": null,
       "meaning": "Debtor 1 final disposition: A standard discharge, B hardship discharge, D n/a, E denied, F waived, G revoked, H-K dismissed (fee, info, abuse, other), L/M transfers",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. Case outcome (discharge, dismissal, transfer).",
+      "aka": [
+        "disposition",
+        "final disposition",
+        "discharge",
+        "discharged",
+        "dismissed",
+        "dismissal",
+        "discharge denied",
+        "case outcome",
+        "outcome"
+      ]
     },
     "D1CPRSE": {
       "hub": null,
       "meaning": "Debtor 1 pro se at closing",
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [
+        "Attorney"
+      ],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. D1FPRSE is the petition-time flag.",
+      "aka": [
+        "pro se at closing"
+      ]
     }
   },
   "notCaptured": [

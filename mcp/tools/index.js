@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { readFileSync } from "node:fs";
-import { rosetta, findElement, findFormLine } from "../rosetta.js";
+import { rosetta, findElement, findFormLine, findFjcOnly, relatedFjc } from "../rosetta.js";
 import { queryFjc } from "./fjc.js";
 import { validatePetitionXml, listFixtures, FIXTURES_DIR } from "../validate.js";
 
@@ -20,11 +20,26 @@ export function view(e) {
     forms: forms.slice(0, MAX_FORM_ROWS),
     formsTruncated: forms.length > MAX_FORM_ROWS ? `${forms.length - MAX_FORM_ROWS} more form fields use this element` : undefined,
     fjc: e.bindings.fjc ?? "not captured by the FJC Integrated Database",
+    relatedFjc: relatedFjc(e.name).length ? relatedFjc(e.name) : undefined,
+  };
+}
+
+// An FJC variable with no petition element: say so, and point at the hub elements it relates to.
+function fjcOnlyView(v) {
+  const { hub } = rosetta();
+  return {
+    variable: v.variable,
+    element: null,
+    fjc: [{ variable: v.variable, hub: null, form: v.form, meaning: v.meaning, status: v.status }],
+    notOnPetition: v.notOnPetition,
+    related: (v.related ?? []).map((n) => ({ element: n, definition: hub.elements[n]?.definition ?? null })),
   };
 }
 
 export const handlers = {
   resolve: async ({ handle }) => {
+    const fjcOnly = findFjcOnly(handle);
+    if (fjcOnly) return fjcOnlyView(fjcOnly);
     const line = findFormLine(handle);
     if (line?.fields) return { query: handle, formLine: { form: line.form, line: line.line, fields: line.fields }, primary: view(line.primary) };
     const e = findElement(handle);

@@ -20,7 +20,7 @@ Requires Node 20+.
 npm install
 npm run build:rosetta                                        # walk the IEPD schema -> hub/rosetta.generated.json
 npm run load:fjc -- data/sample/cpbank_fy2025_sample.tsv     # 20,000 real FY2025 filings, bundled
-npm test                                                     # 7 end-to-end tests over MCP stdio
+npm test                                                     # 8 end-to-end tests over MCP stdio
 ```
 
 Open the folder in Claude Code: `.mcp.json` starts the server. Or add it to any MCP client as `node mcp/server.js`.

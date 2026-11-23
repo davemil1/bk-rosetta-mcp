@@ -105,6 +105,23 @@ export function findFormLine(handle) {
     primary: hub.elements[rows.find((r) => hub.elements[r.element]?.bindings.fjc)?.element ?? rows[rows.length - 1].element] };
 }
 
+// FJC variables with no petition element (snapshot flags, docket events, FJC-derived totals). Matched by
+// variable name or an exact `aka` phrase only, so they never take a plain-language match from the hub.
+export function findFjcOnly(handle) {
+  const { fjc } = rosetta();
+  const norm = (s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+  const h = handle.trim(), q = norm(h);
+  const hit = Object.entries(fjc.variables).find(([v, b]) => !b.hub && (v === h.toUpperCase() || (b.aka ?? []).some((a) => norm(a) === q)));
+  return hit ? { variable: hit[0], ...hit[1] } : null;
+}
+
+// FJC-only variables that point at a hub element through `related`.
+export function relatedFjc(element) {
+  const { fjc } = rosetta();
+  return Object.entries(fjc.variables).filter(([, b]) => !b.hub && (b.related ?? []).includes(element))
+    .map(([variable, b]) => ({ variable, meaning: b.meaning, notOnPetition: b.notOnPetition }));
+}
+
 export function findElement(handle) {
   const { hub, fjc, synonyms } = rosetta();
   const h = handle.trim();

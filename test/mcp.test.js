@@ -2,6 +2,7 @@
 // Requires `npm run build:rosetta` and `npm run load:fjc -- data/sample/cpbank_fy2025_sample.tsv` first.
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 
@@ -27,6 +28,20 @@ test("resolve works from every direction", async () => {
   assert.equal((await call("resolve", { handle: "pro se" })).element, "Attorney");
   assert.equal((await call("resolve", { handle: "filed before" })).element, "PriorBankruptcyCaseIndicator");
   assert.equal((await call("resolve", { handle: "B101 Q9" })).primary.element, "PriorBankruptcyCaseIndicator");
+});
+
+test("resolve answers every FJC variable, including ones with no petition element", async () => {
+  const { variables } = JSON.parse(readFileSync("spokes/fjc/bindings.json", "utf8"));
+  for (const v of Object.keys(variables)) {
+    const r = await call("resolve", { handle: v });
+    assert.ok(r.fjc?.some?.((x) => x.variable === v), `${v}: ${r.error ?? r.element}`);
+  }
+  const t = await call("resolve", { handle: "TOTDBT" });
+  assert.equal(t.element, null);
+  assert.deepEqual(t.related.map((x) => x.element), ["TotalLiabilitiesAmount"]);
+  assert.equal((await call("resolve", { handle: "filing date" })).variable, "FILEDATE");
+  assert.equal((await call("resolve", { handle: "discharge" })).variable, "D1FDSP");
+  assert.ok((await call("resolve", { handle: "total liabilities" })).relatedFjc.some((x) => x.variable === "TOTDBT"));
 });
 
 test("list_codes joins hub and FJC coding", async () => {
