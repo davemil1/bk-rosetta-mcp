@@ -13,6 +13,16 @@ export const path = (p) => resolvePath(ROOT, p);
 const read = (p) => JSON.parse(readFileSync(path(p), "utf8"));
 const strip = (n) => (n ?? "").replace(/^[a-z]+:/, "");
 
+// The documentation of a NIEM element, from the core and Justice schemas the IEPD imports.
+function niemDefinition(name) {
+  for (const [prefix, file] of [["nc", "hub/schema/niem-core/2.0/niem-core.xsd"], ["j", "hub/schema/jxdm/4.0/jxdm.xsd"]]) {
+    const xsd = readFileSync(path(file), "utf8");
+    const m = xsd.match(new RegExp(`<xsd:element name="${name}"[\\s\\S]*?<xsd:documentation>([\\s\\S]*?)</xsd:documentation>`));
+    if (m) return { prefix, definition: m[1].replace(/\s+/g, " ").trim() };
+  }
+  return null;
+}
+
 let cache;
 export function rosetta() {
   if (cache) return cache;
@@ -29,6 +39,18 @@ export function rosetta() {
       name: r.element, type: r.datatype ?? null, namespace: r.prefix, definition: r.definition ?? null,
       forms: [], codeList: null, lineCitation: null, bindings: { forms: null, fjc: null, experian: null },
       note: `NIEM ${r.prefix === "j" ? "Justice (jxdm 4.0)" : "Core 2.0"} element reused by the petition`,
+    };
+  }
+
+  // NIEM elements that an FJC binding cites as related but no form question uses (nc:DocumentFiledDate,
+  // nc:ApplicationName, ...): give them a hub row with their official NIEM definition, read from the imported XSDs.
+  for (const name of new Set(Object.values(fjc.variables).flatMap((b) => b.related ?? []))) {
+    if (hub.elements[name]) continue;
+    const found = niemDefinition(name);
+    hub.elements[name] = {
+      name, type: null, namespace: found?.prefix ?? null, definition: found?.definition ?? null,
+      forms: [], codeList: null, lineCitation: null, bindings: { forms: null, fjc: null, experian: null },
+      note: `NIEM ${found?.prefix === "j" ? "Justice (jxdm 4.0)" : "Core 2.0"} element the petition schema can carry; no Official Form question uses it`,
     };
   }
 

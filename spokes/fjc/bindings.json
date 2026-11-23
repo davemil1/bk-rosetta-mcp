@@ -63,8 +63,23 @@
     "CIRCUIT": {
       "hub": "j:CaseCourt",
       "form": "B101",
-      "meaning": "Federal judicial circuit code",
-      "status": "inferred"
+      "meaning": "Federal judicial circuit code: 00 = D.C. Circuit, 01-11 = First to Eleventh Circuits",
+      "status": "inferred",
+      "codeValues": {
+        "00": "D.C. Circuit (only District of Columbia, district 90; not to be confused with district code 00 = Maine)",
+        "01": "First Circuit",
+        "02": "Second Circuit",
+        "03": "Third Circuit",
+        "04": "Fourth Circuit",
+        "05": "Fifth Circuit",
+        "06": "Sixth Circuit",
+        "07": "Seventh Circuit",
+        "08": "Eighth Circuit",
+        "09": "Ninth Circuit",
+        "10": "Tenth Circuit",
+        "11": "Eleventh Circuit"
+      },
+      "codeSource": "Appendix A; 00 confirmed in data"
     },
     "DISTRICT": {
       "hub": "j:CaseCourt",
@@ -91,6 +106,7 @@
       "meaning": "Filing date (docket-derived)",
       "status": "confirmed",
       "related": [
+        "DocumentFiledDate",
         "Debtor1SignatureDate"
       ],
       "notOnPetition": "Assigned by the court when the petition is docketed. The petition carries only the debtor's signature date.",
@@ -119,14 +135,31 @@
       "hub": "BankruptcyChapter",
       "form": "B101",
       "meaning": "Chapter on first record submitted (7, 9, 11, 12, 13, 15a/15m/15n/15x)",
-      "status": "confirmed"
+      "status": "confirmed",
+      "codeValues": {
+        "7": "Chapter 7",
+        "9": "Chapter 9",
+        "11": "Chapter 11",
+        "12": "Chapter 12",
+        "13": "Chapter 13",
+        "15a": "Chapter 15 ancillary",
+        "15m": "Chapter 15 main",
+        "15n": "Chapter 15 nonmain",
+        "15x": "Chapter 15 other",
+        "304": "Section 304"
+      },
+      "codeSource": "p.32"
     },
     "ORGFLSUBCHP": {
       "hub": "Subchapter",
       "form": "B101",
       "meaning": "Chapter 11 subchapter V small business reorganization case, as represented on the first record submitted (codebook p.34): V = Subchapter V, blank = missing. Valid as of the 12/31/2022 snapshot.",
       "status": "confirmed",
-      "codebook": "p.34"
+      "codebook": "p.34",
+      "codeValues": {
+        "V": "Subchapter V"
+      },
+      "codeSource": "p.34"
     },
     "CRNTCHP": {
       "hub": null,
@@ -142,26 +175,56 @@
         "conversion",
         "chapter conversion",
         "converted chapter"
-      ]
+      ],
+      "codeValues": {
+        "7": "Chapter 7",
+        "9": "Chapter 9",
+        "11": "Chapter 11",
+        "12": "Chapter 12",
+        "13": "Chapter 13",
+        "15a": "Chapter 15 ancillary",
+        "15m": "Chapter 15 main",
+        "15n": "Chapter 15 nonmain",
+        "15x": "Chapter 15 other",
+        "304": "Section 304"
+      },
+      "codeSource": "p.34"
     },
     "ORGNTRDBT": {
       "hub": "NatureOfDebtsCode",
       "form": "B101",
       "meaning": "Nature of debt as reported on the first record submitted to the AOUSC (codebook p.36): b=Business c=Consumer o=Other; blank for Ch.15",
       "status": "confirmed",
-      "codebook": "p.36"
+      "codebook": "p.36",
+      "codeValues": {
+        "b": "Business",
+        "c": "Consumer",
+        "o": "Other"
+      },
+      "codeSource": "p.36"
     },
     "NTRDBT": {
       "hub": "NatureOfDebtsCode",
       "form": "B101",
       "meaning": "b=Business c=Consumer o=Other; blank for Ch.15 (most current record as of the end of the snapshot period; ORGNTRDBT is the as-filed value, and the two differ in under 1% of FY2025 filings)",
-      "status": "confirmed"
+      "status": "confirmed",
+      "codeValues": {
+        "b": "Business",
+        "c": "Consumer",
+        "o": "Other"
+      },
+      "codeSource": "p.36"
     },
     "JOINT": {
       "hub": "BankruptcyDebtor2",
       "form": "B101",
       "meaning": "y/n joint petition by spouses",
-      "status": "inferred"
+      "status": "inferred",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "codebook; compare with lower(): casing varies"
     },
     "D1ZIP": {
       "hub": "nc:LocationPostalCode",
@@ -181,14 +244,24 @@
       "meaning": "Debtor 1 pro se flag as reported on the first record submitted to the AOUSC (codebook p.39): y = pro se, n = represented",
       "status": "inferred",
       "mappingNote": "pro se = absence of j:Attorney on B101",
-      "codebook": "p.39"
+      "codebook": "p.39",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "codebook; compare with lower(): casing varies"
     },
     "D1FPRSE": {
       "hub": "j:Attorney",
       "form": "B101",
       "meaning": "y = debtor 1 pro se (no attorney) on most recent filing record; n = represented (most current record as of the end of the snapshot period; ORGD1FPRSE is the as-filed value, and the two differ in under 1% of FY2025 filings)",
       "status": "inferred",
-      "mappingNote": "pro se = absence of j:Attorney on B101; see also PayPetitionPreparerIndicator"
+      "mappingNote": "pro se = absence of j:Attorney on B101; see also PayPetitionPreparerIndicator",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "codebook; compare with lower(): casing varies"
     },
     "D2ZIP": {
       "hub": "nc:LocationPostalCode",
@@ -207,7 +280,12 @@
       "hub": "j:Attorney",
       "form": "B101",
       "meaning": "Debtor 2 pro se flag",
-      "status": "inferred"
+      "status": "inferred",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "codebook; compare with lower(): casing varies"
     },
     "ORGFEESTS": {
       "hub": "FilingFeeStatusCode",
@@ -215,7 +293,16 @@
       "meaning": "Filing fee status as reported on the first record submitted to the AOUSC (codebook p.43): c=installments completed i=paying installments n=missing p=paid in full at filing u=not paid w=IFP waived; blank = unknown",
       "status": "confirmed",
       "codebook": "p.43",
-      "caution": "FJC code c (installments completed) has no hub equivalent; the hub list is i, p, u, w."
+      "caution": "FJC code c (installments completed) has no hub equivalent; the hub list is i, p, u, w.",
+      "codeValues": {
+        "c": "Installments completed",
+        "i": "Paying in installments",
+        "n": "Missing",
+        "p": "Paid in full at the time of filing",
+        "u": "Filing fee not paid",
+        "w": "IFP, filing fee waived"
+      },
+      "codeSource": "p.43"
     },
     "FEESTS": {
       "hub": null,
@@ -229,20 +316,43 @@
       "notOnPetition": "Current-record status, not the petition's answer. It differs from ORGFEESTS (as filed) in 48.0% of FY2025 filings and is blank for 173,709 cases that ORGFEESTS records as paid in full. Use ORGFEESTS.",
       "aka": [
         "current fee status"
-      ]
+      ],
+      "codeValues": {
+        "c": "Installments completed",
+        "i": "Paying in installments",
+        "n": "Missing",
+        "p": "Paid in full at the time of filing",
+        "u": "Filing fee not paid",
+        "w": "IFP, filing fee waived"
+      },
+      "codeSource": "p.43"
     },
     "ORGDBTRTYP": {
       "hub": "DebtorTypeCode",
       "form": "B101",
       "meaning": "Debtor type as reported on the first record submitted to the AOUSC (codebook p.43-44): i=Individual p=Partnership u=Corporation/LLC/LLP n=Other",
       "status": "confirmed",
-      "codebook": "p.43"
+      "codebook": "p.43",
+      "codeValues": {
+        "i": "Individual",
+        "p": "Partnership",
+        "u": "Corporation, publicly/closely held; LLP, LLC",
+        "n": "Other"
+      },
+      "codeSource": "p.44"
     },
     "DBTRTYP": {
       "hub": "DebtorTypeCode",
       "form": "B101",
       "meaning": "i=Individual p=Partnership u=Corporation/LLC/LLP n=Other (same codes as the hub) (most current record as of the end of the snapshot period; ORGDBTRTYP is the as-filed value, and the two differ in under 1% of FY2025 filings)",
-      "status": "confirmed"
+      "status": "confirmed",
+      "codeValues": {
+        "i": "Individual",
+        "p": "Partnership",
+        "u": "Corporation, publicly/closely held; LLP, LLC",
+        "n": "Other"
+      },
+      "codeSource": "p.44"
     },
     "NOB": {
       "hub": "NatureOfBusinessCode",
@@ -251,7 +361,18 @@
       "status": "confirmed",
       "codes": "s Stockbroker, c Commodity Broker, b Clearing Bank, x Railroad, r Single Asset Real Estate, h Health Care Business, n Non-profit Organization, o Other, blank = consumer debt",
       "caution": "The codebook (p.46) says n = Non-profit Organization, o = Other, blank = Consumer Debt, but FY2025 data does not follow it: 62,104 cases carry n, 40,713 of them consumer cases and 61,881 with TAXEXEMPT = N, and no case carries o. In practice n behaves like the petition's 'None of the above' (hub code O). Use TAXEXEMPT for non-profit status. The hub codes also differ (o = Tax Exempt Entity, O = None of the above), so never compare case-insensitively. Before CM/ECF 4.1 (Jan 2011) a trailing t marked tax-exempt (e.g. ht).",
-      "codebook": "p.45-46"
+      "codebook": "p.45-46",
+      "codeValues": {
+        "s": "Stockbroker",
+        "c": "Commodity Broker",
+        "b": "Clearing Bank",
+        "x": "Railroad",
+        "r": "Single Asset Real Estate",
+        "h": "Health Care Business",
+        "n": "Non-profit Organization per the codebook; in FY2025 data it behaves like 'None of the above' (see caution)",
+        "o": "Other"
+      },
+      "codeSource": "p.46"
     },
     "TAXEXEMPT": {
       "hub": "BusinessTaxExemptIndicator",
@@ -259,52 +380,194 @@
       "meaning": "Whether a business is a tax-exempt (non-profit) organization (codebook p.72): n = No, y = Yes. Collected since CM/ECF 4.1 (January 2011); previously carried in NATURE OF BUSINESS.",
       "status": "inferred",
       "codebook": "p.72",
-      "caution": "FY2025 values are uppercase Y/N; compare with lower(). No Official Form field in this IEPD uses BusinessTaxExemptIndicator (tax-exempt status is asked on the non-individual petition, B201)."
+      "caution": "FY2025 values are uppercase Y/N; compare with lower(). No Official Form field in this IEPD uses BusinessTaxExemptIndicator (tax-exempt status is asked on the non-individual petition, B201).",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "codebook; compare with lower(): casing varies"
     },
     "PRFILE": {
       "hub": "PriorBankruptcyCaseIndicator",
       "form": "B101",
       "meaning": "y/n prior bankruptcy in previous 8 years, as reported on the petition",
-      "status": "confirmed"
+      "status": "confirmed",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "codebook; compare with lower(): casing varies"
     },
     "ORGEASST": {
       "hub": "EstimatedAssetsCode",
       "form": "B101",
       "meaning": "Estimated assets range code as reported on the first record submitted to the AOUSC (codebook p.47)",
       "status": "confirmed",
-      "codebook": "p.47"
+      "codebook": "p.47",
+      "codeValues": {
+        "A": "$0 - $50,000",
+        "B": "$50,001 - $100,000",
+        "C": "$100,001 - $500,000",
+        "D": "$500,001 - $1 million",
+        "E": "$1,000,001 - $10 million",
+        "F": "$10,000,001 - $50 million",
+        "G": "$50,000,001 - $100 million",
+        "H": "$100,000,001 - $500 million",
+        "I": "$500,000,001 - $1 billion",
+        "K": "$1,000,000,001 - $10 billion",
+        "L": "$10,000,000,001 - $50 billion",
+        "M": "More than $50 billion",
+        "1": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "2": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "3": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "4": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "5": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "6": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "7": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "8": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate."
+      },
+      "codeSource": "p.47-50"
     },
     "EASST": {
       "hub": "EstimatedAssetsCode",
       "form": "B101",
       "meaning": "Estimated assets range code (letters A-M; FY2025 also has 52 cases with undocumented digit codes 1-8) (most current record as of the end of the snapshot period; ORGEASST is the as-filed value, and the two differ in under 1% of FY2025 filings)",
-      "status": "confirmed"
+      "status": "confirmed",
+      "codeValues": {
+        "A": "$0 - $50,000",
+        "B": "$50,001 - $100,000",
+        "C": "$100,001 - $500,000",
+        "D": "$500,001 - $1 million",
+        "E": "$1,000,001 - $10 million",
+        "F": "$10,000,001 - $50 million",
+        "G": "$50,000,001 - $100 million",
+        "H": "$100,000,001 - $500 million",
+        "I": "$500,000,001 - $1 billion",
+        "K": "$1,000,000,001 - $10 billion",
+        "L": "$10,000,000,001 - $50 billion",
+        "M": "More than $50 billion",
+        "1": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "2": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "3": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "4": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "5": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "6": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "7": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate.",
+        "8": "Numeric range code used before October 17, 2006 (codebook p.48-50); 52 FY2025 filings carry one. Older numeric codes were in thousands of dollars and changed meaning over time, so treat as approximate."
+      },
+      "codeSource": "p.47-50"
     },
     "ORGELBLTS": {
       "hub": "EstimatedLiabilitiesCode",
       "form": "B101",
       "meaning": "Estimated liabilities range code as reported on the first record submitted to the AOUSC (codebook p.51)",
       "status": "confirmed",
-      "codebook": "p.51"
+      "codebook": "p.51",
+      "codeValues": {
+        "A": "$0 - $50,000",
+        "B": "$50,001 - $100,000",
+        "C": "$100,001 - $500,000",
+        "D": "$500,001 - $1 million",
+        "E": "$1,000,001 - $10 million",
+        "F": "$10,000,001 - $50 million",
+        "G": "$50,000,001 - $100 million",
+        "H": "$100,000,001 - $500 million",
+        "I": "$500,000,001 - $1 billion",
+        "K": "$1,000,000,001 - $10 billion",
+        "L": "$10,000,000,001 - $50 billion",
+        "M": "More than $50 billion",
+        "1": "$0 to $50,000 (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "2": "$50,001 to $100,000 (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "3": "$100,001 to $500,000 (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "4": "$500,001 to $1 million (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "5": "$1,000,001 to $10 million (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "6": "$10,000,001 to $50 million (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "7": "$50,000,001 to $100 million (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "8": "More than $100 million (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "J": "More than $1 billion - not valid for cases filed after 11/30/2015 (codebook p.52); 1 FY2025 filing still carries it"
+      },
+      "codeSource": "p.51-53"
     },
     "ELBLTS": {
       "hub": "EstimatedLiabilitiesCode",
       "form": "B101",
       "meaning": "Estimated liabilities range code (most current record as of the end of the snapshot period; ORGELBLTS is the as-filed value, and the two differ in under 1% of FY2025 filings)",
-      "status": "confirmed"
+      "status": "confirmed",
+      "codeValues": {
+        "A": "$0 - $50,000",
+        "B": "$50,001 - $100,000",
+        "C": "$100,001 - $500,000",
+        "D": "$500,001 - $1 million",
+        "E": "$1,000,001 - $10 million",
+        "F": "$10,000,001 - $50 million",
+        "G": "$50,000,001 - $100 million",
+        "H": "$100,000,001 - $500 million",
+        "I": "$500,000,001 - $1 billion",
+        "K": "$1,000,000,001 - $10 billion",
+        "L": "$10,000,000,001 - $50 billion",
+        "M": "More than $50 billion",
+        "1": "$0 to $50,000 (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "2": "$50,001 to $100,000 (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "3": "$100,001 to $500,000 (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "4": "$500,001 to $1 million (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "5": "$1,000,001 to $10 million (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "6": "$10,000,001 to $50 million (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "7": "$50,000,001 to $100 million (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "8": "More than $100 million (numeric code used before October 17, 2006, codebook p.53; FY2025 has 52 such filings)",
+        "J": "More than $1 billion - not valid for cases filed after 11/30/2015 (codebook p.52); 1 FY2025 filing still carries it"
+      },
+      "codeSource": "p.51-53"
     },
     "ORGECRDTRS": {
       "hub": "EstimatedCreditorsCode",
       "form": "B101",
       "meaning": "Estimated creditors range code as reported on the first record submitted to the AOUSC (codebook p.54)",
       "status": "confirmed",
-      "codebook": "p.54"
+      "codebook": "p.54",
+      "codeValues": {
+        "A": "1-49",
+        "B": "50-99",
+        "C": "100-199",
+        "D": "200-999",
+        "E": "1,000-5,000",
+        "F": "5,001-10,000",
+        "G": "10,001-25,000",
+        "H": "25,001-50,000",
+        "I": "50,001-100,000",
+        "J": "More than 100,000",
+        "1": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges.",
+        "2": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges.",
+        "3": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges.",
+        "4": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges.",
+        "5": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges.",
+        "6": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges."
+      },
+      "codeSource": "p.54-55"
     },
     "ECRDTRS": {
       "hub": "EstimatedCreditorsCode",
       "form": "B101",
       "meaning": "Estimated creditors range code A-J (most current record as of the end of the snapshot period; ORGECRDTRS is the as-filed value, and the two differ in under 1% of FY2025 filings)",
-      "status": "confirmed"
+      "status": "confirmed",
+      "codeValues": {
+        "A": "1-49",
+        "B": "50-99",
+        "C": "100-199",
+        "D": "200-999",
+        "E": "1,000-5,000",
+        "F": "5,001-10,000",
+        "G": "10,001-25,000",
+        "H": "25,001-50,000",
+        "I": "50,001-100,000",
+        "J": "More than 100,000",
+        "1": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges.",
+        "2": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges.",
+        "3": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges.",
+        "4": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges.",
+        "5": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges.",
+        "6": "Numeric range code used before October 17, 2006 (codebook p.54-55); 46 FY2025 filings carry one. Not comparable with the letter ranges."
+      },
+      "codeSource": "p.54-55"
     },
     "SMLLBUS": {
       "hub": "SmallBusinessIndicator",
@@ -312,7 +575,12 @@
       "meaning": "Whether a Chapter 11 debtor is a small business debtor under 11 U.S.C. 101(51D), as indicated on the petition",
       "status": "confirmed",
       "codes": "y Yes, n No, blank missing; valid for Chapter 11 only",
-      "codebook": "p.56"
+      "codebook": "p.56",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "codebook; compare with lower(): casing varies"
     },
     "TOTASSTS": {
       "hub": "TotalPropertyValueAmount",
@@ -442,11 +710,24 @@
       "aka": [
         "chapter at closing",
         "closing chapter"
-      ]
+      ],
+      "codeValues": {
+        "7": "Chapter 7",
+        "9": "Chapter 9",
+        "11": "Chapter 11",
+        "12": "Chapter 12",
+        "13": "Chapter 13",
+        "15a": "Chapter 15 ancillary",
+        "15m": "Chapter 15 main",
+        "15n": "Chapter 15 nonmain",
+        "15x": "Chapter 15 other",
+        "304": "Section 304"
+      },
+      "codeSource": "p.67"
     },
     "D1FDSP": {
       "hub": null,
-      "meaning": "Debtor 1 final disposition: A standard discharge, B hardship discharge, D n/a, E denied, F waived, G revoked, H-K dismissed (fee, info, abuse, other), L/M transfers",
+      "meaning": "Debtor 1 final disposition: the manner in which the case was disposed of for the first-listed debtor (codebook p.68). Discharge A-G, dismissal H-K/T/U, transfer L/M, discharge withheld N/O/P/S, R homestead/felony, X filed in error, Y split, Z closed in error",
       "status": "confirmed",
       "related": [],
       "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. Case outcome (discharge, dismissal, transfer).",
@@ -460,7 +741,32 @@
         "discharge denied",
         "case outcome",
         "outcome"
-      ]
+      ],
+      "codeValues": {
+        "A": "Standard Discharge",
+        "B": "Hardship Discharge",
+        "D": "Discharge Not Applicable",
+        "E": "Discharge Denied",
+        "F": "Discharge Waived",
+        "G": "Discharge Revoked",
+        "H": "Dismissed for Failure to Pay Filing Fee",
+        "I": "Dismissed for Failure to File Information",
+        "J": "Dismissed for Abuse",
+        "K": "Dismissed for Other Reason",
+        "L": "Inter-District Transfer",
+        "M": "Intra-District Transfer",
+        "N": "Discharge Withheld for Failure to Submit Certification of Financial Management Course and Pay Domestic Support Obligation",
+        "O": "Discharge Withheld for Failure to Submit Certification of Financial Management Course (the codebook prints this code as zero, '0'; the data uses the letter O)",
+        "P": "Discharge Withheld for Failure to Comply with Domestic Support Obligation",
+        "R": "Homestead Exemption/Felony Conviction",
+        "S": "Discharge Withheld for Other Reasons",
+        "T": "Dismissed for Failure to Make Plan Payments",
+        "U": "Dismissed for Failure to Pay Filing Fee and to File Information",
+        "X": "Filed in Error",
+        "Y": "Split or Deconsolidated",
+        "Z": "Closed in Error"
+      },
+      "codeSource": "p.68-69"
     },
     "D1CPRSE": {
       "hub": null,
@@ -472,7 +778,405 @@
       "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. D1FPRSE is the petition-time flag.",
       "aka": [
         "pro se at closing"
+      ],
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "codebook; compare with lower(): casing varies"
+    },
+    "ORGASSTCASE": {
+      "hub": "FundsAvailableIndicator",
+      "form": "B101",
+      "meaning": "Asset case as reported on the first record submitted to the AOUSC (codebook p.56): whether there will be funds available for distribution to unsecured creditors, after any exempt property is excluded and administrative expenses paid",
+      "status": "inferred",
+      "mappingNote": "Same question as B101 line 17 (FundsAvailableIndicator: true = yes). The FJC adds u = unknown.",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No",
+        "u": "Unknown"
+      },
+      "codeSource": "p.56",
+      "codebook": "p.56"
+    },
+    "ORGD2FPRSE": {
+      "hub": "j:Attorney",
+      "form": "B101",
+      "meaning": "Debtor 2 pro se flag as reported on the first record submitted to the AOUSC (codebook p.41): y = pro se, n = not pro se",
+      "status": "inferred",
+      "mappingNote": "pro se = no attorney signature for Debtor 2 on B101; only meaningful for joint petitions",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "p.41-42",
+      "codebook": "p.41"
+    },
+    "CASETYP": {
+      "hub": "BankruptcyCaseVoluntaryInvoluntaryCode",
+      "meaning": "Type case (codebook p.43): distinguishes voluntary from involuntary petitions, as indicated on the petition. i = Involuntary, v = Voluntary",
+      "status": "inferred",
+      "mappingNote": "Derivable from which form the petition uses: FormB101 = voluntary, FormB105 = involuntary. The schema declares BankruptcyCaseVoluntaryInvoluntaryCode with the same codes, but no petition type uses it, and its code list mislabels them (v = Business, i = Consumer, copied from nature of debts); its documentation reads correctly.",
+      "codeValues": {
+        "v": "Voluntary",
+        "i": "Involuntary",
+        "0": "Section 304 proceeding (pre-NewSTATS legacy code, codebook p.43)"
+      },
+      "codeSource": "p.43",
+      "codebook": "p.43"
+    },
+    "PREPACK": {
+      "hub": "Chapter11PlanCode",
+      "meaning": "Prepackaged case, chapter 11 only (codebook p.57): whether the petition indicated a plan was being filed with the petition and whether acceptance of a plan was solicited prepetition",
+      "status": "inferred",
+      "mappingNote": "Same codes as the schema's Chapter11PlanCode (Y plan filed, P accepted, B both), but that element is declared and never used in any petition type, so an individual petition can't carry it. The question is asked on the non-individual petition (B201).",
+      "codeValues": {
+        "P": "Acceptance of the plan was solicited prepetition",
+        "Y": "Plan was filed with petition",
+        "B": "Both P and Y",
+        "N": "Neither P nor Y"
+      },
+      "codeSource": "p.57",
+      "codebook": "p.57"
+    },
+    "ASSTCASE": {
+      "hub": null,
+      "form": "B101",
+      "meaning": "Asset case on the most current record as of the end of the snapshot period (codebook p.56)",
+      "status": "confirmed",
+      "related": [
+        "FundsAvailableIndicator"
+      ],
+      "notOnPetition": "Current-record status; the petition's answer (B101 line 17) is ORGASSTCASE.",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No",
+        "u": "Unknown"
+      },
+      "codeSource": "p.56"
+    },
+    "CRNTFLSUBCHP": {
+      "hub": null,
+      "meaning": "Subchapter V on the current filing record as of the end of the snapshot period (codebook p.36)",
+      "status": "confirmed",
+      "related": [
+        "Subchapter"
+      ],
+      "notOnPetition": "Current record; the petition's answer is ORGFLSUBCHP.",
+      "codeValues": {
+        "V": "Subchapter V"
+      },
+      "codeSource": "p.36"
+    },
+    "CLSUBCHPT": {
+      "hub": null,
+      "meaning": "Closing subchapter V (codebook p.67); may differ from the original subchapter after a conversion",
+      "status": "confirmed",
+      "related": [
+        "Subchapter"
+      ],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it.",
+      "codeValues": {
+        "V": "Subchapter V"
+      },
+      "codeSource": "p.67"
+    },
+    "ORGFLDT": {
+      "hub": null,
+      "meaning": "Original filing date (codebook p.31): for cases split, transferred or reopened, the date on which the first instance of the case was filed",
+      "status": "confirmed",
+      "related": [
+        "DocumentFiledDate",
+        "Debtor1SignatureDate"
+      ],
+      "notOnPetition": "Court-assigned on docketing. Each form inherits NIEM's nc:DocumentFiledDate slot, but filers don't populate it; the petition's own dates are signature dates and the document creation date.",
+      "aka": [
+        "original filing date"
       ]
+    },
+    "FILECY": {
+      "hub": null,
+      "meaning": "Filing calendar year (codebook p.31), from FILING DATE rather than ORIGINAL FILING DATE",
+      "status": "confirmed",
+      "related": [
+        "DocumentFiledDate",
+        "Debtor1SignatureDate"
+      ],
+      "notOnPetition": "Derived by the FJC from FILEDATE.",
+      "aka": [
+        "filing calendar year"
+      ]
+    },
+    "D1CHGDT": {
+      "hub": null,
+      "meaning": "Debtor 1 date of the most recent change to pro se status (codebook p.40); no history is kept",
+      "status": "confirmed",
+      "related": [
+        "Attorney"
+      ],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it."
+    },
+    "D2CHGDT": {
+      "hub": null,
+      "meaning": "Debtor 2 date of the most recent change to pro se status (codebook p.42-43); no history is kept",
+      "status": "confirmed",
+      "related": [
+        "Attorney"
+      ],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it."
+    },
+    "D2CPRSE": {
+      "hub": null,
+      "meaning": "Debtor 2 pro se at case closing (codebook p.70)",
+      "status": "confirmed",
+      "related": [
+        "Attorney"
+      ],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. ORGD2FPRSE is the petition-time flag.",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "p.70"
+    },
+    "GEN": {
+      "hub": null,
+      "meaning": "Generation (codebook p.29-30): whether the case is an original or reopened case; character 15 of CASEKEY",
+      "status": "confirmed",
+      "related": [
+        "CaseDocketID"
+      ],
+      "notOnPetition": "Reopening is a docket event. Part of the case key, with SEQ.",
+      "aka": [
+        "reopened",
+        "reopened case"
+      ],
+      "codeValues": {
+        "0": "Original",
+        "r": "Reopen",
+        "-8": "Missing"
+      },
+      "codeSource": "p.29-30"
+    },
+    "SEQ": {
+      "hub": null,
+      "meaning": "Sequence (codebook p.30): original filing or the first or subsequent reopening; character 16 of CASEKEY",
+      "status": "confirmed",
+      "related": [
+        "CaseDocketID"
+      ],
+      "notOnPetition": "Reopening is a docket event. Part of the case key, with GEN.",
+      "codeValues": {
+        "0": "Original",
+        "1": "Reopening 1",
+        "2": "Reopening 2",
+        "3": "Reopening 3",
+        "4": "Reopening 4",
+        "5": "Reopening 5",
+        "6": "Reopening 6",
+        "7": "Reopening 7",
+        "8": "Reopening 8",
+        "9": "Reopening 9"
+      },
+      "codeSource": "p.30"
+    },
+    "ORIGIN": {
+      "hub": null,
+      "meaning": "Origin (codebook p.30): whether the case originated from an inter- or intra-district transfer or by being split or deconsolidated from another case",
+      "status": "confirmed",
+      "related": [
+        "CaseDocketID"
+      ],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it.",
+      "aka": [
+        "transferred case",
+        "case transfer"
+      ],
+      "codeValues": {
+        "i": "Intra-district transfer",
+        "s": "Split or deconsolidation",
+        "t": "Inter-district transfer",
+        "n": "Not applicable"
+      },
+      "codeSource": "p.30"
+    },
+    "SRCCASE": {
+      "hub": null,
+      "meaning": "Source case number (codebook p.63-64): for a transferred or split case, the case it came from (15 characters: circuit, district, office, docket YYNNNNN, generation, sequence, origin)",
+      "status": "confirmed",
+      "related": [
+        "CaseDocketID"
+      ],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it."
+    },
+    "DSTNCASE": {
+      "hub": null,
+      "meaning": "Destination case number (codebook p.64): on the transferor's record, the case in the transferee office or district; on a split case's original record, the case split off",
+      "status": "confirmed",
+      "related": [
+        "CaseDocketID"
+      ],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it."
+    },
+    "CNSLLEAD": {
+      "hub": null,
+      "meaning": "Consolidated lead case number (codebook p.65): for a substantively consolidated case, the lead case; blank on the lead case itself",
+      "status": "confirmed",
+      "related": [
+        "PendingBankruptcyCase",
+        "PendingAffiliatedCase",
+        "CaseDocketID"
+      ],
+      "notOnPetition": "A court order after filing. The petition only lists pending cases of a spouse, partner or affiliate (B101 line 10), the usual candidates for consolidation.",
+      "aka": [
+        "consolidated case",
+        "substantive consolidation"
+      ]
+    },
+    "JNTLEAD": {
+      "hub": null,
+      "meaning": "Jointly administered case number (codebook p.65-66): the lead case of a set of jointly administered cases; blank on the lead case itself",
+      "status": "confirmed",
+      "related": [
+        "PendingBankruptcyCase",
+        "PendingAffiliatedCase",
+        "CaseDocketID"
+      ],
+      "notOnPetition": "A court order after filing. The petition only lists pending cases of a spouse, partner or affiliate (B101 line 10).",
+      "aka": [
+        "jointly administered",
+        "joint administration"
+      ]
+    },
+    "FLCMECFV": {
+      "hub": null,
+      "meaning": "Filing CM/ECF version (codebook p.66): the CM/ECF version when the filing record was transmitted to the AOUSC",
+      "status": "confirmed",
+      "related": [
+        "ApplicationName"
+      ],
+      "notOnPetition": "The court's CM/ECF version is a server-side fact. The petition carries a different version: the filer's software (nc:ApplicationName, attribute applicationVersionText), not CM/ECF."
+    },
+    "CLCMECFV": {
+      "hub": null,
+      "meaning": "Closing CM/ECF version (codebook p.71): the CM/ECF version when the case closing record was transmitted",
+      "status": "confirmed",
+      "related": [
+        "ApplicationName"
+      ],
+      "notOnPetition": "The court's CM/ECF version is a server-side fact. The petition carries a different version: the filer's software (nc:ApplicationName, attribute applicationVersionText), not CM/ECF."
+    },
+    "CLOSECY": {
+      "hub": null,
+      "meaning": "Closing calendar year (codebook p.66): the calendar year the case was considered closed for statistical purposes",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it."
+    },
+    "CLOSEFY": {
+      "hub": null,
+      "meaning": "Closing fiscal year (codebook p.66)",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it."
+    },
+    "D1FDSPDT": {
+      "hub": null,
+      "meaning": "Debtor 1 final disposition date (codebook p.69-70): the date the final disposition for the first-listed debtor was entered",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. The schema has NIEM disposition slots (nc:ActivityDisposition, DispositionDate) only on elements for other, cited cases (prior, pending, affiliated: j:CaseType); the petition's own case is a document (nc:DocumentType) and has none.",
+      "aka": [
+        "discharge date",
+        "dismissal date",
+        "disposition date"
+      ]
+    },
+    "D1FDSPCY": {
+      "hub": null,
+      "meaning": "Debtor 1 final disposition calendar year (codebook p.70)",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. The schema has NIEM disposition slots (nc:ActivityDisposition, DispositionDate) only on elements for other, cited cases (prior, pending, affiliated: j:CaseType); the petition's own case is a document (nc:DocumentType) and has none."
+    },
+    "D1FDSPFY": {
+      "hub": null,
+      "meaning": "Debtor 1 final disposition fiscal year (codebook p.70)",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. The schema has NIEM disposition slots (nc:ActivityDisposition, DispositionDate) only on elements for other, cited cases (prior, pending, affiliated: j:CaseType); the petition's own case is a document (nc:DocumentType) and has none."
+    },
+    "D2FDSP": {
+      "hub": null,
+      "meaning": "Debtor 2 final disposition (codebook p.70): same codes as D1FDSP; collected from CM/ECF 3.3.1 (Dec 2008)",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. The schema has NIEM disposition slots (nc:ActivityDisposition, DispositionDate) only on elements for other, cited cases (prior, pending, affiliated: j:CaseType); the petition's own case is a document (nc:DocumentType) and has none.",
+      "codeValues": {
+        "A": "Standard Discharge",
+        "B": "Hardship Discharge",
+        "D": "Discharge Not Applicable",
+        "E": "Discharge Denied",
+        "F": "Discharge Waived",
+        "G": "Discharge Revoked",
+        "H": "Dismissed for Failure to Pay Filing Fee",
+        "I": "Dismissed for Failure to File Information",
+        "J": "Dismissed for Abuse",
+        "K": "Dismissed for Other Reason",
+        "L": "Inter-District Transfer",
+        "M": "Intra-District Transfer",
+        "N": "Discharge Withheld for Failure to Submit Certification of Financial Management Course and Pay Domestic Support Obligation",
+        "O": "Discharge Withheld for Failure to Submit Certification of Financial Management Course (the codebook prints this code as zero, '0'; the data uses the letter O)",
+        "P": "Discharge Withheld for Failure to Comply with Domestic Support Obligation",
+        "R": "Homestead Exemption/Felony Conviction",
+        "S": "Discharge Withheld for Other Reasons",
+        "T": "Dismissed for Failure to Make Plan Payments",
+        "U": "Dismissed for Failure to Pay Filing Fee and to File Information",
+        "X": "Filed in Error",
+        "Y": "Split or Deconsolidated",
+        "Z": "Closed in Error"
+      },
+      "codeSource": "p.68-70"
+    },
+    "D2FDSPDT": {
+      "hub": null,
+      "meaning": "Debtor 2 final disposition date (codebook p.70)",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. The schema has NIEM disposition slots (nc:ActivityDisposition, DispositionDate) only on elements for other, cited cases (prior, pending, affiliated: j:CaseType); the petition's own case is a document (nc:DocumentType) and has none."
+    },
+    "D2FDSPCY": {
+      "hub": null,
+      "meaning": "Debtor 2 final disposition calendar year (codebook p.71)",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. The schema has NIEM disposition slots (nc:ActivityDisposition, DispositionDate) only on elements for other, cited cases (prior, pending, affiliated: j:CaseType); the petition's own case is a document (nc:DocumentType) and has none."
+    },
+    "D2FDSPFY": {
+      "hub": null,
+      "meaning": "Debtor 2 final disposition fiscal year (codebook p.71)",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Recorded on the court docket after filing; the petition cannot contain it. The schema has NIEM disposition slots (nc:ActivityDisposition, DispositionDate) only on elements for other, cited cases (prior, pending, affiliated: j:CaseType); the petition's own case is a document (nc:DocumentType) and has none."
+    },
+    "C11DVDND": {
+      "hub": null,
+      "meaning": "Chapter 11 percent dividend (codebook p.71): in cases with a confirmed plan, the percentage dividend to the general class of unsecured creditors, entered by the court from the confirmed plan",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Comes from the confirmed plan, after filing."
+    },
+    "C11FTRPAY": {
+      "hub": null,
+      "meaning": "Chapter 11 future payments (codebook p.71): in cases with a confirmed plan, whether future payments are due under it; entered by the court",
+      "status": "confirmed",
+      "related": [],
+      "notOnPetition": "Comes from the confirmed plan, after filing.",
+      "codeValues": {
+        "y": "Yes",
+        "n": "No"
+      },
+      "codeSource": "p.71"
     }
   },
   "notCaptured": [

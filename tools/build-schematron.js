@@ -59,12 +59,24 @@ for (const r of rules.rows) {
     add(formOf(r), parent(r.xpath), `<assert id="${r.rule}-required" test="${last(r.xpath)}" role="error">${r.rule}: ${msg}</assert>`);
     stats.required++;
   }
-  if (r.values) {
-    const codes = allowedValues(r);
-    if (!codes) { stats.skipped.push(r.rule); continue; }
-    add(formOf(r), r.xpath, `<assert id="${r.rule}-values" test="${esc(codes.map((c) => `. = ${lit(c)}`).join(" or "))}" role="error">${r.rule}: ${msg} Allowed: ${esc(codes.join(", "))}.</assert>`);
-    stats.values++;
-  }
+}
+
+// Allowed values, one assert per XPath. Several workbook rows can share an XPath, one per printed item
+// (line 28: Federal, State, Local tax refunds), each listing only its own value; their lists are merged,
+// otherwise every instance would break the others' rule.
+const valueRows = new Map();
+for (const r of rules.rows.filter((r) => r.values)) (valueRows.get(r.xpath) ?? valueRows.set(r.xpath, []).get(r.xpath)).push(r);
+for (const [xpath, rs] of valueRows) {
+  const lists = rs.map((r) => [r, allowedValues(r)]);
+  for (const [r, codes] of lists) if (!codes) stats.skipped.push(r.rule);
+  const codes = [...new Set(lists.flatMap(([, c]) => c ?? []))];
+  if (!codes.length) continue;
+  const ids = rs.filter((r) => allowedValues(r)).map((r) => r.rule);
+  const r = rs[0];
+  const msg = rs.length > 1 ? `${r.element} on ${r.form} line ${[...new Set(rs.map((x) => x.line))].join(", ")}`
+    : esc(r.errorMessage && !/^Default error message/i.test(r.errorMessage) ? r.errorMessage : r.ruleText || `${r.element} on ${r.form} line ${r.line}`);
+  add(formOf(r), xpath, `<assert id="${ids[0]}-values" test="${esc(codes.map((c) => `. = ${lit(c)}`).join(" or "))}" role="error">${ids.join(", ")}: ${msg} Allowed: ${esc(codes.join(", "))}.</assert>`);
+  stats.values++;
 }
 
 // ---- hand-made cross-field rules -------------------------------------------------------------------------
@@ -81,7 +93,9 @@ function ranges(el) {
     return { code: c.value, min: n[0] ?? 0, max: /more/i.test(c.definition) ? null : n[1] ?? n[0] };
   });
 }
-const rangeTest = (el, total) => ranges(el).map((g) => `(. = ${lit(g.code)} and ${total} &gt;= ${g.min}${g.max === null ? "" : ` and ${total} &lt;= ${g.max}`})`).join(" or ");
+// The total is inlined as number(path) rather than a <let> variable: engines bind let values differently
+// (node-schematron's XPath 3.1 evaluator rejects not($var) on them), and an inlined path works everywhere.
+const rangeTest = (el, path) => ranges(el).map((g) => `(. = ${lit(g.code)} and number(${path}) &gt;= ${g.min}${g.max === null ? "" : ` and number(${path}) &lt;= ${g.max}`})`).join(" or ");
 
 const crossField = `
   <pattern id="cross-field">
@@ -99,13 +113,11 @@ const crossField = `
 
   <pattern id="consistency">
     <title>Consistency warnings between the Form 101 estimates and the Form 106Sum schedule totals (not workbook rules)</title>
-    <let name="totalLiabilities" value="${sumPath("TotalLiabilitiesAmount")}"/>
-    <let name="totalAssets" value="${sumPath("TotalPropertyValueAmount")}"/>
     <rule context="${xp("BCO-101-0108") ?? `${B101}/bkcmecf:EstimatedLiabilitiesCode`}">
-      <assert id="XF-estimated-liabilities" test="not($totalLiabilities) or ${rangeTest("EstimatedLiabilitiesCode", "$totalLiabilities")}" role="warning">Form 101 line 20 estimates liabilities as range <value-of select="."/>, but Form 106Sum line 3 totals <value-of select="$totalLiabilities"/>.</assert>
+      <assert id="XF-estimated-liabilities" test="not(${sumPath("TotalLiabilitiesAmount")}) or ${rangeTest("EstimatedLiabilitiesCode", sumPath("TotalLiabilitiesAmount"))}" role="warning">Form 101 line 20 estimates liabilities as range <value-of select="."/>, but Form 106Sum line 3 totals <value-of select="${sumPath("TotalLiabilitiesAmount")}"/>.</assert>
     </rule>
     <rule context="${xp("BCO-101-0107") ?? `${B101}/bkcmecf:EstimatedAssetsCode`}">
-      <assert id="XF-estimated-assets" test="not($totalAssets) or ${rangeTest("EstimatedAssetsCode", "$totalAssets")}" role="warning">Form 101 line 19 estimates assets as range <value-of select="."/>, but Form 106Sum line 1c totals <value-of select="$totalAssets"/>.</assert>
+      <assert id="XF-estimated-assets" test="not(${sumPath("TotalPropertyValueAmount")}) or ${rangeTest("EstimatedAssetsCode", sumPath("TotalPropertyValueAmount"))}" role="warning">Form 101 line 19 estimates assets as range <value-of select="."/>, but Form 106Sum line 1c totals <value-of select="${sumPath("TotalPropertyValueAmount")}"/>.</assert>
     </rule>
   </pattern>`;
 

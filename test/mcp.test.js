@@ -135,3 +135,41 @@ test("business rules are published as well-formed ISO Schematron with workbook r
   assert.match(sch, /xmlns="http:\/\/purl.oclc.org\/dsdl\/schematron"/);
   for (const id of ["BCO-101-0004-required", "BCO-101-0102-values", "BCO-101-0102-c", "XF-estimated-liabilities"]) assert.ok(sch.includes(`id="${id}"`), id);
 });
+
+test("the Schematron runs on real petitions and reports only genuine findings", async () => {
+  const { Schema } = await import("node-schematron");
+  const schema = Schema.fromString(readFileSync("hub/rules/business-rules.sch", "utf8"));
+  const ids = (xml) => schema.validateString(xml).map((r) => r.assertId).sort();
+  // The small IEPD samples omit a business address's county, which the workbook requires (BCO-101-0047, BCO-105-0021).
+  assert.deepEqual(ids(readFileSync("hub/fixtures/NG1.6_CH13_Individual_BK_Petition_Min.xml", "utf8")), ["BCO-101-0047-required"]);
+  assert.deepEqual(ids(readFileSync("hub/fixtures/NG1.6_CH7_Involuntary_BK_Petition.xml", "utf8")), ["BCO-105-0021-required"]);
+  // A tiny petition built from the workbook's own XPaths: liabilities estimated at $1-10 billion, schedules total $303.
+  const { rows } = JSON.parse(readFileSync("spokes/forms/business-rules.json", "utf8"));
+  const at = (rule) => rows.find((r) => r.rule === rule).xpath;
+  const sum = rows.find((r) => r.form === "B106Sum" && r.element === "TotalLiabilitiesAmount").xpath;
+  const build = (paths) => {
+    const tree = {};
+    for (const [xp, val] of paths) { let n = tree; const steps = xp.split("/").filter(Boolean); steps.forEach((s, i) => { n = n[s] ??= i === steps.length - 1 ? val : {}; }); }
+    const ser = (o) => Object.entries(o).map(([k, v]) => `<${k}>${typeof v === "object" ? ser(v) : v}</${k}>`).join("");
+    const root = Object.keys(tree)[0];
+    const ns = 'xmlns:bkcmecf="http://cmecf.td.oca.ao.dcn/niem/bankruptcy/cmecf/1.0" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:j="http://niem.gov/niem/domains/jxdm/4.0"';
+    return `<${root} ${ns}>${ser(tree[root])}</${root}>`;
+  };
+  const bad = build([[at("BCO-101-0108"), "K"], [sum, "303"]]);
+  assert.ok(ids(bad).includes("XF-estimated-liabilities"), "estimate vs schedule total is flagged");
+  const ok = build([[at("BCO-101-0108"), "A"], [sum, "303"]]);
+  assert.ok(!ids(ok).includes("XF-estimated-liabilities"), "a consistent estimate passes");
+});
+
+test("every code value in the loaded FJC data has a label", async () => {
+  const { variables } = JSON.parse(readFileSync("spokes/fjc/bindings.json", "utf8"));
+  const missing = [];
+  for (const [v, b] of Object.entries(variables)) {
+    if (!b.codeValues) continue;
+    const r = await call("query_fjc", { sql: `select distinct ${v.toLowerCase()} as v from fjc_bk where ${v.toLowerCase()} is not null` });
+    assert.ok(!r.error, `${v}: ${r.error}`);
+    const keys = Object.keys(b.codeValues);
+    for (const { v: val } of r.rows) if (!keys.includes(val) && !keys.includes(String(val).toLowerCase())) missing.push(`${v}=${val}`);
+  }
+  assert.deepEqual(missing, [], "unlabelled code values");
+});

@@ -26,6 +26,7 @@ Schedule totals are debtor-reported, not validated, and required only for indivi
 - **NOB: the data does not follow the codebook.** The codebook (p.46) says `n` = Non-profit Organization, `o` = Other, blank = Consumer Debt. In FY2025, 62,104 cases carry `n`: 40,713 are consumer cases and 61,881 have `TAXEXEMPT` = N. No case carries `o`. In practice `n` behaves like "None of the above". Use `TAXEXEMPT` (codebook p.72, collected since January 2011) for non-profit status. The petition schema uses yet another scheme (`BkPetitionCodeLists.xsd`: `o` = Tax Exempt Entity, `O` = None of the above), so never compare NOB case-insensitively.
 - **As filed vs current.** `ORG*` variables are the status "as reported on the first record submitted"; the unprefixed ones are the most current record. The petition is the first record, so every petition element binds to the `ORG*` variable first. Most pairs differ in under 1% of FY2025 filings, but filing-fee status differs in 48.0%: `FEESTS` "may be updated over the life of the case" (p.43) and is blank (unknown) for 173,709 cases that `ORGFEESTS` records as paid in full. Use `ORGFEESTS`.
 - **The FJC universe is wider than the petition.** The IDB covers every bankruptcy case; this IEPD covers the individual petition (B101/B105). In FY2025, 12,841 cases are non-individual debtors (`DBTRTYP` u, p or n, who file Form B201) and 203 are chapter 9 or 15. For petition-level questions, filter `dbtrtyp = 'i'`.
+- **Every code value has a label, and a test checks it.** For each coded variable, `bindings.json` holds the full code list from the codebook (`codeValues`, with page). A test queries every distinct value in the loaded data and fails on any value without a label. On the full FY2025 load it found three things the codebook explains but the bindings had missed. Final dispositions N–Z: discharge withheld, dismissed for missed plan payments, filed in error, split, closed in error (p.68–69). Retired range codes: liabilities `J` = "more than $1 billion – not valid for cases filed after 11/30/2015" (p.52), still on 1 filing. Pre-2006 numeric range codes 1–8 on about 50 filings each (p.53). Two traps: the codebook prints the "no financial-management course" disposition as zero (`0`), but the data uses the letter `O`; and circuit `00` is the D.C. Circuit, while district `00` is Maine.
 - **Subchapter V.** `ORGFLSUBCHP` = V marks the 2,533 FY2025 chapter 11 cases filed under Subchapter V; it binds to the petition's `Subchapter` (B101 line 13).
 - **y/n casing varies by column.** FY2025 `PRFILE` is `Y`/`N`; `JOINT` and `D1FPRSE` are lowercase. Compare with `lower()`.
 - **TOTLBLTS vs TOTDBT changes answers.** Across all FY2025 new filings, the share of chapter 7 filers under $50,000 in total liabilities is 31.2% with `TOTLBLTS` (12,723 zero or blank totals counted as $0) and 29.5% with `TOTDBT` (missing values excluded). For chapter 13 it is 25.3% vs 18.9% (18,093 zero or blank).
@@ -41,3 +42,18 @@ Schedule totals are debtor-reported, not validated, and required only for indivi
 npm run load:fjc -- data/raw/cpbank18on.txt --fy 2025 --filed-only
 npm run load:databricks -- data/raw/cpbank18on.txt --fy 2025 --filed-only
 ```
+
+## Coverage of all 87 FJC columns
+
+Every column in `cpbank18on.txt` is in `spokes/fjc/bindings.json` with the codebook's definition and page, and every coded column carries its full code list (`codeValues`). Tests check that each variable resolves and that every code value in the loaded data has a label. How the 87 relate to the petition schema:
+
+| | Columns | Examples |
+| --- | --- | --- |
+| Bound to a petition element | 45 | `ORGFLCHP` → BankruptcyChapter, `ORGASSTCASE` → FundsAvailableIndicator (B101 line 17), `PREPACK` → Chapter11PlanCode, `CASETYP` (B101 vs B105) |
+| Not on the petition, with related petition elements | 25 | current or closing values (`ASSTCASE`, `FEESTS`, `CRNTCHP`, `CLSUBCHPT`), court-filled slots (`FILEDATE`, `ORGFLDT` → nc:DocumentFiledDate; `FLCMECFV` → the filer's software version), case links (`GEN`, `SEQ`, `ORIGIN`, `SRCCASE`, `JNTLEAD` → CaseDocketID, pending cases) |
+| FJC-only, no petition counterpart | 17 | snapshot flags, closing years, both debtors' outcomes and dates (`D1FDSP`, `D2FDSPDT`), chapter 11 dividend and future payments |
+
+`resolve` answers every one: either with the petition element, or with `element: null`, the reason it isn't on the petition, and the related elements (with NIEM definitions where no form uses them).
+
+**Why outcomes can't be on the petition.** Each form extends NIEM's `nc:DocumentType`; only cited cases (prior, pending, affiliated, lawsuits) are `j:CaseType` with disposition slots. The schema can describe how a cited case ended, never the case being filed.
+

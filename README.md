@@ -22,7 +22,7 @@ Requires Node 20+.
 npm install
 npm run build:rosetta                                        # walk the IEPD schema -> hub/rosetta.generated.json
 npm run load:fjc -- data/sample/cpbank_fy2025_sample.tsv     # 20,000 real FY2025 filings, bundled
-npm test                                                     # 14 end-to-end tests over MCP stdio
+npm test                                                     # 16 end-to-end tests over MCP stdio
 ```
 
 Open the folder in Claude Code: `.mcp.json` starts the server. Or add it to any MCP client as `node mcp/server.js`. The server speaks MCP over stdio.
@@ -108,6 +108,10 @@ Also exposed: resources `rosetta://overview`, `rosetta://fjc` and `rosetta://wal
 
 - **The codebook and the data disagree.** The FJC codebook says nature-of-business code `n` means Non-profit Organization. In FY2025, 62,104 cases carry `n`, 40,713 of them consumer cases, and 61,881 are marked not tax-exempt in the separate `TAXEXEMPT` field. In practice `n` means "None of the above". Filter on it to find non-profits and you get about 62,000 wrong rows. The petition schema adds a third scheme: `o` = Tax Exempt Entity, `O` = None of the above.
 - **"Current" isn't "as filed".** The FJC keeps both the first record (`ORGFEESTS`) and the current record (`FEESTS`). The petition is the first record. For filing-fee status they differ in 48.0% of FY2025 filings, and the current value is blank for 173,709 cases filed as paid in full.
+- **Asset status changes after filing too.** 22,254 FY2025 cases have a different asset-case status (funds for unsecured creditors, Form 101 line 17) on the current record than on the petition as filed (`ORGASSTCASE` vs `ASSTCASE`).
+- **The petition's own case is a document, not a case.** In the schema every form extends NIEM's `nc:DocumentType`. Only *cited* cases (prior, pending, affiliated, lawsuits) are `j:CaseType`, with disposition and status slots. So the XSD can say how a prior case ended but never how this one does. That's why 11 of the FJC's 87 columns (closing years, both debtors' outcomes and dates, chapter 11 dividend and future payments) have no petition counterpart.
+- **The schema carries dead and mislabelled elements.** `BankruptcyCaseVoluntaryInvoluntaryCode`, `Chapter11PlanCode`, `Chapter11PlanFiledIndicator` and `PlanAcceptedIndicator` are declared but used by no petition type. `Chapter11PlanCode` has exactly the FJC's prepackaged-plan codes (Y/P/B), and the voluntary/involuntary code list labels its codes "v = Business, i = Consumer". `CourtDivisionalOfficeCode` is defined as "an entity to whom money is owed".
+- **The codebook doesn't always match the data.** Case outcome "discharge withheld, no financial-management course" is printed as zero (`0`) but stored as the letter `O`. Liabilities range `J` ("not valid after 11/30/2015") still appears on an FY2025 filing. Circuit `00` is the D.C. Circuit, while district `00` is Maine.
 - **Null handling changes answers.** "Chapter 13 filers with under $50k in debt" is 25.3% using `TOTLBLTS` and 18.9% using `TOTDBT` across all 203,200 FY2025 chapter 13 filings, because 18,093 blank schedules become $0.
 - **Snapshots overlap.** The FJC's rolling 06/30/2026 snapshot repeats 145,740 cases already in the FY2025 year-end snapshot. Counting FY2025 filings without deduping on `CASEKEY` gives 703,280 instead of 557,540. Both loaders keep only the latest snapshot per case.
 - **Codebook line numbers are older than the forms.** The FJC cites "Schedule J line 22"; the current form splits it into 22a–22c.
@@ -117,11 +121,20 @@ Also exposed: resources `rosetta://overview`, `rosetta://fjc` and `rosetta://wal
 
 `npm run build:schematron` turns the IEPD business-rules workbook into ISO Schematron, [`hub/rules/business-rules.sch`](hub/rules/business-rules.sch), so any XML toolchain can check a petition against the rules the XSD can't express. It uses XPath 1.0, so any processor runs it (Saxon, schxslt, `node-schematron`). It contains:
 
-- **Generated asserts:** 27 required-field and 165 allowed-value asserts, in one pattern per form. Each carries the workbook rule id (`BCO-101-0064-values`) and the workbook's own error message. For value lists written as "code = label", only tokens that are real codes in the schema's code list are kept; 2 lists that can't be parsed safely are skipped and named in the file header.
+- **Generated asserts:** 27 required-field and 159 allowed-value asserts, in one pattern per form. Where several workbook rows share an XPath (one per printed item, such as federal, state and local tax refunds on Schedule A/B line 28), their value lists are merged into one assert. Each carries the workbook rule id (`BCO-101-0064-values`) and the workbook's own error message. For value lists written as "code = label", only tokens that are real codes in the schema's code list are kept; 2 lists that can't be parsed safely are skipped and named in the file header.
 - **Hand-translated cross-field rules:** chapter 12 must be business debt (BCO-101-0102 c), and the SSN/ITIN and EIN formats.
 - **Consistency warnings:** the Form 101 estimate ranges are checked against the Form 106Sum schedule totals. On the IEPD's own samples this flags three petitions that estimate $1–10 billion in liabilities against a $303 schedule total.
 
 Of the 181 absolute rule contexts, 152 occur in the seven sample petitions.
+
+**Tested with a real Schematron engine.** The tests run the rules with `node-schematron` (a dev dependency) on the two small IEPD samples, and on a tiny petition built from the workbook's own XPaths. On all seven samples the rules report only genuine findings:
+
+| Samples | Finding |
+| --- | --- |
+| Chapter 11 Subchapter V (NG1.6.1 and NG1.7), chapter 7 "complete" | Estimated assets and liabilities on Form 101 contradict the Form 106Sum totals ($1–10 billion vs $303) |
+| Five of seven | BCO-101-0047 / BCO-105-0021: the workbook requires the county on a business address, but the samples omit it and the XSD doesn't enforce it |
+
+The largest sample takes about 85 seconds in `node-schematron`, so the tests use the small ones; Saxon is much faster for bulk checking.
 
 ## Repo structure
 
@@ -151,7 +164,7 @@ bk-rosetta-mcp/
 │   └── rosetta.generated.json # Generated by `npm run build:rosetta` (git-ignored)
 ├── spokes/
 │   ├── forms/business-rules.json  # 2,197 form fields -> XPath, line, rule (from the workbook)
-│   ├── fjc/bindings.json      # 55 FJC variables -> hub element, with codebook page, status, cautions
+│   ├── fjc/bindings.json      # All 87 FJC variables -> hub element or related elements, codebook page, code lists, cautions
 │   ├── fjc/districts.json     # Codebook Appendix A
 │   └── synonyms.json          # Curated plain-language phrases for resolve
 ├── tools/                     # build-rosetta.js (XSD walker), build-schematron.js, load-fjc.js, load-databricks.js, extract-business-rules.py
@@ -191,7 +204,7 @@ The [GSA MCP hackathon template](https://github.com/GSA-TTS/mcp-hackathon-templa
 
   The server would then run inside the workspace next to the data, behind workspace authentication. This needs Databricks Apps enabled on the workspace.
 - **Semantic search in `resolve`.** Precompute embeddings of each element's XSD definition, form-field text and codebook meaning at build time. Rank candidates by meaning as well as by words, so "does the debtor rent" finds `DebtorRentsResidenceIndicator` without a synonym.
-- **Run the Schematron in the server, and translate the rest of the rules.** `hub/rules/business-rules.sch` is generated but not yet executed by a tool (Node has no built-in Schematron engine; `node-schematron` or Saxon would do it). About 25 of the workbook's conditional rules are still English only.
+- **A `check_rules` tool, and the rest of the rules.** The Schematron is tested but not yet exposed as a tool; a faster engine (Saxon) would make that practical on large petitions. About 25 of the workbook's conditional rules are still English only.
 - **Store petition values.** `shred_petition` returns rows; a `petition_values` table on Databricks (DDL in [docs/eav.md](docs/eav.md)) would hold them for querying across submissions.
 - **MCP registry.** Add `server.json` once the repository has its public home.
 - **More FJC columns.** Case outcomes (`D1FDSP`, discharge dates) are loaded but not yet joined to the petition's eventual fate; `CASETYP` (voluntary vs involuntary) would tie cases to B101 vs B105.

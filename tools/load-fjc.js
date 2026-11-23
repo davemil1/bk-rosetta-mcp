@@ -18,6 +18,8 @@ const bindings = JSON.parse(readFileSync("spokes/fjc/bindings.json", "utf8"));
 const keep = Object.keys(bindings.variables);
 const numeric = new Set(["SNAPFILE","SNAPPEND","SNAPCLOS","TOTASSTS","REALPROP","PERSPROP","TOTLBLTS","SECURED","UNSECPR","UNSECNPR","DSCHRGD","NDSCHRGD","TOTDBT","CNTMNTHI","AVGMNTHI","AVGMNTHE"]);
 const db = new PGlite(process.env.FJC_DB ?? "data/fjc.pglite");
+// PGlite sends the parameter count as a signed 16-bit number, so keep rows x columns under 32,767 per insert.
+const BATCH = Math.floor(30000 / keep.length);
 // Run from the repo root (npm run load:fjc). Column names are stored lowercase so unquoted SQL works.
 
 await db.exec(`DROP TABLE IF EXISTS fjc_bk; CREATE TABLE fjc_bk (${keep.map((c) => `${c.toLowerCase()} ${numeric.has(c) ? "NUMERIC" : "TEXT"}`).join(", ")});`);
@@ -40,7 +42,7 @@ for await (const line of rl) {
   if (fy && !fy.has(cells[iFY]?.trim())) continue;
   if (filedOnly && cells[iSF]?.trim() !== "1") continue;
   batch.push(idx.map((i, j) => { const v = i < 0 ? "" : (cells[i] ?? "").trim(); return v === "" ? null : numeric.has(keep[j]) && isNaN(Number(v)) ? null : v; }));
-  n++; if (batch.length >= 500) await flush();
+  n++; if (batch.length >= BATCH) await flush();
 }
 await flush();
 const districts = JSON.parse(readFileSync("spokes/fjc/districts.json", "utf8")).districts;

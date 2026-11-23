@@ -19,5 +19,8 @@
     "fast-xml-parser": "^4.4.0",
     "xmllint-wasm": "^5.3.0",
     "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "node-schematron": "^2.1.0"
   }
 }

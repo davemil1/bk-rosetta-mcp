@@ -1,6 +1,9 @@
 {
   "note": "Plain-language phrases -> hub element, for resolve. Matched as whole words after lowercasing and stripping punctuation; the first phrase found in the query wins, so put longer phrases first. 'unsecured debt' maps to the nonpriority total, where general unsecured claims such as credit cards sit.",
   "phrases": {
+    "no asset case": "FundsAvailableIndicator",
+    "asset case": "FundsAvailableIndicator",
+    "funds available for unsecured creditors": "FundsAvailableIndicator",
     "owed to the irs": "TotalTaxesDebtAmount",
     "irs": "TotalTaxesDebtAmount",
     "single asset real estate": "NatureOfBusinessCode",

@@ -67,7 +67,7 @@ export const handlers = {
     const e = findElement(element);
     if (!e?.codeList) return { error: `${element} has no code list` };
     const fjc = [].concat(e.bindings.fjc ?? []);
-    return { element: e.name, codes: e.codeList, fjc: fjc.map((b) => ({ variable: b.variable, status: b.status, codes: b.codes ?? b.values, meaning: b.meaning, note: b.note, caution: b.caution })) };
+    return { element: e.name, codes: e.codeList, fjc: fjc.map((b) => ({ variable: b.variable, status: b.status, codes: b.codeValues ?? b.codes ?? b.values, codeSource: b.codeSource, meaning: b.meaning, note: b.note, caution: b.caution })) };
   },
 
   check_coverage: async ({ spoke }) => {
