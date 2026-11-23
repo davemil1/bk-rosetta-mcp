@@ -8,7 +8,7 @@ The IEPD business rule for B101: *"a) Nature of debts code is required. b) Natur
 
 **FJC variable.** `NTRDBT`, with the **same codes**: b, c, o; blank for chapter 15. This is one of several fields where the IDB carries the petition's code values unchanged.
 
-**A real number** (bundled sample, top five districts by filings):
+**A real number** (all FY2025 new filings, top five districts):
 
 ```sql
 select d.name, count(*) n,
@@ -19,12 +19,12 @@ group by 1 order by n desc limit 5;
 
 | District | Filings | Consumer |
 | --- | --- | --- |
-| California - Central | 1,000 | 93.8% |
-| Florida - Middle | 904 | 94.0% |
-| Illinois - Northern | 832 | 95.4% |
-| Georgia - Northern | 690 | 95.2% |
-| Michigan - Eastern | 666 | 98.5% |
+| California - Central | 28,485 | 93.5% |
+| Florida - Middle | 24,529 | 94.6% |
+| Illinois - Northern | 22,134 | 96.4% |
+| Georgia - Northern | 20,422 | 95.5% |
+| Michigan - Eastern | 17,645 | 98.6% |
 
-Nationally in the sample: 19,064 consumer, 881 business, 50 other.
+Nationally: 532,264 consumer, 23,872 business, 1,204 other, 200 blank (chapter 15). Consumer cases outnumber business and other combined about 21 to 1.
 
 **Watch out: the neighbouring field doesn't line up.** `NOB` (nature of *business*) does **not** share the hub's codes. In the schema, `o` = Tax Exempt Entity and `O` = None of the above. In the IDB, `o` = Other and `n` = Non-profit. `list_codes NatureOfBusinessCode` shows both side by side.

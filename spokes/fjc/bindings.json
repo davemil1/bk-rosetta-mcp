@@ -293,13 +293,13 @@
     "names, SSNs, addresses (only ZIP and county FIPS are published)"
   ],
   "caveats": [
-    "One record per case per fiscal-year snapshot; dedupe on CASEKEY keeping the latest SNAPSHOT before combining years.",
+    "One record per case per snapshot, and snapshots overlap: the Sep 2026 release's rolling 06/30/2026 snapshot repeats 145,740 FY2025 cases from the 09/30/2025 year-end snapshot. The loaders dedupe on CASEKEY, keeping the latest SNAPSHOT (557,540 FY2025 new filings, not 703,280).",
     "Schedule totals are required only for individual debtors with primarily consumer debt and are debtor-reported, not validated.",
     "Debtor-level fields (ZIP, county, pro se) were corrected in Nov 2021 for FY2008-Jun 2021; re-download anything older.",
     "TOTLBLTS treats nulls as zero; TOTDBT treats them as missing, so the two differ.",
     "NOB code values differ from the petition schema: hub o = Tax Exempt Entity and O = None of the above; IDB o = Other, n = Non-profit. Never compare NOB case-insensitively against the hub.",
     "y/n flags are not consistently cased: in FY2025 PRFILE is Y/N while JOINT and D1FPRSE are y/n. Compare with lower().",
-    "The bundled data/sample file is the first 20,000 FY2025 new-filing rows of cpbank18on.txt, not a random sample. Numbers from it are illustrative; load a full year before citing anything.",
+    "The bundled data/sample file is the first 20,000 FY2025 new-filing rows of cpbank18on.txt, not a random sample. Numbers from it are illustrative; load a full year before citing anything. Check count(*) on fjc_bk to see which is loaded.",
     "DISTRICT is an FJC code (73 = California - Central, 3A = Florida - Middle); join table fjc_district for names (codebook Appendix A)."
   ]
 }

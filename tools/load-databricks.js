@@ -13,6 +13,7 @@
 // Settings: see .env.example.
 import { createReadStream, createWriteStream, mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { createInterface } from "node:readline";
+import { gzipSync } from "node:zlib";
 import { rosetta, path } from "../mcp/rosetta.js";
 import { databricksConfig, openDatabricks, uploadToVolume } from "../mcp/databricks.js";
 
@@ -72,9 +73,10 @@ const q = (s) => `'${String(s ?? "").replace(/\\/g, "\\\\").replace(/'/g, "\\'")
 const vol = (c, f) => `/Volumes/${c.catalog}/${c.schema}/${c.volume}/${f}`;
 const sqlFor = (c) => [
   `CREATE VOLUME IF NOT EXISTS ${c.volume} COMMENT 'Raw uploads for bk-rosetta-mcp'`,
-  `CREATE OR REPLACE TABLE fjc_bk COMMENT 'FJC Integrated Database, bankruptcy petitions (BPNS). One row per case per fiscal-year snapshot. Source: fjc.gov. Joined to the bankruptcy petition IEPD by bk-rosetta-mcp.' AS
+  `CREATE OR REPLACE TABLE fjc_bk COMMENT 'FJC Integrated Database, bankruptcy petitions (BPNS). One row per case: rolling snapshots overlap, so each CASEKEY keeps its latest SNAPSHOT. Source: fjc.gov. Joined to the bankruptcy petition IEPD by bk-rosetta-mcp.' AS
    SELECT ${keep.map((k) => (NUMERIC.has(k) ? `try_cast(${k} AS DOUBLE) AS ${k.toLowerCase()}` : `nullif(${k}, '') AS ${k.toLowerCase()}`)).join(", ")}
-   FROM read_files('${vol(c, "fjc_bk.tsv")}', format => 'csv', sep => '\\t', header => true, inferColumnTypes => false)`,
+   FROM read_files('${vol(c, "fjc_bk.tsv.gz")}', format => 'csv', sep => '\\t', header => true, inferColumnTypes => false)
+   QUALIFY row_number() OVER (PARTITION BY CASEKEY ORDER BY to_date(SNAPSHOT, 'MM/dd/yyyy') DESC) = 1`,
   ...tables.map((t) => `CREATE OR REPLACE TABLE ${t} AS SELECT * FROM read_files('${vol(c, t + ".jsonl")}', format => 'json')`),
   `COMMENT ON TABLE hub_elements IS 'Every element of the judiciary''s published NIEM bankruptcy petition schema (IEPD NGRel1.7), with official definition and code list'`,
   `COMMENT ON TABLE form_lines IS 'Official Form field -> petition XPath, line, rule, required flag (IEPD business rules workbook)'`,
@@ -96,7 +98,9 @@ const db = await openDatabricks(c);
 const run = async (s) => { const op = await db.session.executeStatement(s); await op.fetchAll(); await op.close(); };
 const statements = sqlFor(c);
 await run(statements[0]);
-for (const f of ["fjc_bk.tsv", ...tables.map((t) => t + ".jsonl")]) console.log("uploaded", await uploadToVolume(c, `${OUT}/${f}`, f));
+// Gzip the FJC extract: a full year is ~140 MB raw and times out a single Files API PUT; read_files reads .gz natively.
+writeFileSync(`${OUT}/fjc_bk.tsv.gz`, gzipSync(readFileSync(tsv)));
+for (const f of ["fjc_bk.tsv.gz", ...tables.map((t) => t + ".jsonl")]) console.log("uploaded", await uploadToVolume(c, `${OUT}/${f}`, f));
 for (const s of statements.slice(1)) await run(s);
 const check = await db.session.executeStatement("SELECT count(*) AS n FROM fjc_bk");
 console.log(`fjc_bk: ${(await check.fetchAll())[0].n} rows in ${c.catalog}.${c.schema}; rosetta tables: ${tables.join(", ")}`);

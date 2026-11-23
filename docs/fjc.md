@@ -25,14 +25,16 @@ Schedule totals are debtor-reported, not validated, and required only for indivi
 
 - **NOB codes do not match the petition schema.** In `BkPetitionCodeLists.xsd`, `o` = Tax Exempt Entity and `O` = None of the above. In the IDB (codebook p.45), `o` = Other and `n` = Non-profit Organization. A case-insensitive join conflates them.
 - **y/n casing varies by column.** FY2025 `PRFILE` is `Y`/`N`; `JOINT` and `D1FPRSE` are lowercase. Compare with `lower()`.
-- **TOTLBLTS vs TOTDBT changes answers.** In the bundled sample, the share of chapter 7 filers under $50,000 in total liabilities is 32.2% with `TOTLBLTS` (497 non-reporters counted as $0) and 30.2% with `TOTDBT` (non-reporters excluded). For chapter 13 it is 25.3% vs 18.4%.
+- **TOTLBLTS vs TOTDBT changes answers.** Across all FY2025 new filings, the share of chapter 7 filers under $50,000 in total liabilities is 31.2% with `TOTLBLTS` (12,723 zero or blank totals counted as $0) and 29.5% with `TOTDBT` (missing values excluded). For chapter 13 it is 25.3% vs 18.9% (18,093 zero or blank).
+- **Rolling snapshots overlap.** `cpbank18on.txt` (Sep 2026 release) has a 09/30/2025 year-end snapshot and a rolling 06/30/2026 snapshot. The second repeats 145,740 FY2025 cases filed Jul–Sep 2025, also with `SNAPFILE = 1`. Filtering on `FILEFY = 2025` and `SNAPFILE = 1` alone gives 703,280 rows; one row per `CASEKEY` gives 557,540. Both loaders dedupe, keeping the latest snapshot.
 - **Districts are codes.** `DISTRICT` uses the FJC's codes (Appendix A); the loader builds `fjc_district(code, name)` from `spokes/fjc/districts.json`.
 - **Codebook line numbers are older than the forms.** The codebook says Schedule J "line 22"; the current B106J splits it into 22a–22c. `resolve "Schedule J line 22"` returns the sub-lines.
 
 ## The bundled sample
 
-`data/sample/cpbank_fy2025_sample.tsv` is the first 20,000 FY2025 new-filing rows of `cpbank18on.txt`, **not a random sample**. It's there so the demo runs out of the box. Load a full year before citing a number:
+`data/sample/cpbank_fy2025_sample.tsv` is the first 20,000 FY2025 new-filing rows of `cpbank18on.txt`, **not a random sample**. It's there so the demo runs out of the box. The figures in these docs come from the full year (557,540 FY2025 new filings). Load a full year before citing a number:
 
 ```
 npm run load:fjc -- data/raw/cpbank18on.txt --fy 2025 --filed-only
+npm run load:databricks -- data/raw/cpbank18on.txt --fy 2025 --filed-only
 ```

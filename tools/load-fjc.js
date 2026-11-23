@@ -46,5 +46,11 @@ const districts = JSON.parse(readFileSync("spokes/fjc/districts.json", "utf8")).
 await db.exec("DROP TABLE IF EXISTS fjc_district; CREATE TABLE fjc_district (code TEXT PRIMARY KEY, name TEXT);");
 for (const [code, name] of Object.entries(districts)) await db.query("INSERT INTO fjc_district VALUES ($1, $2)", [code, name]);
 await db.exec(`CREATE INDEX IF NOT EXISTS fjc_bk_chp ON fjc_bk (orgflchp); CREATE INDEX IF NOT EXISTS fjc_bk_key ON fjc_bk (casekey);`);
+// Rolling snapshots overlap (e.g. the 06/30/2026 snapshot repeats Jul-Sep 2025 filings), so keep one row
+// per CASEKEY: the latest SNAPSHOT.
+const dup = await db.query(`DELETE FROM fjc_bk t USING (
+  SELECT ctid, row_number() OVER (PARTITION BY casekey ORDER BY to_date(snapshot, 'MM/DD/YYYY') DESC) rn FROM fjc_bk
+) d WHERE t.ctid = d.ctid AND d.rn > 1`);
+if (dup.affectedRows) { n -= dup.affectedRows; console.log(`dropped ${dup.affectedRows} rows repeated in a later snapshot`); }
 console.log(`loaded ${n} rows into fjc_bk (${keep.length} columns)`);
 await db.close();

@@ -64,7 +64,8 @@ Also exposed: resources `rosetta://overview`, `rosetta://fjc` and `rosetta://wal
 ## What joining them turned up
 
 - **Codes that look the same but aren't.** For nature of business, the petition schema uses `o` = Tax Exempt Entity and `O` = None of the above. The FJC uses `o` = Other and `n` = Non-profit.
-- **Null handling changes answers.** "Chapter 13 filers with under $50k in debt" is 25.3% using `TOTLBLTS` and 18.4% using `TOTDBT` in the bundled sample, because 694 blank schedules become $0.
+- **Null handling changes answers.** "Chapter 13 filers with under $50k in debt" is 25.3% using `TOTLBLTS` and 18.9% using `TOTDBT` across all 203,200 FY2025 chapter 13 filings, because 18,093 blank schedules become $0.
+- **Snapshots overlap.** The FJC's rolling 06/30/2026 snapshot repeats 145,740 cases already in the FY2025 year-end snapshot. Counting FY2025 filings without deduping on `CASEKEY` gives 703,280 instead of 557,540. Both loaders keep only the latest snapshot per case.
 - **Codebook line numbers are older than the forms.** The FJC cites "Schedule J line 22"; the current form splits it into 22a–22c.
 - **The IEPD's own samples drift.** The NG1.6 involuntary sample petition fails validation against the NG1.7 schema. `validate_petition` reports exactly where.
 
@@ -84,10 +85,13 @@ docs/              overview, FJC notes and caveats, three worked walkthroughs
 
 ## Data and caveats
 
-The bundled FJC file is the **first 20,000 FY2025 new-filing rows**, not a random sample. Its numbers are illustrative. For real analysis, download a full year from the FJC (`textfiles/cpbank18on.zip`) and load it:
+The figures in this README and in `docs/` come from **all 557,540 FY2025 new filings** (FJC `cpbank18on.txt`, released Sep 2026), loaded on Databricks.
+
+The bundled FJC file is only the **first 20,000 FY2025 new-filing rows**, not a random sample, so the demo runs out of the box. Its numbers are illustrative. For real analysis, download the full file from the FJC (`textfiles/cpbank18on.zip`, 887 MB) and load it locally or on Databricks:
 
 ```
 npm run load:fjc -- data/raw/cpbank18on.txt --fy 2025 --filed-only
+npm run load:databricks -- data/raw/cpbank18on.txt --fy 2025 --filed-only
 ```
 
 Schedule totals are debtor-reported, not validated, and required only for individuals with primarily consumer debts. See [docs/fjc.md](docs/fjc.md) for the full list of caveats.

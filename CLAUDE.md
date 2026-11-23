@@ -11,7 +11,7 @@ Two spokes bind to the hub, never to each other:
 - `query_fjc` returns at most 25 rows, so aggregate in SQL. Filter new filings with `snapfile = 1`. Compare y/n flags with `lower()`. Join `fjc_district` on `district = code` for district names.
 - Say which liabilities variable you used: `TOTLBLTS` counts blank schedules as $0, `TOTDBT` excludes them.
 - Always say what the FJC data cannot answer (`check_coverage fjc`).
-- The bundled FJC data is the first 20,000 FY2025 filings, not a random sample. Present its numbers as illustrative.
+- Check `count(*)` on `fjc_bk` first. The bundled sample (local PGlite default) is the first 20,000 FY2025 filings, not a random sample, so present its numbers as illustrative. The Databricks load is all 557,540 FY2025 new filings and can be cited.
 
 ## When working on the code
 - Regenerate, don't hand-edit: `npm run build:rosetta` writes `hub/rosetta.generated.json`; `python tools/extract-business-rules.py` writes `spokes/forms/business-rules.json`.

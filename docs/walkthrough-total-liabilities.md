@@ -6,7 +6,7 @@
 
 **FJC variable.** `TOTLBLTS`: secured + priority + nonpriority, **nulls treated as zero**. A sibling, `TOTDBT`, is derived as `DSCHRGD + NDSCHRGD` and treats nulls as **missing**. Both are `confirmed` against the codebook.
 
-**A real number** (bundled FY2025 sample, new filings):
+**A real number** (all 557,540 FY2025 new filings):
 
 ```sql
 select orgflchp,
@@ -17,9 +17,9 @@ from fjc_bk where snapfile = 1 and orgflchp in ('7','13') group by 1;
 
 | Chapter | Under $50k, `TOTLBLTS` | Under $50k, `TOTDBT` |
 | --- | --- | --- |
-| 7 | 32.2% | 30.2% |
-| 13 | 25.3% | 18.4% |
+| 7 | 31.2% | 29.5% |
+| 13 | 25.3% | 18.9% |
 
-The difference is 497 chapter 7 and 694 chapter 13 filers whose totals were blank and became $0 in `TOTLBLTS`. Pick a variable with that choice in mind, and say which one you used.
+The difference is 12,723 chapter 7 and 18,093 chapter 13 filers whose totals were zero or blank and count as $0 in `TOTLBLTS`. Pick a variable with that choice in mind, and say which one you used.
 
 **What the FJC data cannot say.** It has no individual creditors or claims (Schedules D and E/F line items), so it can't tell you *whose* debt it is or of what kind, beyond the six "certain liabilities" totals summed as `NDSCHRGD` (B106Sum lines 9a–9f). Schedule totals are debtor-reported, not validated, and required only for individuals with primarily consumer debts.

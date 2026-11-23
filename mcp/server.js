@@ -12,7 +12,8 @@ element, IDB variable, or plain-language concept into all three. Use check_cover
 what the statistical data does and does not capture about a petition. query_fjc is read-only and capped
 at 25 rows: aggregate in SQL, filter new filings with snapfile = 1, compare y/n flags with lower(), and join
 fjc_district on district = code for names. TOTLBLTS counts blank schedules as zero; TOTDBT excludes them;
-say which you used. The bundled FJC data is the first 20,000 FY2025 filings, not a random sample.`;
+say which you used. Check how many rows fjc_bk holds: the bundled sample is the first 20,000 FY2025 filings,
+not a random sample, so its numbers are illustrative; a full-year load (557,540 FY2025 filings) can be cited.`;
 
 const server = new McpServer({ name: "bk-rosetta", version: "0.1.0" }, { instructions: INSTRUCTIONS });
 registerTools(server);

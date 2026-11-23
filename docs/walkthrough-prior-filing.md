@@ -6,7 +6,7 @@
 
 **FJC variable.** `PRFILE`: y/n, prior bankruptcy in the previous 8 years **as reported on the petition**. It's the debtor's own answer, not a docket match. In FY2025 the values are uppercase `Y`/`N` although the codebook documents lowercase, so compare with `lower()`.
 
-**A real number** (bundled sample, new filings):
+**A real number** (all 557,540 FY2025 new filings):
 
 ```sql
 select orgflchp, count(*) n,
@@ -16,9 +16,9 @@ from fjc_bk where snapfile = 1 and orgflchp in ('7','13') group by 1;
 
 | Chapter | Filings | Reported a prior filing |
 | --- | --- | --- |
-| 7 | 12,389 | 6.3% |
-| 13 | 7,259 | 32.7% |
-| All | 20,000 | 16.0% |
+| 7 | 344,903 | 6.6% |
+| 13 | 203,200 | 32.5% |
+| All | 557,540 | 16.1% |
 
 A third of chapter 13 filers say they have filed before, five times the chapter 7 rate.
 
