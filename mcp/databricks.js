@@ -3,7 +3,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { path } from "./rosetta.js";
 
 // Minimal .env support so credentials never need to be in .mcp.json or the shell history.
-function loadDotEnv() {
+export function loadDotEnv() {
   const f = path(".env");
   if (!existsSync(f)) return;
   for (const line of readFileSync(f, "utf8").split(/\r?\n/)) {

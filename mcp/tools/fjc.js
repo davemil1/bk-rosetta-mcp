@@ -9,9 +9,10 @@
 //   DATABRICKS_TOKEN      personal access token
 //   FJC_CATALOG, FJC_SCHEMA   where fjc_bk and fjc_district live (e.g. users / your_name)
 import { path } from "../rosetta.js";
-import { databricksConfig, openDatabricks } from "../databricks.js";
+import { databricksConfig, openDatabricks, loadDotEnv } from "../databricks.js";
 
 const MAX = 25;
+loadDotEnv();
 const BACKEND = (process.env.BACKEND ?? "pglite").toLowerCase();
 const withLimit = (sql) => (/\blimit\s+\d+\s*;?\s*$/i.test(sql) ? sql.replace(/;\s*$/, "") : `${sql.replace(/;\s*$/, "")} LIMIT ${MAX + 1}`);
 
