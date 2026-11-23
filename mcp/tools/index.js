@@ -43,7 +43,12 @@ export const handlers = {
     const line = findFormLine(handle);
     if (line?.fields) return { query: handle, formLine: { form: line.form, line: line.line, fields: line.fields }, primary: view(line.primary) };
     const m = matchElement(handle);
-    if (m) return { match: m.match, ...(m.match === "fuzzy" ? { matchNote: "Best guess by word overlap, not a curated mapping. Confirm the element fits before relying on it." } : {}), ...view(m.element) };
+    if (m?.match === "candidates") return { query: handle, match: "candidates", element: null,
+      instruction: "No exact or curated match. Read the candidates' official definitions and pick the one that fits, then resolve it by name. If none fits, say the concept is not in the petition schema or the FJC data.",
+      candidates: m.candidates };
+    if (m) return { match: m.match,
+      ...(m.match === "fuzzy" ? { matchNote: "Every word matched this element's official text, but it is not a curated mapping. Check the definition, and the other candidates, before relying on it.", candidates: m.candidates.slice(1) } : {}),
+      ...view(m.element) };
     return { error: `no match for "${handle}"`, hint: "try a hub element name, an FJC variable (TOTLBLTS), a form line (B106Sum line 3), or a phrase like 'total debt'" };
   },
 
@@ -99,7 +104,7 @@ export const handlers = {
 
 export function registerTools(server) {
   server.tool("resolve",
-    "Resolve a bankruptcy concept across all three public sources: the Official Form line, the NIEM petition schema element (hub), and the FJC Integrated Database variable. Accepts a hub element (TotalLiabilitiesAmount), an FJC variable (TOTLBLTS), a form line (B106Sum line 3, B101 Q9, Schedule I line 12), or plain words (total debt, pro se, filed before). Returns the official definition, every form field using it, and FJC bindings with confirmed/inferred status. Call this first before querying or guessing any field.",
+    "Resolve a bankruptcy concept across all three public sources: the Official Form line, the NIEM petition schema element (hub), and the FJC Integrated Database variable. Accepts a hub element (TotalLiabilitiesAmount), an FJC variable (TOTLBLTS), a form line (B106Sum line 3, B101 Q9, Schedule I line 12), or plain words (total debt, pro se, filed before). Returns the official definition, every form field using it, and FJC bindings with confirmed/inferred status. `match` says how it was found: exact, synonym, fuzzy (a guess), or candidates: a ranked list with official definitions for you to choose from, or to conclude the concept is not in the schema or the FJC data. Call this first before querying or guessing any field.",
     { handle: z.string().describe("element name, FJC variable, form line, or plain words") },
     async (a) => json(await handlers.resolve(a)));
 

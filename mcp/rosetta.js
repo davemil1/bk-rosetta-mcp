@@ -145,12 +145,78 @@ export function matchElement(handle) {
   if (syn && hub.elements[syn]) return { element: hub.elements[syn], match: "synonym" };
 
   const needle = q.replace(/ /g, "");
-  const all = Object.values(hub.elements);
-  const exactName = all.find((e) => e.name.toLowerCase() === needle);
+  const exactName = Object.values(hub.elements).find((e) => e.name.toLowerCase() === needle);
   if (exactName) return { element: exactName, match: "exact" };
-  const words = q.split(" ").filter((w) => w.length > 1);
-  const score = (e) => { const hay = norm(e.name.replace(/([A-Z])/g, " $1") + " " + (e.definition ?? ""));
-    return words.filter((w) => hasPhrase(hay, w) || hasPhrase(hay, w + "s")).length + (e.bindings.fjc ? 0.5 : 0) + (e.bindings.forms ? 0.25 : 0); };
-  const best = all.map((e) => [score(e), e]).filter(([s]) => s >= Math.max(1, words.length)).sort((a, b) => b[0] - a[0])[0]?.[1];
-  return best ? { element: best, match: "fuzzy" } : null;
+
+  // No exact or curated match: rank candidates and let the calling agent choose from their definitions.
+  const candidates = searchCandidates(h);
+  // One answer only when every word is in the element's own name and it clearly beats the runner-up.
+  // Words found only in definitions are not enough: generic elements such as ItemExistsIndicator are reused
+  // for dozens of different questions, so their combined text matches almost anything.
+  const [top, next] = candidates;
+  const clear = top?.inName && top.element && (!next || next.coverage < 1 || top.score >= 1.25 * next.score);
+  const plain = (c) => { const { inName, ...rest } = c; return rest; };
+  if (clear) return { element: hub.elements[top.element], match: "fuzzy", candidates: candidates.map(plain) };
+  if (candidates.length) return { element: null, match: "candidates", candidates: candidates.map(plain) };
+  return null;
+}
+
+// ---- candidate search over the official text -------------------------------------------------------------
+// Each hub element is indexed by its name, its XSD definition, the workbook definitions of every form field
+// that uses it, and the FJC meanings bound to it. FJC-only variables are indexed by meaning, aliases and
+// why they are not on the petition. Words are weighted by rarity (IDF), so "debtor" or "amount", which appear
+// on hundreds of elements, count for little; a hit in the element's own name counts extra.
+const STOP = new Set("a an the of for to in on and or by with is are was were what which who how many much does do did their his her its this that these those any all total".split(" "));
+// Crude stem: singularize, then keep 7 letters, so foreclosure/foreclosed and discharge/dischargeable meet.
+const stem = (w) => (w.length > 4 && w.endsWith("ies") ? w.slice(0, -3) + "y" : w.length > 3 && w.endsWith("s") && !w.endsWith("ss") ? w.slice(0, -1) : w).slice(0, 7);
+const tokens = (s) => norm(s).split(" ").filter((w) => w.length > 1 && !STOP.has(w)).map(stem);
+
+let index;
+function buildIndex() {
+  const { hub, fjc, rules } = rosetta();
+  const fieldDefs = {};
+  for (const r of rules.rows) if (r.definition) (fieldDefs[r.element] ??= new Set()).add(r.definition);
+  const docs = Object.values(hub.elements).map((e) => ({
+    element: e.name,
+    name: new Set(tokens(e.name.replace(/([A-Z])/g, " $1"))),
+    text: new Set(tokens([e.definition, ...(fieldDefs[e.name] ?? []), ...[].concat(e.bindings.fjc ?? []).map((b) => b.meaning)].join(" "))),
+  }));
+  for (const [v, b] of Object.entries(fjc.variables)) if (!b.hub)
+    docs.push({ variable: v, name: new Set(tokens(v)), text: new Set(tokens([b.meaning, b.notOnPetition, ...(b.aka ?? [])].join(" "))) });
+  const df = {};
+  for (const d of docs) for (const t of new Set([...d.name, ...d.text])) df[t] = (df[t] ?? 0) + 1;
+  const idf = (t) => Math.log(1 + docs.length / df[t]);
+  return { docs, df, idf };
+}
+
+export function searchCandidates(handle, limit = 8) {
+  const { hub, fjc } = rosetta();
+  index ??= buildIndex();
+  // Words that appear nowhere in the official text ("rate", typos) can't discriminate, so they don't count.
+  const q = [...new Set(tokens(handle))].filter((t) => index.df[t]);
+  if (!q.length) return [];
+  const total = q.reduce((s, t) => s + index.idf(t), 0);
+  return index.docs.map((d) => {
+    let score = 0, hit = 0, nameHits = 0;
+    for (const t of q) { const inName = d.name.has(t), inText = d.text.has(t);
+      if (inName) nameHits++;
+      if (inName || inText) { hit += index.idf(t); score += index.idf(t) * (inName ? 1.5 : 1); } }
+    // small preference for elements the forms or the FJC actually use
+    const e = d.element && hub.elements[d.element];
+    if (score) score += (e?.bindings.fjc || d.variable ? 0.3 : 0) + (e?.bindings.forms ? 0.1 : 0);
+    return { d, score, coverage: hit / total, inName: nameHits === q.length };
+  }).filter((x) => x.score > 0 && x.coverage >= 0.5)
+    .sort((a, b) => b.coverage - a.coverage || b.score - a.score)
+    .slice(0, limit)
+    .map(({ d, coverage, score, inName }) => ({ ...candidate(d, coverage), score: +score.toFixed(2), inName }));
+}
+
+function candidate(d, coverage) {
+  const { hub, fjc } = rosetta();
+  if (d.variable) { const b = fjc.variables[d.variable];
+    return { element: null, variable: d.variable, coverage: +coverage.toFixed(2), meaning: b.meaning, notOnPetition: b.notOnPetition, related: b.related }; }
+  const e = hub.elements[d.element];
+  return { element: e.name, coverage: +coverage.toFixed(2), definition: e.definition,
+    forms: [...new Set((e.bindings.forms ?? []).map((f) => f.formLine ?? f.form))].slice(0, 3),
+    fjc: [].concat(e.bindings.fjc ?? []).map((b) => b.variable) };
 }

@@ -14,8 +14,8 @@ at 25 rows: aggregate in SQL, filter new filings with snapfile = 1, compare y/n 
 fjc_district on district = code for names. TOTLBLTS counts blank schedules as zero; TOTDBT excludes them;
 say which you used. For what the petition said, use the ORG* (as-filed) variable that resolve lists first, e.g.
 orgfeests not feests. For petition-level questions filter dbtrtyp = 'i': the FJC also covers non-individual
-debtors. NOB code n is not non-profit in practice; use taxexempt. If resolve says match: fuzzy, confirm the
-element fits before using it. Check how many rows fjc_bk holds: the bundled sample is the first 20,000 FY2025 filings,
+debtors. NOB code n is not non-profit in practice; use taxexempt. If resolve returns match: candidates, read their
+definitions and pick one (or say none fits); treat match: fuzzy as a guess. Check how many rows fjc_bk holds: the bundled sample is the first 20,000 FY2025 filings,
 not a random sample, so its numbers are illustrative; a full-year load (557,540 FY2025 filings) can be cited.`;
 
 const server = new McpServer({ name: "bk-rosetta", version: "0.1.0" }, { instructions: INSTRUCTIONS });

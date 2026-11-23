@@ -67,8 +67,22 @@ test("resolve does not match inside words, and labels guesses", async () => {
   assert.equal(u.match, "synonym");
   const car = await call("resolve", { handle: "car" });
   assert.notEqual(car.element, "AllowableHealthCareDeductionsAmount");
-  assert.equal(car.match, "fuzzy");
   assert.equal((await call("resolve", { handle: "TOTLBLTS" })).match, "exact");
+});
+
+test("resolve hands the agent ranked candidates with official definitions instead of guessing", async () => {
+  const rent = await call("resolve", { handle: "does the debtor rent" });
+  assert.equal(rent.match, "candidates");
+  assert.equal(rent.element, null);
+  assert.ok(rent.candidates.some((c) => c.element === "DebtorRentsResidenceIndicator" && c.definition));
+  // generic elements reused across many questions never win on definition text alone
+  assert.equal((await call("resolve", { handle: "lawsuits against the debtor" })).match, "candidates");
+  // FJC-only variables are candidates too
+  assert.ok((await call("resolve", { handle: "discharge rate" })).candidates.some((c) => c.variable === "D1FDSP"));
+  // a single answer when every word is in one element's name
+  const f = await call("resolve", { handle: "foreclosure" });
+  assert.equal(f.match, "fuzzy");
+  assert.equal(f.element, "ForeclosedIndicator");
 });
 
 test("describe_form returns form lines from the IEPD workbook", async () => {

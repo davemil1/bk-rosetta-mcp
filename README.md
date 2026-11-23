@@ -20,7 +20,7 @@ Requires Node 20+.
 npm install
 npm run build:rosetta                                        # walk the IEPD schema -> hub/rosetta.generated.json
 npm run load:fjc -- data/sample/cpbank_fy2025_sample.tsv     # 20,000 real FY2025 filings, bundled
-npm test                                                     # 10 end-to-end tests over MCP stdio
+npm test                                                     # 11 end-to-end tests over MCP stdio
 ```
 
 Open the folder in Claude Code: `.mcp.json` starts the server. Or add it to any MCP client as `node mcp/server.js`.
@@ -52,7 +52,7 @@ Question 4 matters most. The server knows the limits of its own data.
 
 | Tool | What it does |
 | --- | --- |
-| `resolve` | Any handle in: a schema element, an FJC variable (`PRFILE`), a form line (`B101 Q9`, `Schedule I line 12`) or plain words (`pro se`). It returns all three spokes, with definition, provenance and `confirmed`/`inferred` status. |
+| `resolve` | Any handle in: a schema element, an FJC variable (`PRFILE`), a form line (`B101 Q9`, `Schedule I line 12`) or plain words (`pro se`). It returns all three spokes, with definition, provenance and `confirmed`/`inferred` status. Every answer says how it matched: `exact`, `synonym`, or, for anything else, ranked `candidates` with their official definitions (XSD, form-field and FJC codebook text, weighted by word rarity) so the agent chooses instead of the server guessing. |
 | `describe_form` | An Official Form's fields in printed order, with line, element, definition, required flag and allowed values. Covers 30 forms. |
 | `list_codes` | A coded field's allowed values beside the FJC's coding of the same field. It flags where they diverge. |
 | `check_coverage` | `fjc`: which petition fields reach the statistics, per form, and an explicit list of what never does. |
