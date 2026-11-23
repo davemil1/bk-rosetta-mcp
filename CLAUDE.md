@@ -15,7 +15,7 @@ Two spokes bind to the hub, never to each other:
 - Check `count(*)` on `fjc_bk` first. The bundled sample (local PGlite default) is the first 20,000 FY2025 filings, not a random sample, so present its numbers as illustrative. The Databricks load is all 557,540 FY2025 new filings and can be cited.
 
 ## When working on the code
-- Regenerate, don't hand-edit: `npm run build:rosetta` writes `hub/rosetta.generated.json`; `python tools/extract-business-rules.py` writes `spokes/forms/business-rules.json`.
+- Regenerate, don't hand-edit: `npm run build:rosetta` writes `hub/rosetta.generated.json`; `python tools/extract-business-rules.py` writes `spokes/forms/business-rules.json`. `npm run build:schematron` writes `hub/rules/business-rules.sch`.
 - `npm test` runs the server over stdio and exercises every tool.
 - The sample petitions in `hub/fixtures/` are synthetic. There is no real debtor data in this repo.
 - `_private/` is gitignored working notes and must never be committed.

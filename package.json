@@ -9,7 +9,8 @@
     "load:fjc": "node tools/load-fjc.js",
     "mcp": "node mcp/server.js",
     "test": "node --test test/*.test.js",
-    "load:databricks": "node tools/load-databricks.js"
+    "load:databricks": "node tools/load-databricks.js",
+    "build:schematron": "node tools/build-schematron.js"
   },
   "dependencies": {
     "@databricks/sql": "^2.4.0",

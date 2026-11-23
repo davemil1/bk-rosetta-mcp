@@ -127,3 +127,11 @@ test("explain_petition reads answers back through their form questions", async (
   const b101 = await call("explain_petition", { xml: "NG1.6_CH13_Individual_BK_Petition_Min", form: "B101" });
   assert.ok(b101.byForm[0].lines.some((l) => l.line === "9" && /bankruptcy within the last 8 years/i.test(l.question)));
 });
+
+test("business rules are published as well-formed ISO Schematron with workbook rule ids", async () => {
+  const { XMLValidator } = await import("fast-xml-parser");
+  const sch = readFileSync("hub/rules/business-rules.sch", "utf8");
+  assert.equal(XMLValidator.validate(sch), true);
+  assert.match(sch, /xmlns="http:\/\/purl.oclc.org\/dsdl\/schematron"/);
+  for (const id of ["BCO-101-0004-required", "BCO-101-0102-values", "BCO-101-0102-c", "XF-estimated-liabilities"]) assert.ok(sch.includes(`id="${id}"`), id);
+});

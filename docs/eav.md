@@ -23,6 +23,27 @@ A petition is filed into a **case** in a federal bankruptcy court, so each submi
 - **Petitions cite other cases too.** Form 101 line 9 asks for prior bankruptcy cases within 8 years, and line 10 for pending cases of a spouse, partner or affiliate (Form 105 line 9 on an involuntary petition). The Statement of Financial Affairs (Form 107, lines 9 and 26) lists lawsuits and other proceedings. These are references to *other* cases, kept in their own table.
 - **The case key is the bridge to the FJC.** The FJC's `CASEKEY` is circuit + district + office + docket number + generation + sequence. Once a submission's case is known, every answer in `petition_values` can be joined to the case's FJC record: chapter conversions, how it closed, and whether the debtor was discharged.
 
+## People, cases and submissions
+
+Three levels, each with its own key:
+
+- **Submission → case.** A case collects many submissions: the original petition, then amendments (the IEPD's amended Schedule A/B sample) and supplements (its supplemental Schedules I/J sample). A submission is keyed by its own id. It carries the case key once the case is docketed, a `kind`, and an `amendment_seq` within the case.
+- **Case.** A case is keyed by **district + docket number**. The year is already inside the docket number (`3:12-bk-08893` = office 3, 2012, bankruptcy, case 08893), and a docket number is unique within a district, so date filed and year are attributes, not key parts. The FJC's `CASEKEY` adds circuit, office, generation and sequence to the same docket.
+- **Person → cases.** One person can have several cases over the years, in different courts, as Debtor 1 in one and Debtor 2 (a spouse in a joint case) in another. A `case_party` table links them by role.
+
+How often successive cases happen is shaped by the Bankruptcy Code. These rules limit the **discharge**, not the filing (stated from 11 U.S.C.; check the current text before relying on them):
+
+| New case | Earlier discharge in | Barred if the earlier case was filed within | |
+| --- | --- | --- | --- |
+| Chapter 7 | chapter 7 or 11 | 8 years | § 727(a)(8) |
+| Chapter 7 | chapter 12 or 13 | 6 years, unless that plan paid 100%, or at least 70% in good faith | § 727(a)(9) |
+| Chapter 13 | chapter 7, 11 or 12 | 4 years | § 1328(f)(1) |
+| Chapter 13 | chapter 13 | 2 years | § 1328(f)(2) |
+
+Refiling soon after a dismissal is limited separately: there's a 180-day bar after certain dismissals (§ 109(g)), and a shorter or no automatic stay when earlier cases were dismissed within a year (§ 362(c)(3)–(4)). Form 101 line 9 asks about bankruptcy cases filed in the last 8 years, the longest look-back.
+
+**What public data can't do.** The FJC publishes no person identifier, so a debtor's successive cases can't be linked. `PRFILE` is only the debtor's own yes/no answer to line 9. Linking people across cases needs the SSN on the petition, which only the courts hold. The `debtor` table below exists for that setting and is never populated from public data.
+
 ## Table layout
 
 ```sql
@@ -31,8 +52,24 @@ create table bankruptcy_case (
   case_key   text primary key,   -- circuit + district + office + docket + generation + sequence (FJC CASEKEY)
   district   text not null,      -- FJC district code; fjc_district gives the name
   office     text,
-  docket     text not null,      -- e.g. 3:12-bk-08893
-  filed_date date
+  docket     text not null,      -- e.g. 3:12-bk-08893; the year (12) is inside it
+  chapter    text,               -- as filed
+  filed_date date,
+  unique (district, docket)      -- a docket number is unique within a district
+);
+
+-- A person who files. Identity resolution needs the SSN on the petition, which only the courts hold;
+-- this table is never populated from public data (the FJC publishes no person identifier).
+create table debtor (
+  person_id text primary key       -- surrogate id assigned by the court system
+);
+
+-- Who is a party to which case, and in what role. One person, many cases, possibly in different courts.
+create table case_party (
+  case_key  text not null references bankruptcy_case(case_key),
+  person_id text not null references debtor(person_id),
+  role      text not null,         -- debtor1 | debtor2 (joint case)
+  primary key (case_key, person_id)
 );
 
 -- One submitted petition package (original, amended or supplemental).
@@ -41,8 +78,10 @@ create table petition_submission (
   case_key      text references bankruptcy_case(case_key),  -- null until the court dockets an original petition
   court_name    text,           -- from the B101 header
   kind          text not null,  -- original | amended | supplemental
+  amendment_seq int not null default 0,  -- 0 = original; 1, 2, ... in filing order within the case
   iepd_release  text,           -- e.g. NG1.7
-  submitted_at  timestamp
+  submitted_at  timestamp,
+  unique (case_key, kind, amendment_seq)
 );
 
 -- Other cases a petition cites: prior and pending bankruptcies (B101 lines 9-10, B105 line 9) and lawsuits (B107).
