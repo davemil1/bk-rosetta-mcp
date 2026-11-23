@@ -22,7 +22,7 @@ Requires Node 20+.
 npm install
 npm run build:rosetta                                        # walk the IEPD schema -> hub/rosetta.generated.json
 npm run load:fjc -- data/sample/cpbank_fy2025_sample.tsv     # 20,000 real FY2025 filings, bundled
-npm test                                                     # 11 end-to-end tests over MCP stdio
+npm test                                                     # 13 end-to-end tests over MCP stdio
 ```
 
 Open the folder in Claude Code: `.mcp.json` starts the server. Or add it to any MCP client as `node mcp/server.js`. The server speaks MCP over stdio.
@@ -60,6 +60,12 @@ npm run load:databricks -- data/raw/cpbank18on.txt --fy 2025 --filed-only
 
 **3. Check** with `select count(*) from fjc_bk` through `query_fjc`, or ask Claude "how many FY2025 filings are loaded?"
 
+### Loading other years
+
+- **Several years from one file.** `cpbank18on.txt` holds every fiscal year from FY2018 on. Pass a list, `--fy 2023,2024,2025`, or omit `--fy` to load every year in the file. Then filter or group on `filefy` in SQL. The one-row-per-case rule still holds: a case that appears in several snapshots keeps its latest one.
+- **FY2008–FY2017.** These are in a separate file, `cpbank08to17.zip`, on the same [dataset page](https://www.fjc.gov/research/idb/bankruptcy-cases-filed-terminated-and-pending-fy-2008-present). Each load **replaces** `fjc_bk`, so load one file at a time. Codes changed over the years (see the codebook's "Code Changes Over Time"), and the `ORG*` and Subchapter V columns don't exist for early years. Check `resolve` before comparing across them.
+- **Size.** One year of new filings is about 140 MB before upload (43 MB gzipped), so several years scale roughly linearly. Without `--filed-only` the loader also keeps pending and closed cases, which are much larger.
+
 ### On Databricks
 
 The FJC data and the rosetta itself can live in Unity Catalog. Copy `.env.example` to `.env` and fill in your workspace host, SQL warehouse HTTP path, token, catalog and schema. Then run the Databricks loader above.
@@ -83,7 +89,7 @@ Question 4 matters most. The server knows the limits of its own data.
 
 ## Tools
 
-All six tools are read-only and annotated `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true`.
+All eight tools are read-only and annotated `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true`.
 
 | Tool | What it does |
 | --- | --- |
@@ -93,6 +99,8 @@ All six tools are read-only and annotated `readOnlyHint: true`, `destructiveHint
 | `check_coverage` | `fjc`: which petition fields reach the statistics, per form, and an explicit list of what never does. |
 | `query_fjc` | One read-only `SELECT` over table `fjc_bk` (plus `fjc_district`). Capped at 25 rows. |
 | `validate_petition` | Full XSD validation against the IEPD (NIEM 2.0 imports included, libxml2 via WebAssembly). Also reports which fields reach the FJC statistics. |
+| `explain_petition` | Reads a petition back in plain English. Every answer appears with the form line and question it answers, coded values are decoded through the schema's code lists, and repeated items are labelled (Creditor 3). Headline facts come first, each with the FJC variable that counts it. |
+| `shred_petition` | Turns a petition into EAV rows. The entity is the form within the submission, the attribute is the question's XPath, and the value sits in a column typed by the workbook (money, date, integer, boolean, text). Nested repeats carry an indexed path and `seq`, e.g. `[3,2]` for creditor 3, claim 2. See [docs/eav.md](docs/eav.md). |
 
 Also exposed: resources `rosetta://overview`, `rosetta://fjc` and `rosetta://walkthrough/{total-liabilities,nature-of-debt,prior-filing}`, and prompts `trace`, `ask_fjc` and `coverage`. Prompt arguments are a single word in Claude Code (`/mcp__bk-rosetta__coverage fjc`); for longer questions, just ask in plain English.
 
@@ -121,7 +129,8 @@ bk-rosetta-mcp/
 │   ├── rosetta.js             # Loads hub + spokes, joins them, resolve/search logic
 │   ├── databricks.js          # Databricks connection (query path and loader)
 │   ├── validate.js            # libxml2 (WebAssembly) XSD validation
-│   ├── tools/                 # index.js registers the six tools; fjc.js is the SQL backend
+│   ├── petition.js            # Petition XML -> EAV rows -> plain-English reading
+│   ├── tools/                 # index.js registers the eight tools; fjc.js is the SQL backend
 │   ├── resources/             # rosetta:// resources
 │   └── prompts/               # trace, ask_fjc, coverage
 ├── hub/
@@ -138,7 +147,7 @@ bk-rosetta-mcp/
 ├── data/
 │   ├── sample/                # First 20,000 FY2025 filings (bundled)
 │   └── raw/                   # Full FJC download goes here (git-ignored)
-├── docs/                      # Overview, FJC notes and caveats, three worked walkthroughs
+├── docs/                      # Overview, FJC notes and caveats, EAV design, three worked walkthroughs
 ├── eval/                      # 10 gold questions (evaluation.xml) + how each answer was derived
 └── test/                      # End-to-end tests over MCP stdio
 ```
@@ -171,6 +180,8 @@ The [GSA MCP hackathon template](https://github.com/GSA-TTS/mcp-hackathon-templa
 
   The server would then run inside the workspace next to the data, behind workspace authentication. This needs Databricks Apps enabled on the workspace.
 - **Semantic search in `resolve`.** Precompute embeddings of each element's XSD definition, form-field text and codebook meaning at build time. Rank candidates by meaning as well as by words, so "does the debtor rent" finds `DebtorRentsResidenceIndicator` without a synonym.
+- **Business rules as Schematron.** The workbook's rules (required, allowed values, conditional rules such as "chapter 12 must be business debt") could be generated as an ISO Schematron file, so any XML toolchain can check them, and also run over the EAV rows. That would flag inconsistencies such as estimated liabilities of $1–10 billion against a $303 schedule total.
+- **Store petition values.** `shred_petition` returns rows; a `petition_values` table on Databricks (DDL in [docs/eav.md](docs/eav.md)) would hold them for querying across submissions.
 - **MCP registry.** Add `server.json` once the repository has its public home.
 - **More FJC columns.** Case outcomes (`D1FDSP`, discharge dates) are loaded but not yet joined to the petition's eventual fate; `CASETYP` (voluntary vs involuntary) would tie cases to B101 vs B105.
 

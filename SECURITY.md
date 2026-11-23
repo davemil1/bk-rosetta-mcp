@@ -14,7 +14,7 @@ If this repository is hosted under a GSA organization, the [GSA Vulnerability Di
 ## What the server touches
 
 - **Public data only.** The hub is the judiciary's published NIEM petition schema (IEPD). The `forms` spoke comes from the IEPD's business-rules workbook. The `fjc` spoke is the Federal Judicial Center's public Integrated Database, which publishes no names, SSNs or street addresses (only ZIP and county). The sample petitions in `hub/fixtures/` are the IEPD's own synthetic examples. There is no real debtor data and no CM/ECF access.
-- **Read-only.** All six tools are annotated `readOnlyHint: true`. `query_fjc` accepts a single `SELECT` only; anything else, and anything after a `;`, is refused. Results are capped at 25 rows.
+- **Read-only.** All eight tools are annotated `readOnlyHint: true`. `query_fjc` accepts a single `SELECT` only; anything else, and anything after a `;`, is refused. Results are capped at 25 rows.
 - **No outbound requests from tools.** No tool takes a URL. The only network calls are the Databricks SQL warehouse and Files API at the host set in `.env`, and only the loader writes.
 - **stdio by default.** The server talks JSON-RPC over stdin/stdout to a local client. It opens no port. An HTTP deployment (see the README's next steps) would need authentication in front of `/mcp` before non-hackathon use.
 

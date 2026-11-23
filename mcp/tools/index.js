@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { rosetta, findElement, matchElement, findFormLine, findFjcOnly, relatedFjc } from "../rosetta.js";
 import { queryFjc } from "./fjc.js";
 import { validatePetitionXml, listFixtures, FIXTURES_DIR } from "../validate.js";
+import { explainPetition, shredForTool } from "../petition.js";
 
 const json = (x) => ({ content: [{ type: "text", text: JSON.stringify(x, null, 2) }] });
 const MAX_FORM_ROWS = 12;
@@ -88,11 +89,9 @@ export const handlers = {
   query_fjc: async ({ sql }) => queryFjc(sql),
 
   validate_petition: async ({ xml }) => {
-    let src = xml, name = "petition.xml";
-    const fx = listFixtures();
-    const pick = xml === "fixture" ? "NG1.6_CH7_Individual_BK_Petition_Complete.xml" : fx.find((f) => f === xml || f.replace(/\.xml$/, "") === xml);
-    if (pick) { src = readFileSync(`${FIXTURES_DIR}/${pick}`, "utf8"); name = pick; }
-    else if (!xml.trimStart().startsWith("<")) return { error: "pass petition XML, 'fixture', or a fixture name", fixtures: fx };
+    const p = petitionSource(xml);
+    if (p.error) return p;
+    const { src, name } = p;
     const schema = await validatePetitionXml(src, name);
     const { hub } = rosetta();
     const forms = [...new Set([...src.matchAll(/<bkcmecf:(FormB\w+|CreditorMatrix)\b/g)].map((m) => m[1]))];
@@ -100,7 +99,26 @@ export const handlers = {
     const statistical = populated.filter((n) => hub.elements[n].bindings.fjc).map((n) => ({ element: n, fjc: [].concat(hub.elements[n].bindings.fjc).map((b) => b.variable) }));
     return { file: name, schemaValid: schema.valid, schemaErrors: schema.errors, forms, populatedElements: populated.length, reachesFjcStatistics: statistical };
   },
+
+  explain_petition: async ({ xml, form, limit }) => {
+    const p = petitionSource(xml);
+    return p.error ? p : explainPetition(p.src, { name: p.name, form, limit });
+  },
+
+  shred_petition: async ({ xml, form, limit }) => {
+    const p = petitionSource(xml);
+    return p.error ? p : shredForTool(p.src, { name: p.name, form, limit });
+  },
 };
+
+// Petition XML, 'fixture' (the complete chapter 7 sample), or the name of one of the IEPD's synthetic samples.
+function petitionSource(xml) {
+  const fx = listFixtures();
+  const pick = xml === "fixture" ? "NG1.6_CH7_Individual_BK_Petition_Complete.xml" : fx.find((f) => f === xml || f.replace(/\.xml$/, "") === xml);
+  if (pick) return { src: readFileSync(`${FIXTURES_DIR}/${pick}`, "utf8"), name: pick };
+  if (!xml.trimStart().startsWith("<")) return { error: "pass petition XML, 'fixture', or a sample name", fixtures: fx };
+  return { src: xml, name: "petition.xml" };
+}
 
 // Every tool only reads: the schema, the bindings, or a SELECT against a fixed statistical extract.
 const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
@@ -141,4 +159,22 @@ export function registerTools(server) {
     { xml: z.string() },
     { title: "Validate a petition against the IEPD", ...READ_ONLY },
     async (a) => json(await handlers.validate_petition(a)));
+
+  const petitionArgs = {
+    xml: z.string().describe("petition XML, 'fixture', or a sample name such as NG1.6_CH13_Individual_BK_Petition_Min"),
+    form: z.string().optional().describe("only this form, e.g. B101 or FormB106D"),
+    limit: z.number().int().positive().max(500).optional().describe("max answers or rows to return"),
+  };
+
+  server.tool("explain_petition",
+    "Read a petition back in plain English: every answer shown with the form line and question it answers (from the IEPD business-rules workbook), coded values decoded through the schema's code lists, money and dates formatted, and repeated items labelled (Creditor 3, Property item 2). Starts with headline facts (chapter, debtor type, nature of debts, prior filing, fee status, estimated ranges, schedule totals), each with the FJC variable that counts it. Without form: a per-form overview; with form: every answer on that form. Only the IEPD's synthetic sample petitions ship with the repo.",
+    petitionArgs,
+    { title: "Explain a petition in plain English", ...READ_ONLY },
+    async (a) => json(await handlers.explain_petition(a)));
+
+  server.tool("shred_petition",
+    "Turn a petition into EAV (entity-attribute-value) rows: entity = the form within the submission, attribute = the question's generic XPath (keys into the business-rules workbook), value in a column typed by the workbook datatype (value_money, value_date, value_int, value_bool, value_text, value_long_text). Repeats are nested, so each row also carries its indexed instance path and seq, the indices of every repeatable step (e.g. [3,2] = creditor 3, claim 2). Without form: counts per form and a sample; with form: that form's rows.",
+    petitionArgs,
+    { title: "Shred a petition into EAV rows", ...READ_ONLY },
+    async (a) => json(await handlers.shred_petition(a)));
 }

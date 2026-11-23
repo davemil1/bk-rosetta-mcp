@@ -15,9 +15,9 @@ before(async () => {
 });
 after(async () => client?.close());
 
-test("lists six tools", async () => {
+test("lists eight tools", async () => {
   const { tools } = await client.listTools();
-  assert.deepEqual(tools.map((t) => t.name).sort(), ["check_coverage", "describe_form", "list_codes", "query_fjc", "resolve", "validate_petition"]);
+  assert.deepEqual(tools.map((t) => t.name).sort(), ["check_coverage", "describe_form", "explain_petition", "list_codes", "query_fjc", "resolve", "shred_petition", "validate_petition"]);
   for (const t of tools) assert.ok(t.annotations?.readOnlyHint && !t.annotations.destructiveHint, `${t.name} is annotated read-only`);
 });
 
@@ -108,4 +108,22 @@ test("validate_petition validates against the full IEPD", async () => {
   assert.ok(ok.reachesFjcStatistics.some((x) => x.element === "BankruptcyChapter"));
   const bad = await call("validate_petition", { xml: "NG1.6_CH7_Involuntary_BK_Petition" });
   assert.equal(bad.schemaValid, false);
+});
+
+test("shred_petition turns a petition into typed EAV rows with nested repeat indices", async () => {
+  const r = await call("shred_petition", { xml: "fixture", form: "B106AB", limit: 500 });
+  assert.ok(r.totalRows > 1000 && r.inCatalog / r.totalRows > 0.9, "most answers key into the workbook");
+  const nested = r.rows.find((x) => x.seq.length === 2 && x.seq[0] === 2);
+  assert.ok(nested && /\[2\]/.test(nested.instance), "second repeated item carries its index");
+  assert.ok(r.rows.some((x) => x.datatype === "money" && typeof x.value_money === "number"));
+});
+
+test("explain_petition reads answers back through their form questions", async () => {
+  const r = await call("explain_petition", { xml: "fixture" });
+  const ch = r.headline.find((f) => f.fact === "BankruptcyChapter");
+  assert.equal(ch.answer, "7");
+  assert.deepEqual(ch.fjc, ["ORGFLCHP"]);
+  assert.equal(r.headline.find((f) => f.fact === "NatureOfDebtsCode").answer, "c (Consumer)", "codes decoded via the schema code list");
+  const b101 = await call("explain_petition", { xml: "NG1.6_CH13_Individual_BK_Petition_Min", form: "B101" });
+  assert.ok(b101.byForm[0].lines.some((l) => l.line === "9" && /bankruptcy within the last 8 years/i.test(l.question)));
 });

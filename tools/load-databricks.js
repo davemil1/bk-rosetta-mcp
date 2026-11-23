@@ -1,9 +1,9 @@
 // Load the FJC data and the rosetta itself into Databricks Unity Catalog.
 //
-//   npm run load:databricks -- <fjc tab-delimited file> [--fy 2025] [--filed-only] [--dry-run]
+//   npm run load:databricks -- <fjc tab-delimited file> [--fy 2025 | 2023,2024,2025] [--filed-only] [--dry-run]
 //
-// 1. Streams the FJC file down to the bound columns (and optionally one fiscal year / new filings),
-//    so a 3.6 GB cpbank18on.txt becomes a ~100 MB upload.
+// 1. Streams the FJC file down to the bound columns (and optionally some fiscal years / new filings),
+//    so a 3.6 GB cpbank18on.txt becomes a ~140 MB extract (43 MB gzipped) for one year of new filings.
 // 2. Writes the rosetta as JSON lines: hub_elements, form_lines, fjc_bindings, fjc_district.
 // 3. Creates volume <catalog>.<schema>.fjc_raw, uploads the files via the Files API, and builds Delta
 //    tables with read_files(). Every fjc_bk column gets the FJC codebook meaning and its hub element as a
@@ -18,11 +18,12 @@ import { rosetta, path } from "../mcp/rosetta.js";
 import { databricksConfig, openDatabricks, uploadToVolume } from "../mcp/databricks.js";
 
 const args = process.argv.slice(2);
-const file = args.find((a) => !a.startsWith("--") && !/^\d+$/.test(a));
-const fy = args.includes("--fy") ? args[args.indexOf("--fy") + 1] : null;
+const file = args.find((a, i) => !a.startsWith("--") && args[i - 1] !== "--fy");
+// --fy 2025, or a list: --fy 2023,2024,2025. Omit it to load every fiscal year in the file.
+const fy = args.includes("--fy") ? new Set(args[args.indexOf("--fy") + 1].split(",").map((s) => s.trim())) : null;
 const filedOnly = args.includes("--filed-only");
 const dryRun = args.includes("--dry-run");
-if (!file) { console.error("usage: npm run load:databricks -- <fjc file> [--fy 2025] [--filed-only] [--dry-run]"); process.exit(1); }
+if (!file) { console.error("usage: npm run load:databricks -- <fjc file> [--fy 2025 | 2023,2024,2025] [--filed-only] [--dry-run]"); process.exit(1); }
 
 const OUT = path("data/raw/databricks");
 mkdirSync(OUT, { recursive: true });
@@ -43,7 +44,7 @@ for await (const line of createInterface({ input: createReadStream(file), crlfDe
     out.write(keep.join("\t") + "\n");
     continue;
   }
-  if (fy && cells[iFY]?.trim() !== fy) continue;
+  if (fy && !fy.has(cells[iFY]?.trim())) continue;
   if (filedOnly && cells[iSF]?.trim() !== "1") continue;
   out.write(idx.map((i) => (i < 0 ? "" : (cells[i] ?? "").trim())).join("\t") + "\n");
   n++;

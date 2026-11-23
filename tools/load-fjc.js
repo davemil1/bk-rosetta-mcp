@@ -1,16 +1,17 @@
 // Load one FJC IDB bankruptcy text file (tab-delimited, header row of SAS short names)
 // into PGlite table fjc_bk, keeping the columns listed in spokes/fjc/bindings.json.
-// Usage: node tools/load-fjc.js <file.tsv> [--fy 2025] [--filed-only]
-//   --fy N        keep rows whose FILEFY == N
+// Usage: node tools/load-fjc.js <file.tsv> [--fy 2025 | 2023,2024,2025] [--filed-only]
+//   --fy N[,N...] keep rows whose FILEFY is one of these fiscal years (omit for every year in the file)
 //   --filed-only  keep rows with SNAPFILE == 1 (new filings in that snapshot)
 import { PGlite } from "@electric-sql/pglite";
 import { createReadStream, readFileSync } from "node:fs";
 import { createInterface } from "node:readline";
 
 const args = process.argv.slice(2);
-const file = args.find((a) => !a.startsWith("--"));
-if (!file) { console.error("usage: node tools/load-fjc.js <tab-delimited fjc file> [--fy 2025] [--filed-only]"); process.exit(1); }
-const fy = args.includes("--fy") ? args[args.indexOf("--fy") + 1] : null;
+const file = args.find((a, i) => !a.startsWith("--") && args[i - 1] !== "--fy");
+if (!file) { console.error("usage: node tools/load-fjc.js <tab-delimited fjc file> [--fy 2025 | 2023,2024,2025] [--filed-only]"); process.exit(1); }
+// --fy 2025, or a list: --fy 2023,2024,2025. Omit it to load every fiscal year in the file.
+const fy = args.includes("--fy") ? new Set(args[args.indexOf("--fy") + 1].split(",").map((s) => s.trim())) : null;
 const filedOnly = args.includes("--filed-only");
 
 const bindings = JSON.parse(readFileSync("spokes/fjc/bindings.json", "utf8"));
@@ -36,7 +37,7 @@ for await (const line of rl) {
     const missing = keep.filter((k, i) => idx[i] < 0); if (missing.length) console.warn("columns not in file:", missing.join(","));
     continue;
   }
-  if (fy && cells[iFY]?.trim() !== fy) continue;
+  if (fy && !fy.has(cells[iFY]?.trim())) continue;
   if (filedOnly && cells[iSF]?.trim() !== "1") continue;
   batch.push(idx.map((i, j) => { const v = i < 0 ? "" : (cells[i] ?? "").trim(); return v === "" ? null : numeric.has(keep[j]) && isNaN(Number(v)) ? null : v; }));
   n++; if (batch.length >= 500) await flush();

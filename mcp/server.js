@@ -9,7 +9,8 @@ petitions (the Individual Bankruptcy Data Collection IEPD), with field-level map
 Official Bankruptcy Forms and to the Federal Judicial Center Integrated Database (FJC IDB).
 Every hub element carries its official definition. Use resolve to turn any form line, schema
 element, IDB variable, or plain-language concept into all three. Use check_coverage fjc to see
-what the statistical data does and does not capture about a petition. query_fjc is read-only and capped
+what the statistical data does and does not capture about a petition. Use explain_petition to read a petition's answers back
+through their form questions, and shred_petition for the same answers as typed EAV rows. query_fjc is read-only and capped
 at 25 rows: aggregate in SQL, filter new filings with snapfile = 1, compare y/n flags with lower(), and join
 fjc_district on district = code for names. TOTLBLTS counts blank schedules as zero; TOTDBT excludes them;
 say which you used. For what the petition said, use the ORG* (as-filed) variable that resolve lists first, e.g.
