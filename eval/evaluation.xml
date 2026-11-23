@@ -1,0 +1,50 @@
+<!--
+  Gold questions for bk-rosetta-mcp, in the mcp-builder format used by the GSA MCP hackathon template
+  (github.com/GSA-TTS/mcp-hackathon-template, .agents/skills/mcp-builder/references/evaluation.md).
+
+  Data answers assume the full FY2025 load: FJC IDB cpbank18on.txt (September 2026 release), FY2025 new
+  filings, one record per case (557,540 rows). The bundled 20,000-row sample gives different numbers.
+  See eval/README.md for how each answer was derived and which trap each question tests.
+-->
+<evaluation>
+   <qa_pair>
+      <question>Among chapter 13 bankruptcy cases filed in federal fiscal year 2025, what percentage of filers owed less than $50,000 in total, counting only filers who actually reported their debts (a blank summary of schedules is not $0)? Answer with the percentage rounded to one decimal place, digits only (e.g. 12.3).</question>
+      <answer>18.9</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>The voluntary petition for individuals asks whether the debtor has filed for bankruptcy within the last 8 years. What percentage of FY2025 chapter 13 filers answered yes? Answer with the percentage rounded to one decimal place, digits only.</question>
+      <answer>32.5</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>How many new bankruptcy cases filed in FY2025 were filed by tax-exempt (non-profit) organizations? Answer with a whole number, digits only.</question>
+      <answer>258</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>In how many new bankruptcy cases filed in FY2025 was the filing fee waived because the debtor could not afford it, according to the case record as originally filed? Answer with a whole number, digits only.</question>
+      <answer>14696</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Which federal judicial district had the most small business reorganization cases filed under Subchapter V of chapter 11 in FY2025? Answer with the district name exactly as the FJC codebook writes it (e.g. "Texas - Northern").</question>
+      <answer>Florida - Middle</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>For chapter 11 cases filed in FY2025, what was the most common estimated-assets range the debtor checked on the petition as filed? Answer with the range exactly as the petition schema's code list defines it.</question>
+      <answer>$1,000,001 - $10,000,000</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Among federal judicial districts with at least 1,000 chapter 7 cases filed by individuals in FY2025, which had the highest share of cases where the first debtor filed without a lawyer, as of the original filing? Answer with the district name exactly as the FJC codebook writes it.</question>
+      <answer>Maryland</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>How many of the fields on the Statement of Financial Affairs for Individuals Filing for Bankruptcy (Official Form 107) are captured anywhere in the FJC Integrated Database? Answer with a whole number, digits only.</question>
+      <answer>0</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>The judiciary published a sample involuntary chapter 7 petition with release NG1.6 of the bankruptcy petition data exchange. Validated against the current schema, on which line of that XML file does the first error occur? Answer with the line number, digits only.</question>
+      <answer>148</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>How many individual debtors (not corporations, partnerships or other entities) who filed for bankruptcy in FY2025 said on their petition that their debts were primarily business debts? Answer with a whole number, digits only.</question>
+      <answer>11136</answer>
+   </qa_pair>
+</evaluation>

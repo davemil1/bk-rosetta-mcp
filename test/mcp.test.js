@@ -18,6 +18,7 @@ after(async () => client?.close());
 test("lists six tools", async () => {
   const { tools } = await client.listTools();
   assert.deepEqual(tools.map((t) => t.name).sort(), ["check_coverage", "describe_form", "list_codes", "query_fjc", "resolve", "validate_petition"]);
+  for (const t of tools) assert.ok(t.annotations?.readOnlyHint && !t.annotations.destructiveHint, `${t.name} is annotated read-only`);
 });
 
 test("resolve works from every direction", async () => {

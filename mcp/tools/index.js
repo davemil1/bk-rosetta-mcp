@@ -102,34 +102,43 @@ export const handlers = {
   },
 };
 
+// Every tool only reads: the schema, the bindings, or a SELECT against a fixed statistical extract.
+const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
+
 export function registerTools(server) {
   server.tool("resolve",
     "Resolve a bankruptcy concept across all three public sources: the Official Form line, the NIEM petition schema element (hub), and the FJC Integrated Database variable. Accepts a hub element (TotalLiabilitiesAmount), an FJC variable (TOTLBLTS), a form line (B106Sum line 3, B101 Q9, Schedule I line 12), or plain words (total debt, pro se, filed before). Returns the official definition, every form field using it, and FJC bindings with confirmed/inferred status. `match` says how it was found: exact, synonym, fuzzy (a guess), or candidates: a ranked list with official definitions for you to choose from, or to conclude the concept is not in the schema or the FJC data. Call this first before querying or guessing any field.",
     { handle: z.string().describe("element name, FJC variable, form line, or plain words") },
+    { title: "Resolve a bankruptcy concept", ...READ_ONLY },
     async (a) => json(await handlers.resolve(a)));
 
   server.tool("describe_form",
     "List an Official Form's fields in printed order, with line numbers, schema element, definition, required flag and allowed values, from the IEPD business rules. Forms: B101, B101A, B103A, B103B, B104, B105, B106Sum, B106Dec, B106AB, B106C, B106D, B106EF, B106G, B106H, B106I, B106J, B106J2, B107, B108, B122A1, B122A2, B122B, B122C1, B122C2, B2030, CreditorMatrix.",
     { form: z.string(), line: z.string().optional().describe("only this line, e.g. 3 or 9a") },
+    { title: "Describe an Official Form", ...READ_ONLY },
     async (a) => json(await handlers.describe_form(a)));
 
   server.tool("list_codes",
     "Allowed values and definitions for a coded element (NatureOfDebtsCode, BankruptcyChapter, FilingFeeStatusCode, EstimatedAssetsCode, DebtorTypeCode...), alongside how the FJC codes the same field.",
     { element: z.string() },
+    { title: "List allowed codes", ...READ_ONLY },
     async (a) => json(await handlers.list_codes(a)));
 
   server.tool("check_coverage",
     "Which petition fields a spoke captures. spoke=fjc answers 'what does the FJC statistical dataset NOT know about a bankruptcy petition', with per-form counts, the explicit list of what is not captured, and the FJC's own caveats.",
     { spoke: z.enum(["forms", "fjc"]) },
+    { title: "Check what a source captures", ...READ_ONLY },
     async (a) => json(await handlers.check_coverage(a)));
 
   server.tool("query_fjc",
-    "Run one read-only SELECT against the loaded FJC IDB bankruptcy table fjc_bk (one row per case per snapshot). Columns are IDB variable names (ORGFLCHP, NTRDBT, TOTLBLTS, PRFILE, D1FPRSE, DISTRICT...); resolve any you are unsure of first. y/n flags vary in case: compare with lower(). New filings: WHERE snapfile = 1. Max 25 rows; aggregate rather than page.",
+    "Run one read-only SELECT against the loaded FJC IDB bankruptcy table fjc_bk (one row per case). Data as of the FJC September 2026 release: the full load is FY2025 new filings (Oct 2024-Sep 2025, 557,540 cases); the bundled sample is the first 20,000 of them. The FJC republishes a few times a year; check count(*) to see which is loaded. Columns are IDB variable names (ORGFLCHP, NTRDBT, TOTLBLTS, PRFILE, D1FPRSE, DISTRICT...); resolve any you are unsure of first. y/n flags vary in case: compare with lower(). New filings: WHERE snapfile = 1. Max 25 rows; aggregate rather than page.",
     { sql: z.string() },
+    { title: "Query FJC bankruptcy statistics", ...READ_ONLY },
     async (a) => json(await handlers.query_fjc(a)));
 
   server.tool("validate_petition",
     "Validate a bkcmecf petition XML against the full published IEPD schema (NIEM 2.0 imports included), then report which forms it contains and which of its fields reach the FJC statistics. Pass XML, 'fixture', or the name of a bundled official sample (NG1.6_CH13_Individual_BK_Petition_Min, NG1.7_CH11_SubV_SmallBusIsTrue, ...).",
     { xml: z.string() },
+    { title: "Validate a petition against the IEPD", ...READ_ONLY },
     async (a) => json(await handlers.validate_petition(a)));
 }
