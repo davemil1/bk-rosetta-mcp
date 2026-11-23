@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { readFileSync } from "node:fs";
-import { rosetta, findElement, findFormLine, findFjcOnly, relatedFjc } from "../rosetta.js";
+import { rosetta, findElement, matchElement, findFormLine, findFjcOnly, relatedFjc } from "../rosetta.js";
 import { queryFjc } from "./fjc.js";
 import { validatePetitionXml, listFixtures, FIXTURES_DIR } from "../validate.js";
 
@@ -42,8 +42,9 @@ export const handlers = {
     if (fjcOnly) return fjcOnlyView(fjcOnly);
     const line = findFormLine(handle);
     if (line?.fields) return { query: handle, formLine: { form: line.form, line: line.line, fields: line.fields }, primary: view(line.primary) };
-    const e = findElement(handle);
-    return e ? view(e) : { error: `no match for "${handle}"`, hint: "try a hub element name, an FJC variable (TOTLBLTS), a form line (B106Sum line 3), or a phrase like 'total debt'" };
+    const m = matchElement(handle);
+    if (m) return { match: m.match, ...(m.match === "fuzzy" ? { matchNote: "Best guess by word overlap, not a curated mapping. Confirm the element fits before relying on it." } : {}), ...view(m.element) };
+    return { error: `no match for "${handle}"`, hint: "try a hub element name, an FJC variable (TOTLBLTS), a form line (B106Sum line 3), or a phrase like 'total debt'" };
   },
 
   describe_form: async ({ form, line }) => {

@@ -5,7 +5,7 @@
   "codebook": "https://www.fjc.gov/sites/default/files/idb/codebooks/Bankruptcy%20IDB%20Online%20Codebook%20rev%2002282023.pdf",
   "fileFormat": "Tab-delimited text with a header row of 87 SAS short names. Text zips: textfiles/cpbank08to17.zip, textfiles/cpbank18on.zip (one row per case per fiscal-year snapshot). datasets/*.zip are SAS .sas7bdat per year.",
   "valueNote": "Codebook lists y/n codes in lowercase; the FY2025 text file carries PRFILE as uppercase Y/N and D1FPRSE/JOINT as lowercase y/n. Compare case-insensitively (upper(col)).",
-  "note": "Variable names and definitions verified against the Feb 2023 codebook. Hub bindings are confirmed where the codebook cites the form or line; inferred where the match is by meaning.",
+  "note": "Variable names and definitions verified against the Feb 2023 codebook. status 'confirmed' = the codebook cites the form, line or petition field; 'inferred' = matched by meaning (e.g. pro se = absence of an attorney).",
   "variables": {
     "SNAPSHOT": {
       "hub": null,
@@ -64,7 +64,7 @@
       "hub": "j:CaseCourt",
       "form": "B101",
       "meaning": "Federal judicial circuit code",
-      "status": "confirmed"
+      "status": "inferred"
     },
     "DISTRICT": {
       "hub": "j:CaseCourt",
@@ -77,7 +77,8 @@
       "hub": "CourtDivisionalOfficeCode",
       "form": "B101",
       "meaning": "District office code",
-      "status": "confirmed"
+      "status": "inferred",
+      "mappingNote": "CourtDivisionalOfficeCode is declared in the schema but no Official Form field in this IEPD uses it; the office is assigned by the court."
     },
     "DOCKET": {
       "hub": "nc:CaseDocketID",
@@ -120,6 +121,13 @@
       "meaning": "Chapter on first record submitted (7, 9, 11, 12, 13, 15a/15m/15n/15x)",
       "status": "confirmed"
     },
+    "ORGFLSUBCHP": {
+      "hub": "Subchapter",
+      "form": "B101",
+      "meaning": "Chapter 11 subchapter V small business reorganization case, as represented on the first record submitted (codebook p.34): V = Subchapter V, blank = missing. Valid as of the 12/31/2022 snapshot.",
+      "status": "confirmed",
+      "codebook": "p.34"
+    },
     "CRNTCHP": {
       "hub": null,
       "meaning": "Chapter on current record at end of snapshot; differs from ORGFLCHP after conversion",
@@ -136,17 +144,24 @@
         "converted chapter"
       ]
     },
+    "ORGNTRDBT": {
+      "hub": "NatureOfDebtsCode",
+      "form": "B101",
+      "meaning": "Nature of debt as reported on the first record submitted to the AOUSC (codebook p.36): b=Business c=Consumer o=Other; blank for Ch.15",
+      "status": "confirmed",
+      "codebook": "p.36"
+    },
     "NTRDBT": {
       "hub": "NatureOfDebtsCode",
       "form": "B101",
-      "meaning": "b=Business c=Consumer o=Other; blank for Ch.15",
+      "meaning": "b=Business c=Consumer o=Other; blank for Ch.15 (most current record as of the end of the snapshot period; ORGNTRDBT is the as-filed value, and the two differ in under 1% of FY2025 filings)",
       "status": "confirmed"
     },
     "JOINT": {
       "hub": "BankruptcyDebtor2",
       "form": "B101",
       "meaning": "y/n joint petition by spouses",
-      "status": "confirmed"
+      "status": "inferred"
     },
     "D1ZIP": {
       "hub": "nc:LocationPostalCode",
@@ -160,12 +175,27 @@
       "meaning": "Debtor 1 county, 5-digit FIPS; 88888 outside home state, 99999 outside U.S.",
       "status": "confirmed"
     },
+    "ORGD1FPRSE": {
+      "hub": "j:Attorney",
+      "form": "B101",
+      "meaning": "Debtor 1 pro se flag as reported on the first record submitted to the AOUSC (codebook p.39): y = pro se, n = represented",
+      "status": "inferred",
+      "mappingNote": "pro se = absence of j:Attorney on B101",
+      "codebook": "p.39"
+    },
     "D1FPRSE": {
       "hub": "j:Attorney",
       "form": "B101",
-      "meaning": "y = debtor 1 pro se (no attorney) on most recent filing record; n = represented",
-      "status": "confirmed",
+      "meaning": "y = debtor 1 pro se (no attorney) on most recent filing record; n = represented (most current record as of the end of the snapshot period; ORGD1FPRSE is the as-filed value, and the two differ in under 1% of FY2025 filings)",
+      "status": "inferred",
       "mappingNote": "pro se = absence of j:Attorney on B101; see also PayPetitionPreparerIndicator"
+    },
+    "D2ZIP": {
+      "hub": "nc:LocationPostalCode",
+      "form": "B101",
+      "meaning": "Debtor 2 ZIP (codebook p.40): ZIP or ZIP+4 of the second-listed debtor's street address",
+      "status": "confirmed",
+      "codebook": "p.40"
     },
     "D2CNTY": {
       "hub": "USCountyCode",
@@ -177,18 +207,41 @@
       "hub": "j:Attorney",
       "form": "B101",
       "meaning": "Debtor 2 pro se flag",
-      "status": "confirmed"
+      "status": "inferred"
     },
-    "FEESTS": {
+    "ORGFEESTS": {
       "hub": "FilingFeeStatusCode",
       "form": "B101",
-      "meaning": "c=installments completed i=paying installments p=paid in full u=not paid w=IFP waived n=missing",
-      "status": "confirmed"
+      "meaning": "Filing fee status as reported on the first record submitted to the AOUSC (codebook p.43): c=installments completed i=paying installments n=missing p=paid in full at filing u=not paid w=IFP waived; blank = unknown",
+      "status": "confirmed",
+      "codebook": "p.43",
+      "caution": "FJC code c (installments completed) has no hub equivalent; the hub list is i, p, u, w."
+    },
+    "FEESTS": {
+      "hub": null,
+      "form": "B101",
+      "meaning": "Filing fee status on the most current record as of the end of the snapshot period; 'may be updated over the life of the case' (codebook p.43): c=installments completed i=paying installments n=missing p=paid in full at filing u=not paid w=IFP waived; blank = unknown",
+      "status": "confirmed",
+      "codebook": "p.43",
+      "related": [
+        "FilingFeeStatusCode"
+      ],
+      "notOnPetition": "Current-record status, not the petition's answer. It differs from ORGFEESTS (as filed) in 48.0% of FY2025 filings and is blank for 173,709 cases that ORGFEESTS records as paid in full. Use ORGFEESTS.",
+      "aka": [
+        "current fee status"
+      ]
+    },
+    "ORGDBTRTYP": {
+      "hub": "DebtorTypeCode",
+      "form": "B101",
+      "meaning": "Debtor type as reported on the first record submitted to the AOUSC (codebook p.43-44): i=Individual p=Partnership u=Corporation/LLC/LLP n=Other",
+      "status": "confirmed",
+      "codebook": "p.43"
     },
     "DBTRTYP": {
       "hub": "DebtorTypeCode",
       "form": "B101",
-      "meaning": "i=Individual p=Partnership u=Corporation/LLC/LLP n=Other (same codes as the hub)",
+      "meaning": "i=Individual p=Partnership u=Corporation/LLC/LLP n=Other (same codes as the hub) (most current record as of the end of the snapshot period; ORGDBTRTYP is the as-filed value, and the two differ in under 1% of FY2025 filings)",
       "status": "confirmed"
     },
     "NOB": {
@@ -197,8 +250,16 @@
       "meaning": "Nature of business",
       "status": "confirmed",
       "codes": "s Stockbroker, c Commodity Broker, b Clearing Bank, x Railroad, r Single Asset Real Estate, h Health Care Business, n Non-profit Organization, o Other, blank = consumer debt",
-      "caution": "Code values diverge from the hub: in BkPetitionCodeLists.xsd o = Tax Exempt Entity and O = None of the above; in the IDB o = Other and n = Non-profit. Do not join case-insensitively. Before CM/ECF 4.1 (Jan 2011) a trailing t marked tax-exempt (e.g. ht).",
-      "codebook": "p.45"
+      "caution": "The codebook (p.46) says n = Non-profit Organization, o = Other, blank = Consumer Debt, but FY2025 data does not follow it: 62,104 cases carry n, 40,713 of them consumer cases and 61,881 with TAXEXEMPT = N, and no case carries o. In practice n behaves like the petition's 'None of the above' (hub code O). Use TAXEXEMPT for non-profit status. The hub codes also differ (o = Tax Exempt Entity, O = None of the above), so never compare case-insensitively. Before CM/ECF 4.1 (Jan 2011) a trailing t marked tax-exempt (e.g. ht).",
+      "codebook": "p.45-46"
+    },
+    "TAXEXEMPT": {
+      "hub": "BusinessTaxExemptIndicator",
+      "form": null,
+      "meaning": "Whether a business is a tax-exempt (non-profit) organization (codebook p.72): n = No, y = Yes. Collected since CM/ECF 4.1 (January 2011); previously carried in NATURE OF BUSINESS.",
+      "status": "inferred",
+      "codebook": "p.72",
+      "caution": "FY2025 values are uppercase Y/N; compare with lower(). No Official Form field in this IEPD uses BusinessTaxExemptIndicator (tax-exempt status is asked on the non-individual petition, B201)."
     },
     "PRFILE": {
       "hub": "PriorBankruptcyCaseIndicator",
@@ -206,22 +267,43 @@
       "meaning": "y/n prior bankruptcy in previous 8 years, as reported on the petition",
       "status": "confirmed"
     },
+    "ORGEASST": {
+      "hub": "EstimatedAssetsCode",
+      "form": "B101",
+      "meaning": "Estimated assets range code as reported on the first record submitted to the AOUSC (codebook p.47)",
+      "status": "confirmed",
+      "codebook": "p.47"
+    },
     "EASST": {
       "hub": "EstimatedAssetsCode",
       "form": "B101",
-      "meaning": "Estimated assets range code (A-N since 2006)",
+      "meaning": "Estimated assets range code (letters A-M; FY2025 also has 52 cases with undocumented digit codes 1-8) (most current record as of the end of the snapshot period; ORGEASST is the as-filed value, and the two differ in under 1% of FY2025 filings)",
       "status": "confirmed"
+    },
+    "ORGELBLTS": {
+      "hub": "EstimatedLiabilitiesCode",
+      "form": "B101",
+      "meaning": "Estimated liabilities range code as reported on the first record submitted to the AOUSC (codebook p.51)",
+      "status": "confirmed",
+      "codebook": "p.51"
     },
     "ELBLTS": {
       "hub": "EstimatedLiabilitiesCode",
       "form": "B101",
-      "meaning": "Estimated liabilities range code",
+      "meaning": "Estimated liabilities range code (most current record as of the end of the snapshot period; ORGELBLTS is the as-filed value, and the two differ in under 1% of FY2025 filings)",
       "status": "confirmed"
+    },
+    "ORGECRDTRS": {
+      "hub": "EstimatedCreditorsCode",
+      "form": "B101",
+      "meaning": "Estimated creditors range code as reported on the first record submitted to the AOUSC (codebook p.54)",
+      "status": "confirmed",
+      "codebook": "p.54"
     },
     "ECRDTRS": {
       "hub": "EstimatedCreditorsCode",
       "form": "B101",
-      "meaning": "Estimated creditors range code A-J",
+      "meaning": "Estimated creditors range code A-J (most current record as of the end of the snapshot period; ORGECRDTRS is the as-filed value, and the two differ in under 1% of FY2025 filings)",
       "status": "confirmed"
     },
     "SMLLBUS": {
@@ -409,9 +491,11 @@
     "Schedule totals are required only for individual debtors with primarily consumer debt and are debtor-reported, not validated.",
     "Debtor-level fields (ZIP, county, pro se) were corrected in Nov 2021 for FY2008-Jun 2021; re-download anything older.",
     "TOTLBLTS treats nulls as zero; TOTDBT treats them as missing, so the two differ.",
-    "NOB code values differ from the petition schema: hub o = Tax Exempt Entity and O = None of the above; IDB o = Other, n = Non-profit. Never compare NOB case-insensitively against the hub.",
     "y/n flags are not consistently cased: in FY2025 PRFILE is Y/N while JOINT and D1FPRSE are y/n. Compare with lower().",
     "The bundled data/sample file is the first 20,000 FY2025 new-filing rows of cpbank18on.txt, not a random sample. Numbers from it are illustrative; load a full year before citing anything. Check count(*) on fjc_bk to see which is loaded.",
-    "DISTRICT is an FJC code (73 = California - Central, 3A = Florida - Middle); join table fjc_district for names (codebook Appendix A)."
+    "DISTRICT is an FJC code (73 = California - Central, 3A = Florida - Middle); join table fjc_district for names (codebook Appendix A).",
+    "NOB: the FY2025 data does not follow the codebook's NOB labels. 62,104 cases carry n (codebook: Non-profit), 40,713 of them consumer cases, so n behaves like 'None of the above'. Use TAXEXEMPT for non-profit status. Never compare NOB case-insensitively against the hub (hub o = Tax Exempt Entity, O = None of the above).",
+    "ORG* variables are the status on the first record submitted (as filed); the unprefixed versions are the most current record. The petition corresponds to ORG*. They differ in under 1% of FY2025 filings except fee status: FEESTS differs from ORGFEESTS in 48.0%.",
+    "The FJC data covers every bankruptcy case; this IEPD covers only the individual petition (B101/B105). In FY2025, 12,841 cases are non-individual debtors (DBTRTYP u, p or n; Form B201) and 203 are chapter 9 or 15. For petition-level questions filter dbtrtyp = 'i'."
   ]
 }

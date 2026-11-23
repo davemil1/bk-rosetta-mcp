@@ -20,7 +20,7 @@ Requires Node 20+.
 npm install
 npm run build:rosetta                                        # walk the IEPD schema -> hub/rosetta.generated.json
 npm run load:fjc -- data/sample/cpbank_fy2025_sample.tsv     # 20,000 real FY2025 filings, bundled
-npm test                                                     # 8 end-to-end tests over MCP stdio
+npm test                                                     # 10 end-to-end tests over MCP stdio
 ```
 
 Open the folder in Claude Code: `.mcp.json` starts the server. Or add it to any MCP client as `node mcp/server.js`.
@@ -63,7 +63,8 @@ Also exposed: resources `rosetta://overview`, `rosetta://fjc` and `rosetta://wal
 
 ## What joining them turned up
 
-- **Codes that look the same but aren't.** For nature of business, the petition schema uses `o` = Tax Exempt Entity and `O` = None of the above. The FJC uses `o` = Other and `n` = Non-profit.
+- **The codebook and the data disagree.** The FJC codebook says nature-of-business code `n` means Non-profit Organization. In FY2025, 62,104 cases carry `n`, 40,713 of them consumer cases, and 61,881 are marked not tax-exempt in the separate `TAXEXEMPT` field. In practice `n` means "None of the above". Filter on it to find non-profits and you get about 62,000 wrong rows. The petition schema adds a third scheme: `o` = Tax Exempt Entity, `O` = None of the above.
+- **"Current" isn't "as filed".** The FJC keeps both the first record (`ORGFEESTS`) and the current record (`FEESTS`). The petition is the first record. For filing-fee status they differ in 48.0% of FY2025 filings, and the current value is blank for 173,709 cases filed as paid in full.
 - **Null handling changes answers.** "Chapter 13 filers with under $50k in debt" is 25.3% using `TOTLBLTS` and 18.9% using `TOTDBT` across all 203,200 FY2025 chapter 13 filings, because 18,093 blank schedules become $0.
 - **Snapshots overlap.** The FJC's rolling 06/30/2026 snapshot repeats 145,740 cases already in the FY2025 year-end snapshot. Counting FY2025 filings without deduping on `CASEKEY` gives 703,280 instead of 557,540. Both loaders keep only the latest snapshot per case.
 - **Codebook line numbers are older than the forms.** The FJC cites "Schedule J line 22"; the current form splits it into 22a–22c.

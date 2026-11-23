@@ -123,24 +123,34 @@ export function relatedFjc(element) {
 }
 
 export function findElement(handle) {
+  return matchElement(handle)?.element ?? null;
+}
+
+// Whole-word containment: "unsecured debt" must not match the phrase "secured debt", nor "care" the word "car".
+const norm = (s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+const hasPhrase = (text, phrase) => ` ${text} `.includes(` ${phrase} `);
+
+// Returns { element, match } where match says how sure the answer is:
+// exact (element name, FJC variable or form line), synonym (curated phrase), or fuzzy (word overlap; a guess).
+export function matchElement(handle) {
   const { hub, fjc, synonyms } = rosetta();
   const h = handle.trim();
-  if (hub.elements[strip(h)]) return hub.elements[strip(h)];
+  if (hub.elements[strip(h)]) return { element: hub.elements[strip(h)], match: "exact" };
   const byVar = fjc.variables[h.toUpperCase()];
-  if (byVar?.hub) { const first = strip([].concat(byVar.hub)[0]); if (hub.elements[first]) return hub.elements[first]; }
-  const fl = findFormLine(h); if (fl?.primary) return fl.primary;
+  if (byVar?.hub) { const first = strip([].concat(byVar.hub)[0]); if (hub.elements[first]) return { element: hub.elements[first], match: "exact" }; }
+  const fl = findFormLine(h); if (fl?.primary) return { element: fl.primary, match: "exact" };
 
-  const norm = (s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
   const q = norm(h);
-  const syn = synonyms[q] ?? Object.entries(synonyms).find(([k]) => q.includes(k))?.[1];
-  if (syn && hub.elements[syn]) return hub.elements[syn];
+  const syn = synonyms[q] ?? Object.entries(synonyms).find(([k]) => hasPhrase(q, norm(k)))?.[1];
+  if (syn && hub.elements[syn]) return { element: hub.elements[syn], match: "synonym" };
 
   const needle = q.replace(/ /g, "");
   const all = Object.values(hub.elements);
+  const exactName = all.find((e) => e.name.toLowerCase() === needle);
+  if (exactName) return { element: exactName, match: "exact" };
   const words = q.split(" ").filter((w) => w.length > 1);
-  const score = (e) => { const hay = (e.name.replace(/([A-Z])/g, " $1") + " " + (e.definition ?? "")).toLowerCase();
-    return words.filter((w) => hay.includes(w)).length + (e.bindings.fjc ? 0.5 : 0) + (e.bindings.forms ? 0.25 : 0); };
-  return all.find((e) => e.name.toLowerCase() === needle)
-      ?? all.map((e) => [score(e), e]).filter(([s]) => s >= Math.max(1, words.length)).sort((a, b) => b[0] - a[0])[0]?.[1]
-      ?? null;
+  const score = (e) => { const hay = norm(e.name.replace(/([A-Z])/g, " $1") + " " + (e.definition ?? ""));
+    return words.filter((w) => hasPhrase(hay, w) || hasPhrase(hay, w + "s")).length + (e.bindings.fjc ? 0.5 : 0) + (e.bindings.forms ? 0.25 : 0); };
+  const best = all.map((e) => [score(e), e]).filter(([s]) => s >= Math.max(1, words.length)).sort((a, b) => b[0] - a[0])[0]?.[1];
+  return best ? { element: best, match: "fuzzy" } : null;
 }

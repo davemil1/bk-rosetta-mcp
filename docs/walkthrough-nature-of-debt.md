@@ -27,4 +27,6 @@ group by 1 order by n desc limit 5;
 
 Nationally: 532,264 consumer, 23,872 business, 1,204 other, 200 blank (chapter 15). Consumer cases outnumber business and other combined about 21 to 1.
 
-**Watch out: the neighbouring field doesn't line up.** `NOB` (nature of *business*) does **not** share the hub's codes. In the schema, `o` = Tax Exempt Entity and `O` = None of the above. In the IDB, `o` = Other and `n` = Non-profit. `list_codes NatureOfBusinessCode` shows both side by side.
+**As filed vs current.** `NTRDBT` is the most current record; `ORGNTRDBT` is the petition as filed. They differ in 198 of 557,540 FY2025 filings, so the table above is unaffected, but `resolve` lists `ORGNTRDBT` first because it is the petition's answer.
+
+**Watch out: the neighbouring field doesn't line up.** For `NOB` (nature of *business*), the FJC codebook says `n` = Non-profit Organization. The data disagrees: 62,104 FY2025 cases carry `n`, and 40,713 of them are consumer cases. In practice `n` means "None of the above", and non-profit status lives in `TAXEXEMPT`. The schema uses a third scheme (`o` = Tax Exempt Entity, `O` = None of the above). `list_codes NatureOfBusinessCode` shows the schema and FJC codes side by side.

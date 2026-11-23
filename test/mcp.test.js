@@ -47,7 +47,28 @@ test("resolve answers every FJC variable, including ones with no petition elemen
 test("list_codes joins hub and FJC coding", async () => {
   const r = await call("list_codes", { element: "NatureOfDebtsCode" });
   assert.ok(r.codes.some((c) => c.value === "c" && c.definition === "Consumer"));
-  assert.equal(r.fjc[0].variable, "NTRDBT");
+  assert.equal(r.fjc[0].variable, "ORGNTRDBT", "the as-filed variable comes first");
+  assert.ok(r.fjc.some((b) => b.variable === "NTRDBT"));
+});
+
+test("fee status binds to the as-filed variable, and NOB carries the codebook-vs-data caution", async () => {
+  const fee = await call("resolve", { handle: "filing fee" });
+  assert.deepEqual(fee.fjc.map((b) => b.variable), ["ORGFEESTS"]);
+  assert.ok(fee.relatedFjc.some((x) => x.variable === "FEESTS"));
+  assert.equal((await call("resolve", { handle: "FEESTS" })).element, null);
+  const nob = await call("list_codes", { element: "NatureOfBusinessCode" });
+  assert.match(nob.fjc[0].caution, /None of the above/);
+  assert.equal((await call("resolve", { handle: "subchapter v" })).element, "Subchapter");
+});
+
+test("resolve does not match inside words, and labels guesses", async () => {
+  const u = await call("resolve", { handle: "unsecured debt" });
+  assert.equal(u.element, "TotalNonPriorityUnsecuredClaimAmount");
+  assert.equal(u.match, "synonym");
+  const car = await call("resolve", { handle: "car" });
+  assert.notEqual(car.element, "AllowableHealthCareDeductionsAmount");
+  assert.equal(car.match, "fuzzy");
+  assert.equal((await call("resolve", { handle: "TOTLBLTS" })).match, "exact");
 });
 
 test("describe_form returns form lines from the IEPD workbook", async () => {
