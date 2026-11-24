@@ -2,6 +2,8 @@
 
 **Three public records of the same bankruptcy case, finally joined, with every answer traceable to the official definition.**
 
+*The NIEM BankruptcyPetition.xsd schema used here was authored by the submitter.*
+
 An MCP server that resolves any U.S. bankruptcy concept across three public sources that have never been linked:
 
 | Spoke | Source | Example |
